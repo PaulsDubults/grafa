@@ -32,20 +32,7 @@ function HandshakeIcon() {
   );
 }
 
-function FeatherDecor() {
-  return (
-    <svg viewBox="0 0 120 200" className="w-20 md:w-24 text-foreground" fill="none">
-      <path d="M60,5 Q58,30 56,60 Q54,90 53,120 Q52,150 55,180 Q56,190 58,198"
-        stroke="currentColor" strokeWidth="0.8" opacity="0.12" strokeLinecap="round" />
-      <path d="M57,25 Q38,15 15,8" stroke="currentColor" strokeWidth="0.5" opacity="0.08" />
-      <path d="M56,50 Q35,38 10,28" stroke="currentColor" strokeWidth="0.5" opacity="0.07" />
-      <path d="M55,75 Q36,62 12,52" stroke="currentColor" strokeWidth="0.45" opacity="0.06" />
-      <path d="M63,22 Q82,12 108,5" stroke="currentColor" strokeWidth="0.5" opacity="0.08" />
-      <path d="M62,48 Q84,36 112,25" stroke="currentColor" strokeWidth="0.5" opacity="0.07" />
-      <path d="M61,72 Q82,60 110,48" stroke="currentColor" strokeWidth="0.45" opacity="0.06" />
-    </svg>
-  );
-}
+
 
 export default function ApproachSection() {
   return (
@@ -59,7 +46,7 @@ export default function ApproachSection() {
       transition={{ duration: 0.7 }}
     >
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid md:grid-cols-[auto_1fr_auto] gap-8 md:gap-12 items-center">
+        <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-12 items-center">
           {/* Left — handshake */}
           <motion.div
             className="flex justify-center md:justify-start"
@@ -71,7 +58,7 @@ export default function ApproachSection() {
             <HandshakeIcon />
           </motion.div>
 
-          {/* Center — text */}
+          {/* Right — text */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -92,17 +79,6 @@ export default function ApproachSection() {
                 Tiekamies jums ērtā laikā un vietā.
               </p>
             </div>
-          </motion.div>
-
-          {/* Right — feather decor */}
-          <motion.div
-            className="hidden md:flex justify-end"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-          >
-            <FeatherDecor />
           </motion.div>
         </div>
       </div>
