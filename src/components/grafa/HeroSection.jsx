@@ -58,72 +58,16 @@ export default function HeroSection() {
 
           {/* RIGHT — Pyramid + Feather */}
           <motion.div
-            className="order-1 md:order-2 flex justify-center md:justify-end relative"
+            className="order-1 md:order-2 flex justify-center md:justify-end"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.1, delay: 0.15 }}
           >
-            <div className="relative w-[260px] h-[300px] sm:w-[300px] sm:h-[340px] md:w-[360px] md:h-[400px] lg:w-[400px] lg:h-[440px]">
-              {/* Pyramid */}
-              <svg viewBox="0 0 400 440" className="absolute inset-0 w-full h-full" fill="none">
-                <defs>
-                  <linearGradient id="pyrGrad" x1="0.5" y1="0" x2="0.5" y2="1">
-                    <stop offset="0%" stopColor="#2E2B5F" />
-                    <stop offset="22%" stopColor="#3B4E7A" />
-                    <stop offset="42%" stopColor="#5A8FA0" />
-                    <stop offset="62%" stopColor="#A0B88C" />
-                    <stop offset="80%" stopColor="#D4B96A" />
-                    <stop offset="95%" stopColor="#E2A84C" />
-                    <stop offset="100%" stopColor="#DFA040" />
-                  </linearGradient>
-                </defs>
-                <polygon points="200,30 365,375 35,375" fill="url(#pyrGrad)" />
-                {/* Center ridge line */}
-                <line x1="200" y1="30" x2="200" y2="375" stroke="rgba(0,0,0,0.06)" strokeWidth="0.7" />
-              </svg>
-
-              {/* Feather overlay — large, black ink style, tilted */}
-              <div className="absolute inset-0 feather-sway" style={{ transformOrigin: '60% 80%' }}>
-                <svg viewBox="0 0 400 520" className="w-full h-full" fill="none" style={{ transform: 'rotate(8deg) translate(2%, -5%)' }}>
-                  {/* Main shaft — elegant curve from top-left down to bottom-right */}
-                  <path d="M170,15 Q165,70 160,140 Q155,210 152,280 Q150,340 155,400 Q160,450 180,500 Q190,515 210,520"
-                    stroke="#1a1a1a" strokeWidth="1.8" strokeLinecap="round" opacity="0.65" className="ink-draw" />
-                  {/* Left barbs */}
-                  <path d="M165,40 Q120,22 65,8" stroke="#1a1a1a" strokeWidth="0.9" opacity="0.3" className="ink-draw" style={{animationDelay:'0.2s'}} />
-                  <path d="M162,72 Q110,50 48,32" stroke="#1a1a1a" strokeWidth="0.9" opacity="0.27" className="ink-draw" style={{animationDelay:'0.4s'}} />
-                  <path d="M160,105 Q102,80 35,60" stroke="#1a1a1a" strokeWidth="0.85" opacity="0.24" className="ink-draw" style={{animationDelay:'0.6s'}} />
-                  <path d="M158,138 Q98,112 30,92" stroke="#1a1a1a" strokeWidth="0.8" opacity="0.21" className="ink-draw" style={{animationDelay:'0.8s'}} />
-                  <path d="M156,172 Q100,148 35,128" stroke="#1a1a1a" strokeWidth="0.75" opacity="0.18" className="ink-draw" style={{animationDelay:'1s'}} />
-                  <path d="M155,205 Q102,184 42,165" stroke="#1a1a1a" strokeWidth="0.7" opacity="0.16" className="ink-draw" style={{animationDelay:'1.2s'}} />
-                  <path d="M154,240 Q105,222 50,204" stroke="#1a1a1a" strokeWidth="0.65" opacity="0.14" className="ink-draw" style={{animationDelay:'1.4s'}} />
-                  <path d="M153,275 Q110,258 60,242" stroke="#1a1a1a" strokeWidth="0.6" opacity="0.12" className="ink-draw" style={{animationDelay:'1.6s'}} />
-                  {/* Right barbs */}
-                  <path d="M178,35 Q225,18 280,6" stroke="#1a1a1a" strokeWidth="0.9" opacity="0.3" className="ink-draw" style={{animationDelay:'0.3s'}} />
-                  <path d="M175,68 Q228,48 292,32" stroke="#1a1a1a" strokeWidth="0.9" opacity="0.27" className="ink-draw" style={{animationDelay:'0.5s'}} />
-                  <path d="M172,100 Q232,78 300,58" stroke="#1a1a1a" strokeWidth="0.85" opacity="0.24" className="ink-draw" style={{animationDelay:'0.7s'}} />
-                  <path d="M170,132 Q228,110 298,90" stroke="#1a1a1a" strokeWidth="0.8" opacity="0.21" className="ink-draw" style={{animationDelay:'0.9s'}} />
-                  <path d="M168,165 Q224,146 292,126" stroke="#1a1a1a" strokeWidth="0.75" opacity="0.18" className="ink-draw" style={{animationDelay:'1.1s'}} />
-                  <path d="M166,198 Q220,180 285,162" stroke="#1a1a1a" strokeWidth="0.7" opacity="0.16" className="ink-draw" style={{animationDelay:'1.3s'}} />
-                  <path d="M164,232 Q215,216 275,200" stroke="#1a1a1a" strokeWidth="0.65" opacity="0.14" className="ink-draw" style={{animationDelay:'1.5s'}} />
-                  {/* Fine detail barbs */}
-                  <path d="M163,55 Q130,40 88,28" stroke="#1a1a1a" strokeWidth="0.45" opacity="0.14" className="ink-draw" style={{animationDelay:'0.4s'}} />
-                  <path d="M176,50 Q210,35 255,22" stroke="#1a1a1a" strokeWidth="0.45" opacity="0.14" className="ink-draw" style={{animationDelay:'0.5s'}} />
-                  <path d="M159,150 Q115,136 70,120" stroke="#1a1a1a" strokeWidth="0.4" opacity="0.1" className="ink-draw" style={{animationDelay:'1s'}} />
-                  <path d="M169,148 Q215,134 268,118" stroke="#1a1a1a" strokeWidth="0.4" opacity="0.1" className="ink-draw" style={{animationDelay:'1.1s'}} />
-                </svg>
-              </div>
-
-              {/* Ink splatter near quill tip */}
-              <svg className="absolute bottom-2 right-4 w-16 h-16 opacity-[0.12]" viewBox="0 0 60 60" fill="none">
-                <circle cx="30" cy="20" r="2.5" fill="#1a1a1a" />
-                <circle cx="22" cy="30" r="1.5" fill="#1a1a1a" />
-                <circle cx="38" cy="35" r="1.8" fill="#1a1a1a" />
-                <circle cx="15" cy="22" r="1" fill="#1a1a1a" />
-                <circle cx="42" cy="25" r="0.8" fill="#1a1a1a" />
-                <circle cx="28" cy="40" r="1.2" fill="#1a1a1a" />
-                <circle cx="35" cy="15" r="0.7" fill="#1a1a1a" />
-              </svg>
-            </div>
+            <img 
+              src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/56b7b9db3_ChatGPTImageMay12202612_01_06PM.png" 
+              alt="SIA firma GRĀFA — spalva un piramīda"
+              className="w-[280px] sm:w-[320px] md:w-[400px] lg:w-[460px] h-auto object-contain"
+            />
           </motion.div>
         </div>
       </div>
