@@ -17,7 +17,7 @@ export default function HeroSection() {
         <img
           src={LOGO_IMG}
           alt="SIA firma GRĀFA — Grāmatvedība. Finanses. Apmācības."
-          className="absolute z-10 top-[8%] left-[2%] sm:left-[5%] md:left-[8%] w-[200px] sm:w-[260px] md:w-[340px] h-auto object-contain"
+          className="absolute z-10 top-[14%] left-[2%] sm:left-[5%] md:left-[8%] w-[220px] sm:w-[290px] md:w-[380px] h-auto object-contain"
         />
 
         {/* Pyramid + feather image, large, centered */}
