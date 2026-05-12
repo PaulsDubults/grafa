@@ -6,32 +6,25 @@ const LOGO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed3
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full flex flex-col items-center overflow-hidden pt-12 md:pt-20 pb-6" style={{ background: '#f8f5f0' }}>
-      {/* GRĀFA logo image on top */}
+    <section className="relative w-full flex flex-col items-center overflow-hidden pt-10 md:pt-16 pb-6" style={{ background: '#f8f5f0' }}>
       <motion.div
-        className="flex justify-center mb-6 md:mb-8"
-        initial={{ opacity: 0, y: -15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.1 }}
+        className="flex flex-col items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.1 }}
       >
+        {/* GRĀFA logo — overlapping onto the pyramid image below */}
         <img
           src={LOGO_IMG}
           alt="SIA firma GRĀFA — Grāmatvedība. Finanses. Apmācības."
-          className="w-[260px] sm:w-[320px] md:w-[380px] h-auto object-contain"
+          className="relative z-10 w-[240px] sm:w-[300px] md:w-[360px] h-auto object-contain mb-[-30px] sm:mb-[-40px] md:mb-[-50px]"
         />
-      </motion.div>
 
-      {/* Pyramid + feather image below, 2x bigger, centered */}
-      <motion.div
-        className="flex justify-center"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.1, delay: 0.25 }}
-      >
+        {/* Pyramid + feather image, large, centered */}
         <img
           src={HERO_IMG}
           alt="Piramīda ar spalvu"
-          className="w-[90%] sm:w-[80%] md:w-[700px] lg:w-[800px] h-auto object-contain"
+          className="w-full max-w-[1100px] lg:max-w-[1300px] h-auto object-contain"
         />
       </motion.div>
     </section>
