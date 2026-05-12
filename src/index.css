@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,26 +8,27 @@
   :root {
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
+    --font-script: 'Dancing Script', cursive;
 
-    --background: 40 25% 97%;
-    --foreground: 0 0% 8%;
-    --card: 40 20% 99%;
-    --card-foreground: 0 0% 8%;
-    --popover: 40 20% 99%;
-    --popover-foreground: 0 0% 8%;
-    --primary: 0 0% 10%;
-    --primary-foreground: 40 25% 97%;
-    --secondary: 35 15% 93%;
-    --secondary-foreground: 0 0% 12%;
-    --muted: 35 10% 92%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 35 20% 90%;
-    --accent-foreground: 0 0% 10%;
+    --background: 38 30% 96%;
+    --foreground: 30 10% 12%;
+    --card: 38 25% 98%;
+    --card-foreground: 30 10% 12%;
+    --popover: 38 25% 98%;
+    --popover-foreground: 30 10% 12%;
+    --primary: 30 10% 12%;
+    --primary-foreground: 38 30% 96%;
+    --secondary: 35 18% 92%;
+    --secondary-foreground: 30 10% 15%;
+    --muted: 35 15% 91%;
+    --muted-foreground: 30 5% 42%;
+    --accent: 35 20% 89%;
+    --accent-foreground: 30 10% 12%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 35 12% 87%;
-    --input: 35 12% 87%;
-    --ring: 0 0% 10%;
+    --border: 35 14% 85%;
+    --input: 35 14% 85%;
+    --ring: 30 10% 12%;
     --chart-1: 0 0% 15%;
     --chart-2: 0 0% 30%;
     --chart-3: 0 0% 50%;
@@ -89,28 +90,23 @@
   }
 }
 
-@keyframes featherSway {
-  0%, 100% { transform: rotate(-1deg) translateY(0); }
-  50% { transform: rotate(1.5deg) translateY(-5px); }
-}
-
 @keyframes inkDraw {
-  from { stroke-dashoffset: 1000; }
+  from { stroke-dashoffset: 800; }
   to { stroke-dashoffset: 0; }
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.feather-sway {
-  animation: featherSway 7s ease-in-out infinite;
+@keyframes featherSway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(1.5deg) translateY(-3px); }
 }
 
 .ink-draw {
-  stroke-dasharray: 1000;
-  animation: inkDraw 3s ease-out forwards;
+  stroke-dasharray: 800;
+  animation: inkDraw 2.5s ease-out forwards;
+}
+
+.feather-sway {
+  animation: featherSway 6s ease-in-out infinite;
 }
 
 html {

@@ -1,62 +1,55 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import SectionWrapper from './SectionWrapper';
-import InkLine from './InkLine';
+import { BookOpen, User, Users, Briefcase, Tractor, TrendingUp, GraduationCap } from 'lucide-react';
 
 const services = [
-  { title: "Grāmatvedība SIA", desc: "Pilna apjoma grāmatvedības uzskaite sabiedrībām ar ierobežotu atbildību." },
-  { title: "Pašnodarbinātajiem", desc: "Grāmatvedības pakalpojumi pašnodarbinātām personām." },
-  { title: "Biedrībām", desc: "Grāmatvedības kārtošana biedrībām un nodibinājumiem." },
-  { title: "Individuālajiem komersantiem", desc: "Uzskaite un atskaites individuālajiem komersantiem." },
-  { title: "Zemnieku saimniecībām", desc: "Grāmatvedības pakalpojumi lauksaimniecības uzņēmumiem." },
-  { title: "Finanšu konsultācijas", desc: "Individuālas konsultācijas un finanšu analītika." },
-  { title: "Apmācības", desc: "Grāmatvedības un finanšu pamatu apmācības." },
+  { icon: BookOpen, label: "Grāmatvedība\nSIA" },
+  { icon: User, label: "Grāmatvedība\npašnodarbinātajiem" },
+  { icon: Users, label: "Grāmatvedība\nbiedrībām" },
+  { icon: Briefcase, label: "Grāmatvedība\nindividuālajiem\nkomersantiem" },
+  { icon: Tractor, label: "Grāmatvedība\nzemnieku\nsaimniecībām" },
+  { icon: TrendingUp, label: "Finanšu\nkonsultācijas un\nanalītika" },
+  { icon: GraduationCap, label: "Apmācības" },
 ];
 
 export default function ServicesSection() {
   return (
-    <SectionWrapper id="pakalpojumi" className="bg-foreground/[0.015]">
+    <motion.section
+      id="pakalpojumi"
+      className="py-20 md:py-28 px-6 md:px-10"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.7 }}
+    >
       <div className="max-w-6xl mx-auto">
-        <div className="mb-16">
-          <motion.p
-            className="text-[12px] tracking-[0.2em] uppercase text-foreground/30 font-body mb-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            Pakalpojumi
-          </motion.p>
-          <motion.h2
-            className="font-heading text-3xl md:text-4xl font-medium leading-tight mb-6"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Ko mēs <span className="italic text-foreground/60">piedāvājam</span>
-          </motion.h2>
-          <InkLine className="w-12" />
+        {/* Header with line */}
+        <div className="mb-12">
+          <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-3">Pakalpojumi</h2>
+          <div className="w-full h-[1px] bg-foreground/10" />
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Horizontal service items */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-6 md:gap-4">
           {services.map((service, i) => (
             <motion.div
-              key={service.title}
-              className="group p-7 rounded-2xl border border-foreground/[0.06] bg-card hover:border-foreground/[0.12] transition-all duration-500"
-              initial={{ opacity: 0, y: 20 }}
+              key={service.label}
+              className="flex flex-col items-center text-center group"
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06 }}
             >
-              <h3 className="font-heading text-base font-semibold mb-2.5 group-hover:text-foreground/90 transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-[13px] text-foreground/40 leading-relaxed font-body">
-                {service.desc}
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl border border-foreground/[0.07] flex items-center justify-center mb-3 group-hover:border-foreground/15 transition-colors duration-300">
+                <service.icon className="w-6 h-6 text-foreground/30 group-hover:text-foreground/50 transition-colors duration-300" strokeWidth={1.2} />
+              </div>
+              <p className="text-[11px] md:text-[12px] font-body text-foreground/45 leading-snug whitespace-pre-line">
+                {service.label}
               </p>
             </motion.div>
           ))}
         </div>
       </div>
-    </SectionWrapper>
+    </motion.section>
   );
 }
