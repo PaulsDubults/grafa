@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const HORIZONTAL_FEATHER = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/1d1cf7e68_image.png";
+
 
 const points = [
   {
@@ -52,13 +52,7 @@ export default function ApproachSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
-      {/* Background feather — large, blended with section */}
-      <img
-        src={HORIZONTAL_FEATHER}
-        alt=""
-        className="absolute bottom-[5%] right-[-5%] w-[70%] md:w-[50%] lg:w-[40%] h-auto object-contain opacity-[0.3] pointer-events-none select-none"
-        style={{ mixBlendMode: 'multiply' }}
-      />
+
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <div>
