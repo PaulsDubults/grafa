@@ -41,7 +41,28 @@ export default function ContactSection() {
             </div>
           </div>
 
-
+          {/* Liene signature + ink flourish */}
+          <motion.div
+            className="flex flex-col items-end"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <span className="font-script text-[38px] md:text-[46px] text-foreground/18 leading-none italic">Liene</span>
+            <svg viewBox="0 0 140 35" className="w-28 mt-0.5" fill="none">
+              <path
+                d="M5,18 C25,10 45,25 65,15 C85,5 105,22 130,12"
+                stroke="#1a1a1a"
+                strokeWidth="0.7"
+                opacity="0.12"
+                strokeLinecap="round"
+              />
+              {/* Small ink dots */}
+              <circle cx="130" cy="12" r="1.5" fill="#1a1a1a" opacity="0.08" />
+              <circle cx="133" cy="15" r="0.8" fill="#1a1a1a" opacity="0.05" />
+            </svg>
+          </motion.div>
         </div>
       </div>
     </motion.section>
