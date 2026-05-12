@@ -8,23 +8,23 @@ export default function HeroSection() {
   return (
     <section className="relative w-full flex flex-col items-center overflow-hidden pt-10 md:pt-16 pb-6" style={{ background: '#f8f5f0' }}>
       <motion.div
-        className="flex flex-col items-center"
+        className="relative w-full max-w-[1100px] lg:max-w-[1300px] mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.1 }}
       >
-        {/* GRĀFA logo — overlapping onto the pyramid image below */}
+        {/* GRĀFA logo — positioned over top-left of pyramid image */}
         <img
           src={LOGO_IMG}
           alt="SIA firma GRĀFA — Grāmatvedība. Finanses. Apmācības."
-          className="relative z-10 w-[240px] sm:w-[300px] md:w-[360px] h-auto object-contain mb-[-30px] sm:mb-[-40px] md:mb-[-50px]"
+          className="absolute z-10 top-[8%] left-[2%] sm:left-[5%] md:left-[8%] w-[200px] sm:w-[260px] md:w-[340px] h-auto object-contain"
         />
 
         {/* Pyramid + feather image, large, centered */}
         <img
           src={HERO_IMG}
           alt="Piramīda ar spalvu"
-          className="w-full max-w-[1100px] lg:max-w-[1300px] h-auto object-contain"
+          className="w-full h-auto object-contain"
         />
       </motion.div>
     </section>
