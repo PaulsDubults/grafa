@@ -10,7 +10,7 @@ export default function ServiceCard({ service, index }) {
       viewport={{ once: true }}
       transition={{ delay: 0.08 + index * 0.06, duration: 0.6 }}
     >
-      <div className="text-foreground/35 mb-5 group-hover:text-foreground/55 transition-colors duration-300">
+      <div className="text-foreground/60 mb-5 group-hover:text-foreground/80 transition-colors duration-300">
         {service.icon}
       </div>
       <h3 className="font-heading text-[15px] md:text-[16px] font-semibold mb-3 leading-snug">
