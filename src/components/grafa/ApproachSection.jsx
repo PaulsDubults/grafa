@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const VERTICAL_FEATHER = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/75f4e6b97_image.png";
+const HORIZONTAL_FEATHER = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/1d1cf7e68_image.png";
 
 const points = [
   {
@@ -53,8 +53,7 @@ export default function ApproachSection() {
       transition={{ duration: 0.9 }}
     >
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-20 items-start">
-          {/* Left — text content */}
+        <div>
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -101,21 +100,22 @@ export default function ApproachSection() {
             </div>
           </div>
 
-          {/* Right — vertical feather */}
-          <motion.div
-            className="hidden md:flex justify-end items-start pt-8"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.9 }}
-          >
-            <img
-              src={VERTICAL_FEATHER}
-              alt=""
-              className="w-[180px] lg:w-[220px] h-auto object-contain opacity-70 feather-sway"
-            />
-          </motion.div>
         </div>
+
+        {/* Horizontal feather decoration */}
+        <motion.div
+          className="flex justify-center mt-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.55 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 1.2 }}
+        >
+          <img
+            src={HORIZONTAL_FEATHER}
+            alt=""
+            className="w-[60%] md:w-[45%] lg:w-[35%] h-auto object-contain"
+          />
+        </motion.div>
       </div>
     </motion.section>
   );

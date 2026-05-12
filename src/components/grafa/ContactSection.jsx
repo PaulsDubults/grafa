@@ -5,8 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
-const VERTICAL_FEATHER = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/75f4e6b97_image.png";
-
 const contactItems = [
   { icon: Phone, label: "+371 20383974", href: "tel:+37120383974" },
   { icon: Mail, label: "firmagrafa@gmail.com", href: "mailto:firmagrafa@gmail.com" },
@@ -35,9 +33,9 @@ export default function ContactSection() {
       transition={{ duration: 0.9 }}
     >
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 md:gap-20">
-          {/* Left column — info + form */}
+        <div className="flex flex-col items-center text-center">
           <motion.div
+            className="w-full max-w-lg"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -46,16 +44,16 @@ export default function ContactSection() {
             <h2 className="font-heading text-[28px] md:text-[36px] lg:text-[42px] font-semibold mb-4 leading-tight">
               Sazinieties
             </h2>
-            <div className="w-12 h-[1.5px] bg-[#c9a84c]/50 mb-8" />
+            <div className="w-12 h-[1.5px] bg-[#c9a84c]/50 mb-8 mx-auto" />
 
-            <p className="text-foreground/50 font-body text-[15px] md:text-[16px] leading-[1.9] mb-10 max-w-lg">
+            <p className="text-foreground/50 font-body text-[15px] md:text-[16px] leading-[1.9] mb-10 max-w-lg mx-auto">
               Ja Jums nepieciešami grāmatvedības pakalpojumi ar individuālu pieeju, droši 
               sazinieties. Ar prieku palīdzēsim atrast piemērotāko risinājumu Jūsu uzņēmumam 
               vai saimnieciskajai darbībai.
             </p>
 
             {/* Contact details */}
-            <div className="flex flex-col gap-5 mb-12">
+            <div className="flex flex-col gap-5 mb-12 items-center">
               {contactItems.map((item) => (
                 <div key={item.label} className="flex items-center gap-4">
                   <item.icon className="w-[16px] h-[16px] text-foreground/25" strokeWidth={1.5} />
@@ -76,7 +74,7 @@ export default function ContactSection() {
             </div>
 
             {/* Contact form */}
-            <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
+            <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto text-left">
               <Input
                 placeholder="Vārds"
                 value={form.name}
@@ -108,44 +106,7 @@ export default function ContactSection() {
             </form>
           </motion.div>
 
-          {/* Right column — feather + signature */}
-          <motion.div
-            className="hidden md:flex flex-col items-center justify-center relative"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 1 }}
-          >
-            <img
-              src={VERTICAL_FEATHER}
-              alt=""
-              className="w-[200px] lg:w-[240px] h-auto object-contain opacity-60 feather-sway mb-8"
-            />
 
-            {/* Signature "Liene" */}
-            <div className="flex flex-col items-center">
-              <span className="font-script text-[32px] md:text-[38px] text-foreground/30">
-                Liene
-              </span>
-              {/* Ink line under signature */}
-              <svg viewBox="0 0 120 8" className="w-24 mt-1" fill="none">
-                <path
-                  d="M5,4 Q30,2 60,4 Q90,6 115,3"
-                  stroke="currentColor"
-                  strokeWidth="0.8"
-                  opacity="0.15"
-                  strokeLinecap="round"
-                  className="ink-draw"
-                />
-              </svg>
-              {/* Ink dots */}
-              <div className="flex gap-3 mt-3">
-                <div className="w-1 h-1 rounded-full bg-foreground/10" />
-                <div className="w-1.5 h-1.5 rounded-full bg-foreground/15" />
-                <div className="w-1 h-1 rounded-full bg-foreground/8" />
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </motion.section>
