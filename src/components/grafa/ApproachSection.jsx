@@ -2,77 +2,91 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper from './SectionWrapper';
 import InkLine from './InkLine';
+import FeatherSVG from './FeatherSVG';
 
 export default function ApproachSection() {
   return (
-    <SectionWrapper className="bg-gradient-to-b from-transparent via-teal-50/15 to-transparent">
-      <div className="max-w-7xl mx-auto">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.span
-            className="text-sm tracking-widest uppercase text-muted-foreground font-body"
+    <SectionWrapper>
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+          {/* Text */}
+          <div>
+            <motion.p
+              className="text-[12px] tracking-[0.2em] uppercase text-foreground/30 font-body mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              Individuāla pieeja
+            </motion.p>
+            <motion.h2
+              className="font-heading text-3xl md:text-4xl font-medium leading-tight mb-6"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              Individuāla pieeja
+              <br />
+              <span className="italic text-foreground/60">katram klientam</span>
+            </motion.h2>
+            <InkLine className="mb-8 w-12" />
+            <motion.p
+              className="text-foreground/50 font-body text-[15px] leading-[1.8] mb-8"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Ilgtermiņa sadarbībā svarīga ir uzticēšanās, sapratne un pieejamība. 
+              Tāpēc klientiem nodrošinām ne tikai grāmatvedības pakalpojumus, 
+              bet arī cilvēcīgu komunikāciju un atbalstu ikdienas jautājumos.
+            </motion.p>
+
+            <motion.div
+              className="space-y-5"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              {[
+                "Personiska pieeja katram klientam",
+                "Tikšanās Jums ērtā laikā un vietā",
+                "Vienkārša un saprotama komunikācija",
+                "Ilgtermiņa uzticamas attiecības",
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <div className="w-1 h-1 rounded-full bg-foreground/25 flex-shrink-0" />
+                  <p className="text-sm text-foreground/45 font-body">{item}</p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Feather visual */}
+          <motion.div
+            className="relative flex items-center justify-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 1 }}
           >
-            Mūsu pieeja
-          </motion.span>
-          <motion.h2
-            className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mt-4 mb-6 leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Klients ir <span className="gradient-text italic">cilvēks</span>,<br />
-            nevis skaitlis sistēmā
-          </motion.h2>
-          <div className="flex justify-center mb-10">
-            <InkLine className="max-w-[120px]" />
-          </div>
-          <motion.p
-            className="text-lg text-muted-foreground font-body leading-relaxed"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            Mēs ticam, ka laba grāmatvedība sākas ar labām attiecībām. 
-            Tāpēc katru sadarbību veidojam kā partnerību — ar atklātu komunikāciju, 
-            savstarpēju cieņu un rūpēm par Jūsu biznesa izaugsmi.
-          </motion.p>
-        </div>
-
-        {/* Three pillars */}
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
-          {[
-            {
-              emoji: "🤝",
-              title: "Sadarbība",
-              text: "Katrs klients ir partneris un draugs — ne tikai numurs datubāzē.",
-            },
-            {
-              emoji: "💜",
-              title: "Harmonija",
-              text: "Mēs radām līdzsvaru starp precizitāti un cilvēcīgu pieeju.",
-            },
-            {
-              emoji: "✨",
-              title: "Izaugsme",
-              text: "Jūsu panākumi ir mūsu panākumi. Augam kopā.",
-            },
-          ].map((pillar, i) => (
-            <motion.div
-              key={pillar.title}
-              className="text-center p-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + i * 0.1 }}
-            >
-              <span className="text-4xl mb-4 block">{pillar.emoji}</span>
-              <h3 className="font-heading text-xl font-semibold mb-3">{pillar.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{pillar.text}</p>
-            </motion.div>
-          ))}
+            <div className="text-foreground/[0.07] feather-sway">
+              <FeatherSVG className="h-[50vh] md:h-[55vh] w-auto" />
+            </div>
+            {/* Very subtle pyramid behind */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.025]">
+              <svg width="200" height="200" viewBox="0 0 200 200">
+                <polygon 
+                  points="100,15 185,175 15,175" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="0.6"
+                />
+              </svg>
+            </div>
+          </motion.div>
         </div>
       </div>
     </SectionWrapper>

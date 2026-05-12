@@ -5,127 +5,101 @@ import FeatherSVG from './FeatherSVG';
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-10 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-purple-200/30 via-teal-100/20 to-transparent blur-3xl float-gradient" />
-        <div className="absolute bottom-20 left-10 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-amber-100/25 via-green-100/15 to-transparent blur-3xl float-gradient" style={{ animationDelay: '-3s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-b from-purple-100/10 via-blue-100/10 to-teal-100/10 blur-3xl" />
+      {/* Feather — right side, black ink style */}
+      <div className="absolute right-0 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 pointer-events-none text-foreground/[0.08] md:text-foreground/[0.06]">
+        <div className="feather-sway">
+          <FeatherSVG className="h-[70vh] md:h-[80vh] w-auto" />
+        </div>
       </div>
 
-      {/* Feather decoration */}
-      <div className="absolute right-0 top-0 h-full w-1/3 md:w-2/5 pointer-events-none opacity-[0.15] md:opacity-[0.12]">
-        <FeatherSVG className="h-full w-full feather-sway" />
-      </div>
-
-      {/* Pyramid triangle subtle background */}
-      <div className="absolute right-20 top-1/4 pointer-events-none opacity-[0.06]">
-        <svg width="300" height="300" viewBox="0 0 300 300">
+      {/* Very subtle pyramid mark */}
+      <div className="absolute right-32 bottom-32 pointer-events-none opacity-[0.03]">
+        <svg width="180" height="180" viewBox="0 0 180 180">
           <polygon 
-            points="150,20 280,260 20,260" 
+            points="90,10 170,160 10,160" 
             fill="none" 
-            stroke="url(#pyramidGrad)" 
-            strokeWidth="1.5"
+            stroke="currentColor" 
+            strokeWidth="0.8"
           />
-          <defs>
-            <linearGradient id="pyramidGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#7B4FA2" />
-              <stop offset="50%" stopColor="#2BA8A4" />
-              <stop offset="100%" stopColor="#F0C040" />
-            </linearGradient>
-          </defs>
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-28 md:pt-20 w-full">
-        <div className="max-w-2xl">
-          {/* Small label */}
-          <motion.div
-            className="flex items-center gap-3 mb-6"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 pt-28 md:pt-20 w-full">
+        <div className="max-w-xl">
+          {/* Brand name */}
+          <motion.p
+            className="text-[13px] font-body tracking-[0.25em] uppercase text-foreground/35 mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="rainbow-line w-12 rounded-full" />
-            <span className="text-sm font-body tracking-widest uppercase text-muted-foreground">
-              SIA firma GRĀFA
-            </span>
-          </motion.div>
+            SIA firma GRĀFA
+          </motion.p>
 
-          {/* Main heading */}
+          {/* Main heading — ink feel */}
           <motion.h1
-            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.1] mb-6"
-            initial={{ opacity: 0, y: 30 }}
+            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-medium leading-[1.15] mb-8"
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.9, delay: 0.5 }}
           >
-            <span className="text-foreground">Grāmatvedība</span>
+            Grāmatvedība
             <br />
-            <span className="text-foreground">ar </span>
-            <span className="gradient-text italic">individuālu</span>
+            <span className="italic text-foreground/70">ar individuālu</span>
             <br />
-            <span className="gradient-text italic">pieeju</span>
+            <span className="italic text-foreground/70">pieeju</span>
           </motion.h1>
+
+          {/* Thin ink line */}
+          <motion.div 
+            className="w-16 h-[1px] bg-foreground/20 mb-8"
+            initial={{ scaleX: 0, transformOrigin: 'left' }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+          />
 
           {/* Subtitle */}
           <motion.p
-            className="text-lg md:text-xl text-muted-foreground font-body font-light leading-relaxed max-w-lg mb-10"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base md:text-lg text-foreground/45 font-body font-light leading-relaxed max-w-md mb-12"
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
-            Katrs klients mums ir sadarbības partneris, nevis tikai skaitlis. 
-            Profesionāla grāmatvedība ar cilvēcīgu attieksmi.
+            Katrs klients mums ir sadarbības partneris, 
+            nevis tikai skaitlis.
           </motion.p>
 
           {/* CTAs */}
           <motion.div
             className="flex flex-col sm:flex-row gap-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
           >
             <a
               href="#kontakti"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-500 via-teal-500 to-amber-400 text-white font-medium text-sm hover:shadow-xl hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-foreground text-background font-body text-sm font-medium tracking-wide hover:bg-foreground/85 transition-all duration-300"
+            >
+              Sazināties
+            </a>
+            <a
+              href="#kontakti"
+              className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-foreground/15 text-foreground/70 font-body text-sm font-medium tracking-wide hover:border-foreground/30 hover:text-foreground transition-all duration-300"
             >
               Pieteikt konsultāciju
             </a>
-            <a
-              href="#par-mums"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-border bg-white/50 backdrop-blur text-foreground font-medium text-sm hover:bg-white/80 transition-all duration-300"
-            >
-              Uzzināt vairāk
-            </a>
           </motion.div>
 
-          {/* Trust indicators */}
-          <motion.div
-            className="mt-16 flex items-center gap-8 text-sm text-muted-foreground"
+          {/* Minimal trust line */}
+          <motion.p
+            className="mt-20 text-[12px] font-body tracking-[0.15em] uppercase text-foreground/25"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.8, delay: 1.5 }}
           >
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-teal-400" />
-              <span>Grāmatvedība</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-teal-400 to-green-400" />
-              <span>Finanses</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-orange-400" />
-              <span>Apmācības</span>
-            </div>
-          </motion.div>
+            Grāmatvedība · Finanses · Apmācības
+          </motion.p>
         </div>
-      </div>
-
-      {/* Curved bottom separator */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0,50 C360,80 720,20 1080,50 C1260,65 1380,55 1440,50 L1440,80 L0,80 Z" fill="hsl(30, 20%, 98%)" />
-        </svg>
       </div>
     </section>
   );

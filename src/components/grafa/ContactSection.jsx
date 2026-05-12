@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import SectionWrapper from './SectionWrapper';
 import InkLine from './InkLine';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
@@ -15,135 +14,137 @@ export default function ContactSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    // Simulate send
-    await new Promise(r => setTimeout(r, 1000));
+    await new Promise(r => setTimeout(r, 800));
     toast.success('Ziņa nosūtīta! Sazināsimies ar Jums drīzumā.');
     setForm({ name: '', email: '', message: '' });
     setSending(false);
   };
 
   return (
-    <SectionWrapper id="kontakti" className="bg-gradient-to-b from-transparent via-purple-50/15 to-transparent">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.span
-            className="text-sm tracking-widest uppercase text-muted-foreground font-body"
+    <SectionWrapper id="kontakti" className="bg-foreground/[0.015]">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-16">
+          <motion.p
+            className="text-[12px] tracking-[0.2em] uppercase text-foreground/30 font-body mb-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
             Kontakti
-          </motion.span>
+          </motion.p>
           <motion.h2
-            className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mt-4 mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="font-heading text-3xl md:text-4xl font-medium leading-tight mb-4"
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Sazināsimies{' '}
-            <span className="gradient-text italic">personīgi</span>
+            Sazināsimies
           </motion.h2>
-          <div className="flex justify-center">
-            <InkLine className="max-w-[120px]" />
-          </div>
+          <InkLine className="w-12 mb-6" />
+          <motion.p
+            className="text-foreground/40 font-body text-[15px] max-w-md"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            Sazinieties, ja vēlaties grāmatvedības pakalpojumus ar individuālu pieeju.
+          </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16">
-          {/* Left - contact info */}
+        <div className="grid md:grid-cols-2 gap-16 md:gap-24">
+          {/* Contact info */}
           <motion.div
             className="space-y-8"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-foreground/70 font-body leading-relaxed text-lg">
-              Zvaniet, rakstiet vai vienkārši pasveicinieties — 
-              ar prieku atbildēsim un palīdzēsim atrast labāko risinājumu Jūsu uzņēmumam.
-            </p>
-
-            <div className="space-y-6">
-              <div className="flex items-center gap-5">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/10 to-teal-500/5 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-purple-500" />
+            <div className="space-y-7">
+              <div className="flex items-start gap-5">
+                <div className="w-10 h-10 rounded-xl border border-foreground/[0.06] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Phone className="w-4 h-4 text-foreground/30" />
                 </div>
                 <div>
-                  <p className="font-heading font-semibold">Liene Upeniece</p>
-                  <a href="tel:+37120383974" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <p className="font-heading font-semibold text-sm mb-1">Liene</p>
+                  <p className="text-[13px] text-foreground/40 mb-0.5">SIA firma GRĀFA</p>
+                  <a href="tel:+37120383974" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
                     +371 20 383 974
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-5">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500/10 to-green-500/5 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-teal-500" />
+              <div className="flex items-start gap-5">
+                <div className="w-10 h-10 rounded-xl border border-foreground/[0.06] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Mail className="w-4 h-4 text-foreground/30" />
                 </div>
                 <div>
-                  <p className="font-heading font-semibold">E-pasts</p>
-                  <a href="mailto:firmagrafa@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <p className="font-heading font-semibold text-sm mb-1">E-pasts</p>
+                  <a href="mailto:firmagrafa@gmail.com" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
                     firmagrafa@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-5">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/10 to-orange-500/5 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-amber-500" />
+              <div className="flex items-start gap-5">
+                <div className="w-10 h-10 rounded-xl border border-foreground/[0.06] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4 text-foreground/30" />
                 </div>
                 <div>
-                  <p className="font-heading font-semibold">Atrašanās vieta</p>
-                  <p className="text-muted-foreground">Jelgava, Latvija</p>
+                  <p className="font-heading font-semibold text-sm mb-1">Atrašanās vieta</p>
+                  <p className="text-sm text-foreground/50">Jelgavas novads / Eleja</p>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Right - contact form */}
+          {/* Form */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
           >
-            <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="text-sm font-body font-medium text-foreground/70 mb-1.5 block">Jūsu vārds</label>
+                <label className="text-[12px] font-body tracking-wide uppercase text-foreground/30 mb-2 block">Jūsu vārds</label>
                 <Input
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  placeholder="Ievadiet vārdu"
+                  placeholder="Vārds"
                   required
-                  className="bg-white/60 border-white/50 focus:border-purple-300 rounded-xl"
+                  className="bg-transparent border-foreground/[0.08] focus:border-foreground/20 rounded-xl h-11 text-sm placeholder:text-foreground/20"
                 />
               </div>
               <div>
-                <label className="text-sm font-body font-medium text-foreground/70 mb-1.5 block">E-pasts</label>
+                <label className="text-[12px] font-body tracking-wide uppercase text-foreground/30 mb-2 block">E-pasts</label>
                 <Input
                   type="email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="jusu@epasts.lv"
                   required
-                  className="bg-white/60 border-white/50 focus:border-purple-300 rounded-xl"
+                  className="bg-transparent border-foreground/[0.08] focus:border-foreground/20 rounded-xl h-11 text-sm placeholder:text-foreground/20"
                 />
               </div>
               <div>
-                <label className="text-sm font-body font-medium text-foreground/70 mb-1.5 block">Ziņojums</label>
+                <label className="text-[12px] font-body tracking-wide uppercase text-foreground/30 mb-2 block">Ziņojums</label>
                 <Textarea
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder="Pastāstiet par savu vajadzību..."
                   rows={4}
                   required
-                  className="bg-white/60 border-white/50 focus:border-purple-300 rounded-xl resize-none"
+                  className="bg-transparent border-foreground/[0.08] focus:border-foreground/20 rounded-xl text-sm resize-none placeholder:text-foreground/20"
                 />
               </div>
-              <Button
+              <button
                 type="submit"
                 disabled={sending}
-                className="w-full rounded-xl bg-gradient-to-r from-purple-500 via-teal-500 to-amber-400 text-white hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 h-12"
+                className="w-full py-3 rounded-full bg-foreground text-background font-body text-sm font-medium tracking-wide hover:bg-foreground/85 transition-all duration-300 disabled:opacity-50"
               >
                 {sending ? 'Sūta...' : 'Nosūtīt ziņojumu'}
-              </Button>
+              </button>
             </form>
           </motion.div>
         </div>
