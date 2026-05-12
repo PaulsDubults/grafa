@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const HANDSHAKE_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/6bbae889c_ChatGPTImageMay12202612_44_47PM.png";
+const HANDSHAKE_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/71b067720_ChatGPTImageMay12202612_50_13PM.png";
 
 const points = [
   {
