@@ -52,7 +52,15 @@ export default function ApproachSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
-      <div className="max-w-[1200px] mx-auto">
+      {/* Background feather — large, blended with section */}
+      <img
+        src={HORIZONTAL_FEATHER}
+        alt=""
+        className="absolute bottom-[-5%] right-[-10%] w-[140%] md:w-[100%] lg:w-[80%] h-auto object-contain opacity-[0.07] pointer-events-none select-none"
+        style={{ mixBlendMode: 'multiply' }}
+      />
+
+      <div className="relative z-10 max-w-[1200px] mx-auto">
         <div>
           <div>
             <motion.div
@@ -102,20 +110,7 @@ export default function ApproachSection() {
 
         </div>
 
-        {/* Horizontal feather decoration */}
-        <motion.div
-          className="flex justify-center mt-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.55 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 1.2 }}
-        >
-          <img
-            src={HORIZONTAL_FEATHER}
-            alt=""
-            className="w-[60%] md:w-[45%] lg:w-[35%] h-auto object-contain"
-          />
-        </motion.div>
+
       </div>
     </motion.section>
   );

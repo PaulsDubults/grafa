@@ -98,7 +98,15 @@ export default function ServicesSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
-      <div className="max-w-[1200px] mx-auto">
+      {/* Background feather — large, blended with section */}
+      <img
+        src={HORIZONTAL_FEATHER}
+        alt=""
+        className="absolute top-[10%] left-[-15%] w-[150%] md:w-[110%] lg:w-[90%] h-auto object-contain opacity-[0.06] pointer-events-none select-none rotate-[-8deg]"
+        style={{ mixBlendMode: 'multiply' }}
+      />
+
+      <div className="relative z-10 max-w-[1200px] mx-auto">
         {/* Header */}
         <motion.div
           className="mb-14"
@@ -124,20 +132,7 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* Horizontal feather decoration */}
-        <motion.div
-          className="flex justify-center mt-4"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.55 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 1.2 }}
-        >
-          <img
-            src={HORIZONTAL_FEATHER}
-            alt=""
-            className="w-[60%] md:w-[45%] lg:w-[35%] h-auto object-contain"
-          />
-        </motion.div>
+
       </div>
     </motion.section>
   );
