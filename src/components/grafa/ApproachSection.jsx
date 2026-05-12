@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-
+const HANDSHAKE_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/6bbae889c_ChatGPTImageMay12202612_44_47PM.png";
 
 const points = [
   {
@@ -52,11 +52,10 @@ export default function ApproachSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
-
-
       <div className="relative z-10 max-w-[1200px] mx-auto">
-        <div>
-          <div>
+        {/* Top: text left + image right */}
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center mb-14">
+          <div className="flex-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -71,40 +70,52 @@ export default function ApproachSection() {
                 Mēs esam mazs uzņēmums, tāpēc katrs klients mums ir ne tikai sadarbības 
                 partneris, bet arī cilvēks, ar kuru veidojam uzticamu un ilgtermiņa sadarbību.
               </p>
-              <p className="text-foreground/45 font-body text-[14px] md:text-[15px] leading-[1.8] max-w-xl mb-12">
+              <p className="text-foreground/45 font-body text-[14px] md:text-[15px] leading-[1.8] max-w-xl">
                 Tiekamies Jums ērtā laikā un vietā, pielāgojoties katra klienta vajadzībām.
               </p>
             </motion.div>
-
-            {/* 3 elegant cards */}
-            <div className="grid sm:grid-cols-3 gap-5">
-              {points.map((p, i) => (
-                <motion.div
-                  key={p.title}
-                  className="bg-[#faf8f4] border border-foreground/[0.06] rounded-sm p-6 group hover:shadow-md hover:-translate-y-0.5 transition-all duration-500"
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.15 + i * 0.08, duration: 0.6 }}
-                >
-                  <div className="text-foreground/40 mb-4 group-hover:text-foreground/60 transition-colors duration-300">
-                    {p.icon}
-                  </div>
-                  <h3 className="font-heading text-[14px] md:text-[15px] font-semibold mb-2">
-                    {p.title}
-                  </h3>
-                  <p className="text-foreground/40 font-body text-[12px] leading-relaxed">
-                    {p.desc}
-                  </p>
-                  <div className="w-6 h-[1px] bg-[#c9a84c]/30 mt-4" />
-                </motion.div>
-              ))}
-            </div>
           </div>
 
+          <motion.div
+            className="flex-shrink-0 w-full lg:w-[420px] xl:w-[480px]"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            <img
+              src={HANDSHAKE_IMG}
+              alt="Sadarbība"
+              className="w-full h-auto object-contain rounded-sm"
+              style={{ mixBlendMode: 'multiply' }}
+            />
+          </motion.div>
         </div>
 
-
+        {/* 3 elegant cards */}
+        <div className="grid sm:grid-cols-3 gap-5">
+          {points.map((p, i) => (
+            <motion.div
+              key={p.title}
+              className="bg-[#faf8f4] border border-foreground/[0.06] rounded-sm p-6 group hover:shadow-md hover:-translate-y-0.5 transition-all duration-500"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 + i * 0.08, duration: 0.6 }}
+            >
+              <div className="text-foreground/40 mb-4 group-hover:text-foreground/60 transition-colors duration-300">
+                {p.icon}
+              </div>
+              <h3 className="font-heading text-[14px] md:text-[15px] font-semibold mb-2">
+                {p.title}
+              </h3>
+              <p className="text-foreground/40 font-body text-[12px] leading-relaxed">
+                {p.desc}
+              </p>
+              <div className="w-6 h-[1px] bg-[#c9a84c]/30 mt-4" />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </motion.section>
   );
