@@ -102,7 +102,7 @@ export default function ServicesSection() {
       <img
         src={HORIZONTAL_FEATHER}
         alt=""
-        className="absolute bottom-[5%] left-[-5%] w-[70%] md:w-[50%] lg:w-[40%] h-auto object-contain opacity-[0.3] pointer-events-none select-none rotate-[-5deg]"
+        className="absolute bottom-[5%] right-[-10%] w-[140%] md:w-[100%] lg:w-[80%] h-auto object-contain opacity-[0.3] pointer-events-none select-none"
         style={{ mixBlendMode: 'multiply' }}
       />
 
