@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className="py-8 px-6 md:px-10 border-t border-foreground/[0.06]" style={{ background: '#f8f5f0' }}>
-      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+    <footer className="py-10 px-6 md:px-10 border-t border-foreground/[0.06]" style={{ background: '#f8f5f0' }}>
+      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <p className="text-[11px] text-foreground/30 font-body leading-relaxed">
             © 2025 SIA firma GRĀFA
@@ -13,8 +13,12 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex gap-6">
-          <span className="text-[11px] text-foreground/25 font-body cursor-pointer hover:text-foreground/40 transition-colors">Privātuma politika</span>
-          <span className="text-[11px] text-foreground/25 font-body cursor-pointer hover:text-foreground/40 transition-colors">Sīkdatņu politika</span>
+          <span className="text-[11px] text-foreground/25 font-body cursor-pointer hover:text-foreground/40 transition-colors">
+            Privātuma politika
+          </span>
+          <span className="text-[11px] text-foreground/25 font-body cursor-pointer hover:text-foreground/40 transition-colors">
+            Sīkdatņu politika
+          </span>
         </div>
       </div>
     </footer>

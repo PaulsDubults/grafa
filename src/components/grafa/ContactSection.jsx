@@ -1,47 +1,151 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+
+const VERTICAL_FEATHER = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/75f4e6b97_image.png";
+
+const contactItems = [
+  { icon: Phone, label: "+371 20383974", href: "tel:+37120383974" },
+  { icon: Mail, label: "firmagrafa@gmail.com", href: "mailto:firmagrafa@gmail.com" },
+  { icon: MapPin, label: "Jelgavas novads / Eleja", href: null },
+];
 
 export default function ContactSection() {
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSent(true);
+    setTimeout(() => setSent(false), 3000);
+    setForm({ name: '', email: '', message: '' });
+  };
+
   return (
     <motion.section
       id="kontakti"
-      className="py-16 md:py-24 px-6 md:px-10"
+      className="relative min-h-[70vh] md:min-h-[80vh] py-20 md:py-32 px-6 md:px-10 overflow-hidden"
       style={{ background: '#f5f1eb' }}
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.7 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.9 }}
     >
       <div className="max-w-[1200px] mx-auto">
-        {/* Header */}
-        <div className="mb-10">
-          <h2 className="font-heading text-[22px] md:text-[26px] font-semibold mb-2">Saziņa</h2>
-          <div className="w-10 h-[1.5px] bg-[#c9a84c]/50" />
-        </div>
+        <div className="grid md:grid-cols-2 gap-16 md:gap-20">
+          {/* Left column — info + form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.7 }}
+          >
+            <h2 className="font-heading text-[28px] md:text-[36px] lg:text-[42px] font-semibold mb-4 leading-tight">
+              Sazinieties
+            </h2>
+            <div className="w-12 h-[1.5px] bg-[#c9a84c]/50 mb-8" />
 
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-          {/* Contact details */}
-          <div className="flex flex-col sm:flex-row gap-6 sm:gap-10">
-            <div className="flex items-center gap-3">
-              <Phone className="w-[15px] h-[15px] text-foreground/25" strokeWidth={1.5} />
-              <a href="tel:+37120383974" className="text-[13px] font-body text-foreground/55 hover:text-foreground transition-colors">
-                +371 20383974
-              </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <Mail className="w-[15px] h-[15px] text-foreground/25" strokeWidth={1.5} />
-              <a href="mailto:firmagrafa@gmail.com" className="text-[13px] font-body text-foreground/55 hover:text-foreground transition-colors">
-                firmagrafa@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="w-[15px] h-[15px] text-foreground/25" strokeWidth={1.5} />
-              <span className="text-[13px] font-body text-foreground/45">Jelgavas novads / Eleja</span>
-            </div>
-          </div>
+            <p className="text-foreground/50 font-body text-[15px] md:text-[16px] leading-[1.9] mb-10 max-w-lg">
+              Ja Jums nepieciešami grāmatvedības pakalpojumi ar individuālu pieeju, droši 
+              sazinieties. Ar prieku palīdzēsim atrast piemērotāko risinājumu Jūsu uzņēmumam 
+              vai saimnieciskajai darbībai.
+            </p>
 
+            {/* Contact details */}
+            <div className="flex flex-col gap-5 mb-12">
+              {contactItems.map((item) => (
+                <div key={item.label} className="flex items-center gap-4">
+                  <item.icon className="w-[16px] h-[16px] text-foreground/25" strokeWidth={1.5} />
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className="text-[14px] font-body text-foreground/55 hover:text-foreground transition-colors duration-300"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span className="text-[14px] font-body text-foreground/45">
+                      {item.label}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
 
+            {/* Contact form */}
+            <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
+              <Input
+                placeholder="Vārds"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                className="bg-[#faf8f4] border-foreground/[0.08] text-[14px] font-body placeholder:text-foreground/30 focus:border-foreground/20 h-11"
+                required
+              />
+              <Input
+                type="email"
+                placeholder="E-pasts"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                className="bg-[#faf8f4] border-foreground/[0.08] text-[14px] font-body placeholder:text-foreground/30 focus:border-foreground/20 h-11"
+                required
+              />
+              <Textarea
+                placeholder="Ziņa"
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                className="bg-[#faf8f4] border-foreground/[0.08] text-[14px] font-body placeholder:text-foreground/30 focus:border-foreground/20 min-h-[120px] resize-none"
+                required
+              />
+              <Button
+                type="submit"
+                className="bg-foreground text-primary-foreground hover:bg-foreground/85 text-[13px] font-body tracking-wide px-8 h-11 transition-all duration-300"
+              >
+                {sent ? "Nosūtīts ✓" : "Sūtīt ziņu"}
+              </Button>
+            </form>
+          </motion.div>
+
+          {/* Right column — feather + signature */}
+          <motion.div
+            className="hidden md:flex flex-col items-center justify-center relative"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 1 }}
+          >
+            <img
+              src={VERTICAL_FEATHER}
+              alt=""
+              className="w-[200px] lg:w-[240px] h-auto object-contain opacity-60 feather-sway mb-8"
+            />
+
+            {/* Signature "Liene" */}
+            <div className="flex flex-col items-center">
+              <span className="font-script text-[32px] md:text-[38px] text-foreground/30">
+                Liene
+              </span>
+              {/* Ink line under signature */}
+              <svg viewBox="0 0 120 8" className="w-24 mt-1" fill="none">
+                <path
+                  d="M5,4 Q30,2 60,4 Q90,6 115,3"
+                  stroke="currentColor"
+                  strokeWidth="0.8"
+                  opacity="0.15"
+                  strokeLinecap="round"
+                  className="ink-draw"
+                />
+              </svg>
+              {/* Ink dots */}
+              <div className="flex gap-3 mt-3">
+                <div className="w-1 h-1 rounded-full bg-foreground/10" />
+                <div className="w-1.5 h-1.5 rounded-full bg-foreground/15" />
+                <div className="w-1 h-1 rounded-full bg-foreground/8" />
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </motion.section>

@@ -1,0 +1,25 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+export default function ServiceCard({ service, index }) {
+  return (
+    <motion.div
+      className="bg-[#faf8f4] border border-foreground/[0.06] rounded-sm p-7 md:p-8 group hover:shadow-lg hover:-translate-y-1 transition-all duration-500 flex flex-col"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.08 + index * 0.06, duration: 0.6 }}
+    >
+      <div className="text-foreground/35 mb-5 group-hover:text-foreground/55 transition-colors duration-300">
+        {service.icon}
+      </div>
+      <h3 className="font-heading text-[15px] md:text-[16px] font-semibold mb-3 leading-snug">
+        {service.title}
+      </h3>
+      <p className="text-foreground/40 font-body text-[12px] md:text-[13px] leading-relaxed flex-1">
+        {service.desc}
+      </p>
+      <div className="w-6 h-[1px] bg-[#c9a84c]/30 mt-5" />
+    </motion.div>
+  );
+}

@@ -1,84 +1,119 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-function HandshakeIcon() {
-  return (
-    <svg viewBox="0 0 180 110" className="w-32 md:w-40" fill="none">
-      {/* Left arm */}
-      <path d="M5,62 C18,60 32,56 44,52 C52,48 58,44 66,42 C72,40 78,39 84,42"
-        stroke="#1a1a1a" strokeWidth="0.9" opacity="0.22" strokeLinecap="round" />
-      <path d="M52,50 C56,42 62,36 70,34 C76,33 80,36 82,40"
-        stroke="#1a1a1a" strokeWidth="0.7" opacity="0.18" strokeLinecap="round" />
-      <path d="M60,48 C63,41 68,36 74,34"
-        stroke="#1a1a1a" strokeWidth="0.6" opacity="0.15" strokeLinecap="round" />
-      {/* Right arm */}
-      <path d="M175,64 C162,62 148,58 136,54 C128,50 122,46 114,44 C108,42 102,41 96,44"
-        stroke="#1a1a1a" strokeWidth="0.9" opacity="0.22" strokeLinecap="round" />
-      <path d="M128,52 C124,44 118,38 110,36 C104,35 100,38 98,42"
-        stroke="#1a1a1a" strokeWidth="0.7" opacity="0.18" strokeLinecap="round" />
-      <path d="M120,50 C117,43 112,38 106,36"
-        stroke="#1a1a1a" strokeWidth="0.6" opacity="0.15" strokeLinecap="round" />
-      {/* Handshake clasp */}
-      <path d="M84,42 C88,45 92,47 96,47 C100,46 104,44 96,44"
-        stroke="#1a1a1a" strokeWidth="1.1" opacity="0.28" strokeLinecap="round" />
-      <path d="M82,46 C88,50 94,52 100,50"
-        stroke="#1a1a1a" strokeWidth="0.6" opacity="0.12" strokeLinecap="round" />
-      {/* Decorative curves below */}
-      <path d="M25,80 C55,76 75,84 95,82 C115,80 135,76 155,80"
-        stroke="#1a1a1a" strokeWidth="0.4" opacity="0.06" />
-      <path d="M35,90 C60,87 80,93 100,91 C120,89 140,86 158,89"
-        stroke="#1a1a1a" strokeWidth="0.3" opacity="0.04" />
-    </svg>
-  );
-}
+const VERTICAL_FEATHER = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/75f4e6b97_image.png";
 
-
+const points = [
+  {
+    title: "Uzticama sadarbība",
+    desc: "Veidojam ilgtermiņa attiecības, kas balstītas uz caurspīdīgumu un profesionalitāti.",
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
+        <path d="M8,28 C12,24 16,22 20,22 C24,22 28,24 32,28" stroke="currentColor" strokeWidth="0.8" opacity="0.4" strokeLinecap="round"/>
+        <circle cx="20" cy="14" r="5" stroke="currentColor" strokeWidth="0.8" opacity="0.4"/>
+        <path d="M14,32 L26,32" stroke="currentColor" strokeWidth="0.6" opacity="0.25"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Cilvēcīga komunikācija",
+    desc: "Katrs klients ir cilvēks, nevis numurs. Komunikācija vienmēr ir personīga un saprotama.",
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
+        <path d="M6,30 Q6,18 20,18 Q34,18 34,30" stroke="currentColor" strokeWidth="0.8" opacity="0.4" strokeLinecap="round"/>
+        <circle cx="14" cy="24" r="1" fill="currentColor" opacity="0.3"/>
+        <circle cx="20" cy="24" r="1" fill="currentColor" opacity="0.3"/>
+        <circle cx="26" cy="24" r="1" fill="currentColor" opacity="0.3"/>
+        <path d="M10,12 Q20,6 30,12" stroke="currentColor" strokeWidth="0.6" opacity="0.25"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Elastīga pieeja",
+    desc: "Pielāgojamies katra klienta grafikam, vajadzībām un uzņēmējdarbības formai.",
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
+        <path d="M10,30 Q20,10 30,30" stroke="currentColor" strokeWidth="0.8" opacity="0.4" strokeLinecap="round"/>
+        <path d="M15,28 Q20,16 25,28" stroke="currentColor" strokeWidth="0.6" opacity="0.25" strokeLinecap="round"/>
+        <circle cx="20" cy="12" r="2" stroke="currentColor" strokeWidth="0.6" opacity="0.3"/>
+      </svg>
+    ),
+  },
+];
 
 export default function ApproachSection() {
   return (
     <motion.section
       id="pieeja"
-      className="py-16 md:py-24 px-6 md:px-10"
+      className="relative min-h-[70vh] md:min-h-[80vh] py-20 md:py-32 px-6 md:px-10 overflow-hidden"
       style={{ background: '#f5f1eb' }}
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.7 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.9 }}
     >
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-12 items-center">
-          {/* Left — handshake */}
-          <motion.div
-            className="flex justify-center md:justify-start"
-            initial={{ opacity: 0, x: -15 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-          >
-            <HandshakeIcon />
-          </motion.div>
-
-          {/* Right — text */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <div className="border-l border-foreground/10 pl-8 md:pl-10">
-              <h2 className="font-heading text-[22px] md:text-[26px] font-semibold mb-3">
+        <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-20 items-start">
+          {/* Left — text content */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.7 }}
+            >
+              <h2 className="font-heading text-[28px] md:text-[36px] lg:text-[42px] font-semibold mb-4 leading-tight">
                 Individuāla pieeja
               </h2>
-              {/* Gold accent line */}
-              <div className="w-10 h-[1.5px] bg-[#c9a84c]/50 mb-5" />
-              <p className="text-foreground/50 font-body text-[14px] leading-[1.8] mb-3 max-w-lg">
+              <div className="w-12 h-[1.5px] bg-[#c9a84c]/50 mb-8" />
+              <p className="text-foreground/55 font-body text-[15px] md:text-[16px] leading-[1.9] mb-4 max-w-xl">
                 Mēs esam mazs uzņēmums, tāpēc katrs klients mums ir ne tikai sadarbības 
                 partneris, bet arī cilvēks, ar kuru veidojam uzticamu un ilgtermiņa sadarbību.
               </p>
-              <p className="text-foreground/40 font-body text-[13px] leading-relaxed">
-                Tiekamies jums ērtā laikā un vietā.
+              <p className="text-foreground/45 font-body text-[14px] md:text-[15px] leading-[1.8] max-w-xl mb-12">
+                Tiekamies Jums ērtā laikā un vietā, pielāgojoties katra klienta vajadzībām.
               </p>
+            </motion.div>
+
+            {/* 3 elegant cards */}
+            <div className="grid sm:grid-cols-3 gap-5">
+              {points.map((p, i) => (
+                <motion.div
+                  key={p.title}
+                  className="bg-[#faf8f4] border border-foreground/[0.06] rounded-sm p-6 group hover:shadow-md hover:-translate-y-0.5 transition-all duration-500"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.15 + i * 0.08, duration: 0.6 }}
+                >
+                  <div className="text-foreground/40 mb-4 group-hover:text-foreground/60 transition-colors duration-300">
+                    {p.icon}
+                  </div>
+                  <h3 className="font-heading text-[14px] md:text-[15px] font-semibold mb-2">
+                    {p.title}
+                  </h3>
+                  <p className="text-foreground/40 font-body text-[12px] leading-relaxed">
+                    {p.desc}
+                  </p>
+                  <div className="w-6 h-[1px] bg-[#c9a84c]/30 mt-4" />
+                </motion.div>
+              ))}
             </div>
+          </div>
+
+          {/* Right — vertical feather */}
+          <motion.div
+            className="hidden md:flex justify-end items-start pt-8"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.9 }}
+          >
+            <img
+              src={VERTICAL_FEATHER}
+              alt=""
+              className="w-[180px] lg:w-[220px] h-auto object-contain opacity-70 feather-sway"
+            />
           </motion.div>
         </div>
       </div>
