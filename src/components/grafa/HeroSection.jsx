@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import WatercolorBackground from './WatercolorBackground';
 
 const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/56b7b9db3_ChatGPTImageMay12202612_01_06PM.png";
 const LOGO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/1a453e7fd_Screenshot2026-05-12at120542.png";
@@ -7,10 +8,12 @@ const MOBILE_HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b0
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full flex flex-col items-center overflow-hidden pt-10 md:pt-16 pb-6" style={{ background: '#f8f5f0' }}>
-      {/* Mobile / Tablet hero — single combined image */}
+    <section className="relative w-full flex flex-col items-center overflow-hidden pt-10 md:pt-16 pb-6" style={{ background: '#faf7f2' }}>
+      <WatercolorBackground variant="hero" />
+
+      {/* Mobile / Tablet hero */}
       <motion.div
-        className="w-full lg:hidden px-4"
+        className="relative z-10 w-full lg:hidden px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.1 }}
@@ -22,9 +25,9 @@ export default function HeroSection() {
         />
       </motion.div>
 
-      {/* Desktop hero — original layout */}
+      {/* Desktop hero */}
       <motion.div
-        className="relative w-full max-w-[1100px] lg:max-w-[1300px] mx-auto hidden lg:block"
+        className="relative z-10 w-full max-w-[1100px] lg:max-w-[1300px] mx-auto hidden lg:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.1 }}

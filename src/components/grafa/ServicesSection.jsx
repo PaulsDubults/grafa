@@ -1,71 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ServiceCard from './ServiceCard';
+import WatercolorBackground from './WatercolorBackground';
 
 const HORIZONTAL_FEATHER = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/1d1cf7e68_image.png";
 
 const services = [
   {
-    title: "Grāmatvedība SIA",
-    desc: "Pilna grāmatvedības uzskaite uzņēmumiem, ikdienas dokumentu apstrāde un atskaišu sagatavošana.",
-    icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
-        <rect x="7" y="9" width="30" height="26" rx="2" stroke="currentColor" strokeWidth="1.4" opacity="0.7" />
-        <line x1="13" y1="17" x2="31" y2="17" stroke="currentColor" strokeWidth="1" opacity="0.5" />
-        <line x1="13" y1="22" x2="31" y2="22" stroke="currentColor" strokeWidth="1" opacity="0.5" />
-        <line x1="13" y1="27" x2="24" y2="27" stroke="currentColor" strokeWidth="1" opacity="0.5" />
-        <rect x="11" y="5" width="22" height="6" rx="1" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
-      </svg>
-    ),
-  },
-  {
-    title: "Grāmatvedība pašnodarbinātajiem",
-    desc: "Saprotams un praktisks atbalsts pašnodarbinātām personām grāmatvedības jautājumos.",
-    icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
-        <circle cx="22" cy="15" r="6" stroke="currentColor" strokeWidth="1.4" opacity="0.7" />
-        <path d="M10,38 C10,28 15,24 22,24 C29,24 34,28 34,38" stroke="currentColor" strokeWidth="1.4" opacity="0.65" />
-      </svg>
-    ),
-  },
-  {
-    title: "Grāmatvedība biedrībām",
-    desc: "Grāmatvedības risinājumi biedrībām, pielāgojoties to darbības specifikai.",
-    icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
-        <circle cx="15" cy="15" r="5" stroke="currentColor" strokeWidth="1.3" opacity="0.65" />
-        <circle cx="29" cy="15" r="5" stroke="currentColor" strokeWidth="1.3" opacity="0.65" />
-        <path d="M5,38 C5,29 9,26 15,26 C18,26 20,27 22,28" stroke="currentColor" strokeWidth="1.2" opacity="0.5" />
-        <path d="M39,38 C39,29 35,26 29,26 C26,26 24,27 22,28" stroke="currentColor" strokeWidth="1.2" opacity="0.5" />
-      </svg>
-    ),
-  },
-  {
-    title: "Grāmatvedība individuālajiem komersantiem",
-    desc: "Atbalsts individuālajiem komersantiem ikdienas uzskaitē un finanšu sakārtošanā.",
-    icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
-        <rect x="9" y="12" width="26" height="24" rx="2" stroke="currentColor" strokeWidth="1.4" opacity="0.7" />
-        <path d="M15,12 L15,7 L29,7 L29,12" stroke="currentColor" strokeWidth="1.3" opacity="0.6" />
-        <line x1="9" y1="20" x2="35" y2="20" stroke="currentColor" strokeWidth="1" opacity="0.45" />
-        <circle cx="22" cy="25" r="2.5" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
-      </svg>
-    ),
-  },
-  {
-    title: "Grāmatvedība zemnieku saimniecībām",
-    desc: "Grāmatvedības pakalpojumi zemnieku saimniecībām ar izpratni par nozares vajadzībām.",
-    icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
-        <path d="M7,36 L22,12 L37,36 Z" stroke="currentColor" strokeWidth="1.3" opacity="0.65" fill="none" />
-        <path d="M15,36 L15,27 L22,22 L29,27 L29,36" stroke="currentColor" strokeWidth="1.2" opacity="0.5" />
-        <line x1="22" y1="36" x2="22" y2="27" stroke="currentColor" strokeWidth="1" opacity="0.45" />
-      </svg>
-    ),
-  },
-  {
-    title: "Finanšu konsultācijas un analītika",
-    desc: "Konsultācijas un finanšu analītika projektu un uzņēmuma attīstības vajadzībām.",
+    title: "Finanšu rādītāju analīze",
+    desc: "Regulāra Jūsu uzņēmuma finanšu rādītāju analīze.",
     icon: (
       <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
         <polyline points="7,36 15,24 23,28 32,16 38,12" stroke="currentColor" strokeWidth="1.4" opacity="0.7" strokeLinecap="round" strokeLinejoin="round" />
@@ -75,13 +18,61 @@ const services = [
     ),
   },
   {
-    title: "Apmācības",
-    desc: "Praktiskas apmācības un skaidrojumi finanšu un grāmatvedības jautājumos.",
+    title: "Licencēta grāmatvedības programma",
+    desc: "Datu apstrāde un uzglabāšana licencētā grāmatvedības programmā, kas nodrošina aizsargātu datu glabāšanu un regulāru rezerves kopiju veidošanu, kā arī Jums kā klientam iespēju pieslēgties un sekot procesu norisei.",
     icon: (
       <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
-        <path d="M5,20 L22,12 L39,20 L22,28 Z" stroke="currentColor" strokeWidth="1.3" opacity="0.7" />
-        <path d="M11,24 L11,33 C11,33 16,37 22,37 C28,37 33,33 33,33 L33,24" stroke="currentColor" strokeWidth="1.2" opacity="0.5" />
-        <line x1="39" y1="20" x2="39" y2="35" stroke="currentColor" strokeWidth="1" opacity="0.45" />
+        <rect x="8" y="10" width="28" height="22" rx="2" stroke="currentColor" strokeWidth="1.3" opacity="0.65"/>
+        <line x1="8" y1="28" x2="36" y2="28" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
+        <rect x="18" y="32" width="8" height="4" rx="1" stroke="currentColor" strokeWidth="1" opacity="0.5"/>
+        <circle cx="22" cy="20" r="4" stroke="currentColor" strokeWidth="1.2" opacity="0.55"/>
+        <path d="M19,20 L21,22 L25,18" stroke="currentColor" strokeWidth="1" opacity="0.5"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Pārskatu iesniegšana",
+    desc: "Savlaicīga pārskatu iesniegšana VID un vajadzības gadījumā dažādās citās institūcijās — investoriem, bankām un tml.",
+    icon: (
+      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
+        <rect x="9" y="6" width="26" height="32" rx="2" stroke="currentColor" strokeWidth="1.3" opacity="0.65"/>
+        <path d="M15,14 L29,14 M15,20 L29,20 M15,26 L23,26" stroke="currentColor" strokeWidth="1" opacity="0.45"/>
+        <path d="M28,28 L32,32 L36,24" stroke="currentColor" strokeWidth="1.3" opacity="0.55" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Dokumentu izstrāde",
+    desc: "Grāmatvedībai saistošo dokumentu izstrāde un savlaicīga aktualizācija.",
+    icon: (
+      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
+        <path d="M12,6 L32,6 L32,38 L12,38 Z" stroke="currentColor" strokeWidth="1.3" opacity="0.65"/>
+        <path d="M17,14 L27,14 M17,20 L27,20 M17,26 L22,26" stroke="currentColor" strokeWidth="1" opacity="0.45"/>
+        <path d="M8,10 L12,6 M8,10 L8,34 L12,38" stroke="currentColor" strokeWidth="1.1" opacity="0.4"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Pilna atbildība",
+    desc: "Uzņemamies pilnu risku par grāmatvedības procesu organizāciju un izpildi atbilstoši Jūsu uzņēmuma saistošajai likumdošanai.",
+    icon: (
+      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
+        <path d="M22,4 L38,12 L38,24 C38,32 30,38 22,42 C14,38 6,32 6,24 L6,12 Z" stroke="currentColor" strokeWidth="1.3" opacity="0.65"/>
+        <path d="M16,22 L20,26 L28,18" stroke="currentColor" strokeWidth="1.3" opacity="0.55" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Bezmaksas konsultācijas",
+    desc: "Slēdzot beztermiņa līgumu, tiek nodrošinātas bezmaksas konsultācijas visā sadarbības laikā.",
+    icon: (
+      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
+        <path d="M8,30 C8,18 14,12 22,12 C30,12 36,18 36,30" stroke="currentColor" strokeWidth="1.3" opacity="0.65" strokeLinecap="round"/>
+        <circle cx="15" cy="24" r="1.5" fill="currentColor" opacity="0.4"/>
+        <circle cx="22" cy="24" r="1.5" fill="currentColor" opacity="0.4"/>
+        <circle cx="29" cy="24" r="1.5" fill="currentColor" opacity="0.4"/>
+        <path d="M18,36 L26,36" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
+        <path d="M22,30 L22,36" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
       </svg>
     ),
   },
@@ -92,22 +83,23 @@ export default function ServicesSection() {
     <motion.section
       id="pakalpojumi"
       className="relative py-20 md:py-32 px-6 md:px-10 overflow-hidden"
-      style={{ background: '#f8f5f0' }}
+      style={{ background: '#faf7f2' }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
-      {/* Background feather — large, blended with section */}
+      <WatercolorBackground variant="services" />
+
+      {/* Background feather — hidden on mobile */}
       <img
         src={HORIZONTAL_FEATHER}
         alt=""
-        className="hidden md:block absolute bottom-[5%] right-[-10%] w-[260%] md:w-[180%] lg:w-[150%] h-auto object-contain opacity-[0.95] pointer-events-none select-none rotate-[45deg] origin-center"
+        className="hidden md:block absolute bottom-[5%] right-[-10%] w-[180%] lg:w-[150%] h-auto object-contain opacity-[0.85] pointer-events-none select-none rotate-[45deg] origin-center"
         style={{ mixBlendMode: 'multiply' }}
       />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
-        {/* Header */}
         <motion.div
           className="mb-14"
           initial={{ opacity: 0, y: 20 }}
@@ -119,20 +111,17 @@ export default function ServicesSection() {
             Pakalpojumi
           </h2>
           <div className="w-20 h-[2px] bg-[#c9a84c] mb-6" />
-          <p className="text-foreground/50 font-body text-[15px] md:text-[16px] leading-[1.8] max-w-2xl">
+          <p className="text-foreground/55 font-body text-[15px] md:text-[17px] leading-[1.8] max-w-3xl">
             Sniedzam grāmatvedības pakalpojumus dažādām uzņēmējdarbības formām, saglabājot 
             individuālu un saprotamu pieeju katram klientam.
           </p>
         </motion.div>
 
-        {/* Service cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 mb-16">
           {services.map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} />
           ))}
         </div>
-
-
       </div>
     </motion.section>
   );

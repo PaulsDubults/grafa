@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, User } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import WatercolorBackground from './WatercolorBackground';
 
 const contactItems = [
+  { icon: User, label: "Liene Upeniece", href: null },
   { icon: Phone, label: "+371 20383974", href: "tel:+37120383974" },
   { icon: Mail, label: "firmagrafa@gmail.com", href: "mailto:firmagrafa@gmail.com" },
-  { icon: MapPin, label: "Jelgavas novads / Eleja", href: null },
+  { icon: MapPin, label: "Jelgavā strādājošs uzņēmums", href: null },
 ];
 
 export default function ContactSection() {
@@ -26,13 +28,15 @@ export default function ContactSection() {
     <motion.section
       id="kontakti"
       className="relative min-h-[70vh] md:min-h-[80vh] py-20 md:py-32 px-6 md:px-10 overflow-hidden"
-      style={{ background: '#f5f1eb' }}
+      style={{ background: '#faf7f2' }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
-      <div className="max-w-[1200px] mx-auto">
+      <WatercolorBackground variant="contact" />
+
+      <div className="relative z-10 max-w-[1200px] mx-auto">
         <div className="flex flex-col items-center text-center">
           <motion.div
             className="w-full max-w-lg"
@@ -46,10 +50,15 @@ export default function ContactSection() {
             </h2>
             <div className="w-20 h-[2px] bg-[#c9a84c] mb-8 mx-auto" />
 
-            <p className="text-foreground/50 font-body text-[15px] md:text-[16px] leading-[1.9] mb-10 max-w-lg mx-auto">
+            <p className="text-foreground/55 font-body text-[15px] md:text-[16px] leading-[1.9] mb-10 max-w-lg mx-auto">
               Ja Jums nepieciešami grāmatvedības pakalpojumi ar individuālu pieeju, droši 
               sazinieties. Ar prieku palīdzēsim atrast piemērotāko risinājumu Jūsu uzņēmumam 
               vai saimnieciskajai darbībai.
+            </p>
+
+            {/* Company name */}
+            <p className="font-heading text-[15px] font-semibold mb-6 text-foreground/70">
+              SIA firma GRĀFA
             </p>
 
             {/* Contact details */}
@@ -61,7 +70,7 @@ export default function ContactSection() {
                   whileHover={{ x: 6, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <item.icon className="w-[16px] h-[16px] text-foreground/25 hover:text-foreground/50 transition-colors duration-300" strokeWidth={1.5} />
+                  <item.icon className="w-[16px] h-[16px] text-foreground/30 hover:text-foreground/50 transition-colors duration-300" strokeWidth={1.5} />
                   {item.href ? (
                     <a
                       href={item.href}
@@ -70,7 +79,7 @@ export default function ContactSection() {
                       {item.label}
                     </a>
                   ) : (
-                    <span className="text-[14px] font-body text-foreground/45">
+                    <span className="text-[14px] font-body text-foreground/50">
                       {item.label}
                     </span>
                   )}
@@ -84,7 +93,7 @@ export default function ContactSection() {
                 placeholder="Vārds"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="bg-[#faf8f4] border-foreground/[0.08] text-[14px] font-body placeholder:text-foreground/30 focus:border-foreground/20 h-11"
+                className="bg-white/60 backdrop-blur-sm border-foreground/[0.08] text-[14px] font-body placeholder:text-foreground/30 focus:border-foreground/20 h-11"
                 required
               />
               <Input
@@ -92,14 +101,14 @@ export default function ContactSection() {
                 placeholder="E-pasts"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="bg-[#faf8f4] border-foreground/[0.08] text-[14px] font-body placeholder:text-foreground/30 focus:border-foreground/20 h-11"
+                className="bg-white/60 backdrop-blur-sm border-foreground/[0.08] text-[14px] font-body placeholder:text-foreground/30 focus:border-foreground/20 h-11"
                 required
               />
               <Textarea
                 placeholder="Ziņa"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="bg-[#faf8f4] border-foreground/[0.08] text-[14px] font-body placeholder:text-foreground/30 focus:border-foreground/20 min-h-[120px] resize-none"
+                className="bg-white/60 backdrop-blur-sm border-foreground/[0.08] text-[14px] font-body placeholder:text-foreground/30 focus:border-foreground/20 min-h-[120px] resize-none"
                 required
               />
               <Button
@@ -110,8 +119,6 @@ export default function ContactSection() {
               </Button>
             </form>
           </motion.div>
-
-
         </div>
       </div>
     </motion.section>
