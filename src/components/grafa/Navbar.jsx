@@ -40,7 +40,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className={`text-[13px] font-body transition-colors duration-300 relative pb-0.5 ${
+                className={`text-[13px] font-body transition-all duration-300 relative pb-0.5 hover:scale-110 ${
                   link.active 
                     ? 'text-foreground font-medium' 
                     : 'text-foreground/45 hover:text-foreground/70'

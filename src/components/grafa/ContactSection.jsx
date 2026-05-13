@@ -55,8 +55,13 @@ export default function ContactSection() {
             {/* Contact details */}
             <div className="flex flex-col gap-5 mb-12 items-center">
               {contactItems.map((item) => (
-                <div key={item.label} className="flex items-center gap-4">
-                  <item.icon className="w-[16px] h-[16px] text-foreground/25" strokeWidth={1.5} />
+                <motion.div
+                  key={item.label}
+                  className="flex items-center gap-4"
+                  whileHover={{ x: 6, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <item.icon className="w-[16px] h-[16px] text-foreground/25 hover:text-foreground/50 transition-colors duration-300" strokeWidth={1.5} />
                   {item.href ? (
                     <a
                       href={item.href}
@@ -69,7 +74,7 @@ export default function ContactSection() {
                       {item.label}
                     </span>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
 
@@ -99,7 +104,7 @@ export default function ContactSection() {
               />
               <Button
                 type="submit"
-                className="bg-foreground text-primary-foreground hover:bg-foreground/85 text-[13px] font-body tracking-wide px-8 h-11 transition-all duration-300"
+                className="bg-foreground text-primary-foreground hover:bg-foreground/85 hover:scale-105 active:scale-95 text-[13px] font-body tracking-wide px-8 h-11 transition-all duration-300"
               >
                 {sent ? "Nosūtīts ✓" : "Sūtīt ziņu"}
               </Button>

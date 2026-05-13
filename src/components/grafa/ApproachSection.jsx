@@ -76,13 +76,15 @@ export default function ApproachSection() {
           {points.map((p, i) => (
             <motion.div
               key={p.title}
-              className="bg-[#faf8f4] border border-foreground/[0.06] rounded-sm p-6 group hover:shadow-md hover:-translate-y-0.5 transition-all duration-500"
+              className="bg-[#faf8f4] border border-foreground/[0.06] rounded-sm p-6 group hover:shadow-md transition-all duration-500 cursor-pointer"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 + i * 0.08, duration: 0.6 }}
+              whileHover={{ scale: 1.04, y: -4 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <div className="text-foreground/40 mb-4 group-hover:text-foreground/60 transition-colors duration-300">
+              <div className="text-foreground/40 mb-4 group-hover:text-foreground/60 group-hover:scale-110 transition-all duration-300 origin-left">
                 {p.icon}
               </div>
               <h3 className="font-heading text-[14px] md:text-[15px] font-semibold mb-2">
@@ -91,7 +93,7 @@ export default function ApproachSection() {
               <p className="text-foreground/40 font-body text-[12px] leading-relaxed">
                 {p.desc}
               </p>
-              <div className="w-6 h-[1px] bg-[#c9a84c]/30 mt-4" />
+              <div className="w-6 h-[1px] bg-[#c9a84c]/30 mt-4 group-hover:w-10 group-hover:bg-[#c9a84c]/60 transition-all duration-500" />
             </motion.div>
           ))}
         </div>
