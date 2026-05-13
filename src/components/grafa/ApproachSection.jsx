@@ -1,8 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const HANDSHAKE_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/71b067720_ChatGPTImageMay12202612_50_13PM.png";
-
 const points = [
   {
     title: "Uzticama sadarbība",
@@ -53,44 +51,25 @@ export default function ApproachSection() {
       transition={{ duration: 0.9 }}
     >
       <div className="relative z-10 max-w-[1200px] mx-auto">
-        {/* Top: text left + image right */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center mb-14">
-          <div className="flex-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.7 }}
-            >
-              <h2 className="font-heading text-[28px] md:text-[36px] lg:text-[42px] font-semibold mb-4 leading-tight">
-                Individuāla pieeja
-              </h2>
-              <div className="w-12 h-[1.5px] bg-[#c9a84c]/50 mb-8" />
-              <p className="text-foreground/55 font-body text-[15px] md:text-[16px] leading-[1.9] mb-4 max-w-xl">
-                Mēs esam mazs uzņēmums, tāpēc katrs klients mums ir ne tikai sadarbības 
-                partneris, bet arī cilvēks, ar kuru veidojam uzticamu un ilgtermiņa sadarbību.
-              </p>
-              <p className="text-foreground/45 font-body text-[14px] md:text-[15px] leading-[1.8] max-w-xl">
-                Tiekamies Jums ērtā laikā un vietā, pielāgojoties katra klienta vajadzībām.
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.div
-            className="flex-shrink-0 w-full lg:w-[420px] xl:w-[480px]"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            <img
-              src={HANDSHAKE_IMG}
-              alt="Sadarbība"
-              className="w-full h-auto object-contain rounded-sm"
-              style={{ mixBlendMode: 'multiply' }}
-            />
-          </motion.div>
-        </div>
+        <motion.div
+          className="mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 0.7 }}
+        >
+          <h2 className="font-heading text-[28px] md:text-[36px] lg:text-[42px] font-semibold mb-4 leading-tight">
+            Individuāla pieeja
+          </h2>
+          <div className="w-12 h-[1.5px] bg-[#c9a84c]/50 mb-8" />
+          <p className="text-foreground/55 font-body text-[15px] md:text-[16px] leading-[1.9] mb-4 max-w-2xl">
+            Mēs esam mazs uzņēmums, tāpēc katrs klients mums ir ne tikai sadarbības 
+            partneris, bet arī cilvēks, ar kuru veidojam uzticamu un ilgtermiņa sadarbību.
+          </p>
+          <p className="text-foreground/45 font-body text-[14px] md:text-[15px] leading-[1.8] max-w-2xl">
+            Tiekamies Jums ērtā laikā un vietā, pielāgojoties katra klienta vajadzībām.
+          </p>
+        </motion.div>
 
         {/* 3 elegant cards */}
         <div className="grid sm:grid-cols-3 gap-5">
