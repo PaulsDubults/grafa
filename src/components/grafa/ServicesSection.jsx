@@ -118,7 +118,7 @@ export default function ServicesSection() {
           <h2 className="font-heading text-[28px] md:text-[36px] lg:text-[42px] font-semibold mb-4">
             Pakalpojumi
           </h2>
-          <div className="w-12 h-[1.5px] bg-[#c9a84c]/50 mb-6" />
+          <div className="w-20 h-[2px] bg-[#c9a84c] mb-6" />
           <p className="text-foreground/50 font-body text-[15px] md:text-[16px] leading-[1.8] max-w-2xl">
             Sniedzam grāmatvedības pakalpojumus dažādām uzņēmējdarbības formām, saglabājot 
             individuālu un saprotamu pieeju katram klientam.

@@ -61,7 +61,7 @@ export default function ApproachSection() {
           <h2 className="font-heading text-[28px] md:text-[36px] lg:text-[42px] font-semibold mb-4 leading-tight">
             Individuāla pieeja
           </h2>
-          <div className="w-12 h-[1.5px] bg-[#c9a84c]/50 mb-8" />
+          <div className="w-20 h-[2px] bg-[#c9a84c] mb-8" />
           <p className="text-foreground/55 font-body text-[15px] md:text-[16px] leading-[1.9] mb-4 max-w-2xl">
             Mēs esam mazs uzņēmums, tāpēc katrs klients mums ir ne tikai sadarbības 
             partneris, bet arī cilvēks, ar kuru veidojam uzticamu un ilgtermiņa sadarbību.
