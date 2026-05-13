@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export default function ServiceCard({ service, index }) {
   return (
     <motion.div
-      className="bg-[#faf8f4] border border-foreground/[0.06] rounded-sm p-7 md:p-8 group hover:shadow-lg hover:-translate-y-1 transition-all duration-500 flex flex-col cursor-pointer"
+      className="bg-[#faf8f4]/70 backdrop-blur-sm border border-foreground/[0.06] rounded-sm p-7 md:p-8 group hover:shadow-lg hover:-translate-y-1 transition-all duration-500 flex flex-col cursor-pointer"
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
