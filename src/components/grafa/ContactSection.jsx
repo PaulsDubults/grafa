@@ -44,7 +44,7 @@ export default function ContactSection() {
             <h2 className="font-heading text-[28px] md:text-[36px] lg:text-[42px] font-semibold mb-4 leading-tight">
               Sazinieties
             </h2>
-            <div className="w-12 h-[1.5px] bg-[#c9a84c]/50 mb-8 mx-auto" />
+            <div className="w-20 h-[2px] bg-[#c9a84c] mb-8 mx-auto" />
 
             <p className="text-foreground/50 font-body text-[15px] md:text-[16px] leading-[1.9] mb-10 max-w-lg mx-auto">
               Ja Jums nepieciešami grāmatvedības pakalpojumi ar individuālu pieeju, droši 
