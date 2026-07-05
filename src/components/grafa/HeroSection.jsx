@@ -130,7 +130,7 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-[1300px] mx-auto px-6 md:px-10 pt-24 md:pt-28">
+      <div className="relative z-10 max-w-[1300px] mx-auto px-6 md:px-10 pt-10 md:pt-14">
         {/* Two-column grid: story + logo */}
         <div className="grid lg:grid-cols-[45%_55%] gap-8 lg:gap-4 items-start">
 
@@ -155,7 +155,7 @@ export default function HeroSection() {
               <img
                 src={HERO_IMG}
                 alt="SIA firma GRĀFA — piramīda, spalva, logotips"
-                className="w-full max-w-[480px] lg:max-w-[580px] h-auto object-contain"
+                className="w-full max-w-[560px] lg:max-w-[700px] h-auto object-contain"
               />
             </motion.div>
           </div>
