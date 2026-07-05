@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HeroMiniMap from './HeroMiniMap';
+import DecorativeAsset from './DecorativeAsset';
 
 const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/07f5642fe_ChatGPTImageMay13202603_52_09PM.png";
 
@@ -114,6 +115,9 @@ export default function HeroSection() {
           <rect width="100%" height="100%" filter="url(#paperNoise)"/>
         </svg>
       </div>
+
+      <DecorativeAsset asset="featherCircle" className="hidden lg:block left-8 bottom-48 w-[110px]" opacity={0.07} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-10 bottom-16 w-[200px] rotate-6" opacity={0.05} />
 
       {/* Faint pyramid/feather motif */}
       <div className="absolute right-0 top-0 w-[400px] h-[600px] pointer-events-none opacity-[0.03] hidden lg:block">

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import PyramidDecoration from './PyramidDecoration';
 import GoldLine from './GoldLine';
+import DecorativeAsset from './DecorativeAsset';
 
 export default function JoinSection() {
   const scrollToContact = (e) => {
@@ -21,6 +22,9 @@ export default function JoinSection() {
       transition={{ duration: 0.9 }}
     >
       <PyramidDecoration className="absolute -right-10 bottom-10 w-[200px] h-[240px] hidden lg:block" opacity={0.06} />
+
+      <DecorativeAsset asset="featherLarge" className="hidden lg:block -left-12 top-16 w-[180px] -rotate-12" opacity={0.08} />
+      <DecorativeAsset asset="featherCircle2" className="hidden lg:block right-20 top-10 w-[100px]" opacity={0.06} />
 
       <div className="relative z-10 max-w-[800px] mx-auto text-center">
         <motion.div

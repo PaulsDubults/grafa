@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import WatercolorBackground from './WatercolorBackground';
 import FeatherDecoration from './FeatherDecoration';
 import GoldLine from './GoldLine';
+import DecorativeAsset from './DecorativeAsset';
 
 const bulletPoints = [
   { text: "Mūsu darbs nesākas ar pakalpojumu sarakstu.", bold: "Tas sākas ar sarunu." },
@@ -87,6 +88,9 @@ export default function ServicesSection() {
 
       {/* Feather on right side */}
       <FeatherDecoration className="absolute right-4 md:right-10 top-16 w-[100px] md:w-[140px] h-[400px] md:h-[500px]" opacity={0.07} />
+
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block -left-20 bottom-32 w-[280px] rotate-12" opacity={0.06} />
+      <DecorativeAsset asset="featherCircle" className="hidden lg:block right-12 bottom-16 w-[120px]" opacity={0.08} />
 
       {/* Ink drop decoration */}
       <div className="absolute right-[60px] md:right-[100px] top-12 w-3 h-4 pointer-events-none opacity-[0.06]">

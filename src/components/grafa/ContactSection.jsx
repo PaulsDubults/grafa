@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
+import DecorativeAsset from './DecorativeAsset';
 
 const contactItems = [
   { icon: User, label: "Liene Upeniece", href: null },
@@ -37,6 +38,9 @@ export default function ContactSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="contact" />
+
+      <DecorativeAsset asset="pyramidFeather" className="hidden lg:block -right-6 top-20 w-[150px] rotate-6" opacity={0.06} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block left-4 bottom-16 w-[200px] -rotate-3" opacity={0.05} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">

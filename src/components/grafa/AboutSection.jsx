@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
 import FeatherDecoration from './FeatherDecoration';
 import GoldLine from './GoldLine';
+import DecorativeAsset from './DecorativeAsset';
 
 const missionValues = [
   {
@@ -35,6 +36,9 @@ export default function AboutSection() {
     >
       <WatercolorBackground variant="contact" />
       <FeatherDecoration className="absolute -right-10 top-20 w-[150px] h-[400px] hidden lg:block" opacity={0.04} />
+
+      <DecorativeAsset asset="featherCircle" className="hidden lg:block left-6 top-28 w-[130px]" opacity={0.07} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-8 bottom-32 w-[220px] rotate-3" opacity={0.05} />
 
       <div className="relative z-10 max-w-[1100px] mx-auto">
         <motion.div

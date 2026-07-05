@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
+import DecorativeAsset from './DecorativeAsset';
 
 const articles = [
   {
@@ -34,6 +35,9 @@ export default function KnowledgeSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="approach" />
+
+      <DecorativeAsset asset="pyramid" className="hidden lg:block -left-10 top-20 w-[200px]" opacity={0.06} />
+      <DecorativeAsset asset="featherLarge" className="hidden lg:block right-0 bottom-20 w-[160px] rotate-6" opacity={0.05} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div

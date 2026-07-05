@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
+import DecorativeAsset from './DecorativeAsset';
 
 const steps = [
   {
@@ -86,6 +87,9 @@ export default function ProcessSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="services" />
+
+      <DecorativeAsset asset="featherCircle2" className="hidden lg:block -right-6 top-16 w-[140px]" opacity={0.08} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block -left-16 bottom-40 w-[240px] -rotate-6" opacity={0.05} />
 
       <div className="relative z-10 max-w-[900px] mx-auto">
         <motion.div

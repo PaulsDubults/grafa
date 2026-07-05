@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
+import DecorativeAsset from './DecorativeAsset';
 
 const values = [
   {
@@ -80,6 +81,9 @@ export default function WhyGrafaSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="approach" />
+
+      <DecorativeAsset asset="featherMedium" className="hidden lg:block -right-8 top-20 w-[200px] -rotate-12" opacity={0.07} />
+      <DecorativeAsset asset="pyramidFeather" className="hidden lg:block left-4 bottom-24 w-[160px]" opacity={0.06} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div
