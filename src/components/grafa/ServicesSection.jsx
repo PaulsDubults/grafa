@@ -1,76 +1,47 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ServiceCard from './ServiceCard';
+import { Link } from 'react-router-dom';
 import WatercolorBackground from './WatercolorBackground';
 import PyramidDecoration from './PyramidDecoration';
 import GoldLine from './GoldLine';
 
-const services = [
+const mainServices = [
   {
-    title: "Finanšu rādītāju analīze",
-    desc: "Regulāra Jūsu uzņēmuma finanšu rādītāju analīze.",
+    title: "Grāmatvedība",
+    desc: "Pilna grāmatvedības uzskaite un pārskatu sagatavošana uzņēmumiem un pašnodarbinātajiem.",
+    path: "/pakalpojumi/gramatvediba",
     icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10">
-        <polyline points="7,36 15,24 23,28 32,16 38,12" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-        <circle cx="38" cy="12" r="2.5" stroke="currentColor" strokeWidth="1" fill="none"/>
-        <line x1="7" y1="40" x2="38" y2="40" stroke="currentColor" strokeWidth="0.7" opacity="0.4"/>
+      <svg viewBox="0 0 56 56" fill="none" className="w-12 h-12 md:w-14 md:h-14">
+        <rect x="10" y="8" width="28" height="36" rx="2" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+        <path d="M17,18 L31,18 M17,24 L31,24 M17,30 L25,30" stroke="currentColor" strokeWidth="0.8" opacity="0.5"/>
+        <path d="M30,32 L34,36 L38,28" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6,12 L10,8 M6,12 L6,40 L10,44" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
       </svg>
     ),
   },
   {
-    title: "Licencēta grāmatvedības programma",
-    desc: "Datu apstrāde un uzglabāšana licencētā grāmatvedības programmā, kas nodrošina aizsargātu datu glabāšanu un regulāru rezerves kopiju veidošanu, kā arī Jums kā klientam iespēju pieslēgties un sekot procesu norisei.",
+    title: "Finanses",
+    desc: "Finanšu analīze, plānošana un individuālu metodiku izstrāde biznesa izaugsmei.",
+    path: "/pakalpojumi/finanses",
     icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10">
-        <rect x="8" y="10" width="28" height="22" rx="2" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-        <line x1="8" y1="28" x2="36" y2="28" stroke="currentColor" strokeWidth="0.8" opacity="0.5"/>
-        <rect x="18" y="32" width="8" height="3" rx="1" stroke="currentColor" strokeWidth="0.8" fill="none"/>
-        <path d="M19,20 L21,22 L25,18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg viewBox="0 0 56 56" fill="none" className="w-12 h-12 md:w-14 md:h-14">
+        <polyline points="8,44 18,30 28,34 38,20 48,14" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <circle cx="48" cy="14" r="3" stroke="currentColor" strokeWidth="1" fill="none"/>
+        <line x1="8" y1="48" x2="48" y2="48" stroke="currentColor" strokeWidth="0.7" opacity="0.4"/>
+        <line x1="8" y1="10" x2="8" y2="48" stroke="currentColor" strokeWidth="0.7" opacity="0.4"/>
       </svg>
     ),
   },
   {
-    title: "Pārskatu iesniegšana",
-    desc: "Savlaicīga pārskatu iesniegšana VID un vajadzības gadījumā dažādās citās institūcijās — investoriem, bankām un tml.",
+    title: "Apmācības",
+    desc: "Praktiskas apmācības un semināri uzņēmumu darbiniekiem un vadītājiem.",
+    path: "/pakalpojumi/apmacibas",
     icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10">
-        <rect x="9" y="6" width="26" height="32" rx="2" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-        <path d="M15,14 L29,14 M15,20 L29,20 M15,26 L23,26" stroke="currentColor" strokeWidth="0.8" opacity="0.5"/>
-        <path d="M28,28 L32,32 L36,24" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Dokumentu izstrāde",
-    desc: "Grāmatvedībai saistošo dokumentu izstrāde un savlaicīga aktualizācija.",
-    icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10">
-        <path d="M12,6 L32,6 L32,38 L12,38 Z" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-        <path d="M17,14 L27,14 M17,20 L27,20 M17,26 L22,26" stroke="currentColor" strokeWidth="0.8" opacity="0.5"/>
-        <path d="M8,10 L12,6 M8,10 L8,34 L12,38" stroke="currentColor" strokeWidth="1" opacity="0.5"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Pilna atbildība",
-    desc: "Uzņemamies pilnu risku par grāmatvedības procesu organizāciju un izpildi atbilstoši Jūsu uzņēmuma saistošajai likumdošanai.",
-    icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10">
-        <path d="M22,4 L38,12 L38,24 C38,32 30,38 22,42 C14,38 6,32 6,24 L6,12 Z" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-        <path d="M16,22 L20,26 L28,18" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Bezmaksas konsultācijas",
-    desc: "Slēdzot beztermiņa līgumu, tiek nodrošinātas bezmaksas konsultācijas visā sadarbības laikā.",
-    icon: (
-      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10">
-        <path d="M8,30 C8,18 14,12 22,12 C30,12 36,18 36,30" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" fill="none"/>
-        <circle cx="15" cy="24" r="1.5" fill="currentColor" opacity="0.4"/>
-        <circle cx="22" cy="24" r="1.5" fill="currentColor" opacity="0.4"/>
-        <circle cx="29" cy="24" r="1.5" fill="currentColor" opacity="0.4"/>
-        <path d="M18,36 L26,36" stroke="currentColor" strokeWidth="0.8" opacity="0.4"/>
+      <svg viewBox="0 0 56 56" fill="none" className="w-12 h-12 md:w-14 md:h-14">
+        <path d="M8,20 L28,10 L48,20 L28,30 Z" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+        <path d="M16,24 L16,38 C16,42 22,46 28,46 C34,46 40,42 40,38 L40,24" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+        <line x1="48" y1="20" x2="48" y2="42" stroke="currentColor" strokeWidth="0.8" opacity="0.5"/>
+        <circle cx="48" cy="44" r="2" stroke="currentColor" strokeWidth="0.7" opacity="0.5" fill="none"/>
       </svg>
     ),
   },
@@ -88,8 +59,6 @@ export default function ServicesSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="services" />
-      
-      {/* Decorative pyramid */}
       <PyramidDecoration className="absolute -left-10 bottom-20 w-[180px] h-[220px] hidden lg:block" opacity={0.04} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
@@ -113,9 +82,31 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service, i) => (
-            <ServiceCard key={service.title} service={service} index={i} />
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          {mainServices.map((service, i) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 + i * 0.1, duration: 0.7, ease: 'easeOut' }}
+            >
+              <Link
+                to={service.path}
+                className="block bg-white rounded-sm p-8 md:p-10 cursor-pointer shadow-[0_2px_12px_rgba(30,58,95,0.06)] hover:shadow-[0_12px_40px_rgba(30,58,95,0.14)] hover:-translate-y-2 transition-all duration-500 border border-[#e8e0d4]/50 hover:border-[#c9a84c]/30 group h-full"
+              >
+                <div className="text-[#1e3a5f]/50 mb-6 group-hover:text-[#1e3a5f] transition-colors duration-500">
+                  {service.icon}
+                </div>
+                <h3 className="font-heading text-[20px] md:text-[22px] font-semibold mb-3 leading-snug text-[#1e3a5f]">
+                  {service.title}
+                </h3>
+                <p className="text-[#1e3a5f]/50 font-body text-[13px] md:text-[14px] leading-[1.85] mb-6">
+                  {service.desc}
+                </p>
+                <div className="w-10 h-[1.5px] transition-all duration-600 group-hover:w-16" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3)' }} />
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

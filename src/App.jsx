@@ -6,12 +6,19 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Home from './pages/Home';
+import Gramatvediba from './pages/services/Gramatvediba';
+import GramatvedibaBusiness from './pages/services/GramatvedibaBusiness';
+import GramatvedibaSelf from './pages/services/GramatvedibaSelf';
+import Finanses from './pages/services/Finanses';
+import FinansesBusiness from './pages/services/FinansesBusiness';
+import FinansesSelf from './pages/services/FinansesSelf';
+import Apmacibas from './pages/services/Apmacibas';
+import KonsultacijasSelf from './pages/services/KonsultacijasSelf';
 // Add page imports here
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
 
-  // Show loading spinner while checking app public settings or auth
   if (isLoadingPublicSettings || isLoadingAuth) {
     return (
       <div className="fixed inset-0 flex items-center justify-center">
@@ -20,21 +27,26 @@ const AuthenticatedApp = () => {
     );
   }
 
-  // Handle authentication errors
   if (authError) {
     if (authError.type === 'user_not_registered') {
       return <UserNotRegisteredError />;
     } else if (authError.type === 'auth_required') {
-      // Redirect to login automatically
       navigateToLogin();
       return null;
     }
   }
 
-  // Render the main app
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/pakalpojumi/gramatvediba" element={<Gramatvediba />} />
+      <Route path="/pakalpojumi/gramatvediba/uznemumiem" element={<GramatvedibaBusiness />} />
+      <Route path="/pakalpojumi/gramatvediba/pasnodarbinatajiem" element={<GramatvedibaSelf />} />
+      <Route path="/pakalpojumi/finanses" element={<Finanses />} />
+      <Route path="/pakalpojumi/finanses/uznemumiem" element={<FinansesBusiness />} />
+      <Route path="/pakalpojumi/finanses/pasnodarbinatajiem" element={<FinansesSelf />} />
+      <Route path="/pakalpojumi/apmacibas" element={<Apmacibas />} />
+      <Route path="/pakalpojumi/konsultacijas-pasnodarbinatajiem" element={<KonsultacijasSelf />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
