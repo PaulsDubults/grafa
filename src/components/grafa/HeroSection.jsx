@@ -69,7 +69,7 @@ function StoryLine({ text, index, isVisible }) {
     <AnimatePresence>
       {isVisible && (
         <motion.p
-          className={`font-body text-[12px] md:text-[13px] leading-[1.8] mb-2.5 ${
+          className={`font-body text-[13px] md:text-[15px] leading-[1.85] mb-3 ${
             isEmphasis
               ? 'text-[#1e3a5f] font-medium'
               : 'text-[#1e3a5f]/60'
@@ -130,12 +130,12 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-[1300px] mx-auto px-6 md:px-10 pt-10 md:pt-14">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
         {/* Two-column grid: story + logo */}
-        <div className="grid lg:grid-cols-[45%_55%] gap-8 lg:gap-4 items-start">
+        <div className="grid lg:grid-cols-[48%_52%] gap-4 lg:gap-2 items-start">
 
           {/* LEFT COLUMN — Story */}
-          <div className="pt-4 md:pt-8 lg:pt-12 lg:pr-10">
+          <div className="pt-2 md:pt-4 lg:pt-6 lg:pr-6">
             {storyLines.map((line, i) => (
               <StoryLine key={i} text={line} index={i} isVisible={i < visibleCount} />
             ))}
@@ -155,7 +155,7 @@ export default function HeroSection() {
               <img
                 src={HERO_IMG}
                 alt="SIA firma GRĀFA — piramīda, spalva, logotips"
-                className="w-full max-w-[560px] lg:max-w-[700px] h-auto object-contain"
+                className="w-full max-w-[620px] lg:max-w-[780px] h-auto object-contain"
               />
             </motion.div>
           </div>
