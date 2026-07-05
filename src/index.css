@@ -11,30 +11,30 @@
     --font-script: 'Dancing Script', cursive;
 
     --background: 38 30% 96%;
-    --foreground: 30 10% 12%;
+    --foreground: 215 40% 16%;
     --card: 38 25% 98%;
-    --card-foreground: 30 10% 12%;
+    --card-foreground: 215 40% 16%;
     --popover: 38 25% 98%;
-    --popover-foreground: 30 10% 12%;
-    --primary: 30 10% 12%;
+    --popover-foreground: 215 40% 16%;
+    --primary: 215 45% 22%;
     --primary-foreground: 38 30% 96%;
     --secondary: 35 18% 92%;
-    --secondary-foreground: 30 10% 15%;
+    --secondary-foreground: 215 40% 18%;
     --muted: 35 15% 91%;
-    --muted-foreground: 30 5% 42%;
-    --accent: 35 20% 89%;
-    --accent-foreground: 30 10% 12%;
+    --muted-foreground: 215 15% 42%;
+    --accent: 40 50% 55%;
+    --accent-foreground: 215 40% 16%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 35 14% 85%;
     --input: 35 14% 85%;
-    --ring: 30 10% 12%;
-    --chart-1: 0 0% 15%;
-    --chart-2: 0 0% 30%;
-    --chart-3: 0 0% 50%;
-    --chart-4: 0 0% 70%;
-    --chart-5: 0 0% 85%;
-    --radius: 0.75rem;
+    --ring: 215 45% 22%;
+    --chart-1: 215 45% 22%;
+    --chart-2: 40 50% 55%;
+    --chart-3: 35 30% 70%;
+    --chart-4: 215 25% 45%;
+    --chart-5: 35 20% 85%;
+    --radius: 0.5rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -100,6 +100,16 @@
   50% { transform: rotate(1.5deg) translateY(-3px); }
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
 .ink-draw {
   stroke-dasharray: 800;
   animation: inkDraw 2.5s ease-out forwards;
@@ -107,6 +117,16 @@
 
 .feather-sway {
   animation: featherSway 6s ease-in-out infinite;
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #c9a84c, #e8d5a3, #c9a84c);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
 }
 
 html {

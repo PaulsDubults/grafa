@@ -2,23 +2,32 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className="py-10 px-6 md:px-10 border-t border-foreground/[0.06]" style={{ background: '#faf7f2' }}>
-      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <p className="text-[11px] text-foreground/30 font-body leading-relaxed">
-            © 2025 SIA firma GRĀFA
-          </p>
-          <p className="text-[10px] text-foreground/20 font-body">
-            Visas tiesības aizsargātas.
-          </p>
-        </div>
-        <div className="flex gap-6">
-          <span className="text-[11px] text-foreground/25 font-body cursor-pointer hover:text-foreground/40 transition-colors">
-            Privātuma politika
-          </span>
-          <span className="text-[11px] text-foreground/25 font-body cursor-pointer hover:text-foreground/40 transition-colors">
-            Sīkdatņu politika
-          </span>
+    <footer className="relative py-14 px-6 md:px-10 overflow-hidden" style={{ background: '#1e3a5f' }}>
+      <div className="max-w-[1200px] mx-auto">
+        {/* Gold line */}
+        <div className="w-full h-[0.5px] bg-white/10 mb-10" />
+
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <p className="font-heading text-[14px] font-semibold text-white/80 mb-1">
+              SIA firma GRĀFA
+            </p>
+            <p className="text-[10px] text-[#c9a84c]/60 tracking-[0.15em] font-body">
+              Grāmatvedība. Finanses. Apmācības.
+            </p>
+            <p className="text-[11px] text-white/25 font-body mt-3">
+              © 2025 SIA firma GRĀFA. Visas tiesības aizsargātas.
+            </p>
+          </div>
+
+          <div className="flex gap-6">
+            <span className="text-[11px] text-white/30 font-body cursor-pointer hover:text-white/50 transition-colors duration-300">
+              Privātuma politika
+            </span>
+            <span className="text-[11px] text-white/30 font-body cursor-pointer hover:text-white/50 transition-colors duration-300">
+              Sīkdatņu politika
+            </span>
+          </div>
         </div>
       </div>
     </footer>
