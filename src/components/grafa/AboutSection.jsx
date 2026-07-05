@@ -3,9 +3,6 @@ import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
 import FeatherDecoration from './FeatherDecoration';
 import GoldLine from './GoldLine';
-import InkFeather from './decorations/InkFeather';
-import GoldDiamondDivider from './decorations/GoldDiamondDivider';
-import WatercolorBlob from './decorations/WatercolorBlob';
 
 const missionValues = [
   {
@@ -38,11 +35,6 @@ export default function AboutSection() {
     >
       <WatercolorBackground variant="contact" />
       <FeatherDecoration className="absolute -right-10 top-20 w-[150px] h-[400px] hidden lg:block" opacity={0.04} />
-
-      {/* Decorative elements */}
-      <InkFeather className="absolute left-6 md:left-14 top-16 w-[35px] h-[90px] hidden lg:block" flip />
-      <GoldDiamondDivider className="absolute right-[10%] bottom-10 w-[90px] h-[14px] hidden md:block" />
-      <WatercolorBlob className="absolute right-0 top-[60%] w-[80px] h-[60px] hidden lg:block" color="gold" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto">
         <motion.div

@@ -2,9 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
-import FeatherCircle from './decorations/FeatherCircle';
-import LeafBranch from './decorations/LeafBranch';
-import WatercolorBlob from './decorations/WatercolorBlob';
 
 const steps = [
   {
@@ -89,11 +86,6 @@ export default function ProcessSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="services" />
-
-      {/* Decorative elements */}
-      <FeatherCircle className="absolute right-8 md:right-20 top-20 w-[50px] h-[50px] hidden lg:block" />
-      <LeafBranch className="absolute left-6 md:left-14 bottom-16 w-[70px] h-[20px] hidden lg:block" />
-      <WatercolorBlob className="absolute left-0 top-[45%] w-[90px] h-[70px] hidden lg:block" color="pink" />
 
       <div className="relative z-10 max-w-[900px] mx-auto">
         <motion.div

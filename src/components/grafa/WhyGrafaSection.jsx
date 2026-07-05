@@ -2,9 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
-import InkFeather from './decorations/InkFeather';
-import TriangleOutline from './decorations/TriangleOutline';
-import GoldSwirl from './decorations/GoldSwirl';
 
 const values = [
   {
@@ -83,11 +80,6 @@ export default function WhyGrafaSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="approach" />
-
-      {/* Decorative elements */}
-      <InkFeather className="absolute right-8 md:right-16 top-12 w-[40px] h-[100px] hidden lg:block" />
-      <TriangleOutline className="absolute left-4 md:left-12 bottom-20 w-[50px] h-[56px] hidden lg:block" withLines />
-      <GoldSwirl className="absolute right-[5%] bottom-10 w-[160px] h-[20px] hidden md:block" />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div

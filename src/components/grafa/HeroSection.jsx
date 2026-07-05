@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HeroMiniMap from './HeroMiniMap';
-import GoldSwirl from './decorations/GoldSwirl';
-import GoldStarburst from './decorations/GoldStarburst';
-import LightFeather from './decorations/LightFeather';
 
 const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/07f5642fe_ChatGPTImageMay13202603_52_09PM.png";
 
@@ -216,11 +213,6 @@ export default function HeroSection() {
           {allRevealed && <HeroMiniMap centered />}
         </motion.div>
       </div>
-
-      {/* Decorative elements */}
-      <GoldStarburst className="absolute left-[8%] top-[18%] w-6 h-6 hidden lg:block" />
-      <LightFeather className="absolute left-[5%] bottom-[22%] w-[140px] h-[30px] hidden lg:block" />
-      <GoldSwirl className="absolute right-[3%] bottom-[35%] w-[180px] h-[20px] hidden lg:block" variant={2} />
 
       {/* Scroll indicator */}
       <motion.div
