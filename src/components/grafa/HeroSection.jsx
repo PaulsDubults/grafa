@@ -166,65 +166,55 @@ export default function HeroSection() {
               />
             </motion.div>
 
-            {/* "Grāmatvedība. Finanses. Apmācības." text appears after logo */}
-            <motion.p
-              className="text-center lg:text-right font-body text-[13px] md:text-[14px] tracking-[0.15em] text-[#1e3a5f] mt-1 mb-4 lg:pr-8"
-              initial={{ opacity: 0, y: 8 }}
+            {/* Dark blue values bar with wave top — right column only */}
+            <motion.div
+              className="relative mt-2"
+              initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: allRevealed ? 1 : 0,
-                y: allRevealed ? 0 : 8,
+                y: allRevealed ? 0 : 20,
               }}
-              transition={{ delay: logoDelay + 0.5, duration: 0.8 }}
+              transition={{ delay: logoDelay + 0.8, duration: 0.8, ease: 'easeOut' }}
             >
-              Grāmatvedība. Finanses. Apmācības.
-            </motion.p>
+              {/* Wave top edge */}
+              <svg className="block w-full h-[30px] md:h-[45px]" viewBox="0 0 800 45" preserveAspectRatio="none">
+                <path d="M0,45 L0,25 C100,40 200,10 350,18 C500,26 600,8 700,15 C750,20 780,30 800,22 L800,45 Z" fill="#1e3a5f"/>
+                <path d="M0,30 C150,42 300,10 450,22 C600,8 700,28 800,18" stroke="#c9a84c" strokeWidth="0.6" opacity="0.25" fill="none"/>
+              </svg>
+
+              <div className="bg-[#1e3a5f] py-7 md:py-8 px-5 md:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-0">
+                  {coreValues.map((item, i) => (
+                    <motion.div
+                      key={item.title}
+                      className={`flex items-start gap-3 px-3 md:px-4 ${
+                        i < coreValues.length - 1 ? 'md:border-r md:border-white/10' : ''
+                      }`}
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{
+                        opacity: allRevealed ? 1 : 0,
+                        y: allRevealed ? 0 : 14,
+                      }}
+                      transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
+                    >
+                      <div className="flex-shrink-0 mt-0.5">{item.icon}</div>
+                      <div>
+                        <h3 className="font-heading text-[13px] md:text-[14px] font-semibold text-white mb-1 leading-snug">
+                          {item.title}
+                        </h3>
+                        <p className="font-body text-[11px] md:text-[12px] text-white/40 leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
 
           </div>
         </div>
       </div>
-
-      {/* Full-width dark blue values bar with wave top */}
-      <motion.div
-        className="relative w-full mt-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: allRevealed ? 1 : 0 }}
-        transition={{ delay: logoDelay + 0.8, duration: 0.8, ease: 'easeOut' }}
-      >
-        {/* Wave top edge */}
-        <svg className="block w-full h-[40px] md:h-[60px]" viewBox="0 0 1440 60" preserveAspectRatio="none">
-          <path d="M0,60 L0,35 C180,55 360,15 540,25 C720,35 900,10 1080,20 C1260,30 1380,40 1440,30 L1440,60 Z" fill="#1e3a5f"/>
-          <path d="M0,40 C240,55 480,15 720,30 C960,10 1200,35 1440,25" stroke="#c9a84c" strokeWidth="0.6" opacity="0.25" fill="none"/>
-        </svg>
-
-        <div className="bg-[#1e3a5f] py-8 md:py-10 px-6 md:px-10">
-          <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
-            {coreValues.map((item, i) => (
-              <motion.div
-                key={item.title}
-                className={`flex items-start gap-3 md:gap-4 px-4 md:px-6 ${
-                  i < coreValues.length - 1 ? 'md:border-r md:border-white/10' : ''
-                }`}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{
-                  opacity: allRevealed ? 1 : 0,
-                  y: allRevealed ? 0 : 14,
-                }}
-                transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
-              >
-                <div className="flex-shrink-0 mt-0.5">{item.icon}</div>
-                <div>
-                  <h3 className="font-heading text-[13px] md:text-[14px] font-semibold text-white mb-1 leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="font-body text-[11px] md:text-[12px] text-white/40 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
