@@ -7,7 +7,7 @@ const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed
 const hotspots = [
   { x: 50, y: 37, name: "Rīga", desc: "Klienti Rīgā un apkārtnē." },
   { x: 61, y: 44, name: "Ogre", desc: "Sadarbības partneri Ogrē." },
-  { x: 30, y: 50, name: "Kuldīga", desc: "Esam priecīgi, ka mūsu klientu pulkam pievienojies jauns uzņēmums Kuldīgā." },
+  { x: 30, y: 50, name: "Kuldīga", desc: "Klienti Kuldīgā." },
   { x: 55, y: 57, name: "Bauska", desc: "Klienti Bauskā." },
   { x: 69, y: 32, name: "Cēsis", desc: "Klienti Cēsīs." },
   { x: 17, y: 44, name: "Liepāja", desc: "Klienti Liepājā." },
@@ -51,9 +51,6 @@ function LocationTooltip({ point }) {
         <h4 className="font-heading text-[14px] md:text-[15px] font-semibold text-[#1e3a5f]">{point.name}</h4>
       </div>
       <p className="text-[#1e3a5f]/55 font-body text-[11px] md:text-[12px] leading-[1.7]">{point.desc}</p>
-      {point.name === "Kuldīga" && (
-        <p className="font-script text-[13px] text-[#c9a84c] mt-1.5 italic">Laipni lūgti GRĀFAS saimē!</p>
-      )}
     </motion.div>
   );
 }
@@ -94,12 +91,11 @@ function KuldigaNotification({ onDismiss }) {
 
 export default function MapModal({ isOpen, onClose }) {
   const [activePoint, setActivePoint] = useState(null);
-  const [showNotification, setShowNotification] = useState(true);
+  
 
   useEffect(() => {
     if (!isOpen) {
       setActivePoint(null);
-      setShowNotification(true);
       return;
     }
     const handleEsc = (e) => { if (e.key === 'Escape') onClose(); };
@@ -177,12 +173,6 @@ export default function MapModal({ isOpen, onClose }) {
                 </div>
               </div>
 
-              {/* Kuldīga notification */}
-              <AnimatePresence>
-                {showNotification && (
-                  <KuldigaNotification onDismiss={() => setShowNotification(false)} />
-                )}
-              </AnimatePresence>
             </div>
           </motion.div>
         </motion.div>
