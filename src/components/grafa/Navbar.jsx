@@ -51,7 +51,7 @@ export default function Navbar() {
       >
         <div className="max-w-[1200px] mx-auto px-6 md:px-10 flex items-center justify-end h-14 md:h-[60px]">
 
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
               <a
                 key={link.label}
