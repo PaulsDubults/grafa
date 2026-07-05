@@ -38,8 +38,8 @@ export default function KnowledgeSection() {
 
       <DecorativeAsset asset="pyramid" className="hidden lg:block -left-4 top-16 w-[320px]" opacity={0.32} />
       <DecorativeAsset asset="pyramid" className="hidden lg:block right-0 bottom-16 w-[240px] rotate-[6deg]" opacity={0.25} />
-      <DecorativeAsset asset="featherCircle" className="hidden lg:block right-[12%] top-12 w-[160px]" opacity={0.25} />
-      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block left-[22%] bottom-8 w-[280px] rotate-6" opacity={0.18} />
+      <DecorativeAsset asset="cloudPyramidCircle" className="hidden lg:block right-[10%] top-10 w-[200px]" opacity={0.28} />
+      <DecorativeAsset asset="featherInk" className="hidden lg:block left-[18%] bottom-6 w-[240px] rotate-6" opacity={0.2} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div

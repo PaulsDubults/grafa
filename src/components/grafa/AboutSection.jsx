@@ -39,8 +39,8 @@ export default function AboutSection() {
 
       <DecorativeAsset asset="pyramid" className="hidden lg:block left-4 top-24 w-[260px]" opacity={0.3} />
       <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-6 bottom-28 w-[320px] rotate-3" opacity={0.25} />
-      <DecorativeAsset asset="pyramid" className="hidden lg:block right-[4%] top-[30%] w-[220px] rotate-[8deg]" opacity={0.2} />
-      <DecorativeAsset asset="featherCircle" className="hidden lg:block left-[12%] bottom-16 w-[160px]" opacity={0.22} />
+      <DecorativeAsset asset="cloudWave" className="hidden lg:block right-[3%] top-[28%] w-[280px]" opacity={0.22} />
+      <DecorativeAsset asset="cloudPyramidCircle" className="hidden lg:block left-[10%] bottom-12 w-[200px]" opacity={0.25} />
 
       <div className="relative z-10 max-w-[1100px] mx-auto">
         <motion.div

@@ -91,8 +91,8 @@ export default function ServicesSection() {
 
       <DecorativeAsset asset="pyramid" className="hidden lg:block -left-6 bottom-28 w-[300px]" opacity={0.3} />
       <DecorativeAsset asset="featherCircle" className="hidden lg:block right-12 bottom-16 w-[180px]" opacity={0.28} />
-      <DecorativeAsset asset="pyramid" className="hidden lg:block right-[6%] top-20 w-[200px] rotate-[5deg]" opacity={0.2} />
-      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block left-[30%] top-[55%] w-[280px] rotate-6" opacity={0.15} />
+      <DecorativeAsset asset="featherInk" className="hidden lg:block right-[4%] top-16 w-[200px]" opacity={0.25} />
+      <DecorativeAsset asset="cloudWave" className="hidden lg:block left-[28%] top-[55%] w-[300px]" opacity={0.18} />
 
       {/* Ink drop decoration */}
       <div className="absolute right-[60px] md:right-[100px] top-12 w-3 h-4 pointer-events-none opacity-[0.06]">

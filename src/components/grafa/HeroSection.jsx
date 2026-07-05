@@ -118,8 +118,8 @@ export default function HeroSection() {
 
       <DecorativeAsset asset="pyramid" className="hidden lg:block left-4 bottom-44 w-[220px]" opacity={0.3} />
       <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-10 bottom-16 w-[300px] rotate-6" opacity={0.25} />
-      <DecorativeAsset asset="featherCircle" className="hidden lg:block left-[42%] top-8 w-[140px]" opacity={0.2} />
-      <DecorativeAsset asset="pyramid" className="hidden lg:block right-[3%] top-[50%] w-[180px] rotate-[8deg]" opacity={0.15} />
+      <DecorativeAsset asset="cloudPyramidCircle" className="hidden lg:block left-[40%] top-4 w-[200px]" opacity={0.25} />
+      <DecorativeAsset asset="cloudWave" className="hidden lg:block right-[2%] top-[48%] w-[220px]" opacity={0.2} />
 
       {/* Faint pyramid/feather motif */}
       <div className="absolute right-0 top-0 w-[400px] h-[600px] pointer-events-none opacity-[0.03] hidden lg:block">

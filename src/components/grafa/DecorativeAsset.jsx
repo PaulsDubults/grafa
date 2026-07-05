@@ -9,6 +9,9 @@ const ASSETS = {
   pyramidFeather: "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/27526f54c_Screenshot2026-07-05at134308.png",
   featherCircle2: "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/1f801993a_Screenshot2026-07-05at134324.png",
   featherGoldSwirl: "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/def825907_Screenshot2026-07-05at134340.png",
+  cloudWave: "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/ed7716a3a_Screenshot2026-07-05at135354.png",
+  featherInk: "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/628844507_Screenshot2026-07-05at135322.png",
+  cloudPyramidCircle: "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/fb6face7e_Screenshot2026-07-05at135338.png",
 };
 
 export default function DecorativeAsset({ asset, className = "", style = {}, opacity = 0.12 }) {
