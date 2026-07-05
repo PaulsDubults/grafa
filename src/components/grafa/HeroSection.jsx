@@ -68,7 +68,7 @@ function StoryLine({ text, index, isVisible }) {
     <AnimatePresence>
       {isVisible && (
         <motion.p
-          className={`font-body text-[14px] md:text-[15px] leading-[1.85] mb-3 ${
+          className={`font-body text-[12px] md:text-[13px] leading-[1.8] mb-2.5 ${
             isEmphasis
               ? 'text-[#1e3a5f] font-medium'
               : 'text-[#1e3a5f]/60'
@@ -179,53 +179,56 @@ export default function HeroSection() {
               Grāmatvedība. Finanses. Apmācības.
             </motion.p>
 
-            {/* Dark blue values bar — wave-like bottom */}
-            <motion.div
-              className="bg-[#1e3a5f] py-8 md:py-10 px-6 md:px-10 mt-2 lg:-mx-10 lg:mr-[-40px] relative"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: allRevealed ? 1 : 0,
-                y: allRevealed ? 0 : 20,
-              }}
-              transition={{ delay: logoDelay + 0.8, duration: 0.8, ease: 'easeOut' }}
-            >
-              {/* Subtle wave top edge */}
-              <svg className="absolute -top-[1px] left-0 right-0 w-full h-3 text-[#1e3a5f]" viewBox="0 0 1200 12" preserveAspectRatio="none">
-                <path d="M0,12 Q300,0 600,6 Q900,12 1200,4 L1200,12 Z" fill="currentColor"/>
-              </svg>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
-                {coreValues.map((item, i) => (
-                  <motion.div
-                    key={item.title}
-                    className={`flex flex-col items-center text-center px-4 md:px-6 ${
-                      i < coreValues.length - 1 ? 'md:border-r md:border-white/10' : ''
-                    }`}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{
-                      opacity: allRevealed ? 1 : 0,
-                      y: allRevealed ? 0 : 14,
-                    }}
-                    transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
-                  >
-                    <div className="mb-3">{item.icon}</div>
-                    <h3 className="font-heading text-[14px] md:text-[15px] font-semibold text-white mb-1.5 leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="font-body text-[11px] md:text-[12px] text-white/45 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
           </div>
         </div>
       </div>
 
+      {/* Full-width dark blue values bar with wave top */}
+      <motion.div
+        className="relative w-full mt-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: allRevealed ? 1 : 0 }}
+        transition={{ delay: logoDelay + 0.8, duration: 0.8, ease: 'easeOut' }}
+      >
+        {/* Wave top edge */}
+        <svg className="block w-full h-[40px] md:h-[60px]" viewBox="0 0 1440 60" preserveAspectRatio="none">
+          <path d="M0,60 L0,35 C180,55 360,15 540,25 C720,35 900,10 1080,20 C1260,30 1380,40 1440,30 L1440,60 Z" fill="#1e3a5f"/>
+          <path d="M0,40 C240,55 480,15 720,30 C960,10 1200,35 1440,25" stroke="#c9a84c" strokeWidth="0.6" opacity="0.25" fill="none"/>
+        </svg>
+
+        <div className="bg-[#1e3a5f] py-8 md:py-10 px-6 md:px-10">
+          <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
+            {coreValues.map((item, i) => (
+              <motion.div
+                key={item.title}
+                className={`flex items-start gap-3 md:gap-4 px-4 md:px-6 ${
+                  i < coreValues.length - 1 ? 'md:border-r md:border-white/10' : ''
+                }`}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{
+                  opacity: allRevealed ? 1 : 0,
+                  y: allRevealed ? 0 : 14,
+                }}
+                transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
+              >
+                <div className="flex-shrink-0 mt-0.5">{item.icon}</div>
+                <div>
+                  <h3 className="font-heading text-[13px] md:text-[14px] font-semibold text-white mb-1 leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="font-body text-[11px] md:text-[12px] text-white/40 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[#c9a84c]/40"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[#c9a84c]/40 z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: allRevealed ? 1 : 0 }}
         transition={{ delay: 2, duration: 0.8 }}
