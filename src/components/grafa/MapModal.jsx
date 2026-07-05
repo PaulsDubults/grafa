@@ -32,7 +32,7 @@ const hotspots = [
   { x: 47, y: 49, name: "Jelgava", desc: "Mūsu biroja atrašanās vieta — Jelgavā strādājošs uzņēmums ar vairāk kā 20 gadu pieredzi.", isOffice: true },
 ];
 
-function LocationTooltip({ point, onClose }) {
+function LocationTooltip({ point }) {
   return (
     <motion.div
       className="absolute z-30 bg-white rounded-sm shadow-xl border border-[#e8e0d4]/50 p-4 w-[220px] md:w-[260px]"
@@ -58,11 +58,50 @@ function LocationTooltip({ point, onClose }) {
   );
 }
 
+function KuldigaNotification({ onDismiss }) {
+  useEffect(() => {
+    const timer = setTimeout(onDismiss, 6000);
+    return () => clearTimeout(timer);
+  }, [onDismiss]);
+
+  return (
+    <motion.div
+      className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 cursor-pointer"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ delay: 1, duration: 0.6, ease: 'easeOut' }}
+      onClick={onDismiss}
+    >
+      <div className="bg-white rounded-sm shadow-2xl border border-[#c9a84c]/20 px-6 py-4 max-w-[420px]">
+        <div className="flex items-start gap-3">
+          <div className="w-8 h-8 rounded-full bg-[#c9a84c]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <MapPin className="w-4 h-4 text-[#c9a84c]" />
+          </div>
+          <div>
+            <p className="font-body text-[13px] text-[#1e3a5f]/70 leading-[1.7]">
+              Esam priecīgi, ka mūsu klientu pulkam pievienojies jauns uzņēmums <strong className="text-[#1e3a5f] font-semibold">Kuldīgā</strong>.
+            </p>
+            <p className="font-script text-[15px] text-[#c9a84c] mt-1 italic">
+              Laipni lūgti GRĀFAS saimē!
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function MapModal({ isOpen, onClose }) {
   const [activePoint, setActivePoint] = useState(null);
+  const [showNotification, setShowNotification] = useState(true);
 
   useEffect(() => {
-    if (!isOpen) { setActivePoint(null); return; }
+    if (!isOpen) {
+      setActivePoint(null);
+      setShowNotification(true);
+      return;
+    }
     const handleEsc = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', handleEsc);
     document.body.style.overflow = 'hidden';
@@ -82,10 +121,8 @@ export default function MapModal({ isOpen, onClose }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Backdrop */}
           <div className="absolute inset-0 bg-[#1e3a5f]/40 backdrop-blur-sm" onClick={onClose} />
 
-          {/* Modal content */}
           <motion.div
             className="relative bg-[#faf7f2] rounded-sm shadow-2xl border border-[#e8e0d4]/50 w-full max-w-[900px] max-h-[90vh] overflow-auto"
             initial={{ scale: 0.92, opacity: 0, y: 20 }}
@@ -94,7 +131,6 @@ export default function MapModal({ isOpen, onClose }) {
             transition={{ duration: 0.4, ease: 'easeOut' }}
             onClick={() => setActivePoint(null)}
           >
-            {/* Close button */}
             <button
               className="absolute top-4 right-4 z-40 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-md transition-colors"
               onClick={onClose}
@@ -102,7 +138,6 @@ export default function MapModal({ isOpen, onClose }) {
               <X size={16} className="text-[#1e3a5f]/60" />
             </button>
 
-            {/* Header */}
             <div className="text-center pt-6 pb-2 px-6">
               <p className="font-body text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#c9a84c] mb-2 font-medium">
                 Mūsu klienti
@@ -112,7 +147,6 @@ export default function MapModal({ isOpen, onClose }) {
               </h3>
             </div>
 
-            {/* Map */}
             <div className="relative px-4 pb-6">
               <div className="relative">
                 <img
@@ -121,7 +155,6 @@ export default function MapModal({ isOpen, onClose }) {
                   className="w-full h-auto"
                 />
 
-                {/* Clickable hotspots */}
                 <div className="absolute" style={{ top: '5%', left: '6%', right: '4%', bottom: '25%' }}>
                   {hotspots.map((spot) => (
                     <button
@@ -138,12 +171,18 @@ export default function MapModal({ isOpen, onClose }) {
                     </button>
                   ))}
 
-                  {/* Tooltip */}
                   <AnimatePresence>
-                    {activePoint && <LocationTooltip point={activePoint} onClose={() => setActivePoint(null)} />}
+                    {activePoint && <LocationTooltip point={activePoint} />}
                   </AnimatePresence>
                 </div>
               </div>
+
+              {/* Kuldīga notification */}
+              <AnimatePresence>
+                {showNotification && (
+                  <KuldigaNotification onDismiss={() => setShowNotification(false)} />
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         </motion.div>

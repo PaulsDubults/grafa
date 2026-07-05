@@ -1,25 +1,28 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import WatercolorBackground from './WatercolorBackground';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import HeroMiniMap from './HeroMiniMap';
 
 const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/07f5642fe_ChatGPTImageMay13202603_52_09PM.png";
 
-const heroSteps = [
+const storyLines = [
   "Gandrīz katram uzņēmējam kādreiz ir radušies jautājumi par grāmatvedību, nodokļiem vai finanšu lēmumiem.",
   "Kas Jums šobrīd sagādā vislielākās grūtības kādā no šīm jomām?",
   "Varbūt vienkārši pietrūkst laika?",
   "Varbūt gribas lielāku skaidrību grāmatvedības, nodokļu vai finanšu jautājumos?",
   "Varbūt vienkārši vēlaties būt pārliecināts, ka viss Jūsu uzņēmuma grāmatvedībā tiek izdarīts pareizi?",
-  "Ir lietas, kurām uzņēmējam nevajadzētu prasīt papildu enerģiju. Grāmatvedība ir viena no tām.",
+  "Ir lietas, kurām uzņēmējam nevajadzētu prasīt papildu enerģiju.",
+  "Grāmatvedība ir viena no tām.",
   "Mēs ticam, ka profesionāls grāmatvedis nav tikai cilvēks, kurš sagatavo atskaites.",
   "Tas ir partneris, kurš palīdz pieņemt pārdomātus lēmumus, laikus pamana riskus un rada pārliecību, ka uzņēmuma finanšu lietas ir drošās rokās.",
   "Tāpēc mūsu darbs sākas nevis ar dokumentiem.",
   "Tas sākas ar uzticēšanos.",
 ];
 
-const emphasisIndices = [5, 7, 9];
+/* Lines that should appear slightly stronger */
+const emphasisIndices = [5, 6, 8, 10];
 const boldWords = ['grāmatvedību', 'grāmatvedības', 'Grāmatvedība'];
+
+const LINE_INTERVAL = 1400; // ms between each line appearing
 
 const coreValues = [
   {
@@ -57,107 +60,140 @@ const coreValues = [
   },
 ];
 
-function StoryStep({ step, index }) {
+function StoryLine({ text, index, isVisible }) {
   const isEmphasis = emphasisIndices.includes(index);
-  const hasBold = boldWords.some(w => step.includes(w));
+  const hasBold = boldWords.some(w => text.includes(w));
 
   return (
-    <motion.div
-      className="flex items-start gap-3 relative"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: 'easeOut' }}
-    >
-      <div className="flex flex-col items-center flex-shrink-0 w-5">
-        <span className={`text-[10px] font-body leading-none mt-1 ${
-          isEmphasis ? 'text-[#c9a84c] font-semibold' : 'text-[#c9a84c]/50'
-        }`}>
-          {index + 1}
-        </span>
-      </div>
-
-      <p className={`font-body text-[13px] md:text-[14px] leading-[1.75] pb-4 ${
-        isEmphasis ? 'text-[#1e3a5f] font-medium' : 'text-[#1e3a5f]/60'
-      }`}>
-        {hasBold ? (
-          <span dangerouslySetInnerHTML={{
-            __html: step.replace(
-              /(grāmatvedību|grāmatvedības|Grāmatvedība)/g,
-              '<strong class="text-[#1e3a5f] font-semibold">$1</strong>'
-            )
-          }} />
-        ) : step}
-      </p>
-    </motion.div>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.p
+          className={`font-body text-[14px] md:text-[15px] leading-[1.85] mb-3 ${
+            isEmphasis
+              ? 'text-[#1e3a5f] font-medium'
+              : 'text-[#1e3a5f]/60'
+          }`}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          {hasBold ? (
+            <span dangerouslySetInnerHTML={{
+              __html: text.replace(
+                /(grāmatvedību|grāmatvedības|Grāmatvedība)/g,
+                '<strong class="text-[#1e3a5f] font-semibold">$1</strong>'
+              )
+            }} />
+          ) : text}
+        </motion.p>
+      )}
+    </AnimatePresence>
   );
 }
 
 export default function HeroSection() {
+  const [visibleCount, setVisibleCount] = useState(0);
+  const allRevealed = visibleCount >= storyLines.length;
+
+  useEffect(() => {
+    if (visibleCount >= storyLines.length) return;
+    const timer = setTimeout(() => {
+      setVisibleCount(prev => prev + 1);
+    }, visibleCount === 0 ? 600 : LINE_INTERVAL);
+    return () => clearTimeout(timer);
+  }, [visibleCount]);
+
+  const logoDelay = 0.3; // after all lines visible
+
   return (
-    <section id="sakumlapa" className="relative w-full overflow-hidden" style={{ background: '#f5f0e8' }}>
-      <WatercolorBackground variant="hero" />
+    <section id="sakumlapa" className="relative w-full min-h-screen overflow-hidden" style={{ background: '#f5f0e8' }}>
+      {/* Subtle paper texture / watercolor bg */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
+        <svg width="100%" height="100%">
+          <filter id="paperNoise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+          <rect width="100%" height="100%" filter="url(#paperNoise)"/>
+        </svg>
+      </div>
+
+      {/* Faint pyramid/feather motif */}
+      <div className="absolute right-0 top-0 w-[400px] h-[600px] pointer-events-none opacity-[0.03] hidden lg:block">
+        <svg viewBox="0 0 200 300" fill="none" className="w-full h-full">
+          <path d="M100,20 L180,260 L20,260 Z" stroke="#1e3a5f" strokeWidth="0.5" fill="none"/>
+          <path d="M100,60 L100,280" stroke="#1e3a5f" strokeWidth="0.3"/>
+          <path d="M100,40 Q120,140 160,200 Q140,180 100,160 Q60,180 40,200 Q80,140 100,40" stroke="#1e3a5f" strokeWidth="0.4" fill="none"/>
+        </svg>
+      </div>
 
       <div className="relative z-10 max-w-[1300px] mx-auto px-6 md:px-10 pt-24 md:pt-28">
-        <div className="grid lg:grid-cols-[42%_58%] gap-6 lg:gap-0 items-start">
+        <div className="grid lg:grid-cols-[45%_55%] gap-8 lg:gap-4 items-start min-h-[calc(100vh-120px)]">
 
-          {/* LEFT COLUMN */}
-          <motion.div
-            className="pt-2 md:pt-6 lg:pt-10 lg:pr-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="relative pl-2">
-              <motion.div
-                className="absolute left-[9px] top-3 bottom-0 w-[1px]"
-                style={{ background: 'linear-gradient(180deg, #c9a84c, #c9a84c20)' }}
-                initial={{ scaleY: 0, transformOrigin: 'top' }}
-                animate={{ scaleY: 1 }}
-                transition={{ delay: 0.4, duration: 1.5, ease: 'easeOut' }}
-              />
-              <div className="flex flex-col">
-                {heroSteps.map((step, i) => (
-                  <StoryStep key={i} step={step} index={i} />
-                ))}
-              </div>
+          {/* LEFT COLUMN — Story + Map */}
+          <div className="pt-4 md:pt-8 lg:pt-12 lg:pr-10 flex flex-col">
+            {/* Story text — lines appear one by one and STAY */}
+            <div className="flex-1">
+              {storyLines.map((line, i) => (
+                <StoryLine key={i} text={line} index={i} isVisible={i < visibleCount} />
+              ))}
             </div>
 
-            <HeroMiniMap />
-
+            {/* Mini map — bottom left */}
             <motion.div
-              className="flex items-center gap-2 mt-6 mb-4 text-[#c9a84c]/50"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2.2, duration: 0.8 }}
+              animate={{ opacity: allRevealed ? 1 : 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="mt-8 mb-6"
             >
-              <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 animate-bounce">
-                <path d="M12,5 L12,19 M7,14 L12,19 L17,14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span className="text-[10px] font-body tracking-wider">RITINĀT TĀLĀK</span>
+              {allRevealed && <HeroMiniMap />}
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* RIGHT COLUMN */}
+          {/* RIGHT COLUMN — Logo composition + Values bar */}
           <div className="flex flex-col order-first lg:order-last">
+            {/* Logo: pyramid, feather, company name — appears after story */}
             <motion.div
               className="relative flex justify-center lg:justify-end"
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.1, ease: 'easeOut' }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{
+                opacity: allRevealed ? 1 : 0,
+                scale: allRevealed ? 1 : 0.95,
+              }}
+              transition={{ delay: logoDelay, duration: 1.2, ease: 'easeOut' }}
             >
               <img
                 src={HERO_IMG}
-                alt="SIA firma GRĀFA — Grāmatvedība. Finanses. Apmācības."
-                className="w-full max-w-[500px] lg:max-w-[620px] h-auto object-contain"
+                alt="SIA firma GRĀFA — piramīda, spalva, logotips"
+                className="w-full max-w-[480px] lg:max-w-[580px] h-auto object-contain"
               />
             </motion.div>
 
-            <motion.div
-              className="bg-[#1e3a5f] py-8 md:py-10 px-6 md:px-10 mt-2 lg:-mx-10 lg:mr-[-40px]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8, ease: 'easeOut' }}
+            {/* "Grāmatvedība. Finanses. Apmācības." text appears after logo */}
+            <motion.p
+              className="text-center lg:text-right font-body text-[13px] md:text-[14px] tracking-[0.15em] text-[#1e3a5f] mt-1 mb-4 lg:pr-8"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{
+                opacity: allRevealed ? 1 : 0,
+                y: allRevealed ? 0 : 8,
+              }}
+              transition={{ delay: logoDelay + 0.5, duration: 0.8 }}
             >
+              Grāmatvedība. Finanses. Apmācības.
+            </motion.p>
+
+            {/* Dark blue values bar — wave-like bottom */}
+            <motion.div
+              className="bg-[#1e3a5f] py-8 md:py-10 px-6 md:px-10 mt-2 lg:-mx-10 lg:mr-[-40px] relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: allRevealed ? 1 : 0,
+                y: allRevealed ? 0 : 20,
+              }}
+              transition={{ delay: logoDelay + 0.8, duration: 0.8, ease: 'easeOut' }}
+            >
+              {/* Subtle wave top edge */}
+              <svg className="absolute -top-[1px] left-0 right-0 w-full h-3 text-[#1e3a5f]" viewBox="0 0 1200 12" preserveAspectRatio="none">
+                <path d="M0,12 Q300,0 600,6 Q900,12 1200,4 L1200,12 Z" fill="currentColor"/>
+              </svg>
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
                 {coreValues.map((item, i) => (
                   <motion.div
@@ -166,8 +202,11 @@ export default function HeroSection() {
                       i < coreValues.length - 1 ? 'md:border-r md:border-white/10' : ''
                     }`}
                     initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 + i * 0.12, duration: 0.6 }}
+                    animate={{
+                      opacity: allRevealed ? 1 : 0,
+                      y: allRevealed ? 0 : 14,
+                    }}
+                    transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
                   >
                     <div className="mb-3">{item.icon}</div>
                     <h3 className="font-heading text-[14px] md:text-[15px] font-semibold text-white mb-1.5 leading-snug">
@@ -184,7 +223,18 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="h-6 lg:h-10" />
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[#c9a84c]/40"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: allRevealed ? 1 : 0 }}
+        transition={{ delay: 2, duration: 0.8 }}
+      >
+        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 animate-bounce">
+          <path d="M12,5 L12,19 M7,14 L12,19 L17,14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <span className="text-[10px] font-body tracking-wider uppercase">Ritināt tālāk</span>
+      </motion.div>
     </section>
   );
 }
