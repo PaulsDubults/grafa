@@ -68,7 +68,6 @@ function StoryStep({ step, index }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: 'easeOut' }}
     >
-      {/* Number + vertical line */}
       <div className="flex flex-col items-center flex-shrink-0 w-5">
         <span className={`text-[10px] font-body leading-none mt-1 ${
           isEmphasis ? 'text-[#c9a84c] font-semibold' : 'text-[#c9a84c]/50'
@@ -77,11 +76,8 @@ function StoryStep({ step, index }) {
         </span>
       </div>
 
-      {/* Text */}
       <p className={`font-body text-[13px] md:text-[14px] leading-[1.75] pb-4 ${
-        isEmphasis
-          ? 'text-[#1e3a5f] font-medium'
-          : 'text-[#1e3a5f]/60'
+        isEmphasis ? 'text-[#1e3a5f] font-medium' : 'text-[#1e3a5f]/60'
       }`}>
         {hasBold ? (
           <span dangerouslySetInnerHTML={{
@@ -98,23 +94,20 @@ function StoryStep({ step, index }) {
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full overflow-hidden" style={{ background: '#f5f0e8' }}>
+    <section id="sakumlapa" className="relative w-full overflow-hidden" style={{ background: '#f5f0e8' }}>
       <WatercolorBackground variant="hero" />
 
-      {/* Main two-column layout */}
       <div className="relative z-10 max-w-[1300px] mx-auto px-6 md:px-10 pt-24 md:pt-28">
         <div className="grid lg:grid-cols-[42%_58%] gap-6 lg:gap-0 items-start">
 
-          {/* LEFT COLUMN: Story timeline + mini map */}
+          {/* LEFT COLUMN */}
           <motion.div
             className="pt-2 md:pt-6 lg:pt-10 lg:pr-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {/* Vertical timeline with gold line on the left */}
             <div className="relative pl-2">
-              {/* Vertical gold line */}
               <motion.div
                 className="absolute left-[9px] top-3 bottom-0 w-[1px]"
                 style={{ background: 'linear-gradient(180deg, #c9a84c, #c9a84c20)' }}
@@ -122,7 +115,6 @@ export default function HeroSection() {
                 animate={{ scaleY: 1 }}
                 transition={{ delay: 0.4, duration: 1.5, ease: 'easeOut' }}
               />
-
               <div className="flex flex-col">
                 {heroSteps.map((step, i) => (
                   <StoryStep key={i} step={step} index={i} />
@@ -130,10 +122,8 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Mini Latvia map */}
             <HeroMiniMap />
 
-            {/* Scroll down indicator */}
             <motion.div
               className="flex items-center gap-2 mt-6 mb-4 text-[#c9a84c]/50"
               initial={{ opacity: 0 }}
@@ -147,9 +137,8 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT COLUMN: Hero image + values bar */}
+          {/* RIGHT COLUMN */}
           <div className="flex flex-col order-first lg:order-last">
-            {/* Logo/feather/pyramid illustration */}
             <motion.div
               className="relative flex justify-center lg:justify-end"
               initial={{ opacity: 0, scale: 0.96 }}
@@ -163,7 +152,6 @@ export default function HeroSection() {
               />
             </motion.div>
 
-            {/* Core values bar — directly under the image */}
             <motion.div
               className="bg-[#1e3a5f] py-8 md:py-10 px-6 md:px-10 mt-2 lg:-mx-10 lg:mr-[-40px]"
               initial={{ opacity: 0, y: 20 }}
@@ -196,7 +184,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom spacer for wave transition */}
       <div className="h-6 lg:h-10" />
     </section>
   );

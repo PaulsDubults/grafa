@@ -3,10 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: "Tituls", href: "#", active: true },
-  { label: "Pieeja", href: "#pieeja" },
+  { label: "Sākumlapa", href: "#sakumlapa" },
   { label: "Pakalpojumi", href: "#pakalpojumi" },
-  { label: "Saziņa", href: "#kontakti" },
+  { label: "Kāpēc GRĀFU", href: "#kapec-grafu" },
+  { label: "Process", href: "#process" },
+  { label: "Zināšanu telpa", href: "#zinasanu-telpa" },
+  { label: "Par mums", href: "#par-mums" },
+  { label: "Pievienojies", href: "#pievienojies" },
+  { label: "Kontakti", href: "#kontakti" },
 ];
 
 export default function Navbar() {
@@ -19,12 +23,19 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const handleClick = (e, href) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <>
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-          scrolled 
-            ? 'bg-[#f5f0e8]/95 backdrop-blur-xl shadow-sm border-b border-[#c9a84c]/15' 
+          scrolled
+            ? 'bg-[#f5f0e8]/95 backdrop-blur-xl shadow-sm border-b border-[#c9a84c]/15'
             : 'bg-transparent'
         }`}
         initial={{ y: -80 }}
@@ -37,26 +48,20 @@ export default function Navbar() {
             <span className="text-[9px] text-[#c9a84c] tracking-[0.15em] font-body font-medium">Grāmatvedība. Finanses. Apmācības.</span>
           </div>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className={`text-[13px] font-body transition-all duration-300 relative pb-1 hover:text-[#1e3a5f] ${
-                  link.active 
-                    ? 'text-[#1e3a5f] font-medium' 
-                    : 'text-[#1e3a5f]/50 hover:text-[#1e3a5f]/80'
-                }`}
+                onClick={(e) => handleClick(e, link.href)}
+                className="text-[12px] font-body transition-all duration-300 relative pb-1 text-[#1e3a5f]/50 hover:text-[#1e3a5f]/80"
               >
                 {link.label}
-                {link.active && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#c9a84c]" />
-                )}
               </a>
             ))}
           </div>
 
-          <button className="md:hidden p-2 text-[#1e3a5f]/60" onClick={() => setMobileOpen(!mobileOpen)}>
+          <button className="lg:hidden p-2 text-[#1e3a5f]/60" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
@@ -70,7 +75,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="flex flex-col items-center gap-8 pt-10">
+            <div className="flex flex-col items-center gap-7 pt-10">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.label}
@@ -78,8 +83,8 @@ export default function Navbar() {
                   className="text-lg font-heading text-[#1e3a5f]/80 hover:text-[#1e3a5f]"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
-                  onClick={() => setMobileOpen(false)}
+                  transition={{ delay: i * 0.06 }}
+                  onClick={(e) => handleClick(e, link.href)}
                 >
                   {link.label}
                 </motion.a>

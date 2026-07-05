@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, User } from 'lucide-react';
+import { Phone, Mail, MapPin, User, Clock } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import WatercolorBackground from './WatercolorBackground';
-import FeatherDecoration from './FeatherDecoration';
 import GoldLine from './GoldLine';
 
 const contactItems = [
@@ -13,6 +12,7 @@ const contactItems = [
   { icon: Phone, label: "+371 20383974", href: "tel:+37120383974" },
   { icon: Mail, label: "firmagrafa@gmail.com", href: "mailto:firmagrafa@gmail.com" },
   { icon: MapPin, label: "Jelgavā strādājošs uzņēmums", href: null },
+  { icon: Clock, label: "P.–Pk. 9:00–17:00", href: null },
 ];
 
 export default function ContactSection() {
@@ -37,9 +37,6 @@ export default function ContactSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="contact" />
-      
-      {/* Decorative feather */}
-      <FeatherDecoration className="absolute -left-8 top-32 w-[120px] h-[350px] hidden lg:block" opacity={0.04} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -55,14 +52,13 @@ export default function ContactSection() {
               Sazinieties
             </p>
             <h2 className="font-heading text-[30px] md:text-[40px] lg:text-[48px] font-semibold mb-5 leading-tight text-[#1e3a5f]">
-              Sazinieties
+              Kontakti
             </h2>
             <GoldLine width="w-24" className="mb-8" />
 
             <p className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[16px] leading-[1.9] mb-10 max-w-lg">
               Ja Jums nepieciešami grāmatvedības pakalpojumi ar individuālu pieeju, droši 
-              sazinieties. Ar prieku palīdzēsim atrast piemērotāko risinājumu Jūsu uzņēmumam 
-              vai saimnieciskajai darbībai.
+              sazinieties. Ar prieku palīdzēsim atrast piemērotāko risinājumu.
             </p>
 
             <p className="font-heading text-[16px] font-semibold mb-8 text-[#1e3a5f]">
@@ -77,7 +73,7 @@ export default function ContactSection() {
                   initial={{ opacity: 0, x: -16 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.2 + i * 0.1, duration: 0.6 }}
+                  transition={{ delay: 0.2 + i * 0.08, duration: 0.6 }}
                 >
                   <div className="w-10 h-10 rounded-full bg-[#1e3a5f]/[0.05] flex items-center justify-center group-hover:bg-[#1e3a5f]/[0.1] transition-colors duration-300">
                     <item.icon className="w-4 h-4 text-[#c9a84c]" strokeWidth={1.5} />
