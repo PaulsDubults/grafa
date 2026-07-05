@@ -3,56 +3,140 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin } from 'lucide-react';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
+import FeatherDecoration from './FeatherDecoration';
 
-const office = { x: 39, y: 72, name: "Jelgava", desc: "Mūsu biroja atrašanās vieta", isOffice: true };
+const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/58c044609_ChatGPTImageJul5202612_47_42PM.png";
+
+const office = { x: 46.5, y: 52, name: "Jelgava", desc: "Mūsu biroja atrašanās vieta — Jelgavā strādājošs uzņēmums ar vairāk kā 20 gadu pieredzi.", isOffice: true };
 
 const clients = [
-  { x: 48, y: 42, name: "Rīga", desc: "Klienti Rīgā un apkārtnē" },
-  { x: 62, y: 48, name: "Ogre", desc: "Sadarbības partneri Ogrē" },
-  { x: 28, y: 55, name: "Kuldīga", desc: "Esam priecīgi, ka mūsu klientu pulkam pievienojies jauns uzņēmums Kuldīgā." },
-  { x: 55, y: 62, name: "Bauska", desc: "Klienti Bauskā" },
-  { x: 72, y: 38, name: "Cēsis", desc: "Klienti Cēsīs" },
-  { x: 18, y: 42, name: "Liepāja", desc: "Klienti Liepājā" },
-  { x: 83, y: 55, name: "Daugavpils", desc: "Klienti Daugavpilī" },
-  { x: 55, y: 32, name: "Valmiera", desc: "Klienti Valmierā" },
+  { x: 50, y: 36, name: "Rīga", desc: "Klienti Rīgā un apkārtnē." },
+  { x: 61, y: 44, name: "Ogre", desc: "Sadarbības partneri Ogrē." },
+  { x: 29, y: 52, name: "Kuldīga", desc: "Esam priecīgi, ka mūsu klientu pulkam pievienojies jauns uzņēmums Kuldīgā." },
+  { x: 55, y: 58, name: "Bauska", desc: "Klienti Bauskā." },
+  { x: 70, y: 32, name: "Cēsis", desc: "Klienti Cēsīs." },
+  { x: 16, y: 44, name: "Liepāja", desc: "Klienti Liepājā." },
+  { x: 85, y: 50, name: "Daugavpils", desc: "Klienti Daugavpilī." },
+  { x: 62, y: 26, name: "Valmiera", desc: "Klienti Valmierā." },
+  { x: 38, y: 34, name: "Tukums", desc: "Klienti Tukumā." },
+  { x: 22, y: 36, name: "Ventspils", desc: "Klienti Ventspilī." },
+  { x: 75, y: 42, name: "Madona", desc: "Klienti Madonā." },
+  { x: 80, y: 34, name: "Gulbene", desc: "Klienti Gulbenē." },
+  { x: 42, y: 44, name: "Jūrmala", desc: "Klienti Jūrmalā." },
+  { x: 68, y: 52, name: "Jēkabpils", desc: "Klienti Jēkabpilī." },
+  { x: 34, y: 56, name: "Saldus", desc: "Klienti Saldū." },
+  { x: 56, y: 22, name: "Sigulda", desc: "Klienti Siguldā." },
+  { x: 90, y: 40, name: "Rēzekne", desc: "Klienti Rēzeknē." },
+  { x: 78, y: 56, name: "Preiļi", desc: "Klienti Preiļos." },
+  { x: 24, y: 48, name: "Talsi", desc: "Klienti Talsos." },
+  { x: 48, y: 62, name: "Dobele", desc: "Klienti Dobelē." },
+  { x: 65, y: 36, name: "Limbaži", desc: "Klienti Limbažos." },
+  { x: 40, y: 26, name: "Dundaga", desc: "Klienti Dundagā." },
+  { x: 86, y: 28, name: "Balvi", desc: "Klienti Balvos." },
+  { x: 73, y: 58, name: "Aizkraukle", desc: "Klienti Aizkrauklē." },
 ];
 
-function MapPoint({ point, onClick, isActive }) {
+function PinMarker({ point, onClick, isActive, delay = 0 }) {
+  const isOffice = point.isOffice;
+
   return (
     <motion.button
-      className={`absolute z-10 group ${isActive ? 'z-20' : ''}`}
-      style={{ left: `${point.x}%`, top: `${point.y}%`, transform: 'translate(-50%, -50%)' }}
-      onClick={() => onClick(point)}
-      whileHover={{ scale: 1.3 }}
-      transition={{ type: 'spring', stiffness: 300 }}
+      className={`absolute group ${isActive ? 'z-30' : 'z-10'}`}
+      style={{ left: `${point.x}%`, top: `${point.y}%`, transform: 'translate(-50%, -100%)' }}
+      onClick={(e) => { e.stopPropagation(); onClick(point); }}
+      initial={{ scale: 0, opacity: 0, y: 10 }}
+      whileInView={{ scale: 1, opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.2 + delay * 0.04, duration: 0.4, ease: 'easeOut' }}
+      whileHover={{ scale: 1.2, y: -2 }}
     >
-      <div className={`w-3 h-3 rounded-full shadow-md transition-all duration-300 ${
-        point.isOffice
-          ? 'bg-[#c9a84c] ring-2 ring-[#c9a84c]/30 w-4 h-4'
-          : 'bg-[#1e3a5f] group-hover:bg-[#1e3a5f]/80 group-hover:ring-2 group-hover:ring-[#1e3a5f]/20'
-      }`} />
-      <span className={`absolute -bottom-5 left-1/2 -translate-x-1/2 text-[9px] font-body whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-        point.isOffice ? 'text-[#c9a84c] font-medium' : 'text-[#1e3a5f]/60'
-      }`}>
+      {/* Glow effect */}
+      <span
+        className={`absolute left-1/2 bottom-0 -translate-x-1/2 rounded-full blur-md ${
+          isOffice ? 'w-6 h-4 bg-[#c9a84c]/30' : 'w-4 h-3 bg-[#c9a84c]/25'
+        }`}
+      />
+
+      {/* Pin SVG */}
+      {isOffice ? (
+        <svg viewBox="0 0 24 32" fill="none" className="w-6 h-8 md:w-7 md:h-9 drop-shadow-lg relative">
+          <path d="M12,0 C5.4,0 0,5.4 0,12 C0,21 12,32 12,32 C12,32 24,21 24,12 C24,5.4 18.6,0 12,0 Z" fill="#1e3a5f"/>
+          <circle cx="12" cy="11" r="4" fill="white"/>
+        </svg>
+      ) : (
+        <svg viewBox="0 0 18 26" fill="none" className="w-4 h-5 md:w-[18px] md:h-[24px] drop-shadow-md relative">
+          <path d="M9,0 C4,0 0,4 0,9 C0,16 9,26 9,26 C9,26 18,16 18,9 C18,4 14,0 9,0 Z" fill="#c9a84c"/>
+          <circle cx="9" cy="8.5" r="3" fill="none" stroke="white" strokeWidth="1.2"/>
+        </svg>
+      )}
+
+      {/* Name on hover */}
+      <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[9px] md:text-[10px] font-body whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#1e3a5f]/70 font-medium bg-white/80 px-1.5 py-0.5 rounded-sm shadow-sm">
         {point.name}
       </span>
     </motion.button>
   );
 }
 
+function PointPopup({ point, onClose }) {
+  return (
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    >
+      <div className="absolute inset-0 bg-[#1e3a5f]/30 backdrop-blur-sm" onClick={onClose} />
+      <motion.div
+        className="relative bg-white rounded-sm shadow-2xl border border-[#e8e0d4]/50 p-6 md:p-8 max-w-[320px] w-full"
+        initial={{ scale: 0.9, opacity: 0, y: 16 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 16 }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
+      >
+        <button
+          className="absolute top-3 right-3 text-[#1e3a5f]/25 hover:text-[#1e3a5f]/60 transition-colors"
+          onClick={onClose}
+        >
+          <X size={16} />
+        </button>
+
+        <div className="flex items-center gap-2.5 mb-3">
+          <MapPin className="w-4 h-4 text-[#c9a84c] flex-shrink-0" />
+          <h4 className="font-heading text-[17px] md:text-[18px] font-semibold text-[#1e3a5f]">
+            {point.name}
+          </h4>
+        </div>
+
+        <p className="text-[#1e3a5f]/55 font-body text-[13px] md:text-[14px] leading-[1.75]">
+          {point.desc}
+        </p>
+
+        {point.name === "Kuldīga" && (
+          <p className="font-script text-[16px] text-[#c9a84c] mt-3 italic">
+            Laipni lūgti GRĀFAS saimē!
+          </p>
+        )}
+
+        <div className="w-10 h-[1.5px] mt-4" style={{ background: 'linear-gradient(90deg, #c9a84c, transparent)' }} />
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export default function LatviaMapSection() {
   const [activePoint, setActivePoint] = useState(null);
-  const [showModal, setShowModal] = useState(false);
 
   const handlePointClick = (point) => {
-    setActivePoint(point);
-    setShowModal(true);
+    setActivePoint(prev => prev?.name === point.name ? null : point);
   };
 
   return (
     <motion.section
-      className="relative py-24 md:py-36 px-6 md:px-10 overflow-hidden"
-      style={{ background: '#f5f0e8' }}
+      id="karte"
+      className="relative py-20 md:py-32 px-6 md:px-10 overflow-hidden"
+      style={{ background: '#faf7f2' }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -60,9 +144,10 @@ export default function LatviaMapSection() {
     >
       <WatercolorBackground variant="map" />
 
-      <div className="relative z-10 max-w-[1200px] mx-auto">
+      <div className="relative z-10 max-w-[1100px] mx-auto">
+        {/* Section header */}
         <motion.div
-          className="mb-14 text-center"
+          className="mb-12 md:mb-16 text-center"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -80,94 +165,55 @@ export default function LatviaMapSection() {
           </p>
         </motion.div>
 
-        {/* Map container */}
+        {/* Map with image background */}
         <motion.div
-          className="relative max-w-[800px] mx-auto bg-white/60 backdrop-blur-sm rounded-sm p-6 md:p-10 shadow-[0_4px_20px_rgba(30,58,95,0.08)] border border-[#e8e0d4]/50"
+          className="relative max-w-[950px] mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.8 }}
+          onClick={() => setActivePoint(null)}
         >
-          {/* Latvia SVG Map outline */}
-          <div className="relative aspect-[16/10]">
-            <svg viewBox="0 0 100 65" className="absolute inset-0 w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M5,35 C8,32 10,28 12,30 C14,32 13,36 16,38 C19,40 22,37 25,35 C28,33 30,30 28,27 C26,24 24,22 22,20 C20,18 22,15 25,14 C28,13 32,14 35,12 C38,10 40,8 43,9 C46,10 48,13 50,12 C52,11 53,8 56,8 C59,8 61,10 63,12 C65,14 68,15 70,13 C72,11 73,9 76,10 C79,11 82,14 85,16 C88,18 90,20 92,22 C94,24 95,27 93,30 C91,33 88,35 90,38 C92,41 95,42 94,45 C93,48 90,50 87,52 C84,54 80,55 76,54 C72,53 68,50 65,52 C62,54 60,57 57,58 C54,59 50,58 47,56 C44,54 42,51 39,50 C36,49 32,50 29,52 C26,54 23,57 20,56 C17,55 15,52 13,49 C11,46 9,44 7,42 C5,40 3,38 5,35 Z"
-                fill="#f0ebe2"
-                stroke="#c9a84c"
-                strokeWidth="0.4"
-                opacity="0.8"
+          {/* Map image */}
+          <div className="relative">
+            <img
+              src={MAP_IMAGE}
+              alt="Latvijas karte ar klientu atrašanās vietām"
+              className="w-full h-auto"
+            />
+
+            {/* Overlay for pin positioning */}
+            <div className="absolute inset-0" style={{ top: '3%', left: '5%', right: '3%', bottom: '22%' }}>
+              {/* Client pins */}
+              {clients.map((client, i) => (
+                <PinMarker
+                  key={client.name}
+                  point={client}
+                  onClick={handlePointClick}
+                  isActive={activePoint?.name === client.name}
+                  delay={i}
+                />
+              ))}
+
+              {/* Office pin */}
+              <PinMarker
+                point={office}
+                onClick={handlePointClick}
+                isActive={activePoint?.name === office.name}
+                delay={clients.length}
               />
-            </svg>
-
-            {/* Client points */}
-            {clients.map((client, i) => (
-              <MapPoint key={client.name} point={client} onClick={handlePointClick} isActive={activePoint?.name === client.name} />
-            ))}
-
-            {/* Office point */}
-            <MapPoint point={office} onClick={handlePointClick} isActive={activePoint?.name === office.name} />
-          </div>
-
-          {/* Legend */}
-          <div className="flex items-center gap-6 mt-6 justify-center">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#c9a84c]" />
-              <span className="text-[11px] font-body text-[#1e3a5f]/50">Mūsu biroja atrašanās vieta</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#1e3a5f]" />
-              <span className="text-[11px] font-body text-[#1e3a5f]/50">Mūsu klienti</span>
             </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Popup modal */}
+      {/* Popup */}
       <AnimatePresence>
-        {showModal && activePoint && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center px-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="absolute inset-0 bg-[#1e3a5f]/60 backdrop-blur-sm" onClick={() => setShowModal(false)} />
-            <motion.div
-              className="relative bg-white rounded-sm p-8 md:p-10 max-w-md w-full shadow-2xl border border-[#e8e0d4]/50"
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-            >
-              <button
-                className="absolute top-4 right-4 text-[#1e3a5f]/30 hover:text-[#1e3a5f]/60 transition-colors"
-                onClick={() => setShowModal(false)}
-              >
-                <X size={20} />
-              </button>
-
-              <div className="flex items-center gap-3 mb-4">
-                <MapPin className="w-5 h-5 text-[#c9a84c]" />
-                <h3 className="font-heading text-[20px] font-semibold text-[#1e3a5f]">
-                  {activePoint.name}
-                </h3>
-              </div>
-
-              <p className="text-[#1e3a5f]/60 font-body text-[14px] leading-[1.8] mb-6">
-                {activePoint.desc}
-              </p>
-
-              {activePoint.name === "Kuldīga" && (
-                <p className="font-script text-[18px] text-[#c9a84c] italic">
-                  Laipni lūgti GRĀFAS saimē!
-                </p>
-              )}
-
-              <div className="w-12 h-[1.5px] mt-4" style={{ background: 'linear-gradient(90deg, #c9a84c, transparent)' }} />
-            </motion.div>
-          </motion.div>
+        {activePoint && (
+          <PointPopup
+            point={activePoint}
+            onClose={() => setActivePoint(null)}
+          />
         )}
       </AnimatePresence>
     </motion.section>
