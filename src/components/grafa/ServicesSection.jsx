@@ -2,56 +2,81 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import WatercolorBackground from './WatercolorBackground';
-import PyramidDecoration from './PyramidDecoration';
+import FeatherDecoration from './FeatherDecoration';
 import GoldLine from './GoldLine';
 
-const mainServices = [
+const bulletPoints = [
+  { text: "Mūsu darbs nesākas ar pakalpojumu sarakstu.", bold: "Tas sākas ar sarunu." },
+  { text: "Ar vēlmi saprast, kas konkrētajā brīdī ir nepieciešams tieši Jūsu uzņēmumam — vai tā ir ikdienas grāmatvedība, finanšu analīze vai konsultācija. Mēs pielāgojamies Jūsu uzņēmuma vajadzībām." },
+  { text: "Kad grāmatvedis pazīst uzņēmumu, tā cilvēkus un mērķus, ikdienas darbs kļūst vienkāršāks." },
+  { text: "Mūsu pakalpojumi nav tikai atskaites un deklarācijas. Tie ir", bold: "risinājumi, kas palīdz uzņēmumam drošāk augt." },
+  { text: "Mūsu veiktais darbs dod uzņēmējam iespēju vairāk laika veltīt sava uzņēmuma attīstībai, nevis raizēm par dokumentiem, termiņiem vai nodokļu izmaiņām." },
+  { text: "Tieši tāpēc mēs katram klientam", bold: "meklējam risinājumu,", after: "nevis vienkārši izpildām uzdevumu." },
+];
+
+const cards = [
   {
     title: "Grāmatvedība",
-    desc: "Pilna grāmatvedības uzskaite un pārskatu sagatavošana uzņēmumiem un pašnodarbinātajiem.",
+    desc: "Pilna grāmatvedības uzskaite un atskaites, nodokļu aprēķini un deklarācijas. Rūpējamies par to, lai viss būtu kārtībā laikus un bez stresa.",
     path: "/pakalpojumi/gramatvediba",
     icon: (
-      <svg viewBox="0 0 56 56" fill="none" className="w-12 h-12 md:w-14 md:h-14">
-        <rect x="10" y="8" width="28" height="36" rx="2" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-        <path d="M17,18 L31,18 M17,24 L31,24 M17,30 L25,30" stroke="currentColor" strokeWidth="0.8" opacity="0.5"/>
-        <path d="M30,32 L34,36 L38,28" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M6,12 L10,8 M6,12 L6,40 L10,44" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
+      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
+        <rect x="9" y="6" width="26" height="32" rx="2" stroke="#c9a84c" strokeWidth="1.2" fill="none"/>
+        <path d="M15,14 L29,14 M15,20 L29,20 M15,26 L23,26" stroke="#c9a84c" strokeWidth="0.8" opacity="0.6"/>
+        <path d="M28,28 L32,32 L36,24" stroke="#c9a84c" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },
   {
     title: "Finanses",
-    desc: "Finanšu analīze, plānošana un individuālu metodiku izstrāde biznesa izaugsmei.",
+    desc: "Finanšu analīze, plānošana un uzraudzība, kas palīdz pieņemt pārdomātus lēmumus un nodrošina stabilu izaugsmi.",
     path: "/pakalpojumi/finanses",
     icon: (
-      <svg viewBox="0 0 56 56" fill="none" className="w-12 h-12 md:w-14 md:h-14">
-        <polyline points="8,44 18,30 28,34 38,20 48,14" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-        <circle cx="48" cy="14" r="3" stroke="currentColor" strokeWidth="1" fill="none"/>
-        <line x1="8" y1="48" x2="48" y2="48" stroke="currentColor" strokeWidth="0.7" opacity="0.4"/>
-        <line x1="8" y1="10" x2="8" y2="48" stroke="currentColor" strokeWidth="0.7" opacity="0.4"/>
+      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
+        <polyline points="7,36 15,24 23,28 32,16 38,12" stroke="#c9a84c" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <circle cx="38" cy="12" r="2.5" stroke="#c9a84c" strokeWidth="1" fill="none"/>
+        <line x1="7" y1="40" x2="38" y2="40" stroke="#c9a84c" strokeWidth="0.7" opacity="0.4"/>
       </svg>
     ),
   },
   {
     title: "Apmācības",
-    desc: "Praktiskas apmācības un semināri uzņēmumu darbiniekiem un vadītājiem.",
+    desc: "Praktiskas un saprotamas apmācības uzņēmējiem un darbiniekiem par grāmatvedību, nodokļiem un finanšu jautājumiem ikdienas darbā.",
     path: "/pakalpojumi/apmacibas",
     icon: (
-      <svg viewBox="0 0 56 56" fill="none" className="w-12 h-12 md:w-14 md:h-14">
-        <path d="M8,20 L28,10 L48,20 L28,30 Z" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-        <path d="M16,24 L16,38 C16,42 22,46 28,46 C34,46 40,42 40,38 L40,24" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-        <line x1="48" y1="20" x2="48" y2="42" stroke="currentColor" strokeWidth="0.8" opacity="0.5"/>
-        <circle cx="48" cy="44" r="2" stroke="currentColor" strokeWidth="0.7" opacity="0.5" fill="none"/>
+      <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9">
+        <path d="M8,16 L22,8 L36,16 L22,24 Z" stroke="#c9a84c" strokeWidth="1.2" fill="none"/>
+        <path d="M14,20 L14,32 C14,36 18,40 22,40 C26,40 30,36 30,32 L30,20" stroke="#c9a84c" strokeWidth="1.2" fill="none"/>
+        <line x1="36" y1="16" x2="36" y2="36" stroke="#c9a84c" strokeWidth="0.8" opacity="0.5"/>
       </svg>
     ),
   },
 ];
 
+function BulletPoint({ item, index }) {
+  return (
+    <motion.div
+      className="flex items-start gap-3 mb-3"
+      initial={{ opacity: 0, y: 8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.3 + index * 0.06, duration: 0.5 }}
+    >
+      <div className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] mt-[7px] flex-shrink-0" />
+      <p className="font-body text-[13px] md:text-[14px] text-[#1e3a5f]/60 leading-[1.75]">
+        {item.text}{' '}
+        {item.bold && <strong className="text-[#1e3a5f] font-semibold">{item.bold}</strong>}
+        {item.after && <> {item.after}</>}
+      </p>
+    </motion.div>
+  );
+}
+
 export default function ServicesSection() {
   return (
     <motion.section
       id="pakalpojumi"
-      className="relative py-24 md:py-36 px-6 md:px-10 overflow-hidden"
+      className="relative py-20 md:py-32 px-6 md:px-10 overflow-hidden"
       style={{ background: '#faf7f2' }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -59,56 +84,98 @@ export default function ServicesSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="services" />
-      <PyramidDecoration className="absolute -left-10 bottom-20 w-[180px] h-[220px] hidden lg:block" opacity={0.04} />
+
+      {/* Feather on right side */}
+      <FeatherDecoration className="absolute right-4 md:right-10 top-16 w-[100px] md:w-[140px] h-[400px] md:h-[500px]" opacity={0.07} />
+
+      {/* Ink drop decoration */}
+      <div className="absolute right-[60px] md:right-[100px] top-12 w-3 h-4 pointer-events-none opacity-[0.06]">
+        <svg viewBox="0 0 12 16" fill="#1e3a5f" className="w-full h-full">
+          <ellipse cx="6" cy="10" rx="5" ry="6" />
+          <path d="M6,0 Q8,5 6,10 Q4,5 6,0" />
+        </svg>
+      </div>
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
+        {/* Handwriting intro text */}
         <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0, y: 24 }}
+          className="mb-8 md:mb-10 max-w-3xl"
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="font-body text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#c9a84c] mb-4 font-medium">
-            Ko mēs piedāvājam
-          </p>
-          <h2 className="font-heading text-[30px] md:text-[40px] lg:text-[48px] font-semibold mb-5 text-[#1e3a5f]">
-            Pakalpojumi
-          </h2>
-          <GoldLine width="w-24" className="mx-auto mb-8" />
-          <p className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[17px] leading-[1.8] max-w-3xl mx-auto">
-            Sniedzam grāmatvedības pakalpojumus dažādām uzņēmējdarbības formām, saglabājot 
-            individuālu un saprotamu pieeju katram klientam.
+          <p className="font-script text-[16px] md:text-[19px] lg:text-[21px] text-[#1e3a5f]/50 leading-[1.9] italic">
+            Katrs uzņēmums strādā citā nozarē.{' '}
+            Kāds ir pašā ceļa sākumā, bet citam jau ir stabils bizness ar lieliem mērķiem.{' '}
+            Mēs pielāgojamies Jūsu uzņēmuma vajadzībām, saglabājot profesionālu un tajā pašā laikā saprotamu pieeju ikvienā sadarbības posmā, neskatoties uz to, vai Jūsu uzņēmums ir mazs, vidējs vai liels.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {mainServices.map((service, i) => (
+        {/* Gold decorative line */}
+        <GoldLine width="w-20" className="mb-8" />
+
+        {/* Large heading */}
+        <motion.h2
+          className="font-heading text-[36px] md:text-[48px] lg:text-[56px] font-semibold text-[#1e3a5f] mb-10 md:mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15, duration: 0.7 }}
+        >
+          Pakalpojumi
+        </motion.h2>
+
+        {/* Bullet points — left column */}
+        <div className="max-w-2xl mb-14 md:mb-18">
+          {bulletPoints.map((item, i) => (
+            <BulletPoint key={i} item={item} index={i} />
+          ))}
+        </div>
+
+        {/* Three service cards */}
+        <div className="grid md:grid-cols-3 gap-5 md:gap-6 mb-12">
+          {cards.map((card, i) => (
             <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 24 }}
+              key={card.title}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 + i * 0.1, duration: 0.7, ease: 'easeOut' }}
+              transition={{ delay: 0.4 + i * 0.08, duration: 0.6 }}
             >
               <Link
-                to={service.path}
-                className="block bg-white rounded-sm p-8 md:p-10 cursor-pointer shadow-[0_2px_12px_rgba(30,58,95,0.06)] hover:shadow-[0_12px_40px_rgba(30,58,95,0.14)] hover:-translate-y-2 transition-all duration-500 border border-[#e8e0d4]/50 hover:border-[#c9a84c]/30 group h-full"
+                to={card.path}
+                className="block bg-white rounded-sm p-6 md:p-7 cursor-pointer shadow-[0_2px_10px_rgba(30,58,95,0.05)] hover:shadow-[0_10px_36px_rgba(30,58,95,0.12)] hover:-translate-y-1.5 transition-all duration-500 border border-[#e8e0d4]/50 hover:border-[#c9a84c]/30 group h-full"
               >
-                <div className="text-[#1e3a5f]/50 mb-6 group-hover:text-[#1e3a5f] transition-colors duration-500">
-                  {service.icon}
+                <div className="flex items-center gap-3 mb-4">
+                  {card.icon}
+                  <h3 className="font-heading text-[17px] md:text-[19px] font-semibold text-[#1e3a5f]">
+                    {card.title}
+                  </h3>
                 </div>
-                <h3 className="font-heading text-[20px] md:text-[22px] font-semibold mb-3 leading-snug text-[#1e3a5f]">
-                  {service.title}
-                </h3>
-                <p className="text-[#1e3a5f]/50 font-body text-[13px] md:text-[14px] leading-[1.85] mb-6">
-                  {service.desc}
+                <p className="text-[#1e3a5f]/45 font-body text-[12px] md:text-[13px] leading-[1.8]">
+                  {card.desc}
                 </p>
-                <div className="w-10 h-[1.5px] transition-all duration-600 group-hover:w-16" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3)' }} />
+                <div className="w-8 h-[1.5px] mt-5 transition-all duration-600 group-hover:w-14" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3)' }} />
               </Link>
             </motion.div>
           ))}
         </div>
+
+        {/* Bottom accent text */}
+        <motion.div
+          className="flex items-start gap-3 max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
+          <span className="text-[#c9a84c] mt-0.5 flex-shrink-0">◆</span>
+          <p className="font-body text-[13px] md:text-[14px] text-[#1e3a5f]/50 leading-[1.75]">
+            <strong className="text-[#1e3a5f]/70 font-semibold">Mūsu mērķis</strong> — nodrošināt skaidrību finanšu procesos un palīdzēt 
+            pieņemt pārdomātus lēmumus Jūsu uzņēmuma izaugsme.
+          </p>
+        </motion.div>
       </div>
     </motion.section>
   );
