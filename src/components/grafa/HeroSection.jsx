@@ -116,8 +116,10 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      <DecorativeAsset asset="featherCircle" className="hidden lg:block left-8 bottom-48 w-[110px]" opacity={0.07} />
-      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-10 bottom-16 w-[200px] rotate-6" opacity={0.05} />
+      <DecorativeAsset asset="featherCircle" className="hidden lg:block left-8 bottom-48 w-[160px]" opacity={0.25} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-10 bottom-16 w-[300px] rotate-6" opacity={0.2} />
+      <DecorativeAsset asset="featherLarge" className="hidden lg:block left-[42%] top-12 w-[180px] -rotate-[25deg]" opacity={0.08} />
+      <DecorativeAsset asset="pyramidFeather" className="hidden lg:block right-[5%] top-[55%] w-[130px]" opacity={0.12} />
 
       {/* Faint pyramid/feather motif */}
       <div className="absolute right-0 top-0 w-[400px] h-[600px] pointer-events-none opacity-[0.03] hidden lg:block">

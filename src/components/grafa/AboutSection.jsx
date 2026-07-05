@@ -37,8 +37,10 @@ export default function AboutSection() {
       <WatercolorBackground variant="contact" />
       <FeatherDecoration className="absolute -right-10 top-20 w-[150px] h-[400px] hidden lg:block" opacity={0.04} />
 
-      <DecorativeAsset asset="featherCircle" className="hidden lg:block left-6 top-28 w-[130px]" opacity={0.07} />
-      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-8 bottom-32 w-[220px] rotate-3" opacity={0.05} />
+      <DecorativeAsset asset="featherCircle" className="hidden lg:block left-6 top-28 w-[180px]" opacity={0.25} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-8 bottom-32 w-[300px] rotate-3" opacity={0.2} />
+      <DecorativeAsset asset="featherMedium" className="hidden lg:block left-[10%] bottom-16 w-[180px] -rotate-[18deg]" opacity={0.15} />
+      <DecorativeAsset asset="pyramidFeather" className="hidden lg:block right-[5%] top-[35%] w-[160px]" opacity={0.12} />
 
       <div className="relative z-10 max-w-[1100px] mx-auto">
         <motion.div

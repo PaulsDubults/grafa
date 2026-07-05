@@ -36,8 +36,10 @@ export default function KnowledgeSection() {
     >
       <WatercolorBackground variant="approach" />
 
-      <DecorativeAsset asset="pyramid" className="hidden lg:block -left-10 top-20 w-[200px]" opacity={0.06} />
-      <DecorativeAsset asset="featherLarge" className="hidden lg:block right-0 bottom-20 w-[160px] rotate-6" opacity={0.05} />
+      <DecorativeAsset asset="pyramid" className="hidden lg:block -left-6 top-20 w-[280px]" opacity={0.2} />
+      <DecorativeAsset asset="featherLarge" className="hidden lg:block right-0 bottom-20 w-[220px] rotate-6" opacity={0.18} />
+      <DecorativeAsset asset="featherCircle" className="hidden lg:block right-[12%] top-12 w-[150px]" opacity={0.2} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block left-[20%] bottom-8 w-[250px] rotate-6" opacity={0.12} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div

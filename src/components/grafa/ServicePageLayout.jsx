@@ -30,7 +30,8 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
       <div className="relative overflow-hidden" style={{ background: '#faf7f2' }}>
         <WatercolorBackground variant="services" />
         <FeatherDecoration className="absolute -right-10 top-10 w-[120px] h-[320px] hidden lg:block" opacity={0.04} />
-        <DecorativeAsset asset="featherCircle2" className="hidden lg:block -left-4 bottom-6 w-[110px]" opacity={0.07} />
+        <DecorativeAsset asset="featherCircle2" className="hidden lg:block -left-2 bottom-6 w-[160px]" opacity={0.22} />
+        <DecorativeAsset asset="featherMedium" className="hidden lg:block right-[8%] top-4 w-[180px] -rotate-[20deg]" opacity={0.15} />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 pt-10 pb-14 md:pt-14 md:pb-20">
           {/* Back + Breadcrumb */}
@@ -81,8 +82,10 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
 
       {/* Content */}
       <div className="relative z-10">
-        <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block -right-12 top-20 w-[220px] rotate-3" opacity={0.05} />
-        <DecorativeAsset asset="pyramid" className="hidden lg:block left-2 bottom-20 w-[140px]" opacity={0.04} />
+        <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block -right-4 top-20 w-[320px] rotate-3" opacity={0.2} />
+        <DecorativeAsset asset="pyramid" className="hidden lg:block left-2 bottom-20 w-[220px]" opacity={0.18} />
+        <DecorativeAsset asset="featherCircle" className="hidden lg:block right-[10%] bottom-[30%] w-[140px]" opacity={0.15} />
+        <DecorativeAsset asset="featherLarge" className="hidden lg:block left-[5%] top-[50%] w-[180px] rotate-[15deg]" opacity={0.1} />
         {children}
       </div>
 

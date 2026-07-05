@@ -82,8 +82,10 @@ export default function WhyGrafaSection() {
     >
       <WatercolorBackground variant="approach" />
 
-      <DecorativeAsset asset="featherMedium" className="hidden lg:block -right-8 top-20 w-[200px] -rotate-12" opacity={0.07} />
-      <DecorativeAsset asset="pyramidFeather" className="hidden lg:block left-4 bottom-24 w-[160px]" opacity={0.06} />
+      <DecorativeAsset asset="featherMedium" className="hidden lg:block -right-4 top-20 w-[260px] -rotate-12" opacity={0.22} />
+      <DecorativeAsset asset="pyramidFeather" className="hidden lg:block left-4 bottom-24 w-[200px]" opacity={0.2} />
+      <DecorativeAsset asset="featherCircle2" className="hidden lg:block right-[10%] bottom-16 w-[140px]" opacity={0.18} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block left-[15%] top-[10%] w-[250px] rotate-3" opacity={0.1} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div
