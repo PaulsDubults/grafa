@@ -3,80 +3,38 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin } from 'lucide-react';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
-import FeatherDecoration from './FeatherDecoration';
 
 const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/58c044609_ChatGPTImageJul5202612_47_42PM.png";
 
-const office = { x: 46.5, y: 52, name: "Jelgava", desc: "Mūsu biroja atrašanās vieta — Jelgavā strādājošs uzņēmums ar vairāk kā 20 gadu pieredzi.", isOffice: true };
-
-const clients = [
-  { x: 50, y: 36, name: "Rīga", desc: "Klienti Rīgā un apkārtnē." },
+/* Hotspot positions matching the pins already baked into the image.
+   Coordinates are % of the map image dimensions. */
+const hotspots = [
+  { x: 50, y: 37, name: "Rīga", desc: "Klienti Rīgā un apkārtnē." },
   { x: 61, y: 44, name: "Ogre", desc: "Sadarbības partneri Ogrē." },
-  { x: 29, y: 52, name: "Kuldīga", desc: "Esam priecīgi, ka mūsu klientu pulkam pievienojies jauns uzņēmums Kuldīgā." },
-  { x: 55, y: 58, name: "Bauska", desc: "Klienti Bauskā." },
-  { x: 70, y: 32, name: "Cēsis", desc: "Klienti Cēsīs." },
-  { x: 16, y: 44, name: "Liepāja", desc: "Klienti Liepājā." },
+  { x: 30, y: 50, name: "Kuldīga", desc: "Esam priecīgi, ka mūsu klientu pulkam pievienojies jauns uzņēmums Kuldīgā." },
+  { x: 55, y: 57, name: "Bauska", desc: "Klienti Bauskā." },
+  { x: 69, y: 32, name: "Cēsis", desc: "Klienti Cēsīs." },
+  { x: 17, y: 44, name: "Liepāja", desc: "Klienti Liepājā." },
   { x: 85, y: 50, name: "Daugavpils", desc: "Klienti Daugavpilī." },
   { x: 62, y: 26, name: "Valmiera", desc: "Klienti Valmierā." },
-  { x: 38, y: 34, name: "Tukums", desc: "Klienti Tukumā." },
-  { x: 22, y: 36, name: "Ventspils", desc: "Klienti Ventspilī." },
+  { x: 39, y: 35, name: "Tukums", desc: "Klienti Tukumā." },
+  { x: 23, y: 36, name: "Ventspils", desc: "Klienti Ventspilī." },
   { x: 75, y: 42, name: "Madona", desc: "Klienti Madonā." },
   { x: 80, y: 34, name: "Gulbene", desc: "Klienti Gulbenē." },
-  { x: 42, y: 44, name: "Jūrmala", desc: "Klienti Jūrmalā." },
+  { x: 43, y: 44, name: "Jūrmala", desc: "Klienti Jūrmalā." },
   { x: 68, y: 52, name: "Jēkabpils", desc: "Klienti Jēkabpilī." },
-  { x: 34, y: 56, name: "Saldus", desc: "Klienti Saldū." },
+  { x: 34, y: 55, name: "Saldus", desc: "Klienti Saldū." },
   { x: 56, y: 22, name: "Sigulda", desc: "Klienti Siguldā." },
   { x: 90, y: 40, name: "Rēzekne", desc: "Klienti Rēzeknē." },
-  { x: 78, y: 56, name: "Preiļi", desc: "Klienti Preiļos." },
-  { x: 24, y: 48, name: "Talsi", desc: "Klienti Talsos." },
-  { x: 48, y: 62, name: "Dobele", desc: "Klienti Dobelē." },
+  { x: 78, y: 55, name: "Preiļi", desc: "Klienti Preiļos." },
+  { x: 25, y: 48, name: "Talsi", desc: "Klienti Talsos." },
+  { x: 48, y: 60, name: "Dobele", desc: "Klienti Dobelē." },
   { x: 65, y: 36, name: "Limbaži", desc: "Klienti Limbažos." },
-  { x: 40, y: 26, name: "Dundaga", desc: "Klienti Dundagā." },
+  { x: 41, y: 26, name: "Dundaga", desc: "Klienti Dundagā." },
   { x: 86, y: 28, name: "Balvi", desc: "Klienti Balvos." },
-  { x: 73, y: 58, name: "Aizkraukle", desc: "Klienti Aizkrauklē." },
+  { x: 73, y: 57, name: "Aizkraukle", desc: "Klienti Aizkrauklē." },
+  { x: 47, y: 49, name: "Jelgava", desc: "Mūsu biroja atrašanās vieta — Jelgavā strādājošs uzņēmums ar vairāk kā 20 gadu pieredzi.", isOffice: true },
 ];
-
-function PinMarker({ point, onClick, isActive, delay = 0 }) {
-  const isOffice = point.isOffice;
-
-  return (
-    <motion.button
-      className={`absolute group ${isActive ? 'z-30' : 'z-10'}`}
-      style={{ left: `${point.x}%`, top: `${point.y}%`, transform: 'translate(-50%, -100%)' }}
-      onClick={(e) => { e.stopPropagation(); onClick(point); }}
-      initial={{ scale: 0, opacity: 0, y: 10 }}
-      whileInView={{ scale: 1, opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.2 + delay * 0.04, duration: 0.4, ease: 'easeOut' }}
-      whileHover={{ scale: 1.2, y: -2 }}
-    >
-      {/* Glow effect */}
-      <span
-        className={`absolute left-1/2 bottom-0 -translate-x-1/2 rounded-full blur-md ${
-          isOffice ? 'w-6 h-4 bg-[#c9a84c]/30' : 'w-4 h-3 bg-[#c9a84c]/25'
-        }`}
-      />
-
-      {/* Pin SVG */}
-      {isOffice ? (
-        <svg viewBox="0 0 24 32" fill="none" className="w-6 h-8 md:w-7 md:h-9 drop-shadow-lg relative">
-          <path d="M12,0 C5.4,0 0,5.4 0,12 C0,21 12,32 12,32 C12,32 24,21 24,12 C24,5.4 18.6,0 12,0 Z" fill="#1e3a5f"/>
-          <circle cx="12" cy="11" r="4" fill="white"/>
-        </svg>
-      ) : (
-        <svg viewBox="0 0 18 26" fill="none" className="w-4 h-5 md:w-[18px] md:h-[24px] drop-shadow-md relative">
-          <path d="M9,0 C4,0 0,4 0,9 C0,16 9,26 9,26 C9,26 18,16 18,9 C18,4 14,0 9,0 Z" fill="#c9a84c"/>
-          <circle cx="9" cy="8.5" r="3" fill="none" stroke="white" strokeWidth="1.2"/>
-        </svg>
-      )}
-
-      {/* Name on hover */}
-      <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[9px] md:text-[10px] font-body whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#1e3a5f]/70 font-medium bg-white/80 px-1.5 py-0.5 rounded-sm shadow-sm">
-        {point.name}
-      </span>
-    </motion.button>
-  );
-}
 
 function PointPopup({ point, onClose }) {
   return (
@@ -128,10 +86,6 @@ function PointPopup({ point, onClose }) {
 export default function LatviaMapSection() {
   const [activePoint, setActivePoint] = useState(null);
 
-  const handlePointClick = (point) => {
-    setActivePoint(prev => prev?.name === point.name ? null : point);
-  };
-
   return (
     <motion.section
       id="karte"
@@ -165,16 +119,14 @@ export default function LatviaMapSection() {
           </p>
         </motion.div>
 
-        {/* Map with image background */}
+        {/* Map — image already contains all visual pins */}
         <motion.div
           className="relative max-w-[950px] mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          onClick={() => setActivePoint(null)}
         >
-          {/* Map image */}
           <div className="relative">
             <img
               src={MAP_IMAGE}
@@ -182,26 +134,20 @@ export default function LatviaMapSection() {
               className="w-full h-auto"
             />
 
-            {/* Overlay for pin positioning */}
-            <div className="absolute inset-0" style={{ top: '3%', left: '5%', right: '3%', bottom: '22%' }}>
-              {/* Client pins */}
-              {clients.map((client, i) => (
-                <PinMarker
-                  key={client.name}
-                  point={client}
-                  onClick={handlePointClick}
-                  isActive={activePoint?.name === client.name}
-                  delay={i}
-                />
+            {/* Invisible clickable hotspots over the baked-in pins */}
+            <div className="absolute" style={{ top: '5%', left: '6%', right: '4%', bottom: '25%' }}>
+              {hotspots.map((spot) => (
+                <button
+                  key={spot.name}
+                  className="absolute w-5 h-6 md:w-6 md:h-7 cursor-pointer group -translate-x-1/2 -translate-y-1/2 z-10"
+                  style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
+                  onClick={() => setActivePoint(spot)}
+                  title={spot.name}
+                >
+                  {/* Hover highlight ring */}
+                  <span className="absolute inset-[-4px] rounded-full bg-[#c9a84c]/0 group-hover:bg-[#c9a84c]/15 transition-colors duration-300" />
+                </button>
               ))}
-
-              {/* Office pin */}
-              <PinMarker
-                point={office}
-                onClick={handlePointClick}
-                isActive={activePoint?.name === office.name}
-                delay={clients.length}
-              />
             </div>
           </div>
         </motion.div>
