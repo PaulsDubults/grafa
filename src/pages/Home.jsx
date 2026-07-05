@@ -4,7 +4,6 @@ import HeroSection from '@/components/grafa/HeroSection';
 import SectionDivider from '@/components/grafa/SectionDivider';
 import ApproachSection from '@/components/grafa/ApproachSection';
 import ServicesSection from '@/components/grafa/ServicesSection';
-import LatviaMapSection from '@/components/grafa/LatviaMapSection';
 import ContactSection from '@/components/grafa/ContactSection';
 import Footer from '@/components/grafa/Footer';
 
@@ -17,8 +16,6 @@ export default function Home() {
       <ApproachSection />
       <SectionDivider color="#faf7f2" flip />
       <ServicesSection />
-      <SectionDivider color="#f5f0e8" />
-      <LatviaMapSection />
       <SectionDivider color="#faf7f2" flip />
       <ContactSection />
       <Footer />
