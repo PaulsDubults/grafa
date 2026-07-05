@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import WatercolorBackground from './WatercolorBackground';
 import FeatherDecoration from './FeatherDecoration';
 import GoldLine from './GoldLine';
+import RainbowPyramid from './decorations/RainbowPyramid';
+import GoldDiamondDivider from './decorations/GoldDiamondDivider';
+import WatercolorBlob from './decorations/WatercolorBlob';
 
 const bulletPoints = [
   { text: "Mūsu darbs nesākas ar pakalpojumu sarakstu.", bold: "Tas sākas ar sarunu." },
@@ -95,6 +98,11 @@ export default function ServicesSection() {
           <path d="M6,0 Q8,5 6,10 Q4,5 6,0" />
         </svg>
       </div>
+
+      {/* Decorative elements */}
+      <RainbowPyramid className="absolute left-6 md:left-10 bottom-16 w-[60px] h-[66px] hidden lg:block" small />
+      <WatercolorBlob className="absolute right-0 top-[30%] w-[100px] h-[80px] hidden lg:block" color="blue" />
+      <GoldDiamondDivider className="absolute left-[15%] bottom-8 w-[100px] h-[16px] hidden md:block" />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         {/* Handwriting intro text */}

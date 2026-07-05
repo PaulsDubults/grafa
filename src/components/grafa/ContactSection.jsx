@@ -6,6 +6,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
+import FeatherCircle from './decorations/FeatherCircle';
+import GoldSwirl from './decorations/GoldSwirl';
+import LeafBranch from './decorations/LeafBranch';
 
 const contactItems = [
   { icon: User, label: "Liene Upeniece", href: null },
@@ -37,6 +40,11 @@ export default function ContactSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="contact" />
+
+      {/* Decorative elements */}
+      <FeatherCircle className="absolute right-6 md:right-16 top-14 w-[45px] h-[45px] hidden lg:block" />
+      <GoldSwirl className="absolute left-[3%] bottom-12 w-[150px] h-[18px] hidden md:block" variant={2} />
+      <LeafBranch className="absolute right-[8%] bottom-8 w-[65px] h-[18px] hidden lg:block" />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">

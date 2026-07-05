@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import PyramidDecoration from './PyramidDecoration';
 import GoldLine from './GoldLine';
+import TriangleOutline from './decorations/TriangleOutline';
+import GoldStarburst from './decorations/GoldStarburst';
+import LightFeather from './decorations/LightFeather';
 
 export default function JoinSection() {
   const scrollToContact = (e) => {
@@ -21,6 +24,11 @@ export default function JoinSection() {
       transition={{ duration: 0.9 }}
     >
       <PyramidDecoration className="absolute -right-10 bottom-10 w-[200px] h-[240px] hidden lg:block" opacity={0.06} />
+
+      {/* Decorative elements */}
+      <TriangleOutline className="absolute left-8 md:left-16 top-12 w-[45px] h-[50px] hidden lg:block" />
+      <GoldStarburst className="absolute right-[20%] top-10 w-[18px] h-[18px] hidden lg:block" />
+      <LightFeather className="absolute left-[5%] bottom-14 w-[130px] h-[26px] hidden lg:block" />
 
       <div className="relative z-10 max-w-[800px] mx-auto text-center">
         <motion.div

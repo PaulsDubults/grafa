@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
+import LightFeather from './decorations/LightFeather';
+import GoldStarburst from './decorations/GoldStarburst';
+import RainbowPyramid from './decorations/RainbowPyramid';
 
 const articles = [
   {
@@ -34,6 +37,11 @@ export default function KnowledgeSection() {
       transition={{ duration: 0.9 }}
     >
       <WatercolorBackground variant="approach" />
+
+      {/* Decorative elements */}
+      <LightFeather className="absolute right-4 md:right-12 top-16 w-[120px] h-[28px] hidden lg:block" flip />
+      <GoldStarburst className="absolute left-8 md:left-16 bottom-24 w-[20px] h-[20px] hidden lg:block" />
+      <RainbowPyramid className="absolute right-6 md:right-14 bottom-12 w-[45px] h-[50px] hidden lg:block" small />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div

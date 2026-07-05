@@ -1,8 +1,10 @@
 import React from 'react';
+import GoldSwirl from './decorations/GoldSwirl';
 
 export default function Footer() {
   return (
     <footer className="relative py-14 px-6 md:px-10 overflow-hidden" style={{ background: '#1e3a5f' }}>
+      <GoldSwirl className="absolute right-[5%] top-4 w-[120px] h-[16px] hidden md:block" />
       <div className="max-w-[1200px] mx-auto">
         {/* Gold line */}
         <div className="w-full h-[0.5px] bg-white/10 mb-10" />
