@@ -39,10 +39,10 @@ export default function ContactSection() {
     >
       <WatercolorBackground variant="contact" />
 
-      <DecorativeAsset asset="pyramidFeather" className="hidden lg:block -right-2 top-20 w-[200px] rotate-6" opacity={0.22} />
-      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block left-4 bottom-16 w-[300px] -rotate-3" opacity={0.18} />
-      <DecorativeAsset asset="featherCircle2" className="hidden lg:block left-[8%] top-12 w-[140px]" opacity={0.2} />
-      <DecorativeAsset asset="featherLarge" className="hidden lg:block right-[15%] bottom-[20%] w-[180px] -rotate-[10deg]" opacity={0.12} />
+      <DecorativeAsset asset="pyramid" className="hidden lg:block -right-2 top-16 w-[260px] rotate-6" opacity={0.3} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block left-2 bottom-12 w-[320px] -rotate-3" opacity={0.22} />
+      <DecorativeAsset asset="pyramid" className="hidden lg:block left-[6%] top-10 w-[200px]" opacity={0.22} />
+      <DecorativeAsset asset="featherCircle2" className="hidden lg:block right-[12%] bottom-[18%] w-[160px]" opacity={0.2} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">

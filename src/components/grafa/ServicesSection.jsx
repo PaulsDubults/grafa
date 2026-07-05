@@ -89,10 +89,10 @@ export default function ServicesSection() {
       {/* Feather on right side */}
       <FeatherDecoration className="absolute right-4 md:right-10 top-16 w-[100px] md:w-[140px] h-[400px] md:h-[500px]" opacity={0.07} />
 
-      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block -left-10 bottom-32 w-[350px] rotate-12" opacity={0.22} />
-      <DecorativeAsset asset="featherCircle" className="hidden lg:block right-12 bottom-16 w-[180px]" opacity={0.25} />
-      <DecorativeAsset asset="featherMedium" className="hidden lg:block right-[8%] top-24 w-[160px] -rotate-[15deg]" opacity={0.15} />
-      <DecorativeAsset asset="pyramid" className="hidden lg:block left-[5%] top-[60%] w-[140px]" opacity={0.1} />
+      <DecorativeAsset asset="pyramid" className="hidden lg:block -left-6 bottom-28 w-[300px]" opacity={0.3} />
+      <DecorativeAsset asset="featherCircle" className="hidden lg:block right-12 bottom-16 w-[180px]" opacity={0.28} />
+      <DecorativeAsset asset="pyramid" className="hidden lg:block right-[6%] top-20 w-[200px] rotate-[5deg]" opacity={0.2} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block left-[30%] top-[55%] w-[280px] rotate-6" opacity={0.15} />
 
       {/* Ink drop decoration */}
       <div className="absolute right-[60px] md:right-[100px] top-12 w-3 h-4 pointer-events-none opacity-[0.06]">

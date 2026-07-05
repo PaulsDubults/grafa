@@ -23,10 +23,10 @@ export default function JoinSection() {
     >
       <PyramidDecoration className="absolute -right-10 bottom-10 w-[200px] h-[240px] hidden lg:block" opacity={0.06} />
 
-      <DecorativeAsset asset="featherLarge" className="hidden lg:block -left-6 top-10 w-[250px] -rotate-12" opacity={0.2} />
-      <DecorativeAsset asset="featherCircle2" className="hidden lg:block right-16 top-8 w-[160px]" opacity={0.18} />
-      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-[10%] bottom-6 w-[280px] rotate-6" opacity={0.12} />
-      <DecorativeAsset asset="featherCircle" className="hidden lg:block left-[20%] bottom-10 w-[120px]" opacity={0.1} />
+      <DecorativeAsset asset="pyramid" className="hidden lg:block -left-4 top-8 w-[280px] -rotate-6" opacity={0.18} />
+      <DecorativeAsset asset="pyramid" className="hidden lg:block right-14 top-6 w-[200px] rotate-[10deg]" opacity={0.15} />
+      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-[8%] bottom-4 w-[300px] rotate-6" opacity={0.18} />
+      <DecorativeAsset asset="featherCircle" className="hidden lg:block left-[22%] bottom-8 w-[140px]" opacity={0.15} />
 
       <div className="relative z-10 max-w-[800px] mx-auto text-center">
         <motion.div
