@@ -125,31 +125,18 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-10 max-w-[1300px] mx-auto px-6 md:px-10 pt-24 md:pt-28">
-        <div className="grid lg:grid-cols-[45%_55%] gap-8 lg:gap-4 items-start min-h-[calc(100vh-120px)]">
+        {/* Two-column grid: story + logo */}
+        <div className="grid lg:grid-cols-[45%_55%] gap-8 lg:gap-4 items-start">
 
-          {/* LEFT COLUMN — Story + Map */}
-          <div className="pt-4 md:pt-8 lg:pt-12 lg:pr-10 flex flex-col">
-            {/* Story text — lines appear one by one and STAY */}
-            <div className="flex-1">
-              {storyLines.map((line, i) => (
-                <StoryLine key={i} text={line} index={i} isVisible={i < visibleCount} />
-              ))}
-            </div>
-
-            {/* Mini map — bottom left */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: allRevealed ? 1 : 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="mt-8 mb-6"
-            >
-              {allRevealed && <HeroMiniMap />}
-            </motion.div>
+          {/* LEFT COLUMN — Story */}
+          <div className="pt-4 md:pt-8 lg:pt-12 lg:pr-10">
+            {storyLines.map((line, i) => (
+              <StoryLine key={i} text={line} index={i} isVisible={i < visibleCount} />
+            ))}
           </div>
 
-          {/* RIGHT COLUMN — Logo composition + Values bar */}
+          {/* RIGHT COLUMN — Logo */}
           <div className="flex flex-col order-first lg:order-last">
-            {/* Logo: pyramid, feather, company name — appears after story */}
             <motion.div
               className="relative flex justify-center lg:justify-end"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -165,57 +152,66 @@ export default function HeroSection() {
                 className="w-full max-w-[480px] lg:max-w-[580px] h-auto object-contain"
               />
             </motion.div>
-
-            {/* Dark blue values bar with wave top — right column only */}
-            <motion.div
-              className="relative mt-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: allRevealed ? 1 : 0,
-                y: allRevealed ? 0 : 20,
-              }}
-              transition={{ delay: logoDelay + 0.8, duration: 0.8, ease: 'easeOut' }}
-            >
-              {/* Wave top edge */}
-              <svg className="block w-full h-[30px] md:h-[45px]" viewBox="0 0 800 45" preserveAspectRatio="none">
-                <path d="M0,45 L0,25 C100,40 200,10 350,18 C500,26 600,8 700,15 C750,20 780,30 800,22 L800,45 Z" fill="#1e3a5f"/>
-                <path d="M0,30 C150,42 300,10 450,22 C600,8 700,28 800,18" stroke="#c9a84c" strokeWidth="0.6" opacity="0.25" fill="none"/>
-              </svg>
-
-              <div className="bg-[#1e3a5f] py-7 md:py-8 px-5 md:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-0">
-                  {coreValues.map((item, i) => (
-                    <motion.div
-                      key={item.title}
-                      className={`flex items-start gap-3 px-3 md:px-4 ${
-                        i < coreValues.length - 1 ? 'md:border-r md:border-white/10' : ''
-                      }`}
-                      initial={{ opacity: 0, y: 14 }}
-                      animate={{
-                        opacity: allRevealed ? 1 : 0,
-                        y: allRevealed ? 0 : 14,
-                      }}
-                      transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
-                    >
-                      <div className="flex-shrink-0 mt-0.5">{item.icon}</div>
-                      <div>
-                        <h3 className="font-heading text-[13px] md:text-[14px] font-semibold text-white mb-1 leading-snug">
-                          {item.title}
-                        </h3>
-                        <p className="font-body text-[11px] md:text-[12px] text-white/40 leading-relaxed">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-              {/* Gold gradient bottom edge */}
-              <div className="h-[3px]" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, #c9a84c)' }} />
-            </motion.div>
-
           </div>
         </div>
+
+        {/* Full-width values bar — compact, inline with last story line */}
+        <motion.div
+          className="relative mt-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{
+            opacity: allRevealed ? 1 : 0,
+            y: allRevealed ? 0 : 20,
+          }}
+          transition={{ delay: logoDelay + 0.8, duration: 0.8, ease: 'easeOut' }}
+        >
+          <svg className="block w-full h-[20px] md:h-[30px]" viewBox="0 0 800 30" preserveAspectRatio="none">
+            <path d="M0,30 L0,15 C100,28 200,5 350,12 C500,18 600,4 700,10 C750,14 780,20 800,14 L800,30 Z" fill="#1e3a5f"/>
+            <path d="M0,20 C150,30 300,6 450,15 C600,5 700,20 800,12" stroke="#c9a84c" strokeWidth="0.6" opacity="0.25" fill="none"/>
+          </svg>
+
+          <div className="bg-[#1e3a5f] py-4 md:py-5 px-5 md:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 max-w-[1000px] mx-auto">
+              {coreValues.map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  className={`flex items-center gap-2.5 px-3 md:px-4 ${
+                    i < coreValues.length - 1 ? 'md:border-r md:border-white/10' : ''
+                  }`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{
+                    opacity: allRevealed ? 1 : 0,
+                    y: allRevealed ? 0 : 10,
+                  }}
+                  transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
+                >
+                  <div className="flex-shrink-0">
+                    <div className="w-7 h-7 md:w-8 md:h-8">{item.icon}</div>
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-[11px] md:text-[12px] font-semibold text-white leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="font-body text-[9px] md:text-[10px] text-white/40 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          <div className="h-[2px]" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, #c9a84c)' }} />
+        </motion.div>
+
+        {/* Centered map below both columns */}
+        <motion.div
+          className="flex justify-center mt-10 mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: allRevealed ? 1 : 0 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+        >
+          {allRevealed && <HeroMiniMap centered />}
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
