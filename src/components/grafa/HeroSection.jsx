@@ -210,6 +210,8 @@ export default function HeroSection() {
                   ))}
                 </div>
               </div>
+              {/* Gold gradient bottom edge */}
+              <div className="h-[3px]" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, #c9a84c)' }} />
             </motion.div>
 
           </div>
