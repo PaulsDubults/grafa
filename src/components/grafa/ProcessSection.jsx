@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { FullFeather, FeatherFragment, FeatherTip, HorizontalFeather, PyramidOutline, SmallPyramid, WatercolorStain, GoldCurve, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
+import { FullFeather, HalfFeather, FeatherFragment, FeatherTip, HorizontalFeather, PyramidOutline, SmallPyramid, WatercolorStain, GoldCurve, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const stepIcons = [
@@ -27,11 +27,13 @@ export default function ProcessSection() {
       <SmallPyramid className="w-[40px] md:w-[55px] h-[40px] md:h-[55px] right-[12%] bottom-[30%]" opacity={0.12} />
 
       <FullFeather className="w-[180px] md:w-[260px] h-[450px] md:h-[650px] left-[-30px] md:left-0 top-[10%]" opacity={0.22} />
-      <FeatherFragment className="w-[90px] md:w-[130px] h-[80px] md:h-[110px] right-4 md:right-12 top-[20%]" opacity={0.2} rotate={10} />
+      <HalfFeather className="w-[120px] md:w-[170px] h-[190px] md:h-[280px] right-0 md:right-4 top-[5%]" opacity={0.18} flip />
+      <FeatherFragment className="w-[90px] md:w-[130px] h-[80px] md:h-[110px] right-4 md:right-12 top-[35%]" opacity={0.2} rotate={10} />
       <FeatherTip className="w-[50px] md:w-[75px] h-[85px] md:h-[125px] right-[5%] bottom-[15%]" opacity={0.2} rotate={-20} />
       <HorizontalFeather className="w-[250px] md:w-[380px] h-[50px] md:h-[75px] left-[5%] bottom-8" opacity={0.15} />
       
-      <WatercolorStain className="right-[-100px] top-[30%]" color="#deb87a" opacity={0.14} size={450} id="proc1" />
+      <WatercolorStain className="right-[-100px] top-[30%]" color="#deb87a" opacity={0.12} size={450} id="proc1" />
+      <WatercolorStain className="left-[-80px] bottom-[-20px]" color="#e0b5b0" opacity={0.08} size={350} id="proc2" />
       
       <GoldCurve className="w-[240px] md:w-[350px] h-[55px] md:h-[75px] right-[3%] top-[55%]" opacity={0.2} flip />
       <StarConstellation className="w-[200px] h-[200px] right-2 top-8" opacity={0.3} />

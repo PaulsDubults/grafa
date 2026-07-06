@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import GoldLine from './GoldLine';
 import Footer from './Footer';
-import { FullFeather, SmallFeather, PyramidOutline, WatercolorStain, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
+import { FullFeather, HalfFeather, SmallFeather, PyramidOutline, WatercolorStain, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function ServicePageLayout({ breadcrumbs, title, subtitle, children }) {
@@ -22,9 +22,11 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
 
       <div className="relative overflow-hidden" style={{ background: '#faf7f2' }}>
         <PaperTexture id="svcHdrP" />
-        <WatercolorStain className="right-[-80px] top-[-30px]" color="#e8c89a" opacity={0.16} size={450} id="svcLW" />
+        <WatercolorStain className="right-[-80px] top-[-30px]" color="#e8c89a" opacity={0.14} size={450} id="svcLW" />
+        <WatercolorStain className="left-[-60px] bottom-[-20px]" color="#e0b5b0" opacity={0.08} size={300} id="svcLR" />
         <FullFeather className="w-[160px] md:w-[240px] h-[400px] md:h-[600px] right-[-10px] md:right-4 top-0" opacity={0.25} />
-        <SmallFeather className="w-[50px] md:w-[70px] h-[130px] md:h-[180px] left-4 bottom-4" opacity={0.18} rotate={-10} />
+        <HalfFeather className="w-[90px] md:w-[130px] h-[145px] md:h-[210px] left-0 bottom-0" opacity={0.15} />
+        <SmallFeather className="w-[50px] md:w-[70px] h-[130px] md:h-[180px] left-[15%] bottom-4" opacity={0.18} rotate={-10} />
         <PyramidOutline className="w-[250px] md:w-[350px] h-[240px] md:h-[340px] left-[10%] top-[-15px]" opacity={0.08} />
         <StarConstellation className="w-[160px] h-[160px] left-6 top-4" opacity={0.28} />
         <GoldDotGrid className="w-[120px] h-[70px] right-[15%] bottom-4" rows={4} cols={6} opacity={0.25} />

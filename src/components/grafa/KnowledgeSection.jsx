@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';
 import GoldLine from './GoldLine';
-import { OverlappingFeathers, DiagonalFeather, FeatherTip, MediumPyramid, SmallPyramid, PyramidSilhouette, WatercolorStain, GoldFlourish, StarConstellation, ScatteredDots, GoldDotGrid, PaperTexture } from './Decorations';
+import { OverlappingFeathers, DiagonalFeather, FeatherTip, SmallFeather, MediumPyramid, SmallPyramid, PyramidSilhouette, WatercolorStain, GoldFlourish, StarConstellation, ScatteredDots, GoldDotGrid, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function KnowledgeSection() {
@@ -16,14 +16,15 @@ export default function KnowledgeSection() {
       {/* COMPOSITION: overlapping feathers right, diagonal feather left, pyramids, watercolor stain, gold decorative line */}
       <OverlappingFeathers className="w-[220px] md:w-[340px] h-[320px] md:h-[480px] right-[-20px] md:right-0 top-[8%]" opacity={0.22} />
       <DiagonalFeather className="w-[130px] md:w-[190px] h-[320px] md:h-[480px] left-0 md:left-4 top-[15%]" opacity={0.2} angle={-20} />
+      <SmallFeather className="w-[55px] md:w-[75px] h-[140px] md:h-[190px] left-[20%] top-[50%]" opacity={0.18} rotate={8} />
       <FeatherTip className="w-[55px] md:w-[80px] h-[90px] md:h-[130px] left-[25%] bottom-8" opacity={0.18} rotate={25} />
       
       <MediumPyramid className="w-[200px] md:w-[280px] h-[200px] md:h-[280px] right-[5%] bottom-[10%]" opacity={0.14} />
       <SmallPyramid className="w-[55px] md:w-[75px] h-[55px] md:h-[75px] left-[8%] top-[55%]" opacity={0.14} />
       <PyramidSilhouette className="w-[280px] md:w-[400px] h-[250px] md:h-[350px] right-[-60px] top-[40%]" opacity={0.04} />
       
-      <WatercolorStain className="left-[-100px] top-[20%]" color="#d4b878" opacity={0.16} size={550} id="know1" />
-      <WatercolorStain className="right-[-80px] bottom-[-30px]" color="#e5c8bc" opacity={0.1} size={350} id="know2" />
+      <WatercolorStain className="left-[-100px] top-[20%]" color="#d4b878" opacity={0.14} size={550} id="know1" />
+      <WatercolorStain className="right-[-80px] bottom-[-30px]" color="#e0b5b0" opacity={0.1} size={350} id="know2" />
       
       <GoldFlourish className="w-[260px] md:w-[380px] h-[100px] md:h-[150px] left-[10%] top-[38%]" opacity={0.2} />
       <StarConstellation className="w-[190px] h-[190px] left-2 top-8" opacity={0.32} />

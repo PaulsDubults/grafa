@@ -21,7 +21,7 @@ export default function WhyGrafaSection() {
     <section id="kapec-grafu" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#f5f0e8' }}>
       <PaperTexture id="whyP" />
 
-      {/* COMPOSITION: feather outline left, pyramid behind cards, stars, dots, gold flourish */}
+      {/* COMPOSITION: gold outline left, rose half-feather right, rose small, rose fragment */}
       <FeatherOutline className="w-[200px] md:w-[300px] h-[500px] md:h-[750px] left-[-30px] md:left-0 top-[5%]" opacity={0.25} />
       <HalfFeather className="w-[140px] md:w-[200px] h-[220px] md:h-[320px] right-0 md:right-4 top-8" opacity={0.22} flip />
       <SmallFeather className="w-[60px] md:w-[80px] h-[150px] md:h-[200px] right-[15%] bottom-[20%]" opacity={0.2} rotate={12} />
@@ -31,7 +31,8 @@ export default function WhyGrafaSection() {
       <MediumPyramid className="w-[140px] md:w-[200px] h-[140px] md:h-[200px] left-[5%] bottom-[10%]" opacity={0.14} />
       <PyramidSilhouette className="w-[250px] md:w-[350px] h-[220px] md:h-[310px] left-[-50px] top-[55%]" opacity={0.04} />
 
-      <WatercolorStain className="right-[-80px] top-[15%]" color="#e5c8bc" opacity={0.15} size={500} id="why1" />
+      <WatercolorStain className="right-[-80px] top-[15%]" color="#e0b5b0" opacity={0.12} size={500} id="why1" />
+      <WatercolorStain className="left-[-120px] bottom-[-30px]" color="#e8c89a" opacity={0.1} size={380} id="why2" />
       
       <StarConstellation className="w-[220px] h-[220px] right-4 top-[5%]" opacity={0.35} />
       <GoldDotGrid className="w-[160px] h-[100px] left-6 top-[65%]" rows={5} cols={9} opacity={0.3} />

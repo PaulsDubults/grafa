@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { FullFeather, HalfFeather, FeatherOutline, SmallFeather, PyramidOutline, MediumPyramid, PyramidSilhouette, WatercolorStain, GoldCurve, GoldFlourish, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
+import { FullFeather, HalfFeather, FeatherOutline, SmallFeather, FeatherFragment, PyramidOutline, MediumPyramid, PyramidSilhouette, WatercolorStain, GoldCurve, GoldFlourish, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function AboutSection() {
@@ -13,18 +13,19 @@ export default function AboutSection() {
     <section id="par-mums" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#faf7f2' }}>
       <PaperTexture id="aboutP" />
 
-      {/* COMPOSITION: large feather left, feather outline right, transparent pyramid center, watercolor, gold elements */}
+      {/* COMPOSITION: gold feather left, rose outline right, rose half top, gold fragment bottom */}
       <FullFeather className="w-[240px] md:w-[350px] h-[600px] md:h-[880px] left-[-30px] md:left-0 top-[3%]" opacity={0.28} />
       <FeatherOutline className="w-[180px] md:w-[270px] h-[450px] md:h-[680px] right-[-15px] md:right-4 bottom-[3%]" opacity={0.2} flip />
       <HalfFeather className="w-[110px] md:w-[160px] h-[180px] md:h-[260px] right-[18%] top-8" opacity={0.18} />
       <SmallFeather className="w-[50px] md:w-[70px] h-[130px] md:h-[180px] left-[12%] bottom-[12%]" opacity={0.18} rotate={-8} />
+      <FeatherFragment className="w-[75px] md:w-[100px] h-[65px] md:h-[85px] left-[25%] top-[65%]" opacity={0.15} rotate={20} />
       
       <PyramidOutline className="w-[500px] md:w-[700px] h-[480px] md:h-[670px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" opacity={0.08} />
       <MediumPyramid className="w-[130px] md:w-[180px] h-[130px] md:h-[180px] left-[5%] top-[20%]" opacity={0.12} />
       <PyramidSilhouette className="w-[300px] md:w-[420px] h-[260px] md:h-[370px] right-[-50px] bottom-[-20px]" opacity={0.04} />
 
-      <WatercolorStain className="right-[-120px] top-[18%]" color="#e8c89a" opacity={0.16} size={550} id="abt1" />
-      <WatercolorStain className="left-[-100px] bottom-[-40px]" color="#deb87a" opacity={0.1} size={400} id="abt2" />
+      <WatercolorStain className="right-[-120px] top-[18%]" color="#e0b5b0" opacity={0.12} size={500} id="abt1" />
+      <WatercolorStain className="left-[-100px] bottom-[-40px]" color="#e8c89a" opacity={0.1} size={400} id="abt2" />
 
       <GoldCurve className="w-[260px] md:w-[380px] h-[55px] md:h-[75px] left-[8%] top-[48%]" opacity={0.22} />
       <GoldFlourish className="w-[200px] md:w-[300px] h-[80px] md:h-[120px] right-[5%] bottom-[18%]" opacity={0.18} flip />
