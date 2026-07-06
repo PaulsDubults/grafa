@@ -79,13 +79,12 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      <div className="absolute top-4 right-4 md:top-6 md:right-8 z-20">
-        <LanguageSwitcher />
-      </div>
-
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
         <div className="grid lg:grid-cols-[48%_52%] gap-4 lg:gap-2 items-start">
           <div className="pt-2 md:pt-4 lg:pt-6 lg:pr-6">
+            <div className="mb-4">
+              <LanguageSwitcher />
+            </div>
             {storyLines.map((line, i) => (
               <StoryLine key={`${i}-${line.slice(0,10)}`} text={line} index={i} isVisible={i < visibleCount} boldWords={boldWords} />
             ))}
@@ -110,52 +109,57 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <motion.div
-          className="relative mt-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{
-            opacity: allRevealed ? 1 : 0,
-            y: allRevealed ? 0 : 20,
-          }}
-          transition={{ delay: logoDelay + 0.8, duration: 0.8, ease: 'easeOut' }}
-        >
-          <svg className="block w-full h-[20px] md:h-[30px]" viewBox="0 0 800 30" preserveAspectRatio="none">
-            <path d="M0,30 L0,15 C100,28 200,5 350,12 C500,18 600,4 700,10 C750,14 780,20 800,14 L800,30 Z" fill="#1e3a5f"/>
-            <path d="M0,20 C150,30 300,6 450,15 C600,5 700,20 800,12" stroke="#c9a84c" strokeWidth="0.6" opacity="0.25" fill="none"/>
-          </svg>
+      </div>
 
-          <div className="bg-[#1e3a5f] py-4 md:py-5 px-5 md:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 max-w-[1000px] mx-auto">
-              {values.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className={`flex items-center gap-2.5 px-3 md:px-4 ${
-                    i < values.length - 1 ? 'md:border-r md:border-white/10' : ''
-                  }`}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{
-                    opacity: allRevealed ? 1 : 0,
-                    y: allRevealed ? 0 : 10,
-                  }}
-                  transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
-                >
-                  <div className="flex-shrink-0">
-                    <div className="w-7 h-7 md:w-8 md:h-8">{valueIcons[i]}</div>
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-[11px] md:text-[12px] font-semibold text-white leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="font-body text-[9px] md:text-[10px] text-white/40 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+      {/* Blue stripe — full width, edge to edge */}
+      <motion.div
+        className="relative mt-4 w-full"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{
+          opacity: allRevealed ? 1 : 0,
+          y: allRevealed ? 0 : 20,
+        }}
+        transition={{ delay: logoDelay + 0.8, duration: 0.8, ease: 'easeOut' }}
+      >
+        <svg className="block w-full h-[20px] md:h-[30px]" viewBox="0 0 800 30" preserveAspectRatio="none">
+          <path d="M0,30 L0,15 C100,28 200,5 350,12 C500,18 600,4 700,10 C750,14 780,20 800,14 L800,30 Z" fill="#1e3a5f"/>
+          <path d="M0,20 C150,30 300,6 450,15 C600,5 700,20 800,12" stroke="#c9a84c" strokeWidth="0.6" opacity="0.25" fill="none"/>
+        </svg>
+
+        <div className="bg-[#1e3a5f] py-4 md:py-5 px-5 md:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 max-w-[1000px] mx-auto">
+            {values.map((item, i) => (
+              <motion.div
+                key={i}
+                className={`flex items-center gap-2.5 px-3 md:px-4 ${
+                  i < values.length - 1 ? 'md:border-r md:border-white/10' : ''
+                }`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{
+                  opacity: allRevealed ? 1 : 0,
+                  y: allRevealed ? 0 : 10,
+                }}
+                transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
+              >
+                <div className="flex-shrink-0">
+                  <div className="w-7 h-7 md:w-8 md:h-8">{valueIcons[i]}</div>
+                </div>
+                <div>
+                  <h3 className="font-heading text-[11px] md:text-[12px] font-semibold text-white leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="font-body text-[9px] md:text-[10px] text-white/40 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
-          <div className="h-[2px]" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, #c9a84c)' }} />
-        </motion.div>
+        </div>
+        <div className="h-[2px]" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, #c9a84c)' }} />
+      </motion.div>
+
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8">
 
         <motion.div
           className="flex justify-center mt-10 mb-8"
