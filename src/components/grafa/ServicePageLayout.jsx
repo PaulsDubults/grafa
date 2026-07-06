@@ -2,11 +2,9 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import WatercolorBackground from './WatercolorBackground';
-import PaperTexture from './PaperTexture';
 import GoldLine from './GoldLine';
 import Footer from './Footer';
-import { FeatherFragment, GoldDots, WatercolorPatch } from './Decorations';
+import { LargeFeather, PeachWash, StarConstellation, GoldDotGrid, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function ServicePageLayout({ breadcrumbs, title, subtitle, children }) {
@@ -20,16 +18,14 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
 
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ background: '#f5f0e8' }}>
-      <PaperTexture id="svcPagePaper" />
+      <PaperTexture id="svcPageP" />
 
       <div className="relative overflow-hidden" style={{ background: '#faf7f2' }}>
-        <PaperTexture id="svcHeaderPaper" />
-        <WatercolorBackground variant="services" />
-
-        {/* Decorative elements */}
-        <FeatherFragment className="w-[45px] h-[70px] right-8 md:right-16 top-12" opacity={0.07} rotate={15} />
-        <GoldDots className="w-[60px] h-[60px] left-6 bottom-8" opacity={0.08} count={6} />
-        <WatercolorPatch className="right-[-50px] top-[20%]" color="rgba(230,185,140,0.04)" size={200} />
+        <PaperTexture id="svcHdrP" />
+        <PeachWash className="right-[-80px] top-[-30px]" size={400} opacity={0.1} />
+        <LargeFeather className="w-[100px] md:w-[150px] h-[250px] md:h-[380px] right-0 md:right-8 top-4" opacity={0.1} />
+        <StarConstellation className="w-[120px] h-[120px] left-8 bottom-4" opacity={0.15} />
+        <GoldDotGrid className="w-[80px] h-[50px] left-6 top-8" rows={3} cols={5} opacity={0.14} />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 pt-10 pb-14 md:pt-14 md:pb-20">
           <div className="flex items-center gap-4 mb-8">

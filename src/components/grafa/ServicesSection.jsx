@@ -1,10 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import WatercolorBackground from './WatercolorBackground';
-import PaperTexture from './PaperTexture';
 import GoldLine from './GoldLine';
-import { FeatherOutline, GoldStars, WaveLine, GoldDots, WatercolorPatch } from './Decorations';
+import { LargeFeather, PeachWash, StarConstellation, WaveBand, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const cardPaths = [
@@ -14,26 +12,53 @@ const cardPaths = [
 ];
 
 const cardIcons = [
-  <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9"><rect x="9" y="6" width="26" height="32" rx="2" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><path d="M15,14 L29,14 M15,20 L29,20 M15,26 L23,26" stroke="#c9a84c" strokeWidth="0.8" opacity="0.6"/><path d="M28,28 L32,32 L36,24" stroke="#c9a84c" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9"><polyline points="7,36 15,24 23,28 32,16 38,12" stroke="#c9a84c" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/><circle cx="38" cy="12" r="2.5" stroke="#c9a84c" strokeWidth="1" fill="none"/><line x1="7" y1="40" x2="38" y2="40" stroke="#c9a84c" strokeWidth="0.7" opacity="0.4"/></svg>,
-  <svg viewBox="0 0 44 44" fill="none" className="w-9 h-9"><path d="M8,16 L22,8 L36,16 L22,24 Z" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><path d="M14,20 L14,32 C14,36 18,40 22,40 C26,40 30,36 30,32 L30,20" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><line x1="36" y1="16" x2="36" y2="36" stroke="#c9a84c" strokeWidth="0.8" opacity="0.5"/></svg>,
+  <svg viewBox="0 0 56 56" fill="none" className="w-12 h-12"><rect x="10" y="6" width="30" height="38" rx="3" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><path d="M18,16 L36,16 M18,24 L36,24 M18,32 L28,32" stroke="#c9a84c" strokeWidth="0.8" opacity="0.5"/><path d="M34,34 L40,40 L46,30" stroke="#c9a84c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  <svg viewBox="0 0 56 56" fill="none" className="w-12 h-12"><polyline points="8,44 18,30 28,36 40,18 48,12" stroke="#c9a84c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" fill="none"/><circle cx="48" cy="12" r="3" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><line x1="8" y1="48" x2="48" y2="48" stroke="#c9a84c" strokeWidth="0.7" opacity="0.3"/></svg>,
+  <svg viewBox="0 0 56 56" fill="none" className="w-12 h-12"><path d="M10,20 L28,10 L46,20 L28,30 Z" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><path d="M16,24 L16,38 C16,43 22,48 28,48 C34,48 40,43 40,38 L40,24" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><line x1="46" y1="20" x2="46" y2="42" stroke="#c9a84c" strokeWidth="0.9" opacity="0.4"/></svg>,
 ];
 
-function BulletPoint({ item, index }) {
+function ServiceCard({ card, icon, path, index }) {
   return (
     <motion.div
-      className="flex items-start gap-3 mb-3"
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: 0.3 + index * 0.06, duration: 0.5 }}
+      transition={{ delay: 0.2 + index * 0.12, duration: 0.7, ease: 'easeOut' }}
     >
-      <div className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] mt-[7px] flex-shrink-0" />
-      <p className="font-body text-[13px] md:text-[14px] text-[#1e3a5f]/60 leading-[1.75]">
-        {item.text}{' '}
-        {item.bold && <strong className="text-[#1e3a5f] font-semibold">{item.bold}</strong>}
-        {item.after && <> {item.after}</>}
-      </p>
+      <Link
+        to={path}
+        className="block relative bg-white rounded-xl p-8 md:p-10 cursor-pointer border border-[#e8e0d4]/60 group h-full overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,95,0.10),0_0_0_1px_rgba(201,168,76,0.15)]"
+      >
+        {/* Gold top accent */}
+        <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, #e8d5a3, #c9a84c, transparent)' }} />
+        
+        {/* Decorative corner ornament */}
+        <svg className="absolute top-3 right-3 w-8 h-8 opacity-[0.12] group-hover:opacity-[0.25] transition-opacity duration-500" viewBox="0 0 30 30" fill="none">
+          <path d="M28,2 L28,12 M28,2 L18,2" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" />
+          <circle cx="28" cy="2" r="1.5" fill="#c9a84c" opacity="0.5" />
+        </svg>
+        <svg className="absolute bottom-3 left-3 w-8 h-8 opacity-[0.12] group-hover:opacity-[0.25] transition-opacity duration-500" viewBox="0 0 30 30" fill="none">
+          <path d="M2,28 L2,18 M2,28 L12,28" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" />
+          <circle cx="2" cy="28" r="1.5" fill="#c9a84c" opacity="0.5" />
+        </svg>
+
+        <div className="mb-6 group-hover:scale-110 transition-transform duration-500 origin-left">{icon}</div>
+        
+        <h3 className="font-heading text-[20px] md:text-[22px] font-semibold text-[#1e3a5f] mb-3">
+          {card.title}
+        </h3>
+        <p className="text-[#1e3a5f]/45 font-body text-[13px] md:text-[14px] leading-[1.85] mb-6">
+          {card.desc}
+        </p>
+        
+        {/* Gold expanding line on hover */}
+        <div className="flex items-center gap-2">
+          <div className="w-8 group-hover:w-20 h-[2px] transition-all duration-700" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3)' }} />
+          <svg className="w-4 h-4 text-[#c9a84c] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-500" viewBox="0 0 20 20" fill="none">
+            <path d="M4,10 L16,10 M12,6 L16,10 L12,14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </Link>
     </motion.div>
   );
 }
@@ -44,98 +69,93 @@ export default function ServicesSection() {
   const cards = t('services.cards');
 
   return (
-    <motion.section
+    <section
       id="pakalpojumi"
-      className="relative py-20 md:py-32 px-6 md:px-10 overflow-hidden"
+      className="relative py-28 md:py-40 overflow-hidden"
       style={{ background: '#faf7f2' }}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.9 }}
     >
-      <PaperTexture id="servicesPaper" />
-      <WatercolorBackground variant="services" />
+      <PaperTexture id="svcP" />
+      
+      {/* Large peach watercolor wash — top right, occupying ~30% */}
+      <PeachWash className="right-[-150px] top-[-100px]" size={700} opacity={0.14} />
+      <PeachWash className="left-[-200px] bottom-[-80px]" size={500} opacity={0.08} />
+      
+      {/* Large feather — right side */}
+      <LargeFeather className="w-[180px] md:w-[260px] h-[450px] md:h-[650px] right-0 md:right-8 top-12" opacity={0.14} />
+      
+      {/* Star constellation — left */}
+      <StarConstellation className="w-[200px] h-[200px] left-4 md:left-12 top-20" opacity={0.2} />
+      
+      {/* Wave band across section */}
+      <WaveBand className="top-[55%]" opacity={0.1} />
 
-      {/* Decorative elements */}
-      <FeatherOutline className="w-[100px] md:w-[140px] h-[280px] md:h-[360px] right-4 md:right-12 top-16" opacity={0.07} />
-      <GoldStars className="w-[120px] h-[80px] left-8 top-20" style={{}} opacity={0.12} />
-      <WaveLine className="w-[300px] h-[20px] right-0 bottom-24" opacity={0.08} />
-      <GoldDots className="w-[100px] h-[100px] left-4 bottom-40" opacity={0.1} count={8} />
-      <WatercolorPatch className="left-[-80px] top-[20%]" color="rgba(230,185,140,0.05)" size={350} />
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
+        {/* Section intro — LEFT aligned like Hero */}
+        <div className="max-w-2xl mb-16 md:mb-20">
+          <motion.p
+            className="font-script text-[18px] md:text-[22px] text-[#c9a84c]/70 leading-[1.9] italic mb-6"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            {t('services.introScript')}
+          </motion.p>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto">
+          <GoldLine width="w-24" className="mb-8" />
+
+          <motion.h2
+            className="font-heading text-[38px] md:text-[52px] lg:text-[60px] font-semibold text-[#1e3a5f] mb-8 leading-[1.1]"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.7 }}
+          >
+            {t('services.heading')}
+          </motion.h2>
+
+          <div className="space-y-3">
+            {bullets.map((item, i) => (
+              <motion.div
+                key={i}
+                className="flex items-start gap-3"
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 + i * 0.06, duration: 0.5 }}
+              >
+                <svg className="w-3 h-3 mt-1.5 flex-shrink-0 text-[#c9a84c]" viewBox="0 0 12 12" fill="currentColor"><path d="M6,0 L7.5,4.5 L12,6 L7.5,7.5 L6,12 L4.5,7.5 L0,6 L4.5,4.5 Z"/></svg>
+                <p className="font-body text-[13px] md:text-[15px] text-[#1e3a5f]/60 leading-[1.8]">
+                  {item.text}{' '}
+                  {item.bold && <strong className="text-[#1e3a5f] font-semibold">{item.bold}</strong>}
+                  {item.after && <> {item.after}</>}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Cards — staggered, premium */}
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-16">
+          {cards.map((card, i) => (
+            <ServiceCard key={i} card={card} icon={cardIcons[i]} path={cardPaths[i]} index={i} />
+          ))}
+        </div>
+
+        {/* Bottom quote */}
         <motion.div
-          className="mb-8 md:mb-10 max-w-3xl"
+          className="flex items-start gap-4 max-w-3xl"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <p className="font-script text-[16px] md:text-[19px] lg:text-[21px] text-[#1e3a5f]/50 leading-[1.9] italic">
-            {t('services.introScript')}
-          </p>
-        </motion.div>
-
-        <GoldLine width="w-20" className="mb-8" />
-
-        <motion.h2
-          className="font-heading text-[36px] md:text-[48px] lg:text-[56px] font-semibold text-[#1e3a5f] mb-10 md:mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15, duration: 0.7 }}
-        >
-          {t('services.heading')}
-        </motion.h2>
-
-        <div className="max-w-2xl mb-14 md:mb-18">
-          {bullets.map((item, i) => (
-            <BulletPoint key={i} item={item} index={i} />
-          ))}
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-5 md:gap-6 mb-12">
-          {cards.map((card, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 + i * 0.08, duration: 0.6 }}
-            >
-              <Link
-                to={cardPaths[i]}
-                className="block bg-white rounded-lg p-6 md:p-7 cursor-pointer shadow-[0_2px_12px_rgba(30,58,95,0.04)] hover:shadow-[0_10px_36px_rgba(30,58,95,0.10)] hover:-translate-y-1.5 transition-all duration-500 border border-[#e8e0d4]/40 hover:border-[#c9a84c]/25 group h-full relative overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
-                <div className="flex items-center gap-3 mb-4">
-                  {cardIcons[i]}
-                  <h3 className="font-heading text-[17px] md:text-[19px] font-semibold text-[#1e3a5f]">
-                    {card.title}
-                  </h3>
-                </div>
-                <p className="text-[#1e3a5f]/45 font-body text-[12px] md:text-[13px] leading-[1.8]">
-                  {card.desc}
-                </p>
-                <div className="w-8 h-[1.5px] mt-5 transition-all duration-600 group-hover:w-14" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3)' }} />
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          className="flex items-start gap-3 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          <span className="text-[#c9a84c] mt-0.5 flex-shrink-0">◆</span>
-          <p className="font-body text-[13px] md:text-[14px] text-[#1e3a5f]/50 leading-[1.75]">
-            <strong className="text-[#1e3a5f]/70 font-semibold">{t('services.goalLabel')}</strong> — {t('services.goalText')}
+          <div className="w-[3px] bg-gradient-to-b from-[#c9a84c] to-transparent rounded-full flex-shrink-0 self-stretch" />
+          <p className="font-body text-[14px] md:text-[15px] text-[#1e3a5f]/50 leading-[1.85]">
+            <strong className="text-[#1e3a5f]/75 font-semibold">{t('services.goalLabel')}</strong> — {t('services.goalText')}
           </p>
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }

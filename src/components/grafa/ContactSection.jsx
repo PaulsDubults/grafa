@@ -4,10 +4,8 @@ import { Phone, Mail, MapPin, User, Clock } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import WatercolorBackground from './WatercolorBackground';
-import PaperTexture from './PaperTexture';
 import GoldLine from './GoldLine';
-import { FeatherOutline, FeatherFragment, GoldDots, WaveLine, WatercolorPatch } from './Decorations';
+import { LargeFeather, PeachWash, GoldDotGrid, StarConstellation, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function ContactSection() {
@@ -31,136 +29,146 @@ export default function ContactSection() {
   };
 
   return (
-    <motion.section
+    <section
       id="kontakti"
-      className="relative py-24 md:py-36 px-6 md:px-10 overflow-hidden"
+      className="relative py-28 md:py-44 overflow-hidden"
       style={{ background: '#faf7f2' }}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.9 }}
     >
-      <PaperTexture id="contactPaper" />
-      <WatercolorBackground variant="contact" />
+      <PaperTexture id="contP" />
+      
+      {/* Large feather — right side */}
+      <LargeFeather className="w-[160px] md:w-[220px] h-[400px] md:h-[560px] right-[-10px] md:right-4 top-[5%]" opacity={0.12} />
+      
+      {/* Peach wash — left */}
+      <PeachWash className="left-[-120px] top-[30%]" size={550} opacity={0.12} />
+      
+      {/* Stars — bottom right */}
+      <StarConstellation className="w-[160px] h-[160px] right-8 bottom-16" opacity={0.18} />
+      
+      {/* Gold dot grid — top left */}
+      <GoldDotGrid className="w-[120px] h-[75px] left-8 top-24" rows={4} cols={7} opacity={0.16} />
 
-      {/* Decorative: feather outlines + dots */}
-      <FeatherOutline className="w-[90px] md:w-[120px] h-[250px] md:h-[320px] right-2 md:right-8 top-12" opacity={0.06} />
-      <FeatherFragment className="w-[45px] h-[70px] left-6 top-24" opacity={0.08} rotate={-15} />
-      <GoldDots className="w-[80px] h-[80px] left-4 bottom-28" opacity={0.1} count={10} />
-      <WaveLine className="w-[200px] h-[16px] left-0 top-[40%]" opacity={0.06} />
-      <WatercolorPatch className="right-[-60px] bottom-[10%]" color="rgba(230,185,140,0.04)" size={280} />
-
-      <div className="relative z-10 max-w-[1200px] mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-24 items-start">
           
+          {/* Left — contact info */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.8 }}
+            transition={{ duration: 0.8 }}
           >
-            <p className="font-body text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#c9a84c] mb-4 font-medium">
+            <p className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#c9a84c] mb-5 font-medium">
               {t('contact.subtitle')}
             </p>
-            <h2 className="font-heading text-[30px] md:text-[40px] lg:text-[48px] font-semibold mb-5 leading-tight text-[#1e3a5f]">
+            <h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold mb-6 leading-[1.1] text-[#1e3a5f]">
               {t('contact.heading')}
             </h2>
-            <GoldLine width="w-24" className="mb-8" />
+            <GoldLine width="w-28" className="mb-10" />
 
-            <p className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[16px] leading-[1.9] mb-10 max-w-lg">
+            <p className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[17px] leading-[2] mb-12 max-w-md">
               {t('contact.description')}
             </p>
 
-            <p className="font-heading text-[16px] font-semibold mb-8 text-[#1e3a5f]">
+            <p className="font-heading text-[18px] font-semibold mb-10 text-[#1e3a5f]">
               {t('contact.companyName')}
             </p>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-7">
               {contactItems.map((item, i) => (
                 <motion.div
                   key={i}
-                  className="flex items-center gap-4 group"
-                  initial={{ opacity: 0, x: -16 }}
+                  className="flex items-center gap-5 group"
+                  initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.2 + i * 0.08, duration: 0.6 }}
+                  transition={{ delay: 0.15 + i * 0.08, duration: 0.6 }}
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#c9a84c]/[0.08] flex items-center justify-center group-hover:bg-[#c9a84c]/[0.15] transition-colors duration-300">
-                    <item.icon className="w-4 h-4 text-[#c9a84c]" strokeWidth={1.5} />
+                  <div className="w-12 h-12 rounded-full bg-[#c9a84c]/[0.08] flex items-center justify-center group-hover:bg-[#c9a84c]/[0.18] transition-all duration-500 group-hover:shadow-[0_4px_16px_rgba(201,168,76,0.15)]">
+                    <item.icon className="w-5 h-5 text-[#c9a84c]" strokeWidth={1.5} />
                   </div>
                   {item.href ? (
-                    <a
-                      href={item.href}
-                      className="text-[14px] font-body text-[#1e3a5f]/65 hover:text-[#1e3a5f] transition-colors duration-300"
-                    >
+                    <a href={item.href} className="text-[15px] font-body text-[#1e3a5f]/65 hover:text-[#1e3a5f] transition-colors duration-300">
                       {item.label}
                     </a>
                   ) : (
-                    <span className="text-[14px] font-body text-[#1e3a5f]/55">
-                      {item.label}
-                    </span>
+                    <span className="text-[15px] font-body text-[#1e3a5f]/55">{item.label}</span>
                   )}
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
+          {/* Right — form in premium card */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <div className="bg-white rounded-lg p-8 md:p-12 shadow-[0_4px_24px_rgba(30,58,95,0.06)] border border-[#e8e0d4]/40 relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
-              <h3 className="font-heading text-[20px] md:text-[22px] font-semibold mb-2 text-[#1e3a5f]">
+            <div className="relative bg-white rounded-xl p-10 md:p-14 border border-[#e8e0d4]/50 overflow-hidden shadow-[0_8px_40px_rgba(30,58,95,0.06)]">
+              {/* Gold top accent */}
+              <div className="absolute top-0 left-8 right-8 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, #e8d5a3, #c9a84c, transparent)' }} />
+              
+              {/* Corner ornaments */}
+              <svg className="absolute top-4 right-4 w-10 h-10 opacity-[0.1]" viewBox="0 0 30 30" fill="none">
+                <path d="M28,2 L28,14 M28,2 L16,2" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" />
+                <circle cx="28" cy="2" r="1.5" fill="#c9a84c" opacity="0.5" />
+              </svg>
+              <svg className="absolute bottom-4 left-4 w-10 h-10 opacity-[0.1]" viewBox="0 0 30 30" fill="none">
+                <path d="M2,28 L2,16 M2,28 L14,28" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" />
+                <circle cx="2" cy="28" r="1.5" fill="#c9a84c" opacity="0.5" />
+              </svg>
+
+              <h3 className="font-heading text-[22px] md:text-[26px] font-semibold mb-3 text-[#1e3a5f]">
                 {t('contact.formTitle')}
               </h3>
-              <div className="w-10 h-[1.5px] mb-8" style={{ background: 'linear-gradient(90deg, #c9a84c, transparent)' }} />
+              <div className="w-12 h-[2px] mb-10" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, transparent)' }} />
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="text-[11px] font-body text-[#1e3a5f]/40 tracking-wider uppercase mb-2 block">{t('contact.labelName')}</label>
+                  <label className="text-[11px] font-body text-[#c9a84c]/70 tracking-[0.2em] uppercase mb-3 block font-medium">{t('contact.labelName')}</label>
                   <Input
                     placeholder={t('contact.placeholderName')}
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 h-12 rounded-lg"
+                    className="bg-[#faf7f2]/80 border-[#e8e0d4]/80 text-[15px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/20 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/15 h-14 rounded-lg"
                     required
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] font-body text-[#1e3a5f]/40 tracking-wider uppercase mb-2 block">{t('contact.labelEmail')}</label>
+                  <label className="text-[11px] font-body text-[#c9a84c]/70 tracking-[0.2em] uppercase mb-3 block font-medium">{t('contact.labelEmail')}</label>
                   <Input
                     type="email"
                     placeholder={t('contact.placeholderEmail')}
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 h-12 rounded-lg"
+                    className="bg-[#faf7f2]/80 border-[#e8e0d4]/80 text-[15px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/20 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/15 h-14 rounded-lg"
                     required
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] font-body text-[#1e3a5f]/40 tracking-wider uppercase mb-2 block">{t('contact.labelMessage')}</label>
+                  <label className="text-[11px] font-body text-[#c9a84c]/70 tracking-[0.2em] uppercase mb-3 block font-medium">{t('contact.labelMessage')}</label>
                   <Textarea
                     placeholder={t('contact.placeholderMessage')}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 min-h-[130px] resize-none rounded-lg"
+                    className="bg-[#faf7f2]/80 border-[#e8e0d4]/80 text-[15px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/20 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/15 min-h-[150px] resize-none rounded-lg"
                     required
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="bg-[#1e3a5f] text-white hover:bg-[#1e3a5f]/90 hover:shadow-lg active:scale-[0.98] text-[13px] font-body tracking-wider uppercase px-10 h-12 transition-all duration-400 rounded-sm"
+                  className="relative bg-[#1e3a5f] text-white hover:bg-[#1e3a5f]/90 text-[13px] font-body tracking-[0.2em] uppercase px-12 h-14 transition-all duration-500 rounded-sm overflow-hidden group hover:shadow-[0_8px_32px_rgba(30,58,95,0.2)]"
                 >
-                  {sent ? t('contact.buttonSent') : t('contact.buttonSend')}
+                  <span className="relative z-10">{sent ? t('contact.buttonSent') : t('contact.buttonSend')}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 </Button>
               </form>
             </div>
           </motion.div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

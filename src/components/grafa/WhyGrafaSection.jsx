@@ -1,18 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import WatercolorBackground from './WatercolorBackground';
-import PaperTexture from './PaperTexture';
 import GoldLine from './GoldLine';
-import { FeatherFragment, PyramidOutline, GoldDots, WaveLine, WatercolorPatch } from './Decorations';
+import { LargePyramid, LargeFeather, InkSplash, GoldDotGrid, PeachWash, WaveBand, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const valueIcons = [
-  <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10"><path d="M22,6 L26,16 L38,17 L29,25 L31,37 L22,31 L13,37 L15,25 L6,17 L18,16 Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" fill="none"/></svg>,
-  <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10"><path d="M22,4 L38,12 L38,24 C38,32 30,38 22,42 C14,38 6,32 6,24 L6,12 Z" stroke="currentColor" strokeWidth="1.2" fill="none"/><path d="M16,22 L20,26 L28,18" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10"><circle cx="22" cy="22" r="15" stroke="currentColor" strokeWidth="1.2" fill="none"/><path d="M22,12 L22,32 M17,16 L27,16 C29,16 30,18 29,20 C28,22 17,22 17,22 C17,22 28,22 29,24 C30,26 29,28 27,28 L17,28" stroke="currentColor" strokeWidth="1.1"/></svg>,
-  <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10"><circle cx="22" cy="16" r="7" stroke="currentColor" strokeWidth="1.2" fill="none"/><path d="M10,38 C10,30 15,26 22,26 C29,26 34,30 34,38" stroke="currentColor" strokeWidth="1.2" fill="none"/></svg>,
-  <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10"><rect x="8" y="10" width="28" height="22" rx="2" stroke="currentColor" strokeWidth="1.2" fill="none"/><line x1="8" y1="28" x2="36" y2="28" stroke="currentColor" strokeWidth="0.8" opacity="0.5"/><path d="M19,20 L21,22 L25,18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10"><path d="M6,32 Q6,18 22,18 Q38,18 38,32" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" fill="none"/><circle cx="15" cy="26" r="1.5" fill="currentColor" opacity="0.4"/><circle cx="22" cy="26" r="1.5" fill="currentColor" opacity="0.4"/><circle cx="29" cy="26" r="1.5" fill="currentColor" opacity="0.4"/></svg>,
+  <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><path d="M28,6 L34,20 L50,22 L38,32 L41,48 L28,40 L15,48 L18,32 L6,22 L22,20 Z" stroke="#c9a84c" strokeWidth="1.3" strokeLinejoin="round" fill="none"/></svg>,
+  <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><path d="M28,4 L48,14 L48,30 C48,40 38,48 28,52 C18,48 8,40 8,30 L8,14 Z" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><path d="M20,28 L25,33 L36,22" stroke="#c9a84c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><circle cx="28" cy="28" r="18" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><path d="M28,14 L28,42 M22,19 L34,19 C36.5,19 38,22 36.5,25 C35,28 22,28 22,28 C22,28 35,28 36.5,31 C38,34 36.5,37 34,37 L22,37" stroke="#c9a84c" strokeWidth="1.1"/></svg>,
+  <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><circle cx="28" cy="18" r="9" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><path d="M12,48 C12,38 19,32 28,32 C37,32 44,38 44,48" stroke="#c9a84c" strokeWidth="1.3" fill="none"/></svg>,
+  <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><rect x="8" y="12" width="34" height="28" rx="3" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><line x1="8" y1="34" x2="42" y2="34" stroke="#c9a84c" strokeWidth="0.7" opacity="0.4"/><path d="M23,24 L26,27 L33,20" stroke="#c9a84c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><path d="M8,40 Q8,22 28,22 Q48,22 48,40" stroke="#c9a84c" strokeWidth="1.3" strokeLinecap="round" fill="none"/><circle cx="20" cy="32" r="2" fill="#c9a84c" opacity="0.5"/><circle cx="28" cy="32" r="2" fill="#c9a84c" opacity="0.5"/><circle cx="36" cy="32" r="2" fill="#c9a84c" opacity="0.5"/></svg>,
 ];
 
 export default function WhyGrafaSection() {
@@ -20,71 +18,97 @@ export default function WhyGrafaSection() {
   const values = t('whyGrafa.values');
 
   return (
-    <motion.section
+    <section
       id="kapec-grafu"
-      className="relative py-24 md:py-36 px-6 md:px-10 overflow-hidden"
+      className="relative py-28 md:py-44 overflow-hidden"
       style={{ background: '#f5f0e8' }}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.9 }}
     >
-      <PaperTexture id="whyPaper" />
-      <WatercolorBackground variant="approach" />
+      <PaperTexture id="whyP" />
+      
+      {/* Large pyramid background — left side, big and visible */}
+      <LargePyramid className="w-[350px] md:w-[500px] h-[350px] md:h-[500px] left-[-80px] md:left-[-50px] top-[10%]" opacity={0.09} />
+      
+      {/* Feather — right side, distinct from services */}
+      <LargeFeather className="w-[140px] md:w-[200px] h-[350px] md:h-[500px] right-[-20px] md:right-4 bottom-[5%]" opacity={0.12} flip />
+      
+      {/* Large ink splash */}
+      <InkSplash className="right-[-100px] top-[20%]" color="rgba(230,185,140,0.10)" size={550} />
+      
+      {/* Gold dot grid — bottom left */}
+      <GoldDotGrid className="w-[140px] h-[90px] left-8 bottom-24" rows={5} cols={8} opacity={0.18} />
 
-      {/* Decorative composition: pyramid + feather fragments + dots */}
-      <PyramidOutline className="left-[-30px] md:left-6 top-20" opacity={0.05} size={180} />
-      <FeatherFragment className="w-[60px] h-[90px] right-8 md:right-16 top-32" opacity={0.09} rotate={15} />
-      <FeatherFragment className="w-[45px] h-[70px] left-12 bottom-28" opacity={0.07} rotate={-20} />
-      <GoldDots className="w-[80px] h-[80px] right-6 bottom-20" opacity={0.1} count={10} />
-      <WaveLine className="w-[250px] h-[18px] left-0 top-[45%]" opacity={0.06} />
-      <WatercolorPatch className="right-[-60px] top-[30%]" color="rgba(230,180,140,0.04)" size={300} />
-
-      <div className="relative z-10 max-w-[1200px] mx-auto">
-        <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="font-body text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#c9a84c] mb-4 font-medium">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
+        {/* Header — RIGHT aligned, different from services */}
+        <div className="flex flex-col items-end text-right mb-20 md:mb-24 max-w-2xl ml-auto">
+          <motion.p
+            className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#c9a84c] mb-5 font-medium"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             {t('whyGrafa.subtitle')}
-          </p>
-          <h2 className="font-heading text-[30px] md:text-[40px] lg:text-[48px] font-semibold mb-5 text-[#1e3a5f]">
+          </motion.p>
+          <motion.h2
+            className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#1e3a5f] mb-6 leading-[1.1]"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.7 }}
+          >
             {t('whyGrafa.heading')}
-          </h2>
-          <GoldLine width="w-24" className="mx-auto mb-8" />
-          <p className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[17px] leading-[1.8] max-w-3xl mx-auto">
+          </motion.h2>
+          <GoldLine width="w-28" className="mb-8" />
+          <motion.p
+            className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[17px] leading-[1.9]"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
             {t('whyGrafa.description')}
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Cards — 2-column staggered with large padding */}
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
           {values.map((item, i) => (
             <motion.div
               key={i}
-              className="group bg-white/70 backdrop-blur-sm p-7 md:p-8 border border-[#e8e0d4]/40 hover:border-[#c9a84c]/25 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(30,58,95,0.06)] rounded-lg relative overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
+              className={`group relative bg-white rounded-xl p-8 md:p-10 border border-[#e8e0d4]/50 overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,95,0.08),0_0_0_1px_rgba(201,168,76,0.12)] ${
+                i % 2 === 1 ? 'md:mt-12' : ''
+              }`}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.6 }}
+              transition={{ delay: i * 0.1, duration: 0.7 }}
             >
-              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
-              <div className="text-[#c9a84c] mb-5 group-hover:text-[#1e3a5f] transition-colors duration-500">
-                {valueIcons[i]}
+              {/* Gold top line */}
+              <div className="absolute top-0 left-8 right-8 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, #e8d5a3, #c9a84c, transparent)' }} />
+              
+              {/* Corner ornaments */}
+              <svg className="absolute top-3 right-3 w-8 h-8 opacity-[0.1] group-hover:opacity-[0.22] transition-opacity duration-500" viewBox="0 0 30 30" fill="none">
+                <path d="M28,2 L28,12 M28,2 L18,2" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" />
+              </svg>
+
+              <div className="flex items-start gap-5">
+                <div className="text-[#c9a84c] group-hover:scale-110 transition-transform duration-500 flex-shrink-0 mt-1">
+                  {valueIcons[i]}
+                </div>
+                <div>
+                  <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#1e3a5f] mb-3 leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-[#1e3a5f]/50 font-body text-[13px] md:text-[15px] leading-[1.85]">
+                    {item.desc}
+                  </p>
+                  <div className="w-0 group-hover:w-16 h-[2px] mt-5 transition-all duration-700" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, transparent)' }} />
+                </div>
               </div>
-              <h3 className="font-heading text-[16px] md:text-[17px] font-semibold text-[#1e3a5f] mb-2.5 leading-snug">
-                {item.title}
-              </h3>
-              <p className="text-[#1e3a5f]/50 font-body text-[13px] md:text-[14px] leading-[1.75]">
-                {item.desc}
-              </p>
-              <div className="w-0 group-hover:w-10 h-[1.5px] mt-5 transition-all duration-700" style={{ background: 'linear-gradient(90deg, #c9a84c, transparent)' }} />
             </motion.div>
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
