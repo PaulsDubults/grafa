@@ -5,213 +5,183 @@ const GOLD = '#c9a84c';
 const ROSE = '#c4868a';
 
 /* ═══════════════════════════════════════════════════════════════
-   FEATHER ILLUSTRATIONS — 3 hand-drawn ink styles
-   Style A: Long flowing diagonal quill (like a writing feather)
-   Style B: Shorter upright feather with ink drip at tip
-   Style C: Crossed feathers with triangle behind
+   FEATHER ILLUSTRATIONS — realistic quill style with many fine barbs
+   Inspired by: pen-and-ink botanical illustration with thick tapering
+   rachis (shaft), dozens of fine parallel barb lines, fluffy downy base
    ═══════════════════════════════════════════════════════════════ */
 
-/*
-  InkQuillBarbs: generates curved barb strokes along a curved shaft path.
-  Each barb curves upward and outward like a real feather vane.
-*/
-function QuillBarbs({ points, count, spread, color, side = 'both' }) {
+/* Helper: generates many fine barb lines along a shaft */
+function Barbs({ cx, y1, y2, count, spreadL, spreadR, color, side = 'both' }) {
   const lines = [];
   for (let i = 0; i < count; i++) {
-    const t = (i + 0.5) / count;
-    // shape factor — widest at 30%, tapers at tip and base
-    const shape = Math.sin(t * Math.PI) * (t < 0.35 ? t / 0.35 : 1);
-    const idx = Math.min(Math.floor(t * (points.length - 1)), points.length - 2);
-    const lt = t * (points.length - 1) - idx;
-    const px = points[idx][0] + (points[idx + 1][0] - points[idx][0]) * lt;
-    const py = points[idx][1] + (points[idx + 1][1] - points[idx][1]) * lt;
-    // tangent direction
-    const dx = points[Math.min(idx + 1, points.length - 1)][0] - points[idx][0];
-    const dy = points[Math.min(idx + 1, points.length - 1)][1] - points[idx][1];
-    const len = Math.sqrt(dx * dx + dy * dy) || 1;
-    const nx = -dy / len; // normal left
-    const ny = dx / len;
-    const barbLen = spread * shape * (0.85 + Math.sin(i * 2.1) * 0.15);
-    const sw = 0.25 + shape * 0.45;
-    // barbs curve upward (against shaft direction)
-    const curveFactor = barbLen * 0.35;
-    if (side !== 'right') {
-      const ex = px + nx * barbLen;
-      const ey = py + ny * barbLen;
-      const cpx = px + nx * barbLen * 0.55 - dx / len * curveFactor;
-      const cpy = py + ny * barbLen * 0.55 - dy / len * curveFactor;
-      lines.push(<path key={`l${i}`} d={`M${px.toFixed(1)},${py.toFixed(1)} Q${cpx.toFixed(1)},${cpy.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />);
-    }
-    if (side !== 'left') {
-      const ex = px - nx * barbLen;
-      const ey = py - ny * barbLen;
-      const cpx = px - nx * barbLen * 0.55 - dx / len * curveFactor;
-      const cpy = py - ny * barbLen * 0.55 - dy / len * curveFactor;
-      lines.push(<path key={`r${i}`} d={`M${px.toFixed(1)},${py.toFixed(1)} Q${cpx.toFixed(1)},${cpy.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />);
-    }
+    const t = i / (count - 1);
+    const y = y1 + t * (y2 - y1);
+    const taper = 1 - Math.abs(t - 0.35) * 0.9;
+    const lenL = spreadL * taper * (0.8 + Math.sin(i * 1.7) * 0.2);
+    const lenR = spreadR * taper * (0.8 + Math.cos(i * 1.3) * 0.2);
+    const curveL = lenL * 0.3;
+    const curveR = lenR * 0.3;
+    const sw = 0.35 + taper * 0.35;
+    if (side !== 'right') lines.push(<path key={`l${i}`} d={`M${cx},${y} Q${cx - lenL * 0.6},${y - curveL} ${cx - lenL},${y - curveL * 1.8}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />);
+    if (side !== 'left') lines.push(<path key={`r${i}`} d={`M${cx},${y} Q${cx + lenR * 0.6},${y - curveR} ${cx + lenR},${y - curveR * 1.8}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />);
   }
   return <>{lines}</>;
 }
 
-/* Ink drip drop at the tip of a feather */
-function InkDrip({ x, y, color }) {
-  return (
-    <g>
-      <ellipse cx={x} cy={y + 2} rx="2.5" ry="3.5" fill={color} opacity="0.7" />
-      <path d={`M${x},${y - 2} Q${x - 1.5},${y} ${x},${y + 4}`} stroke={color} strokeWidth="1.2" fill="none" strokeLinecap="round" opacity="0.5" />
-      <circle cx={x + 3} cy={y + 8} r="1.2" fill={color} opacity="0.4" />
-      <circle cx={x - 2} cy={y + 11} r="0.8" fill={color} opacity="0.3" />
-    </g>
-  );
-}
-
-/* ── STYLE A: Long flowing diagonal quill ── */
-const QUILL_A_POINTS = [[85,8],[80,40],[72,90],[62,155],[55,220],[52,280],[54,330],[60,380],[70,420],[82,455],[95,480],[105,498]];
-
-/* 1. FullFeather — long diagonal quill (Style A) */
+/* 1. Full feather — tall realistic quill with dense barbs */
 export function FullFeather({ className = '', flip = false, opacity = 0.3, color = GOLD }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={flip ? { transform: 'scaleX(-1)' } : undefined} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.8 }}>
-      <svg viewBox="0 0 180 510" fill="none" className="w-full h-full" style={{ opacity }}>
-        {/* Shaft — thick, tapering, slightly curved */}
-        <path d="M85,8 Q80,40 72,90 Q62,155 55,220 Q52,280 54,330 Q60,380 70,420 Q82,455 95,480 L105,498" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" />
-        <path d="M85,8 Q80,40 72,90 Q62,155 55,220 Q52,280 54,330 Q60,380 70,420 Q82,455 95,480 L105,498" stroke={color} strokeWidth="0.8" fill="none" strokeLinecap="round" opacity="0.3" />
-        {/* Dense barbs along the curve */}
-        <QuillBarbs points={QUILL_A_POINTS} count={52} spread={65} color={color} />
-        {/* Ink splash at nib */}
-        <circle cx="107" cy="500" r="3" fill={color} opacity="0.35" />
-        <circle cx="112" cy="504" r="1.5" fill={color} opacity="0.25" />
-        <circle cx="103" cy="505" r="1" fill={color} opacity="0.2" />
+      <svg viewBox="0 0 200 520" fill="none" className="w-full h-full" style={{ opacity }}>
+        {/* Rachis — thick tapering shaft */}
+        <path d="M100,6 Q97,50 98,120 Q99,220 100,340 Q100,420 100,510" stroke={color} strokeWidth="2.8" fill="none" strokeLinecap="round" />
+        <path d="M100,6 Q97,50 98,120 Q99,220 100,340 Q100,420 100,510" stroke={color} strokeWidth="1.2" fill="none" strokeLinecap="round" opacity="0.3" />
+        {/* Dense barbs */}
+        <Barbs cx={100} y1={30} y2={360} count={45} spreadL={72} spreadR={72} color={color} />
+        {/* Downy base — fluffy short wisps */}
+        {[370,378,386,394,402,410,418,426].map((y,i) => {
+          const sp = 18 - i * 1.5;
+          return <g key={`d${i}`}>
+            <path d={`M100,${y} Q${100-sp},${y-4-i} ${100-sp-5},${y-2}`} stroke={color} strokeWidth="0.3" fill="none" strokeLinecap="round" opacity={0.5-i*0.04} />
+            <path d={`M100,${y} Q${100+sp},${y-3-i} ${100+sp+5},${y-1}`} stroke={color} strokeWidth="0.3" fill="none" strokeLinecap="round" opacity={0.5-i*0.04} />
+            <path d={`M100,${y} Q${100-sp*0.7},${y+3} ${100-sp-3},${y+5}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.03} />
+            <path d={`M100,${y} Q${100+sp*0.7},${y+3} ${100+sp+3},${y+5}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.03} />
+          </g>;
+        })}
       </svg>
     </motion.div>
   );
 }
 
-/* 5. DiagonalFeather — same quill shape, for angled placement */
-export function DiagonalFeather({ className = '', opacity = 0.25, color = GOLD, angle = -30 }) {
-  return (
-    <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${angle}deg)` }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
-      <svg viewBox="0 0 160 400" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M75,6 Q70,35 64,80 Q56,140 50,200 Q48,255 52,300 Q58,345 68,375 Q76,392 82,398" stroke={color} strokeWidth="2.2" fill="none" strokeLinecap="round" />
-        <QuillBarbs points={[[75,6],[70,35],[64,80],[56,140],[50,200],[48,255],[52,300],[58,345],[68,375],[82,398]]} count={42} spread={52} color={color} />
-        <circle cx="84" cy="400" r="2.5" fill={color} opacity="0.3" />
-        <circle cx="88" cy="404" r="1.2" fill={color} opacity="0.2" />
-      </svg>
-    </motion.div>
-  );
-}
-
-/* 6. HorizontalFeather — Style A rotated for horizontal placement */
-export function HorizontalFeather({ className = '', opacity = 0.22, color = ROSE, flip = false }) {
-  return (
-    <motion.div className={`absolute pointer-events-none ${className}`} style={flip ? { transform: 'scaleY(-1)' } : undefined} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
-      <svg viewBox="0 0 420 100" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M8,55 Q40,50 90,42 Q160,32 230,30 Q300,32 350,40 Q385,48 408,55" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round" />
-        <QuillBarbs points={[[8,55],[40,50],[90,42],[160,32],[230,30],[300,32],[350,40],[385,48],[408,55]]} count={38} spread={32} color={color} />
-        <InkDrip x={410} y={56} color={color} />
-      </svg>
-    </motion.div>
-  );
-}
-
-/* ── STYLE B: Shorter upright feather with ink drip ── */
-const QUILL_B_POINTS = [[70,8],[68,30],[65,65],[62,105],[60,150],[60,195],[63,235],[68,270],[75,298]];
-
-/* 2. HalfFeather — shorter upright feather (Style B) */
+/* 2. Half feather — top portion only, with fine barbs */
 export function HalfFeather({ className = '', flip = false, opacity = 0.28, color = ROSE }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={flip ? { transform: 'scaleX(-1)' } : undefined} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
-      <svg viewBox="0 0 140 320" fill="none" className="w-full h-full" style={{ opacity }}>
-        {/* Shaft — slightly curved, narrower */}
-        <path d="M70,8 Q68,30 65,65 Q62,105 60,150 Q60,195 63,235 Q68,270 75,298" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" />
-        {/* Barbs — denser near top, sparser toward tip */}
-        <QuillBarbs points={QUILL_B_POINTS} count={38} spread={48} color={color} />
-        {/* Ink drip at tip */}
-        <InkDrip x={76} y={300} color={color} />
-        {/* Watercolor haze behind */}
-        <ellipse cx="65" cy="160" rx="40" ry="70" fill={color} opacity="0.04" />
+      <svg viewBox="0 0 180 300" fill="none" className="w-full h-full" style={{ opacity }}>
+        <path d="M90,4 Q87,40 88,100 Q89,170 90,240 Q90,270 90,296" stroke={color} strokeWidth="2.2" fill="none" strokeLinecap="round" />
+        <Barbs cx={90} y1={22} y2={250} count={32} spreadL={60} spreadR={60} color={color} />
+        {/* Downy wisps at base */}
+        {[255,262,269,276].map((y,i) => <g key={`dh${i}`}>
+          <path d={`M90,${y} Q${75-i*2},${y-3} ${70-i*3},${y}`} stroke={color} strokeWidth="0.3" fill="none" strokeLinecap="round" opacity={0.4-i*0.05} />
+          <path d={`M90,${y} Q${105+i*2},${y-3} ${110+i*3},${y}`} stroke={color} strokeWidth="0.3" fill="none" strokeLinecap="round" opacity={0.4-i*0.05} />
+        </g>)}
       </svg>
     </motion.div>
   );
 }
 
-/* 4. SmallFeather — compact version of Style B */
-export function SmallFeather({ className = '', opacity = 0.26, rotate = 0, color = ROSE }) {
-  return (
-    <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${rotate}deg)` }} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.2 }}>
-      <svg viewBox="0 0 80 200" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M40,6 Q38,22 36,48 Q34,80 34,115 Q36,150 40,178 Q43,192 45,198" stroke={color} strokeWidth="1.5" fill="none" strokeLinecap="round" />
-        <QuillBarbs points={[[40,6],[38,22],[36,48],[34,80],[34,115],[36,150],[40,178],[45,198]]} count={26} spread={28} color={color} />
-        <InkDrip x={46} y={199} color={color} />
-      </svg>
-    </motion.div>
-  );
-}
-
-/* 7. FeatherTip — just the top portion of Style B */
-export function FeatherTip({ className = '', opacity = 0.24, color = GOLD, rotate = 0 }) {
-  return (
-    <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${rotate}deg)` }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2 }}>
-      <svg viewBox="0 0 90 160" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M48,4 Q46,18 44,40 Q42,65 42,95 Q44,125 48,150" stroke={color} strokeWidth="1.6" fill="none" strokeLinecap="round" />
-        <QuillBarbs points={[[48,4],[46,18],[44,40],[42,65],[42,95],[44,125],[48,150]]} count={20} spread={30} color={color} />
-        <InkDrip x={49} y={152} color={color} />
-      </svg>
-    </motion.div>
-  );
-}
-
-/* 3. FeatherOutline — lighter dashed version of Style B */
+/* 3. Feather outline — lighter, fewer barbs, dashed rachis */
 export function FeatherOutline({ className = '', flip = false, opacity = 0.22, color = GOLD }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={flip ? { transform: 'scaleX(-1)' } : undefined} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.8 }}>
-      <svg viewBox="0 0 140 390" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M68,6 Q65,35 62,75 Q58,130 56,185 Q56,240 60,290 Q65,335 72,370 Q76,385 78,390" stroke={color} strokeWidth="1.2" fill="none" strokeLinecap="round" strokeDasharray="8 4" />
-        <QuillBarbs points={[[68,6],[65,35],[62,75],[58,130],[56,185],[56,240],[60,290],[65,335],[72,370],[78,390]]} count={30} spread={44} color={color} />
+      <svg viewBox="0 0 160 420" fill="none" className="w-full h-full" style={{ opacity }}>
+        <path d="M80,6 Q77,50 78,130 Q79,220 80,320 Q80,370 80,414" stroke={color} strokeWidth="1.4" fill="none" strokeLinecap="round" strokeDasharray="10 5" />
+        <Barbs cx={80} y1={28} y2={320} count={28} spreadL={52} spreadR={52} color={color} />
       </svg>
     </motion.div>
   );
 }
 
-/* ── STYLE C: Crossed feathers with triangle ── */
+/* 4. Small feather — compact, dense barbs */
+export function SmallFeather({ className = '', opacity = 0.26, rotate = 0, color = ROSE }) {
+  return (
+    <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${rotate}deg)` }} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.2 }}>
+      <svg viewBox="0 0 80 210" fill="none" className="w-full h-full" style={{ opacity }}>
+        <path d="M40,4 Q38,30 39,70 Q40,120 40,170 Q40,190 40,206" stroke={color} strokeWidth="1.6" fill="none" strokeLinecap="round" />
+        <Barbs cx={40} y1={16} y2={170} count={22} spreadL={28} spreadR={28} color={color} />
+        {[175,180,185,190].map((y,i) => <g key={`ds${i}`}>
+          <path d={`M40,${y} Q${32-i},${y-2} ${28-i*2},${y}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.05} />
+          <path d={`M40,${y} Q${48+i},${y-2} ${52+i*2},${y}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.05} />
+        </g>)}
+      </svg>
+    </motion.div>
+  );
+}
 
-/* 8. OverlappingFeathers — two crossed quills with triangle behind */
+/* 5. Diagonal feather — angled, with dense barbs */
+export function DiagonalFeather({ className = '', opacity = 0.25, color = GOLD, angle = -30 }) {
+  return (
+    <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${angle}deg)` }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
+      <svg viewBox="0 0 140 370" fill="none" className="w-full h-full" style={{ opacity }}>
+        <path d="M70,4 Q67,45 68,115 Q69,200 70,290 Q70,335 70,366" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" />
+        <Barbs cx={70} y1={22} y2={290} count={36} spreadL={48} spreadR={48} color={color} />
+        {[295,302,309,316].map((y,i) => <g key={`dd${i}`}>
+          <path d={`M70,${y} Q${58-i},${y-2} ${54-i*2},${y+1}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.05} />
+          <path d={`M70,${y} Q${82+i},${y-2} ${86+i*2},${y+1}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.05} />
+        </g>)}
+      </svg>
+    </motion.div>
+  );
+}
+
+/* 6. Horizontal feather — landscape, rotated 90° feel */
+export function HorizontalFeather({ className = '', opacity = 0.22, color = ROSE, flip = false }) {
+  return (
+    <motion.div className={`absolute pointer-events-none ${className}`} style={flip ? { transform: 'scaleY(-1)' } : undefined} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
+      <svg viewBox="0 0 420 110" fill="none" className="w-full h-full" style={{ opacity }}>
+        {/* Horizontal rachis */}
+        <path d="M6,55 Q60,53 150,54 Q260,55 360,55 Q400,55 416,55" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round" />
+        {/* Barbs radiating up and down */}
+        {Array.from({length:30},(_,i)=>{
+          const t=i/29;const x=25+t*340;const taper=1-Math.abs(t-0.35)*0.9;
+          const len=38*taper*(0.8+Math.sin(i*1.5)*0.2);const sw=0.3+taper*0.3;
+          return <g key={`hb${i}`}>
+            <path d={`M${x},55 Q${x-len*0.15},${55-len*0.6} ${x-len*0.3},${55-len}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />
+            <path d={`M${x},55 Q${x+len*0.15},${55+len*0.6} ${x+len*0.3},${55+len}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />
+          </g>;
+        })}
+      </svg>
+    </motion.div>
+  );
+}
+
+/* 7. Feather tip — just the sharp quill point with fine barbs */
+export function FeatherTip({ className = '', opacity = 0.24, color = GOLD, rotate = 0 }) {
+  return (
+    <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${rotate}deg)` }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2 }}>
+      <svg viewBox="0 0 100 170" fill="none" className="w-full h-full" style={{ opacity }}>
+        <path d="M50,3 Q49,25 49,60 Q50,100 50,165" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round" />
+        <Barbs cx={50} y1={12} y2={130} count={18} spreadL={32} spreadR={32} color={color} />
+      </svg>
+    </motion.div>
+  );
+}
+
+/* 8. Overlapping feathers — two realistic quills crossed */
 export function OverlappingFeathers({ className = '', opacity = 0.2 }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 2 }}>
-      <svg viewBox="0 0 300 380" fill="none" className="w-full h-full" style={{ opacity }}>
-        {/* Triangle behind */}
-        <path d="M150,50 L260,320 L40,320 Z" stroke={GOLD} strokeWidth="1.5" fill="none" opacity="0.5" />
-        {/* Left feather — leaning left */}
-        <g transform="rotate(-25, 150, 200)">
-          <path d="M150,20 Q146,50 142,90 Q138,140 136,195 Q136,245 140,285 Q146,320 155,348" stroke={GOLD} strokeWidth="2" fill="none" strokeLinecap="round" />
-          <QuillBarbs points={[[150,20],[146,50],[142,90],[138,140],[136,195],[136,245],[140,285],[146,320],[155,348]]} count={36} spread={48} color={GOLD} />
-          <InkDrip x={156} y={350} color={GOLD} />
+      <svg viewBox="0 0 300 440" fill="none" className="w-full h-full" style={{ opacity }}>
+        <g transform="rotate(-10, 130, 220)">
+          <path d="M130,10 Q127,55 128,140 Q129,230 130,330 Q130,380 130,420" stroke={GOLD} strokeWidth="2.2" fill="none" strokeLinecap="round" />
+          <Barbs cx={130} y1={30} y2={330} count={38} spreadL={58} spreadR={58} color={GOLD} />
         </g>
-        {/* Right feather — leaning right */}
-        <g transform="rotate(25, 150, 200)">
-          <path d="M150,20 Q154,50 158,90 Q162,140 164,195 Q164,245 160,285 Q154,320 145,348" stroke={ROSE} strokeWidth="2" fill="none" strokeLinecap="round" />
-          <QuillBarbs points={[[150,20],[154,50],[158,90],[162,140],[164,195],[164,245],[160,285],[154,320],[145,348]]} count={36} spread={48} color={ROSE} />
-          <InkDrip x={144} y={350} color={ROSE} />
+        <g transform="rotate(14, 170, 220)" opacity="0.65">
+          <path d="M170,30 Q168,70 169,150 Q170,240 170,330 Q170,370 170,410" stroke={ROSE} strokeWidth="2" fill="none" strokeLinecap="round" />
+          <Barbs cx={170} y1={48} y2={320} count={32} spreadL={50} spreadR={50} color={ROSE} />
         </g>
-        {/* Small ink dots at crossing */}
-        <circle cx="150" cy="200" r="2" fill={GOLD} opacity="0.2" />
-        <circle cx="145" cy="210" r="1.2" fill={ROSE} opacity="0.15" />
       </svg>
     </motion.div>
   );
 }
 
-/* 9. FeatherFragment — just radiating barbs, suggesting part of a feather */
+/* 9. Feather fragment — just a cluster of barb lines, no shaft visible */
 export function FeatherFragment({ className = '', opacity = 0.2, color = ROSE, rotate = 0 }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${rotate}deg)` }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2 }}>
       <svg viewBox="0 0 120 110" fill="none" className="w-full h-full" style={{ opacity }}>
-        {/* Short shaft hint */}
-        <path d="M60,95 Q58,70 56,50 Q55,35 56,20" stroke={color} strokeWidth="1.2" fill="none" strokeLinecap="round" />
-        {/* Barbs fanning out from shaft */}
-        <QuillBarbs points={[[56,20],[55,35],[56,50],[58,70],[60,95]]} count={14} spread={38} color={color} />
-        <InkDrip x={61} y={96} color={color} />
+        {/* Radiating barbs from a hidden shaft point at bottom-center */}
+        {Array.from({length:16},(_,i)=>{
+          const angle = -70 + i * (140/15);
+          const rad = angle * Math.PI/180;
+          const len = 55 + Math.sin(i*1.4)*15;
+          const ex = 60 + Math.sin(rad)*len;
+          const ey = 100 - Math.cos(rad)*len;
+          const cx1 = 60 + Math.sin(rad)*len*0.4;
+          const cy1 = 100 - Math.cos(rad)*len*0.4 - 8;
+          const sw = 0.4 + (1-Math.abs(i-8)/8)*0.35;
+          return <path key={`fb${i}`} d={`M60,100 Q${cx1},${cy1} ${ex},${ey}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />;
+        })}
       </svg>
     </motion.div>
   );
