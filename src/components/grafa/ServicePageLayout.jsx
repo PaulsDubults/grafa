@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import GoldLine from './GoldLine';
 import Footer from './Footer';
-import { LargeFeather, PeachWash, StarConstellation, GoldDotGrid, PaperTexture } from './Decorations';
+import { FullFeather, SmallFeather, PyramidOutline, WatercolorStain, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function ServicePageLayout({ breadcrumbs, title, subtitle, children }) {
@@ -22,10 +22,13 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
 
       <div className="relative overflow-hidden" style={{ background: '#faf7f2' }}>
         <PaperTexture id="svcHdrP" />
-        <PeachWash className="right-[-120px] top-[-50px]" size={650} opacity={0.3} id="svcLPw" />
-        <LargeFeather className="w-[160px] md:w-[240px] h-[400px] md:h-[600px] right-[-10px] md:right-4 top-0" opacity={0.25} />
-        <StarConstellation className="w-[180px] h-[180px] left-6 bottom-2" opacity={0.32} />
-        <GoldDotGrid className="w-[130px] h-[75px] left-4 top-6" rows={4} cols={7} opacity={0.28} />
+        <WatercolorStain className="right-[-80px] top-[-30px]" color="#e8c89a" opacity={0.16} size={450} id="svcLW" />
+        <FullFeather className="w-[160px] md:w-[240px] h-[400px] md:h-[600px] right-[-10px] md:right-4 top-0" opacity={0.25} />
+        <SmallFeather className="w-[50px] md:w-[70px] h-[130px] md:h-[180px] left-4 bottom-4" opacity={0.18} rotate={-10} />
+        <PyramidOutline className="w-[250px] md:w-[350px] h-[240px] md:h-[340px] left-[10%] top-[-15px]" opacity={0.08} />
+        <StarConstellation className="w-[160px] h-[160px] left-6 top-4" opacity={0.28} />
+        <GoldDotGrid className="w-[120px] h-[70px] right-[15%] bottom-4" rows={4} cols={6} opacity={0.25} />
+        <ScatteredDots className="w-[90px] h-[90px] left-[30%] bottom-8" opacity={0.2} count={10} />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 pt-10 pb-14 md:pt-14 md:pb-20">
           <div className="flex items-center gap-4 mb-8">

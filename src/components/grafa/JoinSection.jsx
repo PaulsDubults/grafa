@@ -1,47 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { LargeFeather, FeatherOutline, StarConstellation, GoldDotGrid, GoldCurl, LargePyramid } from './Decorations';
+import { FullFeather, HalfFeather, DiagonalFeather, FeatherFragment, PyramidOutline, SmallPyramid, GoldDotGrid, StarConstellation, ScatteredDots, GoldCurve } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function JoinSection() {
   const { t } = useI18n();
-
-  const scrollToContact = (e) => {
-    e.preventDefault();
-    const el = document.getElementById('kontakti');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scrollToContact = (e) => { e.preventDefault(); document.getElementById('kontakti')?.scrollIntoView({ behavior: 'smooth' }); };
 
   return (
     <section id="pievienojies" className="relative py-32 md:py-44 px-6 md:px-10 overflow-hidden" style={{ background: '#1e3a5f' }}>
-      {/* Paper texture — dark */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.08] z-0">
-        <svg width="100%" height="100%">
-          <filter id="joinP"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
-          <rect width="100%" height="100%" filter="url(#joinP)" />
-        </svg>
+        <svg width="100%" height="100%"><filter id="joinP"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#joinP)"/></svg>
       </div>
 
-      {/* Gold on dark = dramatic, high contrast decorations */}
-      <LargeFeather className="w-[220px] md:w-[340px] h-[550px] md:h-[850px] left-[-20px] md:left-0 top-[-40px]" opacity={0.2} color="#c9a84c" />
-      <LargeFeather className="w-[180px] md:w-[280px] h-[450px] md:h-[700px] right-[-10px] md:right-0 bottom-[-30px]" opacity={0.16} color="#c9a84c" flip />
-      <FeatherOutline className="w-[140px] md:w-[200px] h-[350px] md:h-[520px] left-[15%] bottom-0" opacity={0.12} color="#c9a84c" />
+      {/* COMPOSITION: feather left, half feather right, pyramid, diagonal feather, gold dots */}
+      <FullFeather className="w-[220px] md:w-[340px] h-[550px] md:h-[850px] left-[-20px] md:left-0 top-[-30px]" opacity={0.18} color="#c9a84c" />
+      <HalfFeather className="w-[150px] md:w-[220px] h-[240px] md:h-[350px] right-0 md:right-4 top-4" opacity={0.14} color="#c9a84c" flip />
+      <DiagonalFeather className="w-[120px] md:w-[180px] h-[300px] md:h-[450px] right-[10%] bottom-0" opacity={0.1} color="#c9a84c" angle={20} />
+      <FeatherFragment className="w-[80px] md:w-[110px] h-[70px] md:h-[95px] left-[20%] bottom-8" opacity={0.1} color="#c9a84c" rotate={-10} />
       
-      {/* Pyramid — center right */}
-      <LargePyramid className="w-[300px] md:w-[420px] h-[300px] md:h-[420px] right-[5%] top-[10%]" opacity={0.08} />
+      <PyramidOutline className="w-[350px] md:w-[500px] h-[340px] md:h-[480px] right-[5%] top-[10%]" opacity={0.06} color="#c9a84c" />
+      <SmallPyramid className="w-[45px] md:w-[60px] h-[45px] md:h-[60px] left-[15%] top-[25%]" opacity={0.08} color="#c9a84c" />
       
-      {/* Stars — both sides */}
-      <StarConstellation className="w-[240px] h-[240px] right-[10%] top-4" opacity={0.2} />
-      <StarConstellation className="w-[200px] h-[200px] left-[15%] bottom-4" opacity={0.14} />
-      
-      {/* Gold dots */}
-      <GoldDotGrid className="w-[150px] h-[80px] left-[8%] top-[35%]" rows={4} cols={8} opacity={0.12} />
-      <GoldDotGrid className="w-[120px] h-[65px] right-[10%] bottom-[20%]" rows={3} cols={6} opacity={0.1} />
-      
-      {/* Gold curls */}
-      <GoldCurl className="w-[160px] h-[90px] left-[25%] top-8" opacity={0.12} />
-      <GoldCurl className="w-[140px] h-[80px] right-[20%] bottom-12" opacity={0.1} flip />
+      <GoldDotGrid className="w-[140px] h-[75px] left-[8%] top-[40%]" rows={4} cols={7} opacity={0.1} />
+      <GoldDotGrid className="w-[100px] h-[55px] right-[10%] bottom-[22%]" rows={3} cols={5} opacity={0.08} />
+      <StarConstellation className="w-[220px] h-[220px] right-[8%] top-4" opacity={0.15} />
+      <StarConstellation className="w-[160px] h-[160px] left-[18%] bottom-4" opacity={0.1} />
+      <ScatteredDots className="w-[120px] h-[120px] left-[40%] top-[20%]" opacity={0.08} count={14} />
+      <GoldCurve className="w-[220px] md:w-[320px] h-[50px] md:h-[70px] left-[25%] bottom-12" opacity={0.1} />
 
       <svg className="absolute top-0 left-0 right-0 w-full h-[40px] pointer-events-none" viewBox="0 0 1200 40" preserveAspectRatio="none" fill="none">
         <path d="M0,40 L0,20 C200,35 400,5 600,20 C800,35 1000,5 1200,20 L1200,40 Z" fill="#1e3a5f" />

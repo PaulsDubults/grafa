@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { LargeFeather, SmallFeather, FeatherOutline, StarConstellation, PeachWash, WatercolorBrush, GoldDotGrid, GoldCurl, LargePyramid, PaperTexture } from './Decorations';
+import { FullFeather, FeatherFragment, FeatherTip, HorizontalFeather, PyramidOutline, SmallPyramid, WatercolorStain, GoldCurve, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const stepIcons = [
@@ -21,26 +21,22 @@ export default function ProcessSection() {
     <section id="process" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#faf7f2' }}>
       <PaperTexture id="procP" />
 
-      {/* Large watercolor wash — top right */}
-      <WatercolorBrush className="right-[-200px] top-[-80px]" color="#deb87a" opacity={0.3} size={850} id="procWc" />
-      {/* Secondary peach — bottom left */}
-      <PeachWash className="left-[-180px] bottom-[-100px]" size={700} opacity={0.28} id="procPw" />
+      {/* COMPOSITION: pyramid outline behind timeline, feather fragment, feather tip, horizontal feather, gold curve */}
+      <PyramidOutline className="w-[450px] md:w-[650px] h-[430px] md:h-[625px] left-1/2 -translate-x-1/2 top-[8%]" opacity={0.08} />
+      <SmallPyramid className="w-[50px] md:w-[70px] h-[50px] md:h-[70px] left-[8%] top-[25%]" opacity={0.15} />
+      <SmallPyramid className="w-[40px] md:w-[55px] h-[40px] md:h-[55px] right-[12%] bottom-[30%]" opacity={0.12} />
 
-      {/* Feather — left, large */}
-      <LargeFeather className="w-[200px] md:w-[300px] h-[500px] md:h-[750px] left-[-20px] md:left-0 top-[10%]" opacity={0.25} />
-      {/* Small feather — right */}
-      <SmallFeather className="w-[70px] md:w-[100px] h-[180px] md:h-[260px] right-4 md:right-12 top-[30%]" opacity={0.22} rotate={10} />
-      {/* Feather outline — bottom right */}
-      <FeatherOutline className="w-[130px] md:w-[200px] h-[320px] md:h-[500px] right-0 bottom-[5%]" opacity={0.18} />
-
-      {/* Stars — right, top */}
-      <StarConstellation className="w-[240px] h-[240px] right-2 md:right-8 top-12" opacity={0.35} />
-      {/* Gold dots — left bottom */}
-      <GoldDotGrid className="w-[160px] h-[100px] left-4 bottom-24" rows={5} cols={9} opacity={0.28} />
-      {/* Curl — center right */}
-      <GoldCurl className="w-[160px] h-[90px] right-[5%] top-[50%]" opacity={0.2} />
-      {/* Small pyramid */}
-      <LargePyramid className="w-[250px] md:w-[350px] h-[250px] md:h-[350px] right-[-40px] bottom-[-20px]" opacity={0.1} />
+      <FullFeather className="w-[180px] md:w-[260px] h-[450px] md:h-[650px] left-[-30px] md:left-0 top-[10%]" opacity={0.22} />
+      <FeatherFragment className="w-[90px] md:w-[130px] h-[80px] md:h-[110px] right-4 md:right-12 top-[20%]" opacity={0.2} rotate={10} />
+      <FeatherTip className="w-[50px] md:w-[75px] h-[85px] md:h-[125px] right-[5%] bottom-[15%]" opacity={0.2} rotate={-20} />
+      <HorizontalFeather className="w-[250px] md:w-[380px] h-[50px] md:h-[75px] left-[5%] bottom-8" opacity={0.15} />
+      
+      <WatercolorStain className="right-[-100px] top-[30%]" color="#deb87a" opacity={0.14} size={450} id="proc1" />
+      
+      <GoldCurve className="w-[240px] md:w-[350px] h-[55px] md:h-[75px] right-[3%] top-[55%]" opacity={0.2} flip />
+      <StarConstellation className="w-[200px] h-[200px] right-2 top-8" opacity={0.3} />
+      <GoldDotGrid className="w-[130px] h-[85px] left-4 bottom-20" rows={4} cols={7} opacity={0.25} />
+      <ScatteredDots className="w-[100px] h-[100px] left-[12%] top-[40%]" opacity={0.22} count={12} />
 
       <div className="relative z-10 max-w-[1000px] mx-auto px-6 md:px-10">
         <motion.div className="text-center mb-20 md:mb-24" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
@@ -53,7 +49,6 @@ export default function ProcessSection() {
           <motion.div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2" initial={{ scaleY: 0, transformOrigin: 'top' }} whileInView={{ scaleY: 1 }} viewport={{ once: true }} transition={{ duration: 2, ease: 'easeOut' }}>
             <div className="w-full h-full" style={{ background: 'linear-gradient(180deg, #c9a84c, #e8d5a3 50%, #c9a84c)' }} />
           </motion.div>
-
           <div className="flex flex-col gap-16 md:gap-20">
             {steps.map((step, i) => {
               const isLeft = i % 2 === 0;

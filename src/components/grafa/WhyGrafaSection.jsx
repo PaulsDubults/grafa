@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { LargePyramid, PyramidSilhouette, LargeFeather, FeatherOutline, GoldInkSplash, RosyWash, WatercolorBrush, GoldDotGrid, GoldCurl, PaperTexture } from './Decorations';
+import { FeatherOutline, HalfFeather, SmallFeather, FeatherFragment, PyramidOutline, MediumPyramid, PyramidSilhouette, WatercolorStain, StarConstellation, GoldDotGrid, ScatteredDots, GoldFlourish, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const valueIcons = [
@@ -9,7 +9,7 @@ const valueIcons = [
   <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><path d="M28,4 L48,14 L48,30 C48,40 38,48 28,52 C18,48 8,40 8,30 L8,14 Z" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><path d="M20,28 L25,33 L36,22" stroke="#c9a84c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
   <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><circle cx="28" cy="28" r="18" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><path d="M28,14 L28,42 M22,19 L34,19 C36.5,19 38,22 36.5,25 C35,28 22,28 22,28 C22,28 35,28 36.5,31 C38,34 36.5,37 34,37 L22,37" stroke="#c9a84c" strokeWidth="1.1"/></svg>,
   <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><circle cx="28" cy="18" r="9" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><path d="M12,48 C12,38 19,32 28,32 C37,32 44,38 44,48" stroke="#c9a84c" strokeWidth="1.3" fill="none"/></svg>,
-  <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><rect x="8" y="12" width="34" height="28" rx="3" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><line x1="8" y1="34" x2="42" y2="34" stroke="#c9a84c" strokeWidth="0.7" opacity="0.4"/><path d="M23,24 L26,27 L33,20" stroke="#c9a84c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><rect x="8" y="12" width="34" height="28" rx="3" stroke="#c9a84c" strokeWidth="1.3" fill="none"/><path d="M23,24 L26,27 L33,20" stroke="#c9a84c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>,
   <svg viewBox="0 0 56 56" fill="none" className="w-11 h-11"><path d="M8,40 Q8,22 28,22 Q48,22 48,40" stroke="#c9a84c" strokeWidth="1.3" strokeLinecap="round" fill="none"/><circle cx="20" cy="32" r="2" fill="#c9a84c" opacity="0.5"/><circle cx="28" cy="32" r="2" fill="#c9a84c" opacity="0.5"/><circle cx="36" cy="32" r="2" fill="#c9a84c" opacity="0.5"/></svg>,
 ];
 
@@ -21,52 +21,36 @@ export default function WhyGrafaSection() {
     <section id="kapec-grafu" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#f5f0e8' }}>
       <PaperTexture id="whyP" />
 
-      {/* Large pyramid — left, big and bold */}
-      <LargePyramid className="w-[450px] md:w-[650px] h-[450px] md:h-[650px] left-[-100px] md:left-[-60px] top-[5%]" opacity={0.18} />
-      {/* Ghost pyramid fill — background accent */}
-      <PyramidSilhouette className="w-[350px] md:w-[500px] h-[300px] md:h-[440px] right-[-80px] bottom-[-40px]" opacity={0.05} />
+      {/* COMPOSITION: feather outline left, pyramid behind cards, stars, dots, gold flourish */}
+      <FeatherOutline className="w-[200px] md:w-[300px] h-[500px] md:h-[750px] left-[-30px] md:left-0 top-[5%]" opacity={0.25} />
+      <HalfFeather className="w-[140px] md:w-[200px] h-[220px] md:h-[320px] right-0 md:right-4 top-8" opacity={0.22} flip />
+      <SmallFeather className="w-[60px] md:w-[80px] h-[150px] md:h-[200px] right-[15%] bottom-[20%]" opacity={0.2} rotate={12} />
+      <FeatherFragment className="w-[80px] md:w-[110px] h-[70px] md:h-[95px] left-[10%] bottom-12" opacity={0.18} rotate={-15} />
+      
+      <PyramidOutline className="w-[400px] md:w-[580px] h-[380px] md:h-[560px] right-[-60px] md:right-[-20px] top-[25%]" opacity={0.1} />
+      <MediumPyramid className="w-[140px] md:w-[200px] h-[140px] md:h-[200px] left-[5%] bottom-[10%]" opacity={0.14} />
+      <PyramidSilhouette className="w-[250px] md:w-[350px] h-[220px] md:h-[310px] left-[-50px] top-[55%]" opacity={0.04} />
 
-      {/* Feather outline — right side, different from services */}
-      <FeatherOutline className="w-[180px] md:w-[280px] h-[450px] md:h-[700px] right-[-20px] md:right-0 top-[8%]" opacity={0.22} flip />
-
-      {/* Rosy wash — unique to this section */}
-      <RosyWash className="right-[-150px] top-[15%]" size={750} opacity={0.28} id="whyRw" />
-      {/* Gold ink splash — bottom left */}
-      <GoldInkSplash className="left-[-60px] bottom-[-40px]" size={450} opacity={0.2} id="whyGi" />
-
-      {/* Gold dot grid */}
-      <GoldDotGrid className="w-[200px] h-[110px] left-6 bottom-20" rows={6} cols={11} opacity={0.3} />
-      {/* Gold curl — top right */}
-      <GoldCurl className="w-[180px] h-[100px] right-[10%] top-12" opacity={0.2} flip />
+      <WatercolorStain className="right-[-80px] top-[15%]" color="#e5c8bc" opacity={0.15} size={500} id="why1" />
+      
+      <StarConstellation className="w-[220px] h-[220px] right-4 top-[5%]" opacity={0.35} />
+      <GoldDotGrid className="w-[160px] h-[100px] left-6 top-[65%]" rows={5} cols={9} opacity={0.3} />
+      <ScatteredDots className="w-[120px] h-[120px] right-[10%] bottom-8" opacity={0.25} count={15} />
+      <GoldFlourish className="w-[220px] md:w-[320px] h-[90px] md:h-[130px] left-[15%] top-[42%]" opacity={0.2} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
         <div className="flex flex-col items-end text-right mb-20 md:mb-24 max-w-2xl ml-auto">
-          <motion.p className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#c9a84c] mb-5 font-medium" initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            {t('whyGrafa.subtitle')}
-          </motion.p>
-          <motion.h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#1e3a5f] mb-6 leading-[1.1]" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>
-            {t('whyGrafa.heading')}
-          </motion.h2>
+          <motion.p className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#c9a84c] mb-5 font-medium" initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>{t('whyGrafa.subtitle')}</motion.p>
+          <motion.h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#1e3a5f] mb-6 leading-[1.1]" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>{t('whyGrafa.heading')}</motion.h2>
           <GoldLine width="w-28" className="mb-8" />
-          <motion.p className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[17px] leading-[1.9]" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.6 }}>
-            {t('whyGrafa.description')}
-          </motion.p>
+          <motion.p className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[17px] leading-[1.9]" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.6 }}>{t('whyGrafa.description')}</motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
           {values.map((item, i) => (
-            <motion.div
-              key={i}
-              className={`group relative bg-white rounded-xl p-8 md:p-10 border border-[#e8e0d4]/50 overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,95,0.08),0_0_0_1px_rgba(201,168,76,0.12)] ${i % 2 === 1 ? 'md:mt-12' : ''}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.7 }}
-            >
+            <motion.div key={i} className={`group relative bg-white rounded-xl p-8 md:p-10 border border-[#e8e0d4]/50 overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,95,0.08),0_0_0_1px_rgba(201,168,76,0.12)] ${i % 2 === 1 ? 'md:mt-12' : ''}`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.7 }}>
               <div className="absolute top-0 left-8 right-8 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, #e8d5a3, #c9a84c, transparent)' }} />
-              <svg className="absolute top-3 right-3 w-8 h-8 opacity-[0.15] group-hover:opacity-[0.3] transition-opacity duration-500" viewBox="0 0 30 30" fill="none">
-                <path d="M28,2 L28,12 M28,2 L18,2" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" />
-              </svg>
+              <svg className="absolute top-3 right-3 w-8 h-8 opacity-[0.15] group-hover:opacity-[0.3] transition-opacity duration-500" viewBox="0 0 30 30" fill="none"><path d="M28,2 L28,12 M28,2 L18,2" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round"/></svg>
               <div className="flex items-start gap-5">
                 <div className="text-[#c9a84c] group-hover:scale-110 transition-transform duration-500 flex-shrink-0 mt-1">{valueIcons[i]}</div>
                 <div>

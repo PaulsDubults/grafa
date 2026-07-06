@@ -1,6 +1,6 @@
 import React from 'react';
 import { useI18n } from '@/lib/i18n';
-import { StarConstellation, GoldDotGrid } from './Decorations';
+import { StarConstellation, GoldDotGrid, FeatherTip, SmallPyramid, ScatteredDots } from './Decorations';
 
 export default function Footer() {
   const { t } = useI18n();
@@ -14,8 +14,11 @@ export default function Footer() {
         </svg>
       </div>
 
-      <StarConstellation className="w-[100px] h-[100px] right-8 top-4" opacity={0.06} />
-      <GoldDotGrid className="w-[70px] h-[40px] left-8 bottom-4" rows={2} cols={4} opacity={0.05} />
+      <StarConstellation className="w-[120px] h-[120px] right-8 top-2" opacity={0.1} />
+      <GoldDotGrid className="w-[90px] h-[50px] left-8 bottom-3" rows={3} cols={5} opacity={0.08} />
+      <FeatherTip className="w-[40px] md:w-[55px] h-[65px] md:h-[90px] right-[20%] bottom-2" opacity={0.08} color="#c9a84c" rotate={-10} />
+      <SmallPyramid className="w-[35px] md:w-[45px] h-[35px] md:h-[45px] left-[25%] top-4" opacity={0.06} color="#c9a84c" />
+      <ScatteredDots className="w-[80px] h-[80px] left-[50%] top-2" opacity={0.06} count={8} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <div className="w-full h-[1px] mb-12" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)' }} />
