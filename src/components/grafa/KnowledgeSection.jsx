@@ -2,7 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';
 import WatercolorBackground from './WatercolorBackground';
+import PaperTexture from './PaperTexture';
 import GoldLine from './GoldLine';
+import { GoldDots, GoldLineDecorative, GoldStars, FeatherFragment, WatercolorPatch } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function KnowledgeSection() {
@@ -19,7 +21,17 @@ export default function KnowledgeSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
-      <WatercolorBackground variant="approach" />
+      <PaperTexture id="knowledgePaper" />
+      <WatercolorBackground variant="knowledge" />
+
+      {/* Decorative: gold dots, lines, stars */}
+      <GoldDots className="w-[90px] h-[90px] right-8 top-20" opacity={0.12} count={15} />
+      <GoldDots className="w-[70px] h-[70px] left-6 bottom-24" opacity={0.1} count={8} />
+      <GoldLineDecorative className="w-[200px] h-[10px] left-8 top-[25%]" opacity={0.12} />
+      <GoldLineDecorative className="w-[160px] h-[10px] right-12 bottom-[35%]" opacity={0.1} />
+      <GoldStars className="w-[90px] h-[60px] left-10 top-32" opacity={0.1} />
+      <FeatherFragment className="w-[50px] h-[75px] right-4 md:right-24 bottom-20" opacity={0.07} rotate={-10} />
+      <WatercolorPatch className="right-[-50px] top-[15%]" color="rgba(230,180,140,0.04)" size={260} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div
@@ -45,13 +57,13 @@ export default function KnowledgeSection() {
           {articles.map((article, i) => (
             <motion.div
               key={i}
-              className="group bg-white/60 backdrop-blur-sm border border-[#e8e0d4]/40 hover:border-[#c9a84c]/30 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(30,58,95,0.08)] rounded-sm overflow-hidden"
+              className="group bg-white/70 backdrop-blur-sm border border-[#e8e0d4]/40 hover:border-[#c9a84c]/25 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(30,58,95,0.06)] rounded-lg overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
             >
-              <div className="h-1 bg-gradient-to-r from-[#c9a84c]/40 to-transparent" />
+              <div className="h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
               
               <div className="p-7 md:p-8">
                 <div className="flex items-center gap-2.5 mb-4">

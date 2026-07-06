@@ -2,7 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import WatercolorBackground from './WatercolorBackground';
+import PaperTexture from './PaperTexture';
 import GoldLine from './GoldLine';
+import { FeatherOutline, GoldStars, WaveLine, GoldDots, WatercolorPatch } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const cardPaths = [
@@ -51,7 +53,15 @@ export default function ServicesSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
+      <PaperTexture id="servicesPaper" />
       <WatercolorBackground variant="services" />
+
+      {/* Decorative elements */}
+      <FeatherOutline className="w-[100px] md:w-[140px] h-[280px] md:h-[360px] right-4 md:right-12 top-16" opacity={0.07} />
+      <GoldStars className="w-[120px] h-[80px] left-8 top-20" style={{}} opacity={0.12} />
+      <WaveLine className="w-[300px] h-[20px] right-0 bottom-24" opacity={0.08} />
+      <GoldDots className="w-[100px] h-[100px] left-4 bottom-40" opacity={0.1} count={8} />
+      <WatercolorPatch className="left-[-80px] top-[20%]" color="rgba(230,185,140,0.05)" size={350} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div
@@ -95,8 +105,9 @@ export default function ServicesSection() {
             >
               <Link
                 to={cardPaths[i]}
-                className="block bg-white rounded-sm p-6 md:p-7 cursor-pointer shadow-[0_2px_10px_rgba(30,58,95,0.05)] hover:shadow-[0_10px_36px_rgba(30,58,95,0.12)] hover:-translate-y-1.5 transition-all duration-500 border border-[#e8e0d4]/50 hover:border-[#c9a84c]/30 group h-full"
+                className="block bg-white rounded-lg p-6 md:p-7 cursor-pointer shadow-[0_2px_12px_rgba(30,58,95,0.04)] hover:shadow-[0_10px_36px_rgba(30,58,95,0.10)] hover:-translate-y-1.5 transition-all duration-500 border border-[#e8e0d4]/40 hover:border-[#c9a84c]/25 group h-full relative overflow-hidden"
               >
+                <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
                 <div className="flex items-center gap-3 mb-4">
                   {cardIcons[i]}
                   <h3 className="font-heading text-[17px] md:text-[19px] font-semibold text-[#1e3a5f]">

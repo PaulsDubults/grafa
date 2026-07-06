@@ -14,8 +14,9 @@ export default function ChoiceCards({ choices }) {
         >
           <Link
             to={choice.path}
-            className="block bg-white rounded-sm p-7 md:p-8 text-center cursor-pointer shadow-[0_2px_12px_rgba(30,58,95,0.06)] hover:shadow-[0_10px_36px_rgba(30,58,95,0.12)] hover:-translate-y-1.5 transition-all duration-500 border border-[#e8e0d4]/50 hover:border-[#c9a84c]/30 group"
+            className="block bg-white/70 backdrop-blur-sm rounded-lg p-7 md:p-8 text-center cursor-pointer shadow-[0_2px_12px_rgba(30,58,95,0.04)] hover:shadow-[0_10px_36px_rgba(30,58,95,0.10)] hover:-translate-y-1.5 transition-all duration-500 border border-[#e8e0d4]/40 hover:border-[#c9a84c]/25 group relative overflow-hidden"
           >
+            <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
             <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#1e3a5f] mb-2">
               {choice.label}
             </h3>

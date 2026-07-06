@@ -5,7 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import WatercolorBackground from './WatercolorBackground';
+import PaperTexture from './PaperTexture';
 import GoldLine from './GoldLine';
+import { FeatherOutline, FeatherFragment, GoldDots, WaveLine, WatercolorPatch } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function ContactSection() {
@@ -38,7 +40,15 @@ export default function ContactSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
+      <PaperTexture id="contactPaper" />
       <WatercolorBackground variant="contact" />
+
+      {/* Decorative: feather outlines + dots */}
+      <FeatherOutline className="w-[90px] md:w-[120px] h-[250px] md:h-[320px] right-2 md:right-8 top-12" opacity={0.06} />
+      <FeatherFragment className="w-[45px] h-[70px] left-6 top-24" opacity={0.08} rotate={-15} />
+      <GoldDots className="w-[80px] h-[80px] left-4 bottom-28" opacity={0.1} count={10} />
+      <WaveLine className="w-[200px] h-[16px] left-0 top-[40%]" opacity={0.06} />
+      <WatercolorPatch className="right-[-60px] bottom-[10%]" color="rgba(230,185,140,0.04)" size={280} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -75,7 +85,7 @@ export default function ContactSection() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + i * 0.08, duration: 0.6 }}
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#1e3a5f]/[0.05] flex items-center justify-center group-hover:bg-[#1e3a5f]/[0.1] transition-colors duration-300">
+                  <div className="w-10 h-10 rounded-full bg-[#c9a84c]/[0.08] flex items-center justify-center group-hover:bg-[#c9a84c]/[0.15] transition-colors duration-300">
                     <item.icon className="w-4 h-4 text-[#c9a84c]" strokeWidth={1.5} />
                   </div>
                   {item.href ? (
@@ -101,7 +111,8 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            <div className="bg-white rounded-sm p-8 md:p-12 shadow-[0_4px_24px_rgba(30,58,95,0.08)] border border-[#e8e0d4]/50">
+            <div className="bg-white rounded-lg p-8 md:p-12 shadow-[0_4px_24px_rgba(30,58,95,0.06)] border border-[#e8e0d4]/40 relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
               <h3 className="font-heading text-[20px] md:text-[22px] font-semibold mb-2 text-[#1e3a5f]">
                 {t('contact.formTitle')}
               </h3>
@@ -114,7 +125,7 @@ export default function ContactSection() {
                     placeholder={t('contact.placeholderName')}
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 h-12 rounded-sm"
+                    className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 h-12 rounded-lg"
                     required
                   />
                 </div>
@@ -125,7 +136,7 @@ export default function ContactSection() {
                     placeholder={t('contact.placeholderEmail')}
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 h-12 rounded-sm"
+                    className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 h-12 rounded-lg"
                     required
                   />
                 </div>
@@ -135,7 +146,7 @@ export default function ContactSection() {
                     placeholder={t('contact.placeholderMessage')}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 min-h-[130px] resize-none rounded-sm"
+                    className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 min-h-[130px] resize-none rounded-lg"
                     required
                   />
                 </div>

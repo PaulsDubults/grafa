@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
+import PaperTexture from './PaperTexture';
 import GoldLine from './GoldLine';
+import { GoldStars, GoldLineDecorative, WaveLine, FeatherFragment, WatercolorPatch } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const stepIcons = [
@@ -29,7 +31,17 @@ export default function ProcessSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
-      <WatercolorBackground variant="services" />
+      <PaperTexture id="processPaper" />
+      <WatercolorBackground variant="process" />
+
+      {/* Decorative: gold stars, wave lines, feather fragments */}
+      <GoldStars className="w-[100px] h-[70px] right-10 top-16" opacity={0.1} />
+      <GoldStars className="w-[80px] h-[60px] left-6 bottom-32" opacity={0.08} />
+      <GoldLineDecorative className="w-[180px] h-[10px] left-10 top-[30%]" opacity={0.1} />
+      <GoldLineDecorative className="w-[150px] h-[10px] right-8 top-[60%]" opacity={0.08} />
+      <FeatherFragment className="w-[50px] h-[75px] right-4 md:right-20 top-40" opacity={0.08} rotate={25} />
+      <WaveLine className="w-[200px] h-[16px] left-0 bottom-16" opacity={0.07} />
+      <WatercolorPatch className="left-[-60px] top-[50%]" color="rgba(230,185,140,0.04)" size={280} />
 
       <div className="relative z-10 max-w-[900px] mx-auto">
         <motion.div
@@ -49,9 +61,10 @@ export default function ProcessSection() {
         </motion.div>
 
         <div className="relative">
+          {/* Gold timeline line */}
           <motion.div
-            className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2"
-            style={{ background: 'linear-gradient(180deg, #c9a84c, #c9a84c30)' }}
+            className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[1.5px] -translate-x-1/2"
+            style={{ background: 'linear-gradient(180deg, #c9a84c, #e8d5a3, #c9a84c50)' }}
             initial={{ scaleY: 0, transformOrigin: 'top' }}
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true }}
@@ -72,12 +85,14 @@ export default function ProcessSection() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.6 }}
                 >
+                  {/* Timeline dot — gold with glow */}
                   <div className="absolute left-6 md:left-1/2 top-2 -translate-x-1/2 z-10">
-                    <div className="w-3 h-3 rounded-full bg-[#c9a84c] border-2 border-[#faf7f2]" />
+                    <div className="w-4 h-4 rounded-full bg-[#c9a84c] border-[3px] border-[#faf7f2] shadow-[0_0_8px_rgba(201,168,76,0.3)]" />
                   </div>
 
                   <div className={`ml-14 md:ml-0 md:w-[calc(50%-32px)] ${isLeft ? 'md:pr-4 md:text-right' : 'md:pl-4'}`}>
-                    <div className="bg-white/60 backdrop-blur-sm p-6 border border-[#e8e0d4]/40 hover:border-[#c9a84c]/30 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(30,58,95,0.06)] rounded-sm group">
+                    <div className="bg-white/70 backdrop-blur-sm p-6 border border-[#e8e0d4]/40 hover:border-[#c9a84c]/25 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(30,58,95,0.06)] rounded-lg group relative overflow-hidden">
+                      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
                       <div className={`flex items-center gap-3 mb-3 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
                         <div className="text-[#c9a84c] group-hover:text-[#1e3a5f] transition-colors duration-500">
                           {stepIcons[i]}

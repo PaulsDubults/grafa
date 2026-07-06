@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
+import PaperTexture from './PaperTexture';
+import { FeatherOutline, GoldStars, WaveLine, GoldDots, WatercolorPatch } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function JoinSection() {
@@ -22,6 +24,25 @@ export default function JoinSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
+      {/* Paper noise texture — subtle on dark */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.02] z-0">
+        <svg width="100%" height="100%">
+          <filter id="joinPaper">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#joinPaper)" />
+        </svg>
+      </div>
+
+      {/* Decorative elements — gold on dark */}
+      <FeatherOutline className="w-[80px] md:w-[110px] h-[220px] md:h-[280px] left-4 md:left-12 top-8" opacity={0.06} color="#c9a84c" />
+      <FeatherOutline className="w-[60px] md:w-[80px] h-[160px] md:h-[200px] right-6 md:right-16 bottom-12" opacity={0.05} color="#c9a84c" flip />
+      <GoldStars className="w-[100px] h-[70px] right-8 top-12" opacity={0.08} />
+      <GoldStars className="w-[80px] h-[50px] left-10 bottom-16" opacity={0.06} />
+      <GoldDots className="w-[70px] h-[70px] left-[30%] top-8" opacity={0.06} count={8} />
+      <WaveLine className="w-[250px] h-[16px] right-0 bottom-20" opacity={0.05} color="#c9a84c" />
+
       <div className="relative z-10 max-w-[800px] mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

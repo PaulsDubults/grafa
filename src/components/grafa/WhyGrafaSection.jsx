@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
+import PaperTexture from './PaperTexture';
 import GoldLine from './GoldLine';
+import { FeatherFragment, PyramidOutline, GoldDots, WaveLine, WatercolorPatch } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const valueIcons = [
@@ -27,7 +29,16 @@ export default function WhyGrafaSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
+      <PaperTexture id="whyPaper" />
       <WatercolorBackground variant="approach" />
+
+      {/* Decorative composition: pyramid + feather fragments + dots */}
+      <PyramidOutline className="left-[-30px] md:left-6 top-20" opacity={0.05} size={180} />
+      <FeatherFragment className="w-[60px] h-[90px] right-8 md:right-16 top-32" opacity={0.09} rotate={15} />
+      <FeatherFragment className="w-[45px] h-[70px] left-12 bottom-28" opacity={0.07} rotate={-20} />
+      <GoldDots className="w-[80px] h-[80px] right-6 bottom-20" opacity={0.1} count={10} />
+      <WaveLine className="w-[250px] h-[18px] left-0 top-[45%]" opacity={0.06} />
+      <WatercolorPatch className="right-[-60px] top-[30%]" color="rgba(230,180,140,0.04)" size={300} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div
@@ -53,12 +64,13 @@ export default function WhyGrafaSection() {
           {values.map((item, i) => (
             <motion.div
               key={i}
-              className="group bg-white/60 backdrop-blur-sm p-7 md:p-8 border border-[#e8e0d4]/40 hover:border-[#c9a84c]/30 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(30,58,95,0.08)] rounded-sm"
+              className="group bg-white/70 backdrop-blur-sm p-7 md:p-8 border border-[#e8e0d4]/40 hover:border-[#c9a84c]/25 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(30,58,95,0.06)] rounded-lg relative overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.6 }}
             >
+              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
               <div className="text-[#c9a84c] mb-5 group-hover:text-[#1e3a5f] transition-colors duration-500">
                 {valueIcons[i]}
               </div>

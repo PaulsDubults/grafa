@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
+import PaperTexture from './PaperTexture';
 import GoldLine from './GoldLine';
+import { PyramidOutline, FeatherFragment, GoldDots, GoldStars, WaveLine, WatercolorPatch } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function AboutSection() {
@@ -19,7 +21,18 @@ export default function AboutSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
-      <WatercolorBackground variant="contact" />
+      <PaperTexture id="aboutPaper" />
+      <WatercolorBackground variant="about" />
+
+      {/* Decorative: pyramid in background + feather fragment */}
+      <PyramidOutline className="right-[-20px] md:right-8 top-24" opacity={0.04} size={220} />
+      <PyramidOutline className="left-[-40px] bottom-32" opacity={0.03} size={160} />
+      <FeatherFragment className="w-[55px] h-[85px] left-8 md:left-16 top-28" opacity={0.08} rotate={-12} />
+      <FeatherFragment className="w-[40px] h-[60px] right-12 bottom-40" opacity={0.06} rotate={20} />
+      <GoldDots className="w-[80px] h-[80px] right-4 top-[45%]" opacity={0.1} count={10} />
+      <GoldStars className="w-[70px] h-[50px] left-8 bottom-20" opacity={0.08} />
+      <WaveLine className="w-[220px] h-[16px] right-0 top-[55%]" opacity={0.06} />
+      <WatercolorPatch className="left-[-70px] top-[25%]" color="rgba(230,185,140,0.04)" size={320} />
 
       <div className="relative z-10 max-w-[1100px] mx-auto">
         <motion.div
@@ -62,12 +75,13 @@ export default function AboutSection() {
           {missionValues.map((item, i) => (
             <motion.div
               key={i}
-              className="bg-white/60 backdrop-blur-sm p-8 md:p-10 border border-[#e8e0d4]/40 rounded-sm"
+              className="bg-white/70 backdrop-blur-sm p-8 md:p-10 border border-[#e8e0d4]/40 rounded-lg relative overflow-hidden"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 + i * 0.1, duration: 0.6 }}
             >
+              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
               <p className="text-[10px] font-body text-[#c9a84c] tracking-[0.25em] uppercase mb-3 font-medium">
                 {item.label}
               </p>
