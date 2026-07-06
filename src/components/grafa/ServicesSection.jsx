@@ -86,21 +86,7 @@ export default function ServicesSection() {
     >
       <WatercolorBackground variant="services" />
 
-      {/* Feather on right side */}
-      <FeatherDecoration className="absolute right-4 md:right-10 top-16 w-[100px] md:w-[140px] h-[400px] md:h-[500px]" opacity={0.07} />
 
-      <DecorativeAsset asset="pyramid" className="hidden lg:block -left-6 bottom-28 w-[300px]" opacity={0.3} />
-      <DecorativeAsset asset="featherCircle" className="hidden lg:block right-12 bottom-16 w-[180px]" opacity={0.28} />
-      <DecorativeAsset asset="featherInk" className="hidden lg:block right-[4%] top-16 w-[200px]" opacity={0.25} />
-      <DecorativeAsset asset="cloudWave" className="hidden lg:block left-[28%] top-[55%] w-[300px]" opacity={0.18} />
-
-      {/* Ink drop decoration */}
-      <div className="absolute right-[60px] md:right-[100px] top-12 w-3 h-4 pointer-events-none opacity-[0.06]">
-        <svg viewBox="0 0 12 16" fill="#1e3a5f" className="w-full h-full">
-          <ellipse cx="6" cy="10" rx="5" ry="6" />
-          <path d="M6,0 Q8,5 6,10 Q4,5 6,0" />
-        </svg>
-      </div>
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         {/* Handwriting intro text */}

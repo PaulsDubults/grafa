@@ -116,19 +116,7 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      <DecorativeAsset asset="pyramid" className="hidden lg:block left-4 bottom-44 w-[220px]" opacity={0.3} />
-      <DecorativeAsset asset="featherGoldSwirl" className="hidden lg:block right-10 bottom-16 w-[300px] rotate-6" opacity={0.25} />
-      <DecorativeAsset asset="cloudPyramidCircle" className="hidden lg:block left-[40%] top-4 w-[200px]" opacity={0.25} />
-      <DecorativeAsset asset="cloudWave" className="hidden lg:block right-[2%] top-[48%] w-[220px]" opacity={0.2} />
 
-      {/* Faint pyramid/feather motif */}
-      <div className="absolute right-0 top-0 w-[400px] h-[600px] pointer-events-none opacity-[0.03] hidden lg:block">
-        <svg viewBox="0 0 200 300" fill="none" className="w-full h-full">
-          <path d="M100,20 L180,260 L20,260 Z" stroke="#1e3a5f" strokeWidth="0.5" fill="none"/>
-          <path d="M100,60 L100,280" stroke="#1e3a5f" strokeWidth="0.3"/>
-          <path d="M100,40 Q120,140 160,200 Q140,180 100,160 Q60,180 40,200 Q80,140 100,40" stroke="#1e3a5f" strokeWidth="0.4" fill="none"/>
-        </svg>
-      </div>
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
         {/* Two-column grid: story + logo */}

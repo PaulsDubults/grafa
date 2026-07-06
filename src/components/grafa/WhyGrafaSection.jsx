@@ -82,10 +82,7 @@ export default function WhyGrafaSection() {
     >
       <WatercolorBackground variant="approach" />
 
-      <DecorativeAsset asset="pyramid" className="hidden lg:block -right-4 top-16 w-[280px] -rotate-6" opacity={0.28} />
-      <DecorativeAsset asset="pyramid" className="hidden lg:block left-2 bottom-20 w-[240px]" opacity={0.25} />
-      <DecorativeAsset asset="cloudPyramidCircle" className="hidden lg:block right-[8%] bottom-12 w-[220px]" opacity={0.25} />
-      <DecorativeAsset asset="cloudWave" className="hidden lg:block left-[12%] top-[6%] w-[300px] rotate-3" opacity={0.2} />
+
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div
