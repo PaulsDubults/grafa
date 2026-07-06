@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HeroMiniMap from './HeroMiniMap';
+import LanguageSwitcher from './LanguageSwitcher';
 import { useI18n } from '@/lib/i18n';
 
 const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/07f5642fe_ChatGPTImageMay13202603_52_09PM.png";
@@ -76,6 +77,10 @@ export default function HeroSection() {
           <filter id="paperNoise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
           <rect width="100%" height="100%" filter="url(#paperNoise)"/>
         </svg>
+      </div>
+
+      <div className="absolute top-4 right-4 md:top-6 md:right-8 z-20">
+        <LanguageSwitcher />
       </div>
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
