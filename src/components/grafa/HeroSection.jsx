@@ -1,67 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HeroMiniMap from './HeroMiniMap';
-import DecorativeAsset from './DecorativeAsset';
+import { useI18n } from '@/lib/i18n';
 
 const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/07f5642fe_ChatGPTImageMay13202603_52_09PM.png";
 
-const storyLines = [
-  "Gandrīz katram uzņēmējam kādreiz ir radušies jautājumi par grāmatvedību, nodokļiem vai finanšu lēmumiem.",
-  "Kas Jums šobrīd sagādā vislielākās grūtības kādā no šīm jomām?",
-  "Varbūt vienkārši pietrūkst laika?",
-  "Varbūt gribas lielāku skaidrību grāmatvedības, nodokļu vai finanšu jautājumos?",
-  "Varbūt vienkārši vēlaties būt pārliecināts, ka viss Jūsu uzņēmuma grāmatvedībā tiek izdarīts pareizi?",
-  "Ir lietas, kurām uzņēmējam nevajadzētu prasīt papildu enerģiju.",
-  "Grāmatvedība ir viena no tām.",
-  "Mēs ticam, ka profesionāls grāmatvedis nav tikai cilvēks, kurš sagatavo atskaites.",
-  "Tas ir partneris, kurš palīdz pieņemt pārdomātus lēmumus, laikus pamana riskus un rada pārliecību, ka uzņēmuma finanšu lietas ir drošās rokās.",
-  "Tāpēc mūsu darbs sākas nevis ar dokumentiem.",
-  "Tas sākas ar uzticēšanos.",
-];
-
-/* Lines that should appear slightly stronger */
 const emphasisIndices = [5, 6, 8, 10];
-const boldWords = ['grāmatvedību', 'grāmatvedības', 'Grāmatvedība'];
 
-const LINE_INTERVAL = 1400; // ms between each line appearing
+const LINE_INTERVAL = 1400;
 
-const coreValues = [
-  {
-    title: "Uzticama grāmatvedība",
-    desc: "Precizitāte un drošība katru dienu.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10">
-        <path d="M24,4 L40,14 L40,28 C40,36 32,42 24,46 C16,42 8,36 8,28 L8,14 Z" stroke="#c9a84c" strokeWidth="1.2" fill="none"/>
-        <path d="M18,24 L22,28 L30,20" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Pārdomāti finanšu lēmumi",
-    desc: "Analīze un atbalsts izaugsmei.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10">
-        <polyline points="8,38 16,26 24,30 34,16 40,12" stroke="#c9a84c" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-        <circle cx="40" cy="12" r="2.5" stroke="#c9a84c" strokeWidth="1" fill="none"/>
-        <line x1="8" y1="42" x2="40" y2="42" stroke="white" strokeWidth="0.5" opacity="0.3"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Zināšanas un apmācības",
-    desc: "Praktiskas zināšanas Jūsu izaugsmei.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10">
-        <path d="M8,16 L24,8 L40,16 L24,24 Z" stroke="#c9a84c" strokeWidth="1.2" fill="none"/>
-        <path d="M14,20 L14,32 C14,36 19,40 24,40 C29,40 34,36 34,32 L34,20" stroke="#c9a84c" strokeWidth="1.2" fill="none"/>
-        <line x1="40" y1="16" x2="40" y2="36" stroke="white" strokeWidth="0.8" opacity="0.4"/>
-        <circle cx="40" cy="38" r="2" stroke="white" strokeWidth="0.6" opacity="0.4" fill="none"/>
-      </svg>
-    ),
-  },
+const valueIcons = [
+  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10"><path d="M24,4 L40,14 L40,28 C40,36 32,42 24,46 C16,42 8,36 8,28 L8,14 Z" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><path d="M18,24 L22,28 L30,20" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/></svg>,
+  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10"><polyline points="8,38 16,26 24,30 34,16 40,12" stroke="#c9a84c" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/><circle cx="40" cy="12" r="2.5" stroke="#c9a84c" strokeWidth="1" fill="none"/><line x1="8" y1="42" x2="40" y2="42" stroke="white" strokeWidth="0.5" opacity="0.3"/></svg>,
+  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10"><path d="M8,16 L24,8 L40,16 L24,24 Z" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><path d="M14,20 L14,32 C14,36 19,40 24,40 C29,40 34,36 34,32 L34,20" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><line x1="40" y1="16" x2="40" y2="36" stroke="white" strokeWidth="0.8" opacity="0.4"/><circle cx="40" cy="38" r="2" stroke="white" strokeWidth="0.6" opacity="0.4" fill="none"/></svg>,
 ];
 
-function StoryLine({ text, index, isVisible }) {
+function StoryLine({ text, index, isVisible, boldWords }) {
   const isEmphasis = emphasisIndices.includes(index);
   const hasBold = boldWords.some(w => text.includes(w));
 
@@ -81,7 +35,7 @@ function StoryLine({ text, index, isVisible }) {
           {hasBold ? (
             <span dangerouslySetInnerHTML={{
               __html: text.replace(
-                /(grāmatvedību|grāmatvedības|Grāmatvedība)/g,
+                new RegExp(`(${boldWords.join('|')})`, 'g'),
                 '<strong class="text-[#1e3a5f] font-semibold">$1</strong>'
               )
             }} />
@@ -93,8 +47,17 @@ function StoryLine({ text, index, isVisible }) {
 }
 
 export default function HeroSection() {
+  const { t } = useI18n();
+  const storyLines = t('hero.storyLines');
+  const boldWords = t('hero.boldWords');
+  const values = t('hero.values');
+
   const [visibleCount, setVisibleCount] = useState(0);
   const allRevealed = visibleCount >= storyLines.length;
+
+  useEffect(() => {
+    setVisibleCount(0);
+  }, [storyLines]);
 
   useEffect(() => {
     if (visibleCount >= storyLines.length) return;
@@ -102,13 +65,12 @@ export default function HeroSection() {
       setVisibleCount(prev => prev + 1);
     }, visibleCount === 0 ? 600 : LINE_INTERVAL);
     return () => clearTimeout(timer);
-  }, [visibleCount]);
+  }, [visibleCount, storyLines.length]);
 
-  const logoDelay = 0.3; // after all lines visible
+  const logoDelay = 0.3;
 
   return (
     <section id="sakumlapa" className="relative w-full min-h-screen overflow-hidden" style={{ background: '#f5f0e8' }}>
-      {/* Subtle paper texture / watercolor bg */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
         <svg width="100%" height="100%">
           <filter id="paperNoise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
@@ -116,20 +78,14 @@ export default function HeroSection() {
         </svg>
       </div>
 
-
-
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
-        {/* Two-column grid: story + logo */}
         <div className="grid lg:grid-cols-[48%_52%] gap-4 lg:gap-2 items-start">
-
-          {/* LEFT COLUMN — Story */}
           <div className="pt-2 md:pt-4 lg:pt-6 lg:pr-6">
             {storyLines.map((line, i) => (
-              <StoryLine key={i} text={line} index={i} isVisible={i < visibleCount} />
+              <StoryLine key={`${i}-${line.slice(0,10)}`} text={line} index={i} isVisible={i < visibleCount} boldWords={boldWords} />
             ))}
           </div>
 
-          {/* RIGHT COLUMN — Logo */}
           <div className="flex flex-col order-first lg:order-last">
             <motion.div
               className="relative flex justify-center lg:justify-end"
@@ -149,7 +105,6 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Full-width values bar — compact, inline with last story line */}
         <motion.div
           className="relative mt-4"
           initial={{ opacity: 0, y: 20 }}
@@ -166,11 +121,11 @@ export default function HeroSection() {
 
           <div className="bg-[#1e3a5f] py-4 md:py-5 px-5 md:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 max-w-[1000px] mx-auto">
-              {coreValues.map((item, i) => (
+              {values.map((item, i) => (
                 <motion.div
-                  key={item.title}
+                  key={i}
                   className={`flex items-center gap-2.5 px-3 md:px-4 ${
-                    i < coreValues.length - 1 ? 'md:border-r md:border-white/10' : ''
+                    i < values.length - 1 ? 'md:border-r md:border-white/10' : ''
                   }`}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{
@@ -180,7 +135,7 @@ export default function HeroSection() {
                   transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
                 >
                   <div className="flex-shrink-0">
-                    <div className="w-7 h-7 md:w-8 md:h-8">{item.icon}</div>
+                    <div className="w-7 h-7 md:w-8 md:h-8">{valueIcons[i]}</div>
                   </div>
                   <div>
                     <h3 className="font-heading text-[11px] md:text-[12px] font-semibold text-white leading-snug">
@@ -197,7 +152,6 @@ export default function HeroSection() {
           <div className="h-[2px]" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, #c9a84c)' }} />
         </motion.div>
 
-        {/* Centered map below both columns */}
         <motion.div
           className="flex justify-center mt-10 mb-8"
           initial={{ opacity: 0 }}
@@ -208,7 +162,6 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[#c9a84c]/40 z-20"
         initial={{ opacity: 0 }}
@@ -218,7 +171,7 @@ export default function HeroSection() {
         <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 animate-bounce">
           <path d="M12,5 L12,19 M7,14 L12,19 L17,14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-        <span className="text-[10px] font-body tracking-wider uppercase">Ritināt tālāk</span>
+        <span className="text-[10px] font-body tracking-wider uppercase">{t('hero.scrollDown')}</span>
       </motion.div>
     </section>
   );

@@ -3,12 +3,12 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import WatercolorBackground from './WatercolorBackground';
-import FeatherDecoration from './FeatherDecoration';
 import GoldLine from './GoldLine';
-import DecorativeAsset from './DecorativeAsset';
 import Footer from './Footer';
+import { useI18n } from '@/lib/i18n';
 
 export default function ServicePageLayout({ breadcrumbs, title, subtitle, children }) {
+  const { t } = useI18n();
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -18,7 +18,6 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
 
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ background: '#f5f0e8' }}>
-      {/* Paper texture */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-0">
         <svg width="100%" height="100%">
           <filter id="pagePaper"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
@@ -26,28 +25,23 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
         </svg>
       </div>
 
-      {/* Header / Breadcrumb area */}
       <div className="relative overflow-hidden" style={{ background: '#faf7f2' }}>
         <WatercolorBackground variant="services" />
-        <FeatherDecoration className="absolute -right-10 top-10 w-[120px] h-[320px] hidden lg:block" opacity={0.04} />
-        <DecorativeAsset asset="pyramid" className="hidden lg:block -left-2 bottom-4 w-[200px]" opacity={0.28} />
-        <DecorativeAsset asset="featherInk" className="hidden lg:block right-[4%] top-2 w-[200px]" opacity={0.22} />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 pt-10 pb-14 md:pt-14 md:pb-20">
-          {/* Back + Breadcrumb */}
           <div className="flex items-center gap-4 mb-8">
             <button
               onClick={() => navigate(-1)}
               className="flex items-center gap-1.5 text-[12px] font-body text-[#1e3a5f]/40 hover:text-[#1e3a5f]/70 transition-colors duration-300"
             >
               <ChevronLeft className="w-4 h-4" />
-              <span>Atpakaļ</span>
+              <span>{t('servicePages.back')}</span>
             </button>
 
             <div className="h-4 w-[1px] bg-[#1e3a5f]/10" />
 
             <nav className="flex items-center gap-1.5 text-[11px] font-body text-[#1e3a5f]/35">
-              <Link to="/" className="hover:text-[#1e3a5f]/60 transition-colors">Sākums</Link>
+              <Link to="/" className="hover:text-[#1e3a5f]/60 transition-colors">{t('servicePages.home')}</Link>
               {breadcrumbs.map((crumb, i) => (
                 <React.Fragment key={i}>
                   <ChevronRight className="w-3 h-3" />
@@ -61,7 +55,6 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
             </nav>
           </div>
 
-          {/* Page title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,12 +73,7 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
         </div>
       </div>
 
-      {/* Content */}
       <div className="relative z-10">
-        <DecorativeAsset asset="pyramid" className="hidden lg:block -right-4 top-16 w-[300px] rotate-3" opacity={0.28} />
-        <DecorativeAsset asset="pyramid" className="hidden lg:block left-0 bottom-16 w-[260px]" opacity={0.25} />
-        <DecorativeAsset asset="cloudWave" className="hidden lg:block right-[6%] bottom-[22%] w-[300px]" opacity={0.22} />
-        <DecorativeAsset asset="cloudPyramidCircle" className="hidden lg:block left-[6%] top-[42%] w-[200px]" opacity={0.2} />
         {children}
       </div>
 

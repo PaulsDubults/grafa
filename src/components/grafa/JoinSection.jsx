@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import PyramidDecoration from './PyramidDecoration';
 import GoldLine from './GoldLine';
-import DecorativeAsset from './DecorativeAsset';
+import { useI18n } from '@/lib/i18n';
 
 export default function JoinSection() {
+  const { t } = useI18n();
+
   const scrollToContact = (e) => {
     e.preventDefault();
     const el = document.getElementById('kontakti');
@@ -21,8 +22,6 @@ export default function JoinSection() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9 }}
     >
-
-
       <div className="relative z-10 max-w-[800px] mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -31,20 +30,19 @@ export default function JoinSection() {
           transition={{ duration: 0.8 }}
         >
           <p className="font-body text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#c9a84c] mb-4 font-medium">
-            Sāksim sadarbību
+            {t('join.subtitle')}
           </p>
           <h2 className="font-heading text-[30px] md:text-[40px] lg:text-[48px] font-semibold mb-5 text-white leading-tight">
-            Pievienojies GRĀFAI
+            {t('join.heading')}
           </h2>
           <GoldLine width="w-24" className="mx-auto mb-8" />
 
           <p className="text-white/50 font-body text-[15px] md:text-[17px] leading-[1.9] mb-6 max-w-2xl mx-auto">
-            Ja meklējat uzticamu grāmatvedības partneri, kas saprot Jūsu uzņēmuma vajadzības un 
-            piedāvā individuālu pieeju — mēs esam gatavi Jums palīdzēt.
+            {t('join.description')}
           </p>
 
           <p className="font-script text-[20px] md:text-[24px] text-[#c9a84c] mb-10 italic">
-            Jūsu finanšu lietas — drošās rokās.
+            {t('join.tagline')}
           </p>
 
           <motion.button
@@ -52,7 +50,7 @@ export default function JoinSection() {
             whileHover={{ y: -2 }}
             onClick={scrollToContact}
           >
-            Sazināties ar mums
+            {t('join.button')}
           </motion.button>
         </motion.div>
       </div>

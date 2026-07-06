@@ -3,27 +3,12 @@ import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
-import DecorativeAsset from './DecorativeAsset';
-
-const articles = [
-  {
-    title: "Kā izvēlēties grāmatvedi?",
-    category: "Padomi",
-    excerpt: "Kas jāņem vērā, izvēloties grāmatvedības pakalpojumu sniedzēju savam uzņēmumam.",
-  },
-  {
-    title: "Nodokļu izmaiņas 2025. gadā",
-    category: "Jaunumi",
-    excerpt: "Būtiskākās nodokļu likumdošanas izmaiņas, kas ietekmē uzņēmējus.",
-  },
-  {
-    title: "Finanšu plānošana mazajiem uzņēmumiem",
-    category: "Finanšu padomi",
-    excerpt: "Praktiski ieteikumi budžeta veidošanai un naudas plūsmas pārvaldīšanai.",
-  },
-];
+import { useI18n } from '@/lib/i18n';
 
 export default function KnowledgeSection() {
+  const { t } = useI18n();
+  const articles = t('knowledge.articles');
+
   return (
     <motion.section
       id="zinasanu-telpa"
@@ -36,8 +21,6 @@ export default function KnowledgeSection() {
     >
       <WatercolorBackground variant="approach" />
 
-
-
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <motion.div
           className="mb-16 text-center"
@@ -47,28 +30,27 @@ export default function KnowledgeSection() {
           transition={{ duration: 0.8 }}
         >
           <p className="font-body text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#c9a84c] mb-4 font-medium">
-            Noderīgi materiāli
+            {t('knowledge.subtitle')}
           </p>
           <h2 className="font-heading text-[30px] md:text-[40px] lg:text-[48px] font-semibold mb-5 text-[#1e3a5f]">
-            Zināšanu telpa
+            {t('knowledge.heading')}
           </h2>
           <GoldLine width="w-24" className="mx-auto mb-8" />
           <p className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[17px] leading-[1.8] max-w-3xl mx-auto">
-            Praktiski padomi, jaunumi un noderīga informācija par grāmatvedību, nodokļiem un finanšu pārvaldību.
+            {t('knowledge.description')}
           </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {articles.map((article, i) => (
             <motion.div
-              key={article.title}
+              key={i}
               className="group bg-white/60 backdrop-blur-sm border border-[#e8e0d4]/40 hover:border-[#c9a84c]/30 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(30,58,95,0.08)] rounded-sm overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
             >
-              {/* Top accent */}
               <div className="h-1 bg-gradient-to-r from-[#c9a84c]/40 to-transparent" />
               
               <div className="p-7 md:p-8">
@@ -88,7 +70,7 @@ export default function KnowledgeSection() {
                 </p>
 
                 <span className="text-[12px] font-body text-[#c9a84c]/60 group-hover:text-[#c9a84c] transition-colors duration-300 tracking-wider uppercase">
-                  Drīzumā →
+                  {t('knowledge.comingSoon')}
                 </span>
               </div>
             </motion.div>
@@ -102,7 +84,7 @@ export default function KnowledgeSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          Šī sadaļa drīzumā tiks papildināta ar jauniem rakstiem un materiāliem.
+          {t('knowledge.comingNote')}
         </motion.p>
       </div>
     </motion.section>

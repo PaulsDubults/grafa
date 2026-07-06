@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin } from 'lucide-react';
+import { useI18n } from '@/lib/i18n';
 
 const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/719cd8202_image.png";
 
@@ -90,6 +91,7 @@ function KuldigaNotification({ onDismiss }) {
 }
 
 export default function MapModal({ isOpen, onClose }) {
+  const { t } = useI18n();
   const [activePoint, setActivePoint] = useState(null);
   
 
@@ -136,10 +138,10 @@ export default function MapModal({ isOpen, onClose }) {
 
             <div className="text-center pt-6 pb-2 px-6">
               <p className="font-body text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#c9a84c] mb-2 font-medium">
-                Mūsu klienti
+                {t('mapModal.subtitle')}
               </p>
               <h3 className="font-heading text-[22px] md:text-[28px] font-semibold text-[#1e3a5f]">
-                Klienti visā Latvijā
+                {t('mapModal.title')}
               </h3>
             </div>
 

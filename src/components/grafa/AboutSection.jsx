@@ -1,29 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
-import FeatherDecoration from './FeatherDecoration';
 import GoldLine from './GoldLine';
-import DecorativeAsset from './DecorativeAsset';
-
-const missionValues = [
-  {
-    label: "Misija",
-    text: "Sniegt kvalitatīvus, uzticamus un individuāli pielāgotus grāmatvedības pakalpojumus, ļaujot uzņēmējiem koncentrēties uz biznesa attīstību.",
-  },
-  {
-    label: "Vīzija",
-    text: "Būt par uzticamāko grāmatvedības partneri Latvijā, kuru iesaka un ar kuru lepojas mūsu klienti.",
-  },
-];
-
-const coreValues = [
-  { title: "Precizitāte", desc: "Katra detaļa ir svarīga." },
-  { title: "Uzticamība", desc: "Droša partnerība ilgtermiņā." },
-  { title: "Individualitāte", desc: "Risinājums katram klientam." },
-  { title: "Profesionalitāte", desc: "Augstākie kvalitātes standarti." },
-];
+import { useI18n } from '@/lib/i18n';
 
 export default function AboutSection() {
+  const { t } = useI18n();
+  const missionValues = [t('about.mission'), t('about.vision')];
+  const coreValues = t('about.values');
+
   return (
     <motion.section
       id="par-mums"
@@ -36,7 +21,6 @@ export default function AboutSection() {
     >
       <WatercolorBackground variant="contact" />
 
-
       <div className="relative z-10 max-w-[1100px] mx-auto">
         <motion.div
           className="mb-16 text-center"
@@ -46,15 +30,14 @@ export default function AboutSection() {
           transition={{ duration: 0.8 }}
         >
           <p className="font-body text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#c9a84c] mb-4 font-medium">
-            Iepazīstieties
+            {t('about.subtitle')}
           </p>
           <h2 className="font-heading text-[30px] md:text-[40px] lg:text-[48px] font-semibold mb-5 text-[#1e3a5f]">
-            Par mums
+            {t('about.heading')}
           </h2>
           <GoldLine width="w-24" className="mx-auto mb-8" />
         </motion.div>
 
-        {/* Company description */}
         <motion.div
           className="max-w-3xl mx-auto text-center mb-16"
           initial={{ opacity: 0, y: 16 }}
@@ -63,24 +46,22 @@ export default function AboutSection() {
           transition={{ delay: 0.1, duration: 0.7 }}
         >
           <p className="font-heading text-[18px] md:text-[20px] font-semibold text-[#1e3a5f] mb-4">
-            SIA firma GRĀFA
+            {t('about.companyName')}
           </p>
           <p className="text-[#1e3a5f]/55 font-body text-[14px] md:text-[16px] leading-[1.9] mb-4">
-            Mēs esam Jelgavā strādājošs grāmatvedības ārpakalpojumu uzņēmums. Mūsu pakalpojumu 
-            kvalitāte balstīta uz zināšanām un <strong className="text-[#1e3a5f] font-semibold">vairāk kā 20 gadu pieredzi</strong> grāmatveža 
-            un finanšu analītiķa profesijā.
+            {t('about.description1_start')}
+            <strong className="text-[#1e3a5f] font-semibold">{t('about.description1_bold')}</strong>
+            {t('about.description1_end')}
           </p>
           <p className="text-[#1e3a5f]/45 font-body text-[14px] md:text-[15px] leading-[1.9]">
-            Sniedzam grāmatvedības pakalpojumus dažādām uzņēmējdarbības formām, saglabājot 
-            individuālu un saprotamu pieeju katram klientam.
+            {t('about.description2')}
           </p>
         </motion.div>
 
-        {/* Mission & Vision */}
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-16">
           {missionValues.map((item, i) => (
             <motion.div
-              key={item.label}
+              key={i}
               className="bg-white/60 backdrop-blur-sm p-8 md:p-10 border border-[#e8e0d4]/40 rounded-sm"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +78,6 @@ export default function AboutSection() {
           ))}
         </div>
 
-        {/* Values */}
         <motion.div
           className="text-center mb-8"
           initial={{ opacity: 0, y: 16 }}
@@ -106,14 +86,14 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
         >
           <p className="font-body text-[11px] tracking-[0.25em] uppercase text-[#c9a84c] mb-6 font-medium">
-            Mūsu vērtības
+            {t('about.valuesLabel')}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {coreValues.map((val, i) => (
             <motion.div
-              key={val.title}
+              key={i}
               className="text-center p-5 md:p-6"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}

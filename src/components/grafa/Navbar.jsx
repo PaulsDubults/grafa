@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useI18n } from '@/lib/i18n';
+import LanguageSwitcher from './LanguageSwitcher';
 
-const navLinks = [
-  { label: "Sākumlapa", href: "#sakumlapa" },
-  { label: "Pakalpojumi", href: "#pakalpojumi" },
-  { label: "Kāpēc GRĀFU", href: "#kapec-grafu" },
-  { label: "Process", href: "#process" },
-  { label: "Zināšanu telpa", href: "#zinasanu-telpa" },
-  { label: "Par mums", href: "#par-mums" },
-  { label: "Pievienojies", href: "#pievienojies" },
-  { label: "Kontakti", href: "#kontakti" },
+const navKeys = [
+  { key: "nav.home", href: "#sakumlapa" },
+  { key: "nav.services", href: "#pakalpojumi" },
+  { key: "nav.whyGrafa", href: "#kapec-grafu" },
+  { key: "nav.process", href: "#process" },
+  { key: "nav.knowledge", href: "#zinasanu-telpa" },
+  { key: "nav.about", href: "#par-mums" },
+  { key: "nav.join", href: "#pievienojies" },
+  { key: "nav.contacts", href: "#kontakti" },
 ];
 
 export default function Navbar() {
+  const { t } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -52,21 +54,24 @@ export default function Navbar() {
         <div className="max-w-[1200px] mx-auto px-6 md:px-10 flex items-center justify-end h-14 md:h-[60px]">
 
           <div className="hidden lg:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
-            {navLinks.map((link) => (
+            {navKeys.map((link) => (
               <a
-                key={link.label}
+                key={link.key}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
                 className="text-[12px] font-body transition-all duration-300 relative pb-1 text-[#1e3a5f]/50 hover:text-[#1e3a5f]/80"
               >
-                {link.label}
+                {t(link.key)}
               </a>
             ))}
           </div>
 
-          <button className="lg:hidden p-2 text-[#1e3a5f]/60" onClick={() => setMobileOpen(!mobileOpen)}>
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+            <button className="lg:hidden p-2 text-[#1e3a5f]/60" onClick={() => setMobileOpen(!mobileOpen)}>
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -79,9 +84,9 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
           >
             <div className="flex flex-col items-center gap-7 pt-10">
-              {navLinks.map((link, i) => (
+              {navKeys.map((link, i) => (
                 <motion.a
-                  key={link.label}
+                  key={link.key}
                   href={link.href}
                   className="text-lg font-heading text-[#1e3a5f]/80 hover:text-[#1e3a5f]"
                   initial={{ opacity: 0, y: 12 }}
@@ -89,9 +94,12 @@ export default function Navbar() {
                   transition={{ delay: i * 0.06 }}
                   onClick={(e) => handleClick(e, link.href)}
                 >
-                  {link.label}
+                  {t(link.key)}
                 </motion.a>
               ))}
+              <div className="mt-4">
+                <LanguageSwitcher />
+              </div>
             </div>
           </motion.div>
         )}

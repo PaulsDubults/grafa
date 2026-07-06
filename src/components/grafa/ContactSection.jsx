@@ -6,19 +6,20 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
-import DecorativeAsset from './DecorativeAsset';
-
-const contactItems = [
-  { icon: User, label: "Liene Upeniece", href: null },
-  { icon: Phone, label: "+371 20383974", href: "tel:+37120383974" },
-  { icon: Mail, label: "firmagrafa@gmail.com", href: "mailto:firmagrafa@gmail.com" },
-  { icon: MapPin, label: "Jelgavā strādājošs uzņēmums", href: null },
-  { icon: Clock, label: "P.–Pk. 9:00–17:00", href: null },
-];
+import { useI18n } from '@/lib/i18n';
 
 export default function ContactSection() {
+  const { t } = useI18n();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
+
+  const contactItems = [
+    { icon: User, label: "Liene Upeniece", href: null },
+    { icon: Phone, label: "+371 20383974", href: "tel:+37120383974" },
+    { icon: Mail, label: "firmagrafa@gmail.com", href: "mailto:firmagrafa@gmail.com" },
+    { icon: MapPin, label: t('contact.location'), href: null },
+    { icon: Clock, label: t('contact.hours'), href: null },
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,12 +40,9 @@ export default function ContactSection() {
     >
       <WatercolorBackground variant="contact" />
 
-
-
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           
-          {/* Left: Contact info */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -52,26 +50,25 @@ export default function ContactSection() {
             transition={{ delay: 0.1, duration: 0.8 }}
           >
             <p className="font-body text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#c9a84c] mb-4 font-medium">
-              Sazinieties
+              {t('contact.subtitle')}
             </p>
             <h2 className="font-heading text-[30px] md:text-[40px] lg:text-[48px] font-semibold mb-5 leading-tight text-[#1e3a5f]">
-              Kontakti
+              {t('contact.heading')}
             </h2>
             <GoldLine width="w-24" className="mb-8" />
 
             <p className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[16px] leading-[1.9] mb-10 max-w-lg">
-              Ja Jums nepieciešami grāmatvedības pakalpojumi ar individuālu pieeju, droši 
-              sazinieties. Ar prieku palīdzēsim atrast piemērotāko risinājumu.
+              {t('contact.description')}
             </p>
 
             <p className="font-heading text-[16px] font-semibold mb-8 text-[#1e3a5f]">
-              SIA firma GRĀFA
+              {t('contact.companyName')}
             </p>
 
             <div className="flex flex-col gap-6">
               {contactItems.map((item, i) => (
                 <motion.div
-                  key={item.label}
+                  key={i}
                   className="flex items-center gap-4 group"
                   initial={{ opacity: 0, x: -16 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -98,7 +95,6 @@ export default function ContactSection() {
             </div>
           </motion.div>
 
-          {/* Right: Form */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -107,15 +103,15 @@ export default function ContactSection() {
           >
             <div className="bg-white rounded-sm p-8 md:p-12 shadow-[0_4px_24px_rgba(30,58,95,0.08)] border border-[#e8e0d4]/50">
               <h3 className="font-heading text-[20px] md:text-[22px] font-semibold mb-2 text-[#1e3a5f]">
-                Nosūtiet ziņu
+                {t('contact.formTitle')}
               </h3>
               <div className="w-10 h-[1.5px] mb-8" style={{ background: 'linear-gradient(90deg, #c9a84c, transparent)' }} />
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="text-[11px] font-body text-[#1e3a5f]/40 tracking-wider uppercase mb-2 block">Vārds</label>
+                  <label className="text-[11px] font-body text-[#1e3a5f]/40 tracking-wider uppercase mb-2 block">{t('contact.labelName')}</label>
                   <Input
-                    placeholder="Jūsu vārds"
+                    placeholder={t('contact.placeholderName')}
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 h-12 rounded-sm"
@@ -123,10 +119,10 @@ export default function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] font-body text-[#1e3a5f]/40 tracking-wider uppercase mb-2 block">E-pasts</label>
+                  <label className="text-[11px] font-body text-[#1e3a5f]/40 tracking-wider uppercase mb-2 block">{t('contact.labelEmail')}</label>
                   <Input
                     type="email"
-                    placeholder="jusu@epasts.lv"
+                    placeholder={t('contact.placeholderEmail')}
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 h-12 rounded-sm"
@@ -134,9 +130,9 @@ export default function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] font-body text-[#1e3a5f]/40 tracking-wider uppercase mb-2 block">Ziņa</label>
+                  <label className="text-[11px] font-body text-[#1e3a5f]/40 tracking-wider uppercase mb-2 block">{t('contact.labelMessage')}</label>
                   <Textarea
-                    placeholder="Jūsu ziņojums..."
+                    placeholder={t('contact.placeholderMessage')}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     className="bg-[#faf7f2]/60 border-[#e8e0d4] text-[14px] font-body text-[#1e3a5f] placeholder:text-[#1e3a5f]/25 focus:border-[#c9a84c]/50 focus:ring-[#c9a84c]/20 min-h-[130px] resize-none rounded-sm"
@@ -147,7 +143,7 @@ export default function ContactSection() {
                   type="submit"
                   className="bg-[#1e3a5f] text-white hover:bg-[#1e3a5f]/90 hover:shadow-lg active:scale-[0.98] text-[13px] font-body tracking-wider uppercase px-10 h-12 transition-all duration-400 rounded-sm"
                 >
-                  {sent ? "Nosūtīts ✓" : "Sūtīt ziņu"}
+                  {sent ? t('contact.buttonSent') : t('contact.buttonSend')}
                 </Button>
               </form>
             </div>
