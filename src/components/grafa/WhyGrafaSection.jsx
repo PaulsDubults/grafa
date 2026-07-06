@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { LargePyramid, LargeFeather, InkSplash, GoldDotGrid, PeachWash, WaveBand, PaperTexture } from './Decorations';
+import { LargePyramid, PyramidSilhouette, LargeFeather, FeatherOutline, GoldInkSplash, RosyWash, WatercolorBrush, GoldDotGrid, GoldCurl, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const valueIcons = [
@@ -18,90 +18,60 @@ export default function WhyGrafaSection() {
   const values = t('whyGrafa.values');
 
   return (
-    <section
-      id="kapec-grafu"
-      className="relative py-28 md:py-44 overflow-hidden"
-      style={{ background: '#f5f0e8' }}
-    >
+    <section id="kapec-grafu" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#f5f0e8' }}>
       <PaperTexture id="whyP" />
-      
-      {/* Large pyramid background — left side, big and visible */}
-      <LargePyramid className="w-[350px] md:w-[500px] h-[350px] md:h-[500px] left-[-80px] md:left-[-50px] top-[10%]" opacity={0.09} />
-      
-      {/* Feather — right side, distinct from services */}
-      <LargeFeather className="w-[140px] md:w-[200px] h-[350px] md:h-[500px] right-[-20px] md:right-4 bottom-[5%]" opacity={0.12} flip />
-      
-      {/* Large ink splash */}
-      <InkSplash className="right-[-100px] top-[20%]" color="rgba(230,185,140,0.10)" size={550} />
-      
-      {/* Gold dot grid — bottom left */}
-      <GoldDotGrid className="w-[140px] h-[90px] left-8 bottom-24" rows={5} cols={8} opacity={0.18} />
+
+      {/* Large pyramid — left, big and bold */}
+      <LargePyramid className="w-[450px] md:w-[650px] h-[450px] md:h-[650px] left-[-100px] md:left-[-60px] top-[5%]" opacity={0.18} />
+      {/* Ghost pyramid fill — background accent */}
+      <PyramidSilhouette className="w-[350px] md:w-[500px] h-[300px] md:h-[440px] right-[-80px] bottom-[-40px]" opacity={0.05} />
+
+      {/* Feather outline — right side, different from services */}
+      <FeatherOutline className="w-[180px] md:w-[280px] h-[450px] md:h-[700px] right-[-20px] md:right-0 top-[8%]" opacity={0.22} flip />
+
+      {/* Rosy wash — unique to this section */}
+      <RosyWash className="right-[-150px] top-[15%]" size={750} opacity={0.28} id="whyRw" />
+      {/* Gold ink splash — bottom left */}
+      <GoldInkSplash className="left-[-60px] bottom-[-40px]" size={450} opacity={0.2} id="whyGi" />
+
+      {/* Gold dot grid */}
+      <GoldDotGrid className="w-[200px] h-[110px] left-6 bottom-20" rows={6} cols={11} opacity={0.3} />
+      {/* Gold curl — top right */}
+      <GoldCurl className="w-[180px] h-[100px] right-[10%] top-12" opacity={0.2} flip />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
-        {/* Header — RIGHT aligned, different from services */}
         <div className="flex flex-col items-end text-right mb-20 md:mb-24 max-w-2xl ml-auto">
-          <motion.p
-            className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#c9a84c] mb-5 font-medium"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
+          <motion.p className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#c9a84c] mb-5 font-medium" initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             {t('whyGrafa.subtitle')}
           </motion.p>
-          <motion.h2
-            className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#1e3a5f] mb-6 leading-[1.1]"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.7 }}
-          >
+          <motion.h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#1e3a5f] mb-6 leading-[1.1]" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>
             {t('whyGrafa.heading')}
           </motion.h2>
           <GoldLine width="w-28" className="mb-8" />
-          <motion.p
-            className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[17px] leading-[1.9]"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
+          <motion.p className="text-[#1e3a5f]/50 font-body text-[15px] md:text-[17px] leading-[1.9]" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.6 }}>
             {t('whyGrafa.description')}
           </motion.p>
         </div>
 
-        {/* Cards — 2-column staggered with large padding */}
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
           {values.map((item, i) => (
             <motion.div
               key={i}
-              className={`group relative bg-white rounded-xl p-8 md:p-10 border border-[#e8e0d4]/50 overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,95,0.08),0_0_0_1px_rgba(201,168,76,0.12)] ${
-                i % 2 === 1 ? 'md:mt-12' : ''
-              }`}
+              className={`group relative bg-white rounded-xl p-8 md:p-10 border border-[#e8e0d4]/50 overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,95,0.08),0_0_0_1px_rgba(201,168,76,0.12)] ${i % 2 === 1 ? 'md:mt-12' : ''}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.7 }}
             >
-              {/* Gold top line */}
               <div className="absolute top-0 left-8 right-8 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, #e8d5a3, #c9a84c, transparent)' }} />
-              
-              {/* Corner ornaments */}
-              <svg className="absolute top-3 right-3 w-8 h-8 opacity-[0.1] group-hover:opacity-[0.22] transition-opacity duration-500" viewBox="0 0 30 30" fill="none">
+              <svg className="absolute top-3 right-3 w-8 h-8 opacity-[0.15] group-hover:opacity-[0.3] transition-opacity duration-500" viewBox="0 0 30 30" fill="none">
                 <path d="M28,2 L28,12 M28,2 L18,2" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" />
               </svg>
-
               <div className="flex items-start gap-5">
-                <div className="text-[#c9a84c] group-hover:scale-110 transition-transform duration-500 flex-shrink-0 mt-1">
-                  {valueIcons[i]}
-                </div>
+                <div className="text-[#c9a84c] group-hover:scale-110 transition-transform duration-500 flex-shrink-0 mt-1">{valueIcons[i]}</div>
                 <div>
-                  <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#1e3a5f] mb-3 leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-[#1e3a5f]/50 font-body text-[13px] md:text-[15px] leading-[1.85]">
-                    {item.desc}
-                  </p>
+                  <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#1e3a5f] mb-3 leading-snug">{item.title}</h3>
+                  <p className="text-[#1e3a5f]/50 font-body text-[13px] md:text-[15px] leading-[1.85]">{item.desc}</p>
                   <div className="w-0 group-hover:w-16 h-[2px] mt-5 transition-all duration-700" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, transparent)' }} />
                 </div>
               </div>

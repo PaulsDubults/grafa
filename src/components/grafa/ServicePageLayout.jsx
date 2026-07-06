@@ -22,10 +22,10 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
 
       <div className="relative overflow-hidden" style={{ background: '#faf7f2' }}>
         <PaperTexture id="svcHdrP" />
-        <PeachWash className="right-[-80px] top-[-30px]" size={400} opacity={0.1} />
-        <LargeFeather className="w-[100px] md:w-[150px] h-[250px] md:h-[380px] right-0 md:right-8 top-4" opacity={0.1} />
-        <StarConstellation className="w-[120px] h-[120px] left-8 bottom-4" opacity={0.15} />
-        <GoldDotGrid className="w-[80px] h-[50px] left-6 top-8" rows={3} cols={5} opacity={0.14} />
+        <PeachWash className="right-[-120px] top-[-50px]" size={650} opacity={0.3} id="svcLPw" />
+        <LargeFeather className="w-[160px] md:w-[240px] h-[400px] md:h-[600px] right-[-10px] md:right-4 top-0" opacity={0.25} />
+        <StarConstellation className="w-[180px] h-[180px] left-6 bottom-2" opacity={0.32} />
+        <GoldDotGrid className="w-[130px] h-[75px] left-4 top-6" rows={4} cols={7} opacity={0.28} />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 pt-10 pb-14 md:pt-14 md:pb-20">
           <div className="flex items-center gap-4 mb-8">

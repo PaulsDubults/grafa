@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { LargeFeather, StarConstellation, PeachWash, GoldDotGrid, PaperTexture } from './Decorations';
+import { LargeFeather, SmallFeather, FeatherOutline, StarConstellation, PeachWash, WatercolorBrush, GoldDotGrid, GoldCurl, LargePyramid, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const stepIcons = [
@@ -18,47 +18,39 @@ export default function ProcessSection() {
   const steps = t('process.steps');
 
   return (
-    <section
-      id="process"
-      className="relative py-28 md:py-44 overflow-hidden"
-      style={{ background: '#faf7f2' }}
-    >
+    <section id="process" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#faf7f2' }}>
       <PaperTexture id="procP" />
-      
-      {/* Decorations: feather left, stars right, peach wash */}
-      <LargeFeather className="w-[120px] md:w-[180px] h-[300px] md:h-[500px] left-0 md:left-4 top-[15%]" opacity={0.1} />
-      <StarConstellation className="w-[180px] h-[180px] right-4 md:right-12 top-16" opacity={0.2} />
-      <PeachWash className="left-[-120px] top-[40%]" size={500} opacity={0.1} />
-      <GoldDotGrid className="w-[110px] h-[70px] right-8 bottom-32" rows={4} cols={6} opacity={0.16} />
+
+      {/* Large watercolor wash — top right */}
+      <WatercolorBrush className="right-[-200px] top-[-80px]" color="#deb87a" opacity={0.3} size={850} id="procWc" />
+      {/* Secondary peach — bottom left */}
+      <PeachWash className="left-[-180px] bottom-[-100px]" size={700} opacity={0.28} id="procPw" />
+
+      {/* Feather — left, large */}
+      <LargeFeather className="w-[200px] md:w-[300px] h-[500px] md:h-[750px] left-[-20px] md:left-0 top-[10%]" opacity={0.25} />
+      {/* Small feather — right */}
+      <SmallFeather className="w-[70px] md:w-[100px] h-[180px] md:h-[260px] right-4 md:right-12 top-[30%]" opacity={0.22} rotate={10} />
+      {/* Feather outline — bottom right */}
+      <FeatherOutline className="w-[130px] md:w-[200px] h-[320px] md:h-[500px] right-0 bottom-[5%]" opacity={0.18} />
+
+      {/* Stars — right, top */}
+      <StarConstellation className="w-[240px] h-[240px] right-2 md:right-8 top-12" opacity={0.35} />
+      {/* Gold dots — left bottom */}
+      <GoldDotGrid className="w-[160px] h-[100px] left-4 bottom-24" rows={5} cols={9} opacity={0.28} />
+      {/* Curl — center right */}
+      <GoldCurl className="w-[160px] h-[90px] right-[5%] top-[50%]" opacity={0.2} />
+      {/* Small pyramid */}
+      <LargePyramid className="w-[250px] md:w-[350px] h-[250px] md:h-[350px] right-[-40px] bottom-[-20px]" opacity={0.1} />
 
       <div className="relative z-10 max-w-[1000px] mx-auto px-6 md:px-10">
-        {/* Header — centered */}
-        <motion.div
-          className="text-center mb-20 md:mb-24"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#c9a84c] mb-5 font-medium">
-            {t('process.subtitle')}
-          </p>
-          <h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#1e3a5f] mb-6 leading-[1.1]">
-            {t('process.heading')}
-          </h2>
+        <motion.div className="text-center mb-20 md:mb-24" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+          <p className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#c9a84c] mb-5 font-medium">{t('process.subtitle')}</p>
+          <h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#1e3a5f] mb-6 leading-[1.1]">{t('process.heading')}</h2>
           <GoldLine width="w-28" className="mx-auto" />
         </motion.div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Gold timeline line */}
-          <motion.div
-            className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2"
-            initial={{ scaleY: 0, transformOrigin: 'top' }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 2, ease: 'easeOut' }}
-          >
+          <motion.div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2" initial={{ scaleY: 0, transformOrigin: 'top' }} whileInView={{ scaleY: 1 }} viewport={{ once: true }} transition={{ duration: 2, ease: 'easeOut' }}>
             <div className="w-full h-full" style={{ background: 'linear-gradient(180deg, #c9a84c, #e8d5a3 50%, #c9a84c)' }} />
           </motion.div>
 
@@ -66,39 +58,22 @@ export default function ProcessSection() {
             {steps.map((step, i) => {
               const isLeft = i % 2 === 0;
               return (
-                <motion.div
-                  key={i}
-                  className={`relative flex items-start gap-8 md:gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.7 }}
-                >
-                  {/* Timeline node — large gold circle with number */}
+                <motion.div key={i} className={`relative flex items-start gap-8 md:gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.7 }}>
                   <div className="absolute left-8 md:left-1/2 top-4 -translate-x-1/2 z-10">
                     <div className="w-10 h-10 rounded-full bg-[#c9a84c] flex items-center justify-center shadow-[0_0_20px_rgba(201,168,76,0.3)]">
                       <span className="text-white font-heading text-[13px] font-bold">{String(i + 1).padStart(2, '0')}</span>
                     </div>
                   </div>
-
                   <div className={`ml-20 md:ml-0 md:w-[calc(50%-40px)] ${isLeft ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
                     <div className="relative bg-white rounded-xl p-7 md:p-9 border border-[#e8e0d4]/50 overflow-hidden transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(30,58,95,0.08)] group">
                       <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
-                      
                       <div className={`flex items-center gap-4 mb-4 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
-                        <div className="text-[#c9a84c] group-hover:scale-110 transition-transform duration-500">
-                          {stepIcons[i]}
-                        </div>
+                        <div className="text-[#c9a84c] group-hover:scale-110 transition-transform duration-500">{stepIcons[i]}</div>
                       </div>
-                      <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#1e3a5f] mb-3">
-                        {step.title}
-                      </h3>
-                      <p className="text-[#1e3a5f]/50 font-body text-[13px] md:text-[15px] leading-[1.85]">
-                        {step.desc}
-                      </p>
+                      <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#1e3a5f] mb-3">{step.title}</h3>
+                      <p className="text-[#1e3a5f]/50 font-body text-[13px] md:text-[15px] leading-[1.85]">{step.desc}</p>
                     </div>
                   </div>
-
                   <div className="hidden md:block md:w-[calc(50%-40px)]" />
                 </motion.div>
               );
