@@ -5,186 +5,183 @@ const GOLD = '#c9a84c';
 const ROSE = '#c4868a';
 
 /* ═══════════════════════════════════════════════════════════════
-   FEATHER ILLUSTRATIONS — 9 unique variants, gold + rose palette
+   FEATHER ILLUSTRATIONS — realistic quill style with many fine barbs
+   Inspired by: pen-and-ink botanical illustration with thick tapering
+   rachis (shaft), dozens of fine parallel barb lines, fluffy downy base
    ═══════════════════════════════════════════════════════════════ */
 
-/* 1. Full feather — elegant quill with fine barbs, flowing calligraphy style */
+/* Helper: generates many fine barb lines along a shaft */
+function Barbs({ cx, y1, y2, count, spreadL, spreadR, color, side = 'both' }) {
+  const lines = [];
+  for (let i = 0; i < count; i++) {
+    const t = i / (count - 1);
+    const y = y1 + t * (y2 - y1);
+    const taper = 1 - Math.abs(t - 0.35) * 0.9;
+    const lenL = spreadL * taper * (0.8 + Math.sin(i * 1.7) * 0.2);
+    const lenR = spreadR * taper * (0.8 + Math.cos(i * 1.3) * 0.2);
+    const curveL = lenL * 0.3;
+    const curveR = lenR * 0.3;
+    const sw = 0.35 + taper * 0.35;
+    if (side !== 'right') lines.push(<path key={`l${i}`} d={`M${cx},${y} Q${cx - lenL * 0.6},${y - curveL} ${cx - lenL},${y - curveL * 1.8}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />);
+    if (side !== 'left') lines.push(<path key={`r${i}`} d={`M${cx},${y} Q${cx + lenR * 0.6},${y - curveR} ${cx + lenR},${y - curveR * 1.8}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />);
+  }
+  return <>{lines}</>;
+}
+
+/* 1. Full feather — tall realistic quill with dense barbs */
 export function FullFeather({ className = '', flip = false, opacity = 0.3, color = GOLD }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={flip ? { transform: 'scaleX(-1)' } : undefined} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.8 }}>
-      <svg viewBox="0 0 200 500" fill="none" className="w-full h-full" style={{ opacity }}>
-        {/* Central shaft — tapered, organic line */}
-        <path d="M100,8 Q96,60 97,140 Q99,250 100,360 Q100.5,420 100,492" stroke={color} strokeWidth="2.2" fill="none" strokeLinecap="round" />
-        {/* Left barbs — sweeping curves */}
-        <path d="M100,45 Q55,72 35,115 Q22,155 40,178 Q62,192 96,162" stroke={color} strokeWidth="1.4" fill="none" />
-        <path d="M99,95 Q58,118 42,158 Q33,192 54,208 Q75,214 97,190" stroke={color} strokeWidth="1.2" fill="none" />
-        <path d="M99,155 Q62,178 52,215 Q46,246 65,256 Q82,254 98,235" stroke={color} strokeWidth="1" fill="none" />
-        <path d="M100,218 Q72,240 64,270 Q60,296 76,304 Q88,302 99,285" stroke={color} strokeWidth="0.85" fill="none" />
-        {/* Right barbs — mirrored */}
-        <path d="M100,45 Q145,68 163,110 Q175,148 156,172 Q136,186 104,160" stroke={color} strokeWidth="1.4" fill="none" />
-        <path d="M101,95 Q142,115 156,152 Q164,188 144,204 Q126,212 103,188" stroke={color} strokeWidth="1.2" fill="none" />
-        <path d="M101,155 Q138,175 148,210 Q154,240 137,253 Q120,257 102,234" stroke={color} strokeWidth="1" fill="none" />
-        <path d="M100,218 Q128,238 136,266 Q140,290 126,300 Q114,300 101,284" stroke={color} strokeWidth="0.85" fill="none" />
-        {/* Wispy tip barbs */}
-        <path d="M100,276 Q82,295 77,320 Q74,340 86,346 Q95,344 100,330" stroke={color} strokeWidth="0.65" fill="none" />
-        <path d="M100,276 Q118,293 123,316 Q126,336 114,343 Q106,342 101,328" stroke={color} strokeWidth="0.65" fill="none" />
+      <svg viewBox="0 0 200 520" fill="none" className="w-full h-full" style={{ opacity }}>
+        {/* Rachis — thick tapering shaft */}
+        <path d="M100,6 Q97,50 98,120 Q99,220 100,340 Q100,420 100,510" stroke={color} strokeWidth="2.8" fill="none" strokeLinecap="round" />
+        <path d="M100,6 Q97,50 98,120 Q99,220 100,340 Q100,420 100,510" stroke={color} strokeWidth="1.2" fill="none" strokeLinecap="round" opacity="0.3" />
+        {/* Dense barbs */}
+        <Barbs cx={100} y1={30} y2={360} count={45} spreadL={72} spreadR={72} color={color} />
+        {/* Downy base — fluffy short wisps */}
+        {[370,378,386,394,402,410,418,426].map((y,i) => {
+          const sp = 18 - i * 1.5;
+          return <g key={`d${i}`}>
+            <path d={`M100,${y} Q${100-sp},${y-4-i} ${100-sp-5},${y-2}`} stroke={color} strokeWidth="0.3" fill="none" strokeLinecap="round" opacity={0.5-i*0.04} />
+            <path d={`M100,${y} Q${100+sp},${y-3-i} ${100+sp+5},${y-1}`} stroke={color} strokeWidth="0.3" fill="none" strokeLinecap="round" opacity={0.5-i*0.04} />
+            <path d={`M100,${y} Q${100-sp*0.7},${y+3} ${100-sp-3},${y+5}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.03} />
+            <path d={`M100,${y} Q${100+sp*0.7},${y+3} ${100+sp+3},${y+5}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.03} />
+          </g>;
+        })}
       </svg>
     </motion.div>
   );
 }
 
-/* 2. Half feather — cropped bottom, impressionist brush-like strokes */
+/* 2. Half feather — top portion only, with fine barbs */
 export function HalfFeather({ className = '', flip = false, opacity = 0.28, color = ROSE }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={flip ? { transform: 'scaleX(-1)' } : undefined} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
-      <svg viewBox="0 0 180 280" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M90,5 Q86,35 88,95 Q89,155 90,215 Q90,248 90,275" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round" />
-        {/* Broad impressionist left strokes */}
-        <path d="M90,28 Q48,50 30,88 Q18,122 36,144 Q56,155 88,128" stroke={color} strokeWidth="1.6" fill="none" strokeLinecap="round" />
-        <path d="M89,78 Q52,98 40,135 Q32,165 50,180 Q68,186 88,162" stroke={color} strokeWidth="1.3" fill="none" strokeLinecap="round" />
-        {/* Broad impressionist right strokes */}
-        <path d="M90,28 Q132,48 148,84 Q158,118 140,140 Q122,152 92,126" stroke={color} strokeWidth="1.6" fill="none" strokeLinecap="round" />
-        <path d="M91,78 Q128,96 140,130 Q148,162 130,176 Q114,183 92,160" stroke={color} strokeWidth="1.3" fill="none" strokeLinecap="round" />
-        {/* Lower wisps */}
-        <path d="M90,138 Q66,156 60,182 Q56,204 68,212 Q80,210 89,195" stroke={color} strokeWidth="0.9" fill="none" />
-        <path d="M90,138 Q114,154 120,178 Q124,198 112,208 Q102,207 91,192" stroke={color} strokeWidth="0.9" fill="none" />
+      <svg viewBox="0 0 180 300" fill="none" className="w-full h-full" style={{ opacity }}>
+        <path d="M90,4 Q87,40 88,100 Q89,170 90,240 Q90,270 90,296" stroke={color} strokeWidth="2.2" fill="none" strokeLinecap="round" />
+        <Barbs cx={90} y1={22} y2={250} count={32} spreadL={60} spreadR={60} color={color} />
+        {/* Downy wisps at base */}
+        {[255,262,269,276].map((y,i) => <g key={`dh${i}`}>
+          <path d={`M90,${y} Q${75-i*2},${y-3} ${70-i*3},${y}`} stroke={color} strokeWidth="0.3" fill="none" strokeLinecap="round" opacity={0.4-i*0.05} />
+          <path d={`M90,${y} Q${105+i*2},${y-3} ${110+i*3},${y}`} stroke={color} strokeWidth="0.3" fill="none" strokeLinecap="round" opacity={0.4-i*0.05} />
+        </g>)}
       </svg>
     </motion.div>
   );
 }
 
-/* 3. Feather outline — delicate dashed lines, architectural feel */
+/* 3. Feather outline — lighter, fewer barbs, dashed rachis */
 export function FeatherOutline({ className = '', flip = false, opacity = 0.22, color = GOLD }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={flip ? { transform: 'scaleX(-1)' } : undefined} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.8 }}>
-      <svg viewBox="0 0 160 400" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M80,8 Q76,55 78,135 Q79,215 80,305 Q80,355 80,392" stroke={color} strokeWidth="1" fill="none" strokeLinecap="round" strokeDasharray="8 4" />
-        <path d="M80,38 Q48,58 32,96 Q24,126 40,144 Q56,152 78,128" stroke={color} strokeWidth="0.7" fill="none" strokeDasharray="5 3" />
-        <path d="M80,38 Q112,54 126,92 Q134,122 118,140 Q104,148 82,126" stroke={color} strokeWidth="0.7" fill="none" strokeDasharray="5 3" />
-        <path d="M80,98 Q52,116 44,148 Q40,172 54,182 Q66,180 79,164" stroke={color} strokeWidth="0.6" fill="none" strokeDasharray="4 3" />
-        <path d="M80,98 Q108,114 116,144 Q120,166 106,178 Q96,178 81,162" stroke={color} strokeWidth="0.6" fill="none" strokeDasharray="4 3" />
-        <path d="M80,168 Q60,186 54,212 Q51,232 64,240 Q74,238 80,224" stroke={color} strokeWidth="0.5" fill="none" strokeDasharray="3 3" />
-        <path d="M80,168 Q100,184 106,208 Q110,228 98,236 Q88,235 81,222" stroke={color} strokeWidth="0.5" fill="none" strokeDasharray="3 3" />
+      <svg viewBox="0 0 160 420" fill="none" className="w-full h-full" style={{ opacity }}>
+        <path d="M80,6 Q77,50 78,130 Q79,220 80,320 Q80,370 80,414" stroke={color} strokeWidth="1.4" fill="none" strokeLinecap="round" strokeDasharray="10 5" />
+        <Barbs cx={80} y1={28} y2={320} count={28} spreadL={52} spreadR={52} color={color} />
       </svg>
     </motion.div>
   );
 }
 
-/* 4. Small feather — compact, watercolor dot accents */
+/* 4. Small feather — compact, dense barbs */
 export function SmallFeather({ className = '', opacity = 0.26, rotate = 0, color = ROSE }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${rotate}deg)` }} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.2 }}>
-      <svg viewBox="0 0 80 200" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M40,5 Q38,38 39,78 Q40,128 40,182" stroke={color} strokeWidth="1.3" fill="none" strokeLinecap="round" />
-        <path d="M40,18 Q25,30 19,48 Q15,62 23,70 Q34,68 39,55" stroke={color} strokeWidth="0.9" fill="none" />
-        <path d="M40,18 Q55,28 61,46 Q65,58 58,66 Q48,65 41,54" stroke={color} strokeWidth="0.9" fill="none" />
-        <path d="M40,52 Q28,64 25,78 Q23,90 30,95 Q38,93 40,84" stroke={color} strokeWidth="0.7" fill="none" />
-        <path d="M40,52 Q52,62 55,76 Q57,88 50,93 Q43,92 41,82" stroke={color} strokeWidth="0.7" fill="none" />
-        {/* Watercolor dot accents */}
-        <circle cx="18" cy="48" r="4" fill={color} opacity="0.12" />
-        <circle cx="62" cy="46" r="3.5" fill={color} opacity="0.1" />
-        <circle cx="24" cy="80" r="3" fill={color} opacity="0.08" />
+      <svg viewBox="0 0 80 210" fill="none" className="w-full h-full" style={{ opacity }}>
+        <path d="M40,4 Q38,30 39,70 Q40,120 40,170 Q40,190 40,206" stroke={color} strokeWidth="1.6" fill="none" strokeLinecap="round" />
+        <Barbs cx={40} y1={16} y2={170} count={22} spreadL={28} spreadR={28} color={color} />
+        {[175,180,185,190].map((y,i) => <g key={`ds${i}`}>
+          <path d={`M40,${y} Q${32-i},${y-2} ${28-i*2},${y}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.05} />
+          <path d={`M40,${y} Q${48+i},${y-2} ${52+i*2},${y}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.05} />
+        </g>)}
       </svg>
     </motion.div>
   );
 }
 
-/* 5. Diagonal feather — dynamic angle, bold ink strokes */
+/* 5. Diagonal feather — angled, with dense barbs */
 export function DiagonalFeather({ className = '', opacity = 0.25, color = GOLD, angle = -30 }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${angle}deg)` }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
-      <svg viewBox="0 0 140 350" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M70,5 Q67,48 68,118 Q69,198 70,275 Q70,318 70,345" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round" />
-        {/* Bold ink-style left barbs */}
-        <path d="M70,28 Q42,48 30,78 Q20,108 38,122 Q54,128 68,105" stroke={color} strokeWidth="1.3" fill="none" strokeLinecap="round" />
-        <path d="M70,78 Q44,96 36,128 Q30,155 46,165 Q60,168 69,146" stroke={color} strokeWidth="1.1" fill="none" strokeLinecap="round" />
-        {/* Bold ink-style right barbs */}
-        <path d="M70,28 Q98,44 108,74 Q116,102 102,118 Q86,125 72,104" stroke={color} strokeWidth="1.3" fill="none" strokeLinecap="round" />
-        <path d="M70,78 Q96,94 104,124 Q110,150 94,162 Q80,166 71,145" stroke={color} strokeWidth="1.1" fill="none" strokeLinecap="round" />
-        {/* Tip */}
-        <path d="M70,136 Q52,154 47,178 Q44,198 56,204 Q66,202 70,188" stroke={color} strokeWidth="0.8" fill="none" />
-        <path d="M70,136 Q88,152 93,174 Q96,194 84,201 Q74,200 71,186" stroke={color} strokeWidth="0.8" fill="none" />
+      <svg viewBox="0 0 140 370" fill="none" className="w-full h-full" style={{ opacity }}>
+        <path d="M70,4 Q67,45 68,115 Q69,200 70,290 Q70,335 70,366" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" />
+        <Barbs cx={70} y1={22} y2={290} count={36} spreadL={48} spreadR={48} color={color} />
+        {[295,302,309,316].map((y,i) => <g key={`dd${i}`}>
+          <path d={`M70,${y} Q${58-i},${y-2} ${54-i*2},${y+1}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.05} />
+          <path d={`M70,${y} Q${82+i},${y-2} ${86+i*2},${y+1}`} stroke={color} strokeWidth="0.25" fill="none" strokeLinecap="round" opacity={0.35-i*0.05} />
+        </g>)}
       </svg>
     </motion.div>
   );
 }
 
-/* 6. Horizontal feather — landscape, loose gestural lines */
+/* 6. Horizontal feather — landscape, rotated 90° feel */
 export function HorizontalFeather({ className = '', opacity = 0.22, color = ROSE, flip = false }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={flip ? { transform: 'scaleY(-1)' } : undefined} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
-      <svg viewBox="0 0 400 120" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M8,60 Q75,56 175,58 Q275,60 355,60 Q388,60 395,60" stroke={color} strokeWidth="1.6" fill="none" strokeLinecap="round" />
-        {/* Gestural upper barbs */}
-        <path d="M38,60 Q56,38 88,28 Q118,20 130,34 Q136,48 116,58" stroke={color} strokeWidth="1.1" fill="none" strokeLinecap="round" />
-        <path d="M96,60 Q114,40 144,32 Q170,26 180,40 Q184,52 164,59" stroke={color} strokeWidth="1" fill="none" strokeLinecap="round" />
-        <path d="M165,60 Q182,42 208,35 Q232,30 240,42 Q244,54 226,59" stroke={color} strokeWidth="0.9" fill="none" strokeLinecap="round" />
-        {/* Gestural lower barbs */}
-        <path d="M38,60 Q54,80 84,90 Q112,96 124,84 Q130,72 114,62" stroke={color} strokeWidth="1.1" fill="none" strokeLinecap="round" />
-        <path d="M96,60 Q112,78 140,86 Q164,90 174,80 Q180,68 162,61" stroke={color} strokeWidth="1" fill="none" strokeLinecap="round" />
-        <path d="M165,60 Q180,76 206,83 Q228,86 236,76 Q240,66 222,61" stroke={color} strokeWidth="0.9" fill="none" strokeLinecap="round" />
-        {/* Rose wash accent */}
-        <ellipse cx="120" cy="55" rx="50" ry="25" fill={color} opacity="0.06" />
+      <svg viewBox="0 0 420 110" fill="none" className="w-full h-full" style={{ opacity }}>
+        {/* Horizontal rachis */}
+        <path d="M6,55 Q60,53 150,54 Q260,55 360,55 Q400,55 416,55" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round" />
+        {/* Barbs radiating up and down */}
+        {Array.from({length:30},(_,i)=>{
+          const t=i/29;const x=25+t*340;const taper=1-Math.abs(t-0.35)*0.9;
+          const len=38*taper*(0.8+Math.sin(i*1.5)*0.2);const sw=0.3+taper*0.3;
+          return <g key={`hb${i}`}>
+            <path d={`M${x},55 Q${x-len*0.15},${55-len*0.6} ${x-len*0.3},${55-len}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />
+            <path d={`M${x},55 Q${x+len*0.15},${55+len*0.6} ${x+len*0.3},${55+len}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />
+          </g>;
+        })}
       </svg>
     </motion.div>
   );
 }
 
-/* 7. Feather tip — just the top quill point, sharp pen-nib style */
+/* 7. Feather tip — just the sharp quill point with fine barbs */
 export function FeatherTip({ className = '', opacity = 0.24, color = GOLD, rotate = 0 }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${rotate}deg)` }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2 }}>
-      <svg viewBox="0 0 100 160" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M50,3 Q48,28 49,62 Q50,98 50,152" stroke={color} strokeWidth="1.5" fill="none" strokeLinecap="round" />
-        <path d="M50,14 Q32,26 24,44 Q19,60 28,68 Q39,67 49,52" stroke={color} strokeWidth="1.1" fill="none" />
-        <path d="M50,14 Q68,24 75,42 Q80,56 72,65 Q62,64 51,51" stroke={color} strokeWidth="1.1" fill="none" />
-        <path d="M50,52 Q38,62 34,78 Q32,92 40,97 Q47,95 50,86" stroke={color} strokeWidth="0.75" fill="none" />
-        <path d="M50,52 Q62,61 66,76 Q68,90 60,96 Q53,94 51,84" stroke={color} strokeWidth="0.75" fill="none" />
-        {/* Sharp nib accent */}
-        <path d="M50,3 L48,0 M50,3 L52,0" stroke={color} strokeWidth="0.6" opacity="0.5" />
+      <svg viewBox="0 0 100 170" fill="none" className="w-full h-full" style={{ opacity }}>
+        <path d="M50,3 Q49,25 49,60 Q50,100 50,165" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round" />
+        <Barbs cx={50} y1={12} y2={130} count={18} spreadL={32} spreadR={32} color={color} />
       </svg>
     </motion.div>
   );
 }
 
-/* 8. Overlapping feathers — two crossed, layered with blended tones */
+/* 8. Overlapping feathers — two realistic quills crossed */
 export function OverlappingFeathers({ className = '', opacity = 0.2 }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 2 }}>
-      <svg viewBox="0 0 280 400" fill="none" className="w-full h-full" style={{ opacity }}>
-        {/* Feather 1 — gold, slightly left-leaning */}
-        <g transform="rotate(-8, 120, 200)">
-          <path d="M120,10 Q116,58 117,138 Q119,218 120,308 Q120,358 120,392" stroke={GOLD} strokeWidth="1.5" fill="none" strokeLinecap="round" />
-          <path d="M120,38 Q82,58 67,96 Q56,128 74,146 Q92,154 118,128" stroke={GOLD} strokeWidth="1.1" fill="none" />
-          <path d="M120,98 Q88,115 78,148 Q70,176 90,188 Q106,192 118,168" stroke={GOLD} strokeWidth="0.9" fill="none" />
-          <path d="M120,38 Q156,54 168,90 Q176,118 162,136 Q144,145 122,124" stroke={GOLD} strokeWidth="1.1" fill="none" />
-          <path d="M120,98 Q152,112 162,144 Q168,170 150,182 Q136,186 122,166" stroke={GOLD} strokeWidth="0.9" fill="none" />
+      <svg viewBox="0 0 300 440" fill="none" className="w-full h-full" style={{ opacity }}>
+        <g transform="rotate(-10, 130, 220)">
+          <path d="M130,10 Q127,55 128,140 Q129,230 130,330 Q130,380 130,420" stroke={GOLD} strokeWidth="2.2" fill="none" strokeLinecap="round" />
+          <Barbs cx={130} y1={30} y2={330} count={38} spreadL={58} spreadR={58} color={GOLD} />
         </g>
-        {/* Feather 2 — rose, right-leaning, behind */}
-        <g transform="rotate(12, 160, 200)" opacity="0.7">
-          <path d="M160,28 Q157,68 158,138 Q159,208 160,288 Q160,338 160,372" stroke={ROSE} strokeWidth="1.4" fill="none" strokeLinecap="round" />
-          <path d="M160,52 Q128,68 114,104 Q106,132 122,148 Q138,154 158,130" stroke={ROSE} strokeWidth="1" fill="none" />
-          <path d="M160,52 Q190,66 202,98 Q208,124 194,138 Q178,145 162,126" stroke={ROSE} strokeWidth="1" fill="none" />
-          <path d="M160,118 Q136,136 130,162 Q126,182 140,190 Q152,188 159,172" stroke={ROSE} strokeWidth="0.75" fill="none" />
-          <path d="M160,118 Q184,134 190,158 Q194,178 180,187 Q168,186 161,170" stroke={ROSE} strokeWidth="0.75" fill="none" />
+        <g transform="rotate(14, 170, 220)" opacity="0.65">
+          <path d="M170,30 Q168,70 169,150 Q170,240 170,330 Q170,370 170,410" stroke={ROSE} strokeWidth="2" fill="none" strokeLinecap="round" />
+          <Barbs cx={170} y1={48} y2={320} count={32} spreadL={50} spreadR={50} color={ROSE} />
         </g>
       </svg>
     </motion.div>
   );
 }
 
-/* 9. Feather fragment — abstract barbs only, loose watercolor wisps */
+/* 9. Feather fragment — just a cluster of barb lines, no shaft visible */
 export function FeatherFragment({ className = '', opacity = 0.2, color = ROSE, rotate = 0 }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} style={{ transform: `rotate(${rotate}deg)` }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2 }}>
-      <svg viewBox="0 0 120 100" fill="none" className="w-full h-full" style={{ opacity }}>
-        <path d="M60,92 Q42,72 28,52 Q18,36 24,26 Q34,18 46,32 Q56,44 60,62" stroke={color} strokeWidth="1" fill="none" strokeLinecap="round" />
-        <path d="M60,92 Q44,68 32,45 Q24,30 32,22 Q42,16 52,30 Q58,42 60,58" stroke={color} strokeWidth="0.8" fill="none" strokeLinecap="round" opacity="0.7" />
-        <path d="M60,92 Q78,70 90,50 Q100,34 94,24 Q85,18 74,30 Q65,42 60,60" stroke={color} strokeWidth="1" fill="none" strokeLinecap="round" />
-        <path d="M60,92 Q76,64 86,42 Q94,28 86,20 Q78,16 70,28 Q62,40 60,54" stroke={color} strokeWidth="0.8" fill="none" strokeLinecap="round" opacity="0.7" />
-        {/* Watercolor bloom */}
-        <circle cx="60" cy="50" r="18" fill={color} opacity="0.06" />
-        <circle cx="40" cy="40" r="10" fill={color} opacity="0.05" />
+      <svg viewBox="0 0 120 110" fill="none" className="w-full h-full" style={{ opacity }}>
+        {/* Radiating barbs from a hidden shaft point at bottom-center */}
+        {Array.from({length:16},(_,i)=>{
+          const angle = -70 + i * (140/15);
+          const rad = angle * Math.PI/180;
+          const len = 55 + Math.sin(i*1.4)*15;
+          const ex = 60 + Math.sin(rad)*len;
+          const ey = 100 - Math.cos(rad)*len;
+          const cx1 = 60 + Math.sin(rad)*len*0.4;
+          const cy1 = 100 - Math.cos(rad)*len*0.4 - 8;
+          const sw = 0.4 + (1-Math.abs(i-8)/8)*0.35;
+          return <path key={`fb${i}`} d={`M60,100 Q${cx1},${cy1} ${ex},${ey}`} stroke={color} strokeWidth={sw} fill="none" strokeLinecap="round" />;
+        })}
       </svg>
     </motion.div>
   );
