@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { FullFeather, HalfFeather, DiagonalFeather, FeatherFragment, PyramidOutline, SmallPyramid, GoldDotGrid, StarConstellation, ScatteredDots, GoldCurve } from './Decorations';
+import { FeatherOutline, OverlappingFeathers, SmallFeather, FeatherFragment, PyramidOutline, SmallPyramid, GoldDotGrid, StarConstellation, ScatteredDots, GoldCurve } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function JoinSection() {
@@ -14,11 +14,11 @@ export default function JoinSection() {
         <svg width="100%" height="100%"><filter id="joinP"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#joinP)"/></svg>
       </div>
 
-      {/* COMPOSITION: feather left, half feather right, pyramid, diagonal feather, gold dots */}
-      <FullFeather className="w-[220px] md:w-[340px] h-[550px] md:h-[850px] left-[-20px] md:left-0 top-[-30px]" opacity={0.18} color="#c9a84c" />
-      <HalfFeather className="w-[150px] md:w-[220px] h-[240px] md:h-[350px] right-0 md:right-4 top-4" opacity={0.14} color="#c4868a" flip />
-      <DiagonalFeather className="w-[120px] md:w-[180px] h-[300px] md:h-[450px] right-[10%] bottom-0" opacity={0.1} color="#c9a84c" angle={20} />
-      <FeatherFragment className="w-[80px] md:w-[110px] h-[70px] md:h-[95px] left-[20%] bottom-8" opacity={0.1} color="#c4868a" rotate={-10} />
+      {/* COMPOSITION: diagonal quill left, crossed feathers right, small accent */}
+      <FeatherOutline className="w-[240px] md:w-[360px] h-[300px] md:h-[450px] left-[-40px] md:left-[-10px] top-[-20px]" opacity={0.12} />
+      <OverlappingFeathers className="w-[200px] md:w-[300px] h-[230px] md:h-[350px] right-[-30px] md:right-0 top-[5%]" opacity={0.1} />
+      <SmallFeather className="w-[80px] md:w-[120px] h-[95px] md:h-[145px] left-[25%] bottom-8" opacity={0.08} rotate={-15} />
+      <FeatherFragment className="w-[100px] md:w-[150px] h-[120px] md:h-[180px] right-[15%] bottom-[10%]" opacity={0.08} rotate={10} />
       
       <PyramidOutline className="w-[350px] md:w-[500px] h-[340px] md:h-[480px] right-[5%] top-[10%]" opacity={0.06} color="#c9a84c" />
       <SmallPyramid className="w-[45px] md:w-[60px] h-[45px] md:h-[60px] left-[15%] top-[25%]" opacity={0.08} color="#c9a84c" />

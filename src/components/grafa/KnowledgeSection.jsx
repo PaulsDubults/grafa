@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';
 import GoldLine from './GoldLine';
-import { OverlappingFeathers, DiagonalFeather, FeatherTip, SmallFeather, MediumPyramid, SmallPyramid, PyramidSilhouette, WatercolorStain, GoldFlourish, StarConstellation, ScatteredDots, GoldDotGrid, PaperTexture } from './Decorations';
+import { FullFeather, FeatherFragment, FeatherTip, SmallFeather, MediumPyramid, SmallPyramid, PyramidSilhouette, WatercolorStain, GoldFlourish, StarConstellation, ScatteredDots, GoldDotGrid, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function KnowledgeSection() {
@@ -13,11 +13,11 @@ export default function KnowledgeSection() {
     <section id="zinasanu-telpa" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#f5f0e8' }}>
       <PaperTexture id="knowP" />
 
-      {/* COMPOSITION: overlapping feathers right, diagonal feather left, pyramids, watercolor stain, gold decorative line */}
-      <OverlappingFeathers className="w-[220px] md:w-[340px] h-[320px] md:h-[480px] right-[-20px] md:right-0 top-[8%]" opacity={0.22} />
-      <DiagonalFeather className="w-[130px] md:w-[190px] h-[320px] md:h-[480px] left-0 md:left-4 top-[15%]" opacity={0.2} angle={-20} />
-      <SmallFeather className="w-[55px] md:w-[75px] h-[140px] md:h-[190px] left-[20%] top-[50%]" opacity={0.18} rotate={8} />
-      <FeatherTip className="w-[55px] md:w-[80px] h-[90px] md:h-[130px] left-[25%] bottom-8" opacity={0.18} rotate={25} />
+      {/* COMPOSITION: diagonal quill right, upright feather flipped left, fragment accent */}
+      <FullFeather className="w-[260px] md:w-[400px] h-[320px] md:h-[500px] right-[-50px] md:right-[-20px] top-[5%]" opacity={0.2} flip />
+      <FeatherFragment className="w-[160px] md:w-[240px] h-[200px] md:h-[300px] left-[-30px] md:left-0 top-[10%]" opacity={0.16} rotate={-10} />
+      <FeatherTip className="w-[90px] md:w-[130px] h-[110px] md:h-[160px] left-[18%] bottom-[15%]" opacity={0.14} rotate={20} />
+      <SmallFeather className="w-[70px] md:w-[100px] h-[85px] md:h-[120px] right-[12%] bottom-8" opacity={0.12} rotate={-5} />
       
       <MediumPyramid className="w-[200px] md:w-[280px] h-[200px] md:h-[280px] right-[5%] bottom-[10%]" opacity={0.14} />
       <SmallPyramid className="w-[55px] md:w-[75px] h-[55px] md:h-[75px] left-[8%] top-[55%]" opacity={0.14} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { FullFeather, HalfFeather, FeatherOutline, SmallFeather, FeatherFragment, PyramidOutline, MediumPyramid, PyramidSilhouette, WatercolorStain, GoldCurve, GoldFlourish, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
+import { OverlappingFeathers, HalfFeather, DiagonalFeather, HorizontalFeather, SmallFeather, PyramidOutline, MediumPyramid, PyramidSilhouette, WatercolorStain, GoldCurve, GoldFlourish, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function AboutSection() {
@@ -13,12 +13,12 @@ export default function AboutSection() {
     <section id="par-mums" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#faf7f2' }}>
       <PaperTexture id="aboutP" />
 
-      {/* COMPOSITION: gold feather left, rose outline right, rose half top, gold fragment bottom */}
-      <FullFeather className="w-[240px] md:w-[350px] h-[600px] md:h-[880px] left-[-30px] md:left-0 top-[3%]" opacity={0.28} />
-      <FeatherOutline className="w-[180px] md:w-[270px] h-[450px] md:h-[680px] right-[-15px] md:right-4 bottom-[3%]" opacity={0.2} flip />
-      <HalfFeather className="w-[110px] md:w-[160px] h-[180px] md:h-[260px] right-[18%] top-8" opacity={0.18} />
-      <SmallFeather className="w-[50px] md:w-[70px] h-[130px] md:h-[180px] left-[12%] bottom-[12%]" opacity={0.18} rotate={-8} />
-      <FeatherFragment className="w-[75px] md:w-[100px] h-[65px] md:h-[85px] left-[25%] top-[65%]" opacity={0.15} rotate={20} />
+      {/* COMPOSITION: crossed feathers center-left, upright right, horizontal bottom */}
+      <OverlappingFeathers className="w-[280px] md:w-[420px] h-[320px] md:h-[480px] left-[-50px] md:left-[-20px] top-[8%]" opacity={0.2} />
+      <HalfFeather className="w-[180px] md:w-[270px] h-[220px] md:h-[340px] right-[-20px] md:right-0 top-[5%]" opacity={0.16} flip />
+      <HorizontalFeather className="w-[320px] md:w-[480px] h-[130px] md:h-[190px] right-[5%] bottom-[-10px]" opacity={0.12} />
+      <DiagonalFeather className="w-[120px] md:w-[170px] h-[150px] md:h-[220px] left-[15%] bottom-[15%]" opacity={0.14} angle={15} />
+      <SmallFeather className="w-[80px] md:w-[110px] h-[95px] md:h-[140px] right-[25%] top-[55%]" opacity={0.1} rotate={-12} />
       
       <PyramidOutline className="w-[500px] md:w-[700px] h-[480px] md:h-[670px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" opacity={0.08} />
       <MediumPyramid className="w-[130px] md:w-[180px] h-[130px] md:h-[180px] left-[5%] top-[20%]" opacity={0.12} />

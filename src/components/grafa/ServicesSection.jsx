@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import GoldLine from './GoldLine';
-import { FullFeather, HalfFeather, DiagonalFeather, FeatherTip, FeatherFragment, PyramidOutline, SmallPyramid, WatercolorStain, GoldCurve, ScatteredDots, StarConstellation, GoldDotGrid, PaperTexture } from './Decorations';
+import { FullFeather, HalfFeather, SmallFeather, FeatherTip, PyramidOutline, SmallPyramid, WatercolorStain, GoldCurve, ScatteredDots, StarConstellation, GoldDotGrid, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const cardPaths = ["/pakalpojumi/gramatvediba", "/pakalpojumi/finanses", "/pakalpojumi/apmacibas"];
@@ -40,12 +40,11 @@ export default function ServicesSection() {
     <section id="pakalpojumi" className="relative py-28 md:py-40 overflow-hidden" style={{ background: '#faf7f2' }}>
       <PaperTexture id="svcP" />
 
-      {/* COMPOSITION: gold feather right, rose half-feather left, rose fragment, gold pyramid, mixed watercolor */}
-      <FullFeather className="w-[260px] md:w-[380px] h-[650px] md:h-[950px] right-[-40px] md:right-[-10px] top-0" opacity={0.3} />
-      <HalfFeather className="w-[130px] md:w-[190px] h-[210px] md:h-[310px] left-0 md:left-4 top-[8%]" opacity={0.22} />
-      <DiagonalFeather className="w-[120px] md:w-[180px] h-[300px] md:h-[450px] left-[2%] bottom-[15%]" opacity={0.18} angle={-25} />
-      <FeatherTip className="w-[60px] md:w-[90px] h-[100px] md:h-[150px] right-[20%] bottom-8" opacity={0.2} rotate={15} />
-      <FeatherFragment className="w-[80px] md:w-[110px] h-[70px] md:h-[95px] right-[10%] top-[45%]" opacity={0.16} rotate={12} />
+      {/* COMPOSITION: diagonal quill right, upright feather left, small accent bottom */}
+      <FullFeather className="w-[280px] md:w-[420px] h-[350px] md:h-[520px] right-[-60px] md:right-[-30px] top-[-20px]" opacity={0.22} />
+      <HalfFeather className="w-[160px] md:w-[240px] h-[200px] md:h-[300px] left-[-30px] md:left-0 top-[5%]" opacity={0.18} />
+      <SmallFeather className="w-[100px] md:w-[140px] h-[120px] md:h-[170px] right-[15%] bottom-[10%]" opacity={0.14} rotate={15} />
+      <FeatherTip className="w-[80px] md:w-[110px] h-[100px] md:h-[140px] left-[8%] bottom-[20%]" opacity={0.12} rotate={-10} />
       
       <PyramidOutline className="w-[350px] md:w-[500px] h-[340px] md:h-[480px] left-[15%] md:left-[20%] top-[-20px]" opacity={0.12} />
       <SmallPyramid className="w-[60px] md:w-[80px] h-[60px] md:h-[80px] right-[25%] top-[60%]" opacity={0.15} />

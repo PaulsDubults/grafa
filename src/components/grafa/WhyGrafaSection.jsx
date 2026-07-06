@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { FeatherOutline, HalfFeather, SmallFeather, FeatherFragment, PyramidOutline, MediumPyramid, PyramidSilhouette, WatercolorStain, StarConstellation, GoldDotGrid, ScatteredDots, GoldFlourish, PaperTexture } from './Decorations';
+import { OverlappingFeathers, DiagonalFeather, FeatherTip, SmallFeather, PyramidOutline, MediumPyramid, PyramidSilhouette, WatercolorStain, StarConstellation, GoldDotGrid, ScatteredDots, GoldFlourish, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const valueIcons = [
@@ -21,11 +21,11 @@ export default function WhyGrafaSection() {
     <section id="kapec-grafu" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#f5f0e8' }}>
       <PaperTexture id="whyP" />
 
-      {/* COMPOSITION: gold outline left, rose half-feather right, rose small, rose fragment */}
-      <FeatherOutline className="w-[200px] md:w-[300px] h-[500px] md:h-[750px] left-[-30px] md:left-0 top-[5%]" opacity={0.25} />
-      <HalfFeather className="w-[140px] md:w-[200px] h-[220px] md:h-[320px] right-0 md:right-4 top-8" opacity={0.22} flip />
-      <SmallFeather className="w-[60px] md:w-[80px] h-[150px] md:h-[200px] right-[15%] bottom-[20%]" opacity={0.2} rotate={12} />
-      <FeatherFragment className="w-[80px] md:w-[110px] h-[70px] md:h-[95px] left-[10%] bottom-12" opacity={0.18} rotate={-15} />
+      {/* COMPOSITION: crossed feathers right, diagonal quill left bottom, upright accent top */}
+      <OverlappingFeathers className="w-[240px] md:w-[360px] h-[280px] md:h-[420px] right-[-40px] md:right-[-10px] top-[8%]" opacity={0.18} />
+      <DiagonalFeather className="w-[200px] md:w-[300px] h-[250px] md:h-[380px] left-[-40px] md:left-[-10px] bottom-[5%]" opacity={0.16} angle={-20} />
+      <FeatherTip className="w-[90px] md:w-[130px] h-[110px] md:h-[160px] left-[5%] top-[3%]" opacity={0.14} rotate={5} />
+      <SmallFeather className="w-[70px] md:w-[100px] h-[85px] md:h-[120px] right-[20%] bottom-8" opacity={0.12} rotate={-8} />
       
       <PyramidOutline className="w-[400px] md:w-[580px] h-[380px] md:h-[560px] right-[-60px] md:right-[-20px] top-[25%]" opacity={0.1} />
       <MediumPyramid className="w-[140px] md:w-[200px] h-[140px] md:h-[200px] left-[5%] bottom-[10%]" opacity={0.14} />

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import GoldLine from './GoldLine';
-import { FullFeather, HalfFeather, SmallFeather, FeatherTip, HorizontalFeather, PyramidOutline, SmallPyramid, WatercolorStain, GoldFlourish, GoldDotGrid, StarConstellation, ScatteredDots, PaperTexture } from './Decorations';
+import { HalfFeather, DiagonalFeather, SmallFeather, FeatherTip, PyramidOutline, SmallPyramid, WatercolorStain, GoldFlourish, GoldDotGrid, StarConstellation, ScatteredDots, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function ContactSection() {
@@ -25,12 +25,11 @@ export default function ContactSection() {
     <section id="kontakti" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#faf7f2' }}>
       <PaperTexture id="contP" />
 
-      {/* COMPOSITION: gold feather right, rose half-feather left, rose small, gold tip, rose horizontal */}
-      <FullFeather className="w-[200px] md:w-[300px] h-[500px] md:h-[750px] right-[-15px] md:right-0 top-[2%]" opacity={0.25} />
-      <HalfFeather className="w-[120px] md:w-[170px] h-[190px] md:h-[280px] left-0 top-[5%]" opacity={0.18} />
-      <SmallFeather className="w-[55px] md:w-[75px] h-[140px] md:h-[190px] left-[8%] top-[45%]" opacity={0.2} rotate={5} />
-      <FeatherTip className="w-[45px] md:w-[65px] h-[75px] md:h-[110px] right-[30%] bottom-8" opacity={0.18} rotate={-15} />
-      <HorizontalFeather className="w-[280px] md:w-[420px] h-[55px] md:h-[80px] left-[2%] bottom-4" opacity={0.14} />
+      {/* COMPOSITION: upright feather right, diagonal left bottom, horizontal accent */}
+      <HalfFeather className="w-[220px] md:w-[330px] h-[270px] md:h-[410px] right-[-30px] md:right-0 top-[3%]" opacity={0.2} />
+      <DiagonalFeather className="w-[180px] md:w-[270px] h-[220px] md:h-[340px] left-[-30px] md:left-0 bottom-[8%]" opacity={0.16} angle={-25} />
+      <FeatherTip className="w-[80px] md:w-[110px] h-[95px] md:h-[140px] left-[5%] top-[8%]" opacity={0.14} rotate={10} />
+      <SmallFeather className="w-[70px] md:w-[100px] h-[85px] md:h-[120px] right-[25%] bottom-12" opacity={0.12} rotate={-8} />
       
       <PyramidOutline className="w-[320px] md:w-[450px] h-[310px] md:h-[430px] left-[-50px] top-[15%]" opacity={0.1} />
       <SmallPyramid className="w-[50px] md:w-[65px] h-[50px] md:h-[65px] right-[20%] top-[60%]" opacity={0.13} />

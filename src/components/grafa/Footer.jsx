@@ -16,8 +16,8 @@ export default function Footer() {
 
       <StarConstellation className="w-[120px] h-[120px] right-8 top-2" opacity={0.1} />
       <GoldDotGrid className="w-[90px] h-[50px] left-8 bottom-3" rows={3} cols={5} opacity={0.08} />
-      <FeatherTip className="w-[40px] md:w-[55px] h-[65px] md:h-[90px] right-[20%] bottom-2" opacity={0.08} color="#c9a84c" rotate={-10} />
-      <SmallPyramid className="w-[35px] md:w-[45px] h-[35px] md:h-[45px] left-[25%] top-4" opacity={0.06} color="#c9a84c" />
+      <FeatherTip className="w-[40px] md:w-[55px] h-[65px] md:h-[90px] right-[20%] bottom-2" opacity={0.08} rotate={-10} />
+      <SmallPyramid className="w-[35px] md:w-[45px] h-[35px] md:h-[45px] left-[25%] top-4" opacity={0.06} />
       <ScatteredDots className="w-[80px] h-[80px] left-[50%] top-2" opacity={0.06} count={8} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
