@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
 import TypewriterText from './TypewriterText';
-import PricingModal from './PricingModal';
 import { FullFeather, SmallFeather, FeatherTip, PyramidOutline, SmallPyramid, WatercolorStain, GoldCurve, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
@@ -17,7 +16,6 @@ const stepIcons = [
 export default function WhyChooseSection() {
   const { t } = useI18n();
   const [typewriterDone, setTypewriterDone] = useState(false);
-  const [pricingOpen, setPricingOpen] = useState(false);
   const steps = t('whyChoose.steps');
 
   return (
@@ -125,43 +123,7 @@ export default function WhyChooseSection() {
           ))}
         </div>
 
-        {/* Pricing block */}
-        <motion.div
-          className="relative cursor-pointer group"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-          onClick={() => setPricingOpen(true)}
-        >
-          <div className="relative bg-white rounded-xl p-8 md:p-10 border border-[#c9a84c]/20 overflow-hidden transition-all duration-700 hover:shadow-[0_20px_60px_rgba(201,168,76,0.12),0_0_0_1px_rgba(201,168,76,0.2)] hover:-translate-y-1">
-            <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: 'linear-gradient(90deg, transparent 5%, #c9a84c 25%, #e8d5a3 50%, #c9a84c 75%, transparent 95%)' }} />
-            <svg className="absolute top-4 right-4 w-8 h-8 opacity-[0.2] group-hover:opacity-[0.4] transition-opacity duration-500" viewBox="0 0 30 30" fill="none">
-              <path d="M28,2 L28,12 M28,2 L18,2" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" />
-            </svg>
-            <div className="flex items-center gap-5">
-              <div className="w-14 h-14 rounded-full bg-[#c9a84c]/[0.12] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
-                <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
-                  <circle cx="24" cy="24" r="16" stroke="#c9a84c" strokeWidth="1.3" fill="none" />
-                  <path d="M24,14 L24,34 M20,18 L28,18 M20,30 L28,30 M21,14 L27,14 M21,34 L27,34" stroke="#c9a84c" strokeWidth="1.1" strokeLinecap="round" opacity="0.7" />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <h3 className="font-heading text-[20px] md:text-[22px] font-semibold text-[#1e3a5f] mb-1">{t('whyChoose.pricingBlockTitle')}</h3>
-                <p className="text-[#1e3a5f]/45 font-body text-[13px] md:text-[14px] leading-[1.8]">{t('whyChoose.pricingBlockDesc')}</p>
-              </div>
-              <div className="flex items-center gap-2 flex-shrink-0">
-                <div className="w-6 group-hover:w-14 h-[2px] transition-all duration-700" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3)' }} />
-                <svg className="w-4 h-4 text-[#c9a84c] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-500" viewBox="0 0 20 20" fill="none">
-                  <path d="M4,10 L16,10 M12,6 L16,10 L12,14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
-
-      <PricingModal open={pricingOpen} onClose={() => setPricingOpen(false)} />
     </section>
   );
 }
