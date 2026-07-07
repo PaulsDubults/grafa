@@ -1,0 +1,28 @@
+{
+  "name": "Vacancy",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Job title"
+    },
+    "short_description": {
+      "type": "string",
+      "description": "Short description shown on the card"
+    },
+    "full_description": {
+      "type": "string",
+      "description": "Full job description (HTML/markdown)"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the vacancy is currently active"
+    }
+  },
+  "required": [
+    "title",
+    "short_description",
+    "full_description"
+  ]
+}
