@@ -4,6 +4,7 @@ import HeroSection from '@/components/grafa/HeroSection';
 import SectionDivider from '@/components/grafa/SectionDivider';
 import ServicesSection from '@/components/grafa/ServicesSection';
 import WhyGrafaSection from '@/components/grafa/WhyGrafaSection';
+import WhyChooseSection from '@/components/grafa/WhyChooseSection';
 import ProcessSection from '@/components/grafa/ProcessSection';
 import KnowledgeSection from '@/components/grafa/KnowledgeSection';
 import AboutSection from '@/components/grafa/AboutSection';
@@ -19,6 +20,8 @@ export default function Home() {
       <SectionDivider color="#faf7f2" />
       <ServicesSection />
       <SectionDivider color="#f5f0e8" flip />
+      <WhyChooseSection />
+      <SectionDivider color="#faf7f2" />
       <WhyGrafaSection />
       <SectionDivider color="#faf7f2" />
       <ProcessSection />
