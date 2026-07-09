@@ -7,8 +7,13 @@ import { useI18n } from '@/lib/i18n';
 const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/07f5642fe_ChatGPTImageMay13202603_52_09PM.png";
 
 const emphasisIndices = [5, 6, 8, 10];
-
 const LINE_INTERVAL = 1400;
+
+const GoldDiamond = () => (
+  <svg width="10" height="10" viewBox="0 0 10 10" className="flex-shrink-0">
+    <path d="M5,0 L10,5 L5,10 L0,5 Z" fill="#c9a84c" opacity="0.7" />
+  </svg>
+);
 
 const valueIcons = [
   <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10"><path d="M24,4 L40,14 L40,28 C40,36 32,42 24,46 C16,42 8,36 8,28 L8,14 Z" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><path d="M18,24 L22,28 L30,20" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/></svg>,
@@ -23,25 +28,31 @@ function StoryLine({ text, index, isVisible, boldWords }) {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.p
-          className={`font-body text-[13px] md:text-[15px] leading-[1.85] mb-3 ${
-            isEmphasis
-              ? 'text-[#1e3a5f] font-medium'
-              : 'text-[#1e3a5f]/60'
-          }`}
+        <motion.div
+          className="flex items-start gap-4 md:gap-5 mb-2.5 md:mb-3"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          {hasBold ? (
-            <span dangerouslySetInnerHTML={{
-              __html: text.replace(
-                new RegExp(`(${boldWords.join('|')})`, 'g'),
-                '<strong class="text-[#1e3a5f] font-semibold">$1</strong>'
-              )
-            }} />
-          ) : text}
-        </motion.p>
+          {/* Line number */}
+          <span className="flex-shrink-0 w-5 text-right font-body text-[10px] md:text-[11px] text-[#c9a84c]/50 pt-[3px] select-none tabular-nums">
+            {index + 1}
+          </span>
+          <p className={`font-body text-[13px] md:text-[15px] leading-[1.85] ${
+            isEmphasis
+              ? 'text-[#1e3a5f] font-medium'
+              : 'text-[#1e3a5f]/60'
+          }`}>
+            {hasBold ? (
+              <span dangerouslySetInnerHTML={{
+                __html: text.replace(
+                  new RegExp(`(${boldWords.join('|')})`, 'g'),
+                  '<strong class="text-[#1e3a5f] font-semibold">$1</strong>'
+                )
+              }} />
+            ) : text}
+          </p>
+        </motion.div>
       )}
     </AnimatePresence>
   );
@@ -72,6 +83,7 @@ export default function HeroSection() {
 
   return (
     <section id="sakumlapa" className="relative w-full min-h-screen overflow-hidden" style={{ background: '#f5f0e8' }}>
+      {/* Paper texture */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.12]">
         <svg width="100%" height="100%">
           <filter id="paperNoise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
@@ -79,17 +91,39 @@ export default function HeroSection() {
         </svg>
       </div>
 
+      {/* Subtle background pyramids */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <svg className="absolute left-[15%] bottom-[8%] w-[500px] h-[400px] opacity-[0.06]" viewBox="0 0 500 400" fill="none">
+          <path d="M250,20 L480,380 L20,380 Z" fill="#c9a84c" />
+        </svg>
+        <svg className="absolute left-[35%] bottom-[8%] w-[400px] h-[350px] opacity-[0.04]" viewBox="0 0 400 350" fill="none">
+          <path d="M200,10 L390,340 L10,340 Z" fill="#c9a84c" />
+        </svg>
+      </div>
+
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
         <div className="grid lg:grid-cols-[48%_52%] gap-4 lg:gap-2 items-start">
-          <div className="pt-2 md:pt-4 lg:pt-6 lg:pr-6">
+          {/* Left side — numbered story lines */}
+          <div className="pt-2 md:pt-4 lg:pt-6 lg:pr-4">
             <div className="mb-4">
               <LanguageSwitcher />
             </div>
             {storyLines.map((line, i) => (
               <StoryLine key={`${i}-${line.slice(0,10)}`} text={line} index={i} isVisible={i < visibleCount} boldWords={boldWords} />
             ))}
+
+            {/* Mini map — bottom left under story lines */}
+            <motion.div
+              className="mt-6 md:mt-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: allRevealed ? 1 : 0 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            >
+              {allRevealed && <HeroMiniMap />}
+            </motion.div>
           </div>
 
+          {/* Right side — hero image */}
           <div className="flex flex-col order-first lg:order-last">
             <motion.div
               className="relative flex justify-center lg:justify-end"
@@ -108,10 +142,9 @@ export default function HeroSection() {
             </motion.div>
           </div>
         </div>
-
       </div>
 
-      {/* Blue stripe — full width, edge to edge */}
+      {/* Bottom bar — dark blue with values */}
       <motion.div
         className="relative mt-4 w-full"
         initial={{ opacity: 0, y: 20 }}
@@ -121,56 +154,47 @@ export default function HeroSection() {
         }}
         transition={{ delay: logoDelay + 0.8, duration: 0.8, ease: 'easeOut' }}
       >
+        {/* Wave top edge */}
         <svg className="block w-full h-[20px] md:h-[30px]" viewBox="0 0 800 30" preserveAspectRatio="none">
           <path d="M0,30 L0,15 C100,28 200,5 350,12 C500,18 600,4 700,10 C750,14 780,20 800,14 L800,30 Z" fill="#1e3a5f"/>
           <path d="M0,20 C150,30 300,6 450,15 C600,5 700,20 800,12" stroke="#c9a84c" strokeWidth="0.6" opacity="0.25" fill="none"/>
         </svg>
 
-        <div className="bg-[#1e3a5f] py-4 md:py-5 px-5 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 max-w-[1000px] mx-auto">
+        <div className="bg-[#1e3a5f] py-5 md:py-6 px-5 md:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-0 max-w-[1000px] mx-auto">
             {values.map((item, i) => (
-              <motion.div
-                key={i}
-                className={`flex items-center gap-2.5 px-3 md:px-4 ${
-                  i < values.length - 1 ? 'md:border-r md:border-white/10' : ''
-                }`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: allRevealed ? 1 : 0,
-                  y: allRevealed ? 0 : 10,
-                }}
-                transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
-              >
-                <div className="flex-shrink-0">
-                  <div className="w-7 h-7 md:w-8 md:h-8">{valueIcons[i]}</div>
-                </div>
-                <div>
-                  <h3 className="font-heading text-[11px] md:text-[12px] font-semibold text-white leading-snug">
+              <React.Fragment key={i}>
+                {i > 0 && (
+                  <div className="hidden md:flex items-center px-6 md:px-8">
+                    <GoldDiamond />
+                  </div>
+                )}
+                <motion.div
+                  className="flex flex-col items-center text-center px-3"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{
+                    opacity: allRevealed ? 1 : 0,
+                    y: allRevealed ? 0 : 10,
+                  }}
+                  transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
+                >
+                  <div className="w-8 h-8 md:w-9 md:h-9 mb-2.5">{valueIcons[i]}</div>
+                  <h3 className="font-heading text-[11px] md:text-[13px] font-semibold text-white leading-snug mb-1">
                     {item.title}
                   </h3>
-                  <p className="font-body text-[9px] md:text-[10px] text-white/40 leading-relaxed">
+                  <p className="font-body text-[9px] md:text-[10px] text-white/40 leading-relaxed max-w-[160px]">
                     {item.desc}
                   </p>
-                </div>
-              </motion.div>
+                </motion.div>
+              </React.Fragment>
             ))}
           </div>
         </div>
+        {/* Gold line bottom */}
         <div className="h-[2px]" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, #c9a84c)' }} />
       </motion.div>
 
-      <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-
-        <motion.div
-          className="flex justify-center mt-10 mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: allRevealed ? 1 : 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-        >
-          {allRevealed && <HeroMiniMap centered />}
-        </motion.div>
-      </div>
-
+      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[#c9a84c]/40 z-20"
         initial={{ opacity: 0 }}
