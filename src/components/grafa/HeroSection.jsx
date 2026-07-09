@@ -11,14 +11,14 @@ const LINE_INTERVAL = 1400;
 
 const GoldDiamond = () => (
   <svg width="10" height="10" viewBox="0 0 10 10" className="flex-shrink-0">
-    <path d="M5,0 L10,5 L5,10 L0,5 Z" fill="#c9a84c" opacity="0.7" />
+    <path d="M5,0 L10,5 L5,10 L0,5 Z" fill="#C89B3C" opacity="0.7" />
   </svg>
 );
 
 const valueIcons = [
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10"><path d="M24,4 L40,14 L40,28 C40,36 32,42 24,46 C16,42 8,36 8,28 L8,14 Z" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><path d="M18,24 L22,28 L30,20" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/></svg>,
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10"><polyline points="8,38 16,26 24,30 34,16 40,12" stroke="#c9a84c" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/><circle cx="40" cy="12" r="2.5" stroke="#c9a84c" strokeWidth="1" fill="none"/><line x1="8" y1="42" x2="40" y2="42" stroke="white" strokeWidth="0.5" opacity="0.3"/></svg>,
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10"><path d="M8,16 L24,8 L40,16 L24,24 Z" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><path d="M14,20 L14,32 C14,36 19,40 24,40 C29,40 34,36 34,32 L34,20" stroke="#c9a84c" strokeWidth="1.2" fill="none"/><line x1="40" y1="16" x2="40" y2="36" stroke="white" strokeWidth="0.8" opacity="0.4"/><circle cx="40" cy="38" r="2" stroke="white" strokeWidth="0.6" opacity="0.4" fill="none"/></svg>,
+  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10"><path d="M24,4 L40,14 L40,28 C40,36 32,42 24,46 C16,42 8,36 8,28 L8,14 Z" stroke="#C89B3C" strokeWidth="1.2" fill="none"/><path d="M18,24 L22,28 L30,20" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/></svg>,
+  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10"><polyline points="8,38 16,26 24,30 34,16 40,12" stroke="#C89B3C" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/><circle cx="40" cy="12" r="2.5" stroke="#C89B3C" strokeWidth="1" fill="none"/><line x1="8" y1="42" x2="40" y2="42" stroke="white" strokeWidth="0.5" opacity="0.3"/></svg>,
+  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9 md:w-10 md:h-10"><path d="M8,16 L24,8 L40,16 L24,24 Z" stroke="#C89B3C" strokeWidth="1.2" fill="none"/><path d="M14,20 L14,32 C14,36 19,40 24,40 C29,40 34,36 34,32 L34,20" stroke="#C89B3C" strokeWidth="1.2" fill="none"/><line x1="40" y1="16" x2="40" y2="36" stroke="white" strokeWidth="0.8" opacity="0.4"/><circle cx="40" cy="38" r="2" stroke="white" strokeWidth="0.6" opacity="0.4" fill="none"/></svg>,
 ];
 
 function StoryLine({ text, index, isVisible, boldWords }) {
@@ -35,19 +35,19 @@ function StoryLine({ text, index, isVisible, boldWords }) {
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           {/* Line number */}
-          <span className="flex-shrink-0 w-5 text-right font-body text-[10px] md:text-[11px] text-[#c9a84c]/50 pt-[3px] select-none tabular-nums">
+          <span className="flex-shrink-0 w-5 text-right font-body text-[10px] md:text-[11px] text-[#C89B3C]/50 pt-[3px] select-none tabular-nums">
             {index + 1}
           </span>
           <p className={`font-body text-[13px] md:text-[15px] leading-[1.85] ${
             isEmphasis
-              ? 'text-[#1e3a5f] font-medium'
-              : 'text-[#1e3a5f]/60'
+              ? 'text-[#08233E] font-medium'
+              : 'text-[#08233E]/60'
           }`}>
             {hasBold ? (
               <span dangerouslySetInnerHTML={{
                 __html: text.replace(
                   new RegExp(`(${boldWords.join('|')})`, 'g'),
-                  '<strong class="text-[#1e3a5f] font-semibold">$1</strong>'
+                  '<strong class="text-[#08233E] font-semibold">$1</strong>'
                 )
               }} />
             ) : text}
@@ -82,7 +82,7 @@ export default function HeroSection() {
   const logoDelay = 0.3;
 
   return (
-    <section id="sakumlapa" className="relative w-full min-h-screen overflow-hidden" style={{ background: '#f5f0e8' }}>
+    <section id="sakumlapa" className="relative w-full min-h-screen overflow-hidden" style={{ background: '#F8F2EA' }}>
       {/* Paper texture */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.12]">
         <svg width="100%" height="100%">
@@ -94,10 +94,10 @@ export default function HeroSection() {
       {/* Subtle background pyramids */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <svg className="absolute left-[15%] bottom-[8%] w-[500px] h-[400px] opacity-[0.06]" viewBox="0 0 500 400" fill="none">
-          <path d="M250,20 L480,380 L20,380 Z" fill="#c9a84c" />
+          <path d="M250,20 L480,380 L20,380 Z" fill="#C89B3C" />
         </svg>
         <svg className="absolute left-[35%] bottom-[8%] w-[400px] h-[350px] opacity-[0.04]" viewBox="0 0 400 350" fill="none">
-          <path d="M200,10 L390,340 L10,340 Z" fill="#c9a84c" />
+          <path d="M200,10 L390,340 L10,340 Z" fill="#C89B3C" />
         </svg>
       </div>
 
@@ -156,11 +156,11 @@ export default function HeroSection() {
       >
         {/* Wave top edge */}
         <svg className="block w-full h-[20px] md:h-[30px]" viewBox="0 0 800 30" preserveAspectRatio="none">
-          <path d="M0,30 L0,15 C100,28 200,5 350,12 C500,18 600,4 700,10 C750,14 780,20 800,14 L800,30 Z" fill="#1e3a5f"/>
-          <path d="M0,20 C150,30 300,6 450,15 C600,5 700,20 800,12" stroke="#c9a84c" strokeWidth="0.6" opacity="0.25" fill="none"/>
+          <path d="M0,30 L0,15 C100,28 200,5 350,12 C500,18 600,4 700,10 C750,14 780,20 800,14 L800,30 Z" fill="#08233E"/>
+          <path d="M0,20 C150,30 300,6 450,15 C600,5 700,20 800,12" stroke="#C89B3C" strokeWidth="0.6" opacity="0.25" fill="none"/>
         </svg>
 
-        <div className="bg-[#1e3a5f] py-5 md:py-6 px-5 md:px-8">
+        <div className="bg-[#08233E] py-5 md:py-6 px-5 md:px-8">
           <div className="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-0 max-w-[1000px] mx-auto">
             {values.map((item, i) => (
               <React.Fragment key={i}>
@@ -191,12 +191,12 @@ export default function HeroSection() {
           </div>
         </div>
         {/* Gold line bottom */}
-        <div className="h-[2px]" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, #c9a84c)' }} />
+        <div className="h-[2px]" style={{ background: 'linear-gradient(90deg, #C89B3C, #E8D1A0, #C89B3C)' }} />
       </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[#c9a84c]/40 z-20"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[#C89B3C]/40 z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: allRevealed ? 1 : 0 }}
         transition={{ delay: 2, duration: 0.8 }}

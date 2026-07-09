@@ -16,7 +16,7 @@ export default function SectionDivider({ flip = false, color = '#f5f0e8' }) {
         />
         <path
           d="M0,50 C360,70 720,20 1080,50 C1260,65 1380,45 1440,50"
-          stroke="#c9a84c"
+          stroke="#C89B3C"
           strokeWidth="0.6"
           opacity="0.25"
           fill="none"

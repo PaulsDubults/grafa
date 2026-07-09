@@ -17,10 +17,10 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
   }, [pathname]);
 
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ background: '#f5f0e8' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ background: '#F8F2EA' }}>
       <PaperTexture id="svcPageP" />
 
-      <div className="relative overflow-hidden" style={{ background: '#faf7f2' }}>
+      <div className="relative overflow-hidden" style={{ background: '#FBF7F0' }}>
         <PaperTexture id="svcHdrP" />
         <WatercolorStain className="right-[-80px] top-[-30px]" color="#e8c89a" opacity={0.14} size={450} id="svcLW" />
         <WatercolorStain className="left-[-60px] bottom-[-20px]" color="#e0b5b0" opacity={0.08} size={300} id="svcLR" />
@@ -35,23 +35,23 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
           <div className="flex items-center gap-4 mb-8">
             <button
               onClick={() => navigate(-1)}
-              className="flex items-center gap-1.5 text-[12px] font-body text-[#1e3a5f]/40 hover:text-[#1e3a5f]/70 transition-colors duration-300"
+              className="flex items-center gap-1.5 text-[12px] font-body text-[#08233E]/40 hover:text-[#08233E]/70 transition-colors duration-300"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>{t('servicePages.back')}</span>
             </button>
 
-            <div className="h-4 w-[1px] bg-[#1e3a5f]/10" />
+            <div className="h-4 w-[1px] bg-[#08233E]/10" />
 
-            <nav className="flex items-center gap-1.5 text-[11px] font-body text-[#1e3a5f]/35">
-              <Link to="/" className="hover:text-[#1e3a5f]/60 transition-colors">{t('servicePages.home')}</Link>
+            <nav className="flex items-center gap-1.5 text-[11px] font-body text-[#08233E]/35">
+              <Link to="/" className="hover:text-[#08233E]/60 transition-colors">{t('servicePages.home')}</Link>
               {breadcrumbs.map((crumb, i) => (
                 <React.Fragment key={i}>
                   <ChevronRight className="w-3 h-3" />
                   {crumb.path ? (
-                    <Link to={crumb.path} className="hover:text-[#1e3a5f]/60 transition-colors">{crumb.label}</Link>
+                    <Link to={crumb.path} className="hover:text-[#08233E]/60 transition-colors">{crumb.label}</Link>
                   ) : (
-                    <span className="text-[#1e3a5f]/55">{crumb.label}</span>
+                    <span className="text-[#08233E]/55">{crumb.label}</span>
                   )}
                 </React.Fragment>
               ))}
@@ -64,11 +64,11 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
             transition={{ duration: 0.7 }}
           >
             {subtitle && (
-              <p className="font-body text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#c9a84c] mb-4 font-medium">
+              <p className="font-body text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#C89B3C] mb-4 font-medium">
                 {subtitle}
               </p>
             )}
-            <h1 className="font-heading text-[30px] md:text-[40px] lg:text-[48px] font-semibold text-[#1e3a5f] mb-5 leading-tight">
+            <h1 className="font-heading text-[30px] md:text-[40px] lg:text-[48px] font-semibold text-[#08233E] mb-5 leading-tight">
               {title}
             </h1>
             <GoldLine width="w-24" className="mb-0" />

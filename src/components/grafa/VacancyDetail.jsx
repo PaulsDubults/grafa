@@ -17,7 +17,7 @@ export default function VacancyDetail({ open, onClose, vacancy, onApply }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className="absolute inset-0 bg-[#1e3a5f]/40 backdrop-blur-sm" onClick={onClose} />
+          <div className="absolute inset-0 bg-[#08233E]/40 backdrop-blur-sm" onClick={onClose} />
           <motion.div
             className="relative bg-white rounded-xl w-full max-w-[640px] max-h-[85vh] overflow-y-auto p-8 md:p-10 border border-[#e8e0d4]/50 shadow-[0_20px_60px_rgba(30,58,95,0.15)]"
             initial={{ scale: 0.95, y: 20, opacity: 0 }}
@@ -25,21 +25,21 @@ export default function VacancyDetail({ open, onClose, vacancy, onApply }) {
             exit={{ scale: 0.95, y: 20, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="absolute top-0 left-8 right-8 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, #e8d5a3, #c9a84c, transparent)' }} />
-            <button onClick={onClose} className="absolute top-4 right-4 text-[#1e3a5f]/30 hover:text-[#1e3a5f]/60 transition-colors">
+            <div className="absolute top-0 left-8 right-8 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, #E8D1A0, #C89B3C, transparent)' }} />
+            <button onClick={onClose} className="absolute top-4 right-4 text-[#08233E]/30 hover:text-[#08233E]/60 transition-colors">
               <X size={20} />
             </button>
 
-            <h3 className="font-heading text-[24px] md:text-[28px] font-semibold text-[#1e3a5f] mb-2">{vacancy.title}</h3>
-            <div className="w-16 h-[2px] mb-8" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3, transparent)' }} />
+            <h3 className="font-heading text-[24px] md:text-[28px] font-semibold text-[#08233E] mb-2">{vacancy.title}</h3>
+            <div className="w-16 h-[2px] mb-8" style={{ background: 'linear-gradient(90deg, #C89B3C, #E8D1A0, transparent)' }} />
 
-            <div className="prose prose-sm max-w-none text-[#1e3a5f]/65 font-body text-[14px] md:text-[15px] leading-[1.9] mb-8">
+            <div className="prose prose-sm max-w-none text-[#08233E]/65 font-body text-[14px] md:text-[15px] leading-[1.9] mb-8">
               <ReactMarkdown>{vacancy.full_description}</ReactMarkdown>
             </div>
 
             <button
               onClick={() => { onClose(); onApply(); }}
-              className="relative bg-[#c9a84c] text-white hover:bg-[#b8973f] text-[13px] font-body tracking-[0.2em] uppercase px-12 py-4 transition-all duration-500 rounded-sm overflow-hidden group"
+              className="relative bg-[#C89B3C] text-white hover:bg-[#b8973f] text-[13px] font-body tracking-[0.2em] uppercase px-12 py-4 transition-all duration-500 rounded-sm overflow-hidden group"
             >
               <span className="relative z-10">{t('careers.buttonApply')}</span>
             </button>

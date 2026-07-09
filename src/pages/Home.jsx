@@ -16,27 +16,27 @@ import Footer from '@/components/grafa/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ background: '#f5f0e8' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ background: '#F8F2EA' }}>
       <Navbar />
       <HeroSection />
-      <SectionDivider color="#faf7f2" />
+      <SectionDivider color="#FBF7F0" />
       <ServicesSection />
-      <SectionDivider color="#f5f0e8" flip />
+      <SectionDivider color="#F8F2EA" flip />
       <WhyChooseSection />
-      <SectionDivider color="#faf7f2" />
+      <SectionDivider color="#FBF7F0" />
       <PricingSection />
-      <SectionDivider color="#f5f0e8" flip />
+      <SectionDivider color="#F8F2EA" flip />
       <WhyGrafaSection />
-      <SectionDivider color="#faf7f2" />
+      <SectionDivider color="#FBF7F0" />
       <ProcessSection />
-      <SectionDivider color="#f5f0e8" flip />
+      <SectionDivider color="#F8F2EA" flip />
       <KnowledgeSection />
-      <SectionDivider color="#faf7f2" />
+      <SectionDivider color="#FBF7F0" />
       <AboutSection />
       <JoinSection />
-      <SectionDivider color="#faf7f2" />
+      <SectionDivider color="#FBF7F0" />
       <CareersSection />
-      <SectionDivider color="#f5f0e8" flip />
+      <SectionDivider color="#F8F2EA" flip />
       <ContactSection />
       <Footer />
     </div>

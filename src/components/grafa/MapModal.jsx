@@ -48,10 +48,10 @@ function LocationTooltip({ point }) {
       transition={{ duration: 0.2 }}
     >
       <div className="flex items-center gap-2 mb-1.5">
-        <MapPin className="w-3.5 h-3.5 text-[#c9a84c] flex-shrink-0" />
-        <h4 className="font-heading text-[14px] md:text-[15px] font-semibold text-[#1e3a5f]">{point.name}</h4>
+        <MapPin className="w-3.5 h-3.5 text-[#C89B3C] flex-shrink-0" />
+        <h4 className="font-heading text-[14px] md:text-[15px] font-semibold text-[#08233E]">{point.name}</h4>
       </div>
-      <p className="text-[#1e3a5f]/55 font-body text-[11px] md:text-[12px] leading-[1.7]">{point.desc}</p>
+      <p className="text-[#08233E]/55 font-body text-[11px] md:text-[12px] leading-[1.7]">{point.desc}</p>
     </motion.div>
   );
 }
@@ -71,16 +71,16 @@ function KuldigaNotification({ onDismiss }) {
       transition={{ delay: 1, duration: 0.6, ease: 'easeOut' }}
       onClick={onDismiss}
     >
-      <div className="bg-white rounded-sm shadow-2xl border border-[#c9a84c]/20 px-6 py-4 max-w-[420px]">
+      <div className="bg-white rounded-sm shadow-2xl border border-[#C89B3C]/20 px-6 py-4 max-w-[420px]">
         <div className="flex items-start gap-3">
-          <div className="w-8 h-8 rounded-full bg-[#c9a84c]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <MapPin className="w-4 h-4 text-[#c9a84c]" />
+          <div className="w-8 h-8 rounded-full bg-[#C89B3C]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <MapPin className="w-4 h-4 text-[#C89B3C]" />
           </div>
           <div>
-            <p className="font-body text-[13px] text-[#1e3a5f]/70 leading-[1.7]">
-              Esam priecīgi, ka mūsu klientu pulkam pievienojies jauns uzņēmums <strong className="text-[#1e3a5f] font-semibold">Kuldīgā</strong>.
+            <p className="font-body text-[13px] text-[#08233E]/70 leading-[1.7]">
+              Esam priecīgi, ka mūsu klientu pulkam pievienojies jauns uzņēmums <strong className="text-[#08233E] font-semibold">Kuldīgā</strong>.
             </p>
-            <p className="font-script text-[15px] text-[#c9a84c] mt-1 italic">
+            <p className="font-script text-[15px] text-[#C89B3C] mt-1 italic">
               Laipni lūgti GRĀFAS saimē!
             </p>
           </div>
@@ -119,10 +119,10 @@ export default function MapModal({ isOpen, onClose }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="absolute inset-0 bg-[#1e3a5f]/40 backdrop-blur-sm" onClick={onClose} />
+          <div className="absolute inset-0 bg-[#08233E]/40 backdrop-blur-sm" onClick={onClose} />
 
           <motion.div
-            className="relative bg-[#faf7f2] rounded-sm shadow-2xl border border-[#e8e0d4]/50 w-full max-w-[900px] max-h-[90vh] overflow-auto"
+            className="relative bg-[#FBF7F0] rounded-sm shadow-2xl border border-[#e8e0d4]/50 w-full max-w-[900px] max-h-[90vh] overflow-auto"
             initial={{ scale: 0.92, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.92, opacity: 0, y: 20 }}
@@ -133,14 +133,14 @@ export default function MapModal({ isOpen, onClose }) {
               className="absolute top-4 right-4 z-40 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-md transition-colors"
               onClick={onClose}
             >
-              <X size={16} className="text-[#1e3a5f]/60" />
+              <X size={16} className="text-[#08233E]/60" />
             </button>
 
             <div className="text-center pt-6 pb-2 px-6">
-              <p className="font-body text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#c9a84c] mb-2 font-medium">
+              <p className="font-body text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#C89B3C] mb-2 font-medium">
                 {t('mapModal.subtitle')}
               </p>
-              <h3 className="font-heading text-[22px] md:text-[28px] font-semibold text-[#1e3a5f]">
+              <h3 className="font-heading text-[22px] md:text-[28px] font-semibold text-[#08233E]">
                 {t('mapModal.title')}
               </h3>
             </div>
@@ -165,7 +165,7 @@ export default function MapModal({ isOpen, onClose }) {
                       }}
                       title={spot.name}
                     >
-                      <span className="absolute inset-[-6px] rounded-full bg-[#c9a84c]/0 group-hover:bg-[#c9a84c]/15 transition-colors duration-300" />
+                      <span className="absolute inset-[-6px] rounded-full bg-[#C89B3C]/0 group-hover:bg-[#C89B3C]/15 transition-colors duration-300" />
                     </button>
                   ))}
 

@@ -40,7 +40,7 @@ export default function CareersSection() {
   const valueBlocks = t('careers.valueBlocks');
 
   return (
-    <section id="karjera" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#faf7f2' }}>
+    <section id="karjera" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#FBF7F0' }}>
       <PaperTexture id="carP" />
 
       {/* Decorative feather — right side */}
@@ -59,7 +59,7 @@ export default function CareersSection() {
       {/* Gold line accent beside feather */}
       <motion.div
         className="absolute right-[60px] md:right-[120px] top-[8%] w-[2px] h-[120px] md:h-[200px] pointer-events-none"
-        style={{ background: 'linear-gradient(180deg, transparent, #c9a84c, transparent)' }}
+        style={{ background: 'linear-gradient(180deg, transparent, #C89B3C, transparent)' }}
         initial={{ scaleY: 0, opacity: 0 }}
         whileInView={{ scaleY: 1, opacity: 0.35 }}
         viewport={{ once: true }}
@@ -74,7 +74,7 @@ export default function CareersSection() {
         transition={{ delay: 2.2, duration: 0.6 }}
       >
         <svg width="18" height="22" viewBox="0 0 18 22" fill="none">
-          <path d="M9,1 C9,1 1,10 1,14 C1,18.5 5,21 9,21 C13,21 17,18.5 17,14 C17,10 9,1 9,1 Z" fill="#1e3a5f" opacity="0.6" />
+          <path d="M9,1 C9,1 1,10 1,14 C1,18.5 5,21 9,21 C13,21 17,18.5 17,14 C17,10 9,1 9,1 Z" fill="#08233E" opacity="0.6" />
         </svg>
       </motion.div>
 
@@ -83,7 +83,7 @@ export default function CareersSection() {
         <div className="mb-8 md:mb-10 min-h-[60px] md:min-h-[80px]">
           <TypewriterText
             text={t('careers.scriptLine')}
-            className="font-script text-[20px] md:text-[26px] text-[#c9a84c]/80 leading-[1.6] italic"
+            className="font-script text-[20px] md:text-[26px] text-[#C89B3C]/80 leading-[1.6] italic"
             onComplete={() => setTypewriterDone(true)}
           />
         </div>
@@ -95,7 +95,7 @@ export default function CareersSection() {
           animate={typewriterDone ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#1e3a5f] mb-6 leading-[1.1]">
+          <h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#08233E] mb-6 leading-[1.1]">
             {t('careers.heading')}
           </h2>
           <GoldLine width="w-28" />
@@ -106,7 +106,7 @@ export default function CareersSection() {
           {introTexts.map((text, i) => (
             <motion.p
               key={i}
-              className="text-[#1e3a5f]/55 font-body text-[15px] md:text-[17px] leading-[2]"
+              className="text-[#08233E]/55 font-body text-[15px] md:text-[17px] leading-[2]"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -128,21 +128,21 @@ export default function CareersSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.12 * i, duration: 0.6 }}
             >
-              <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, #e8d5a3, #c9a84c, transparent)' }} />
-              <div className="flex-shrink-0 w-11 h-11 rounded-full bg-[#c9a84c]/[0.12] flex items-center justify-center">
+              <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, #E8D1A0, #C89B3C, transparent)' }} />
+              <div className="flex-shrink-0 w-11 h-11 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center">
                 <svg viewBox="0 0 48 48" fill="none" className="w-8 h-8">
-                  <path d="M24,8 L24,40 M16,16 L32,16 M16,32 L32,32" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
-                  <circle cx="24" cy="24" r="18" stroke="#c9a84c" strokeWidth="1.2" fill="none" />
+                  <path d="M24,8 L24,40 M16,16 L32,16 M16,32 L32,32" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+                  <circle cx="24" cy="24" r="18" stroke="#C89B3C" strokeWidth="1.2" fill="none" />
                 </svg>
               </div>
-              <p className="text-[#1e3a5f]/65 font-body text-[14px] md:text-[16px] leading-[1.85] pt-1.5">{block}</p>
+              <p className="text-[#08233E]/65 font-body text-[14px] md:text-[16px] leading-[1.85] pt-1.5">{block}</p>
             </motion.div>
           ))}
         </div>
 
         {/* 5/6. Vacancies or empty state */}
         <motion.p
-          className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#c9a84c] mb-8 font-medium"
+          className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#C89B3C] mb-8 font-medium"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -153,7 +153,7 @@ export default function CareersSection() {
 
         {loading ? (
           <div className="flex justify-center py-12">
-            <div className="w-8 h-8 border-2 border-[#c9a84c]/20 border-t-[#c9a84c] rounded-full animate-spin" />
+            <div className="w-8 h-8 border-2 border-[#C89B3C]/20 border-t-[#C89B3C] rounded-full animate-spin" />
           </div>
         ) : vacancies.length > 0 ? (
           <div className="space-y-5 mb-16 md:mb-20">
@@ -166,25 +166,25 @@ export default function CareersSection() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * i, duration: 0.6 }}
               >
-                <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, #e8d5a3, #c9a84c, transparent)' }} />
+                <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, #E8D1A0, #C89B3C, transparent)' }} />
                 <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#c9a84c]/[0.12] flex items-center justify-center">
-                    <Briefcase className="w-5 h-5 text-[#c9a84c]" strokeWidth={1.5} />
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center">
+                    <Briefcase className="w-5 h-5 text-[#C89B3C]" strokeWidth={1.5} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#1e3a5f] mb-2">{vacancy.title}</h3>
-                    <p className="text-[#1e3a5f]/50 font-body text-[13px] md:text-[15px] leading-[1.85] mb-5">{vacancy.short_description}</p>
+                    <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#08233E] mb-2">{vacancy.title}</h3>
+                    <p className="text-[#08233E]/50 font-body text-[13px] md:text-[15px] leading-[1.85] mb-5">{vacancy.short_description}</p>
                     <div className="flex items-center gap-4 flex-wrap">
                       <button
                         onClick={() => openDetail(vacancy)}
-                        className="text-[12px] font-body text-[#c9a84c] tracking-[0.15em] uppercase hover:text-[#b8973f] transition-colors duration-300 flex items-center gap-2"
+                        className="text-[12px] font-body text-[#C89B3C] tracking-[0.15em] uppercase hover:text-[#b8973f] transition-colors duration-300 flex items-center gap-2"
                       >
-                        <div className="w-5 h-[1.5px] bg-[#c9a84c]" />
+                        <div className="w-5 h-[1.5px] bg-[#C89B3C]" />
                         {t('careers.buttonReadMore')}
                       </button>
                       <button
                         onClick={() => openApply(vacancy.title)}
-                        className="bg-[#1e3a5f] text-white text-[12px] font-body tracking-[0.15em] uppercase px-7 py-3 rounded-sm hover:bg-[#1e3a5f]/90 transition-all duration-300"
+                        className="bg-[#08233E] text-white text-[12px] font-body tracking-[0.15em] uppercase px-7 py-3 rounded-sm hover:bg-[#08233E]/90 transition-all duration-300"
                       >
                         {t('careers.buttonApply')}
                       </button>
@@ -202,11 +202,11 @@ export default function CareersSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, #e8d5a3, #c9a84c, transparent)' }} />
-            <p className="text-[#1e3a5f]/55 font-body text-[15px] md:text-[16px] leading-[2] mb-6">{t('careers.noVacanciesText')}</p>
+            <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, #E8D1A0, #C89B3C, transparent)' }} />
+            <p className="text-[#08233E]/55 font-body text-[15px] md:text-[16px] leading-[2] mb-6">{t('careers.noVacanciesText')}</p>
             <button
               onClick={() => openApply('')}
-              className="relative bg-[#c9a84c] text-white hover:bg-[#b8973f] text-[13px] font-body tracking-[0.2em] uppercase px-10 py-4 transition-all duration-500 rounded-sm overflow-hidden group"
+              className="relative bg-[#C89B3C] text-white hover:bg-[#b8973f] text-[13px] font-body tracking-[0.2em] uppercase px-10 py-4 transition-all duration-500 rounded-sm overflow-hidden group"
             >
               <span className="relative z-10">{t('careers.buttonFuture')}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -216,13 +216,13 @@ export default function CareersSection() {
 
         {/* 9. Closing text */}
         <motion.div
-          className="relative bg-[#1e3a5f] rounded-xl p-8 md:p-10 overflow-hidden"
+          className="relative bg-[#08233E] rounded-xl p-8 md:p-10 overflow-hidden"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15, duration: 0.7 }}
         >
-          <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: 'linear-gradient(90deg, transparent 5%, #c9a84c 25%, #e8d5a3 50%, #c9a84c 75%, transparent 95%)' }} />
+          <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: 'linear-gradient(90deg, transparent 5%, #C89B3C 25%, #E8D1A0 50%, #C89B3C 75%, transparent 95%)' }} />
           <div className="absolute inset-0 pointer-events-none opacity-[0.06]">
             <svg width="100%" height="100%">
               <filter id="carClP"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
@@ -230,10 +230,10 @@ export default function CareersSection() {
             </svg>
           </div>
           <svg className="absolute top-4 right-4 w-8 h-8 opacity-[0.15]" viewBox="0 0 30 30" fill="none">
-            <path d="M28,2 L28,12 M28,2 L18,2" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" />
+            <path d="M28,2 L28,12 M28,2 L18,2" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round" />
           </svg>
           <svg className="absolute bottom-4 left-4 w-8 h-8 opacity-[0.15]" viewBox="0 0 30 30" fill="none">
-            <path d="M2,28 L2,18 M2,28 L12,28" stroke="#c9a84c" strokeWidth="1.2" strokeLinecap="round" />
+            <path d="M2,28 L2,18 M2,28 L12,28" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round" />
           </svg>
           <p className="relative z-10 text-white/70 font-body text-[15px] md:text-[17px] leading-[2] italic">
             {t('careers.closingText')}

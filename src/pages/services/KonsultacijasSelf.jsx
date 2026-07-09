@@ -25,12 +25,12 @@ export default function KonsultacijasSelf() {
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 md:py-24">
         <motion.div
-          className="bg-[#1e3a5f]/[0.04] border-l-2 border-[#c9a84c] rounded-sm px-6 py-5 md:px-8 md:py-6 mb-12"
+          className="bg-[#08233E]/[0.04] border-l-2 border-[#C89B3C] rounded-sm px-6 py-5 md:px-8 md:py-6 mb-12"
           initial={{ opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-heading text-[16px] md:text-[18px] text-[#1e3a5f]/70 leading-[1.8] italic">
+          <p className="font-heading text-[16px] md:text-[18px] text-[#08233E]/70 leading-[1.8] italic">
             Dažkārt viena pareiza konsultācija ir vērtīgāka par desmit aizpildītām atskaitēm.
           </p>
         </motion.div>

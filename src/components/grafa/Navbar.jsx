@@ -45,8 +45,8 @@ export default function Navbar() {
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrolled
-            ? 'bg-[#f5f0e8]/95 backdrop-blur-xl shadow-sm border-b border-[#c9a84c]/15'
-            : 'bg-[#f5f0e8]/80 backdrop-blur-md'
+            ? 'bg-[#F8F2EA]/95 backdrop-blur-xl shadow-sm border-b border-[#C89B3C]/15'
+            : 'bg-[#F8F2EA]/80 backdrop-blur-md'
         }`}
         initial={{ y: -80 }}
         animate={{ y: visible ? 0 : -80 }}
@@ -60,7 +60,7 @@ export default function Navbar() {
                 key={link.key}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className="text-[12px] font-body transition-all duration-300 relative pb-1 text-[#1e3a5f]/50 hover:text-[#1e3a5f]/80"
+                className="text-[12px] font-body transition-all duration-300 relative pb-1 text-[#08233E]/50 hover:text-[#08233E]/80"
               >
                 {t(link.key)}
               </a>
@@ -69,7 +69,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
-            <button className="lg:hidden p-2 text-[#1e3a5f]/60" onClick={() => setMobileOpen(!mobileOpen)}>
+            <button className="lg:hidden p-2 text-[#08233E]/60" onClick={() => setMobileOpen(!mobileOpen)}>
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
@@ -79,7 +79,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-[#f5f0e8]/98 backdrop-blur-xl pt-20"
+            className="fixed inset-0 z-40 bg-[#F8F2EA]/98 backdrop-blur-xl pt-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -89,7 +89,7 @@ export default function Navbar() {
                 <motion.a
                   key={link.key}
                   href={link.href}
-                  className="text-lg font-heading text-[#1e3a5f]/80 hover:text-[#1e3a5f]"
+                  className="text-lg font-heading text-[#08233E]/80 hover:text-[#08233E]"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.06 }}

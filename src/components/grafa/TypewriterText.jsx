@@ -34,7 +34,7 @@ export default function TypewriterText({ text, className = '', onComplete }) {
       {displayed}
       {started && displayed.length < text.length && (
         <motion.span
-          className="inline-block w-[2px] h-[1em] bg-[#c9a84c] ml-0.5 align-middle"
+          className="inline-block w-[2px] h-[1em] bg-[#C89B3C] ml-0.5 align-middle"
           animate={{ opacity: [1, 0] }}
           transition={{ duration: 0.6, repeat: Infinity }}
         />

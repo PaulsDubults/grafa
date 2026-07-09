@@ -5,7 +5,7 @@ export default function GoldLine({ width = 'w-20', className = '' }) {
   return (
     <motion.div
       className={`h-[1.5px] ${width} ${className}`}
-      style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }}
+      style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, transparent)' }}
       initial={{ scaleX: 0, opacity: 0 }}
       whileInView={{ scaleX: 1, opacity: 1 }}
       viewport={{ once: true }}

@@ -14,18 +14,18 @@ export default function ChoiceCards({ choices }) {
         >
           <Link
             to={choice.path}
-            className="block bg-white/70 backdrop-blur-sm rounded-lg p-7 md:p-8 text-center cursor-pointer shadow-[0_2px_12px_rgba(30,58,95,0.04)] hover:shadow-[0_10px_36px_rgba(30,58,95,0.10)] hover:-translate-y-1.5 transition-all duration-500 border border-[#e8e0d4]/40 hover:border-[#c9a84c]/25 group relative overflow-hidden"
+            className="block bg-white/70 backdrop-blur-sm rounded-lg p-7 md:p-8 text-center cursor-pointer shadow-[0_2px_12px_rgba(30,58,95,0.04)] hover:shadow-[0_10px_36px_rgba(30,58,95,0.10)] hover:-translate-y-1.5 transition-all duration-500 border border-[#e8e0d4]/40 hover:border-[#C89B3C]/25 group relative overflow-hidden"
           >
-            <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }} />
-            <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#1e3a5f] mb-2">
+            <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, transparent)' }} />
+            <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#08233E] mb-2">
               {choice.label}
             </h3>
             {choice.desc && (
-              <p className="font-body text-[12px] md:text-[13px] text-[#1e3a5f]/45 leading-[1.7]">
+              <p className="font-body text-[12px] md:text-[13px] text-[#08233E]/45 leading-[1.7]">
                 {choice.desc}
               </p>
             )}
-            <div className="w-8 h-[1.5px] mx-auto mt-5 transition-all duration-500 group-hover:w-14" style={{ background: 'linear-gradient(90deg, #c9a84c, #e8d5a3)' }} />
+            <div className="w-8 h-[1.5px] mx-auto mt-5 transition-all duration-500 group-hover:w-14" style={{ background: 'linear-gradient(90deg, #C89B3C, #E8D1A0)' }} />
           </Link>
         </motion.div>
       ))}

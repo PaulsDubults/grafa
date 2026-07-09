@@ -12,7 +12,7 @@ export default function HeroMiniMap({ centered }) {
   return (
     <>
       <div className={centered ? "text-center" : ""}>
-        <p className="text-[11px] font-body text-[#1e3a5f]/40 mb-3 italic">
+        <p className="text-[11px] font-body text-[#08233E]/40 mb-3 italic">
           {t('miniMap.subtitle')}
         </p>
 
@@ -29,7 +29,7 @@ export default function HeroMiniMap({ centered }) {
           />
 
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-2">
-            <span className="bg-white/90 text-[10px] font-body text-[#1e3a5f]/70 tracking-wider uppercase px-3 py-1.5 rounded-sm shadow-sm">
+            <span className="bg-white/90 text-[10px] font-body text-[#08233E]/70 tracking-wider uppercase px-3 py-1.5 rounded-sm shadow-sm">
               {t('miniMap.viewMap')}
             </span>
           </div>

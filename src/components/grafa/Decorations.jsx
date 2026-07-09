@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const GOLD = '#c9a84c';
+const GOLD = '#C89B3C';
 const ROSE = '#c4868a';
 
 /* ═══════════════════════════════════════════════════════════════

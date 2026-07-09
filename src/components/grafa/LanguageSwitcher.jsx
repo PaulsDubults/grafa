@@ -10,19 +10,19 @@ export default function LanguageSwitcher() {
         onClick={() => switchLang('lv')}
         className={`px-1.5 py-0.5 rounded-sm transition-all duration-300 ${
           lang === 'lv'
-            ? 'text-[#1e3a5f] font-semibold'
-            : 'text-[#1e3a5f]/35 hover:text-[#1e3a5f]/60'
+            ? 'text-[#08233E] font-semibold'
+            : 'text-[#08233E]/35 hover:text-[#08233E]/60'
         }`}
       >
         LV
       </button>
-      <span className="text-[#c9a84c]/40">|</span>
+      <span className="text-[#C89B3C]/40">|</span>
       <button
         onClick={() => switchLang('ru')}
         className={`px-1.5 py-0.5 rounded-sm transition-all duration-300 ${
           lang === 'ru'
-            ? 'text-[#1e3a5f] font-semibold'
-            : 'text-[#1e3a5f]/35 hover:text-[#1e3a5f]/60'
+            ? 'text-[#08233E] font-semibold'
+            : 'text-[#08233E]/35 hover:text-[#08233E]/60'
         }`}
       >
         RU

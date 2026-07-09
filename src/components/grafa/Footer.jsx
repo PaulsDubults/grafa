@@ -6,7 +6,7 @@ export default function Footer() {
   const { t } = useI18n();
 
   return (
-    <footer className="relative py-16 px-6 md:px-10 overflow-hidden" style={{ background: '#1e3a5f' }}>
+    <footer className="relative py-16 px-6 md:px-10 overflow-hidden" style={{ background: '#08233E' }}>
       <div className="absolute inset-0 pointer-events-none opacity-[0.04] z-0">
         <svg width="100%" height="100%">
           <filter id="footP"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
@@ -28,7 +28,7 @@ export default function Footer() {
             <p className="font-heading text-[16px] font-semibold text-white/80 mb-1.5">
               SIA firma GRĀFA
             </p>
-            <p className="text-[11px] text-[#c9a84c]/60 tracking-[0.2em] font-body">
+            <p className="text-[11px] text-[#C89B3C]/60 tracking-[0.2em] font-body">
               {t('footer.tagline')}
             </p>
             <p className="text-[11px] text-white/20 font-body mt-4">
