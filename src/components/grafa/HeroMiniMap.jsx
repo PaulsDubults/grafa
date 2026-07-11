@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import MapModal from './MapModal';
+import LatviaSvgMap from './LatviaSvgMap';
+import MapMarker from './MapMarker';
+import { locations, totalClients } from './mapData';
 import { useI18n } from '@/lib/i18n';
-
-const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/719cd8202_image.png";
 
 export default function HeroMiniMap({ centered }) {
   const { t } = useI18n();
@@ -17,19 +18,36 @@ export default function HeroMiniMap({ centered }) {
         </p>
 
         <button
-          className={`relative rounded-sm overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-[0_4px_24px_rgba(201,168,76,0.15)] p-3 ${
-            centered ? 'w-full max-w-[480px] mx-auto' : 'w-full max-w-[280px] text-left'
+          className={`relative rounded-lg overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-[0_8px_32px_rgba(46,93,80,0.12)] bg-[#FBF7F0] border border-[#e8e0d4]/40 p-4 ${
+            centered ? 'w-full max-w-[480px] mx-auto' : 'w-full max-w-[320px] text-left'
           }`}
           onClick={() => setShowModal(true)}
         >
-          <img
-            src={MAP_IMAGE}
-            alt="Latvijas karte"
-            className="w-full h-auto opacity-35 group-hover:opacity-60 transition-all duration-700 group-hover:scale-[1.02]"
-          />
+          <div className="relative">
+            <LatviaSvgMap className="w-full h-auto opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
 
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-2">
-            <span className="bg-white/90 text-[10px] font-body text-[#08233E]/70 tracking-wider uppercase px-3 py-1.5 rounded-sm shadow-sm">
+            {/* Mini markers */}
+            <div className="absolute inset-0">
+              {locations.map((loc) => (
+                <div
+                  key={loc.name}
+                  className="absolute -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${loc.x}%`, top: `${loc.y}%` }}
+                >
+                  <div className={`rounded-full bg-[#2E5D50] border border-white/70 ${
+                    loc.clients >= 10 ? 'w-3 h-3' : 'w-2 h-2'
+                  }`} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom label */}
+          <div className="flex items-center justify-between mt-3 px-1">
+            <span className="font-body text-[10px] text-[#08233E]/50 tracking-wider uppercase">
+              {totalClients} {t('miniMap.clientsLabel') || 'klienti'}
+            </span>
+            <span className="bg-[#2E5D50]/10 text-[#2E5D50] text-[10px] font-body font-medium tracking-wider uppercase px-2.5 py-1 rounded-sm group-hover:bg-[#2E5D50]/20 transition-colors duration-300">
               {t('miniMap.viewMap')}
             </span>
           </div>

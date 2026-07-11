@@ -36,10 +36,12 @@ export const translations = {
     miniMap: {
       subtitle: "Apskatiet, kur visā Latvijā mums jau uzticas.",
       viewMap: "Apskatīt karti",
+      clientsLabel: "klienti",
     },
     mapModal: {
       subtitle: "Mūsu klienti",
       title: "Klienti visā Latvijā",
+      totalLabel: "klienti visā Latvijā",
     },
     services: {
       introScript: "Katrs uzņēmums strādā citā nozarē. Kāds ir pašā ceļa sākumā, bet citam jau ir stabils bizness ar lieliem mērķiem. Mēs pielāgojamies Jūsu uzņēmuma vajadzībām, saglabājot profesionālu un tajā pašā laikā saprotamu pieeju ikvienā sadarbības posmā, neskatoties uz to, vai Jūsu uzņēmums ir mazs, vidējs vai liels.",
@@ -258,10 +260,12 @@ export const translations = {
     miniMap: {
       subtitle: "Посмотрите, где в Латвии нам уже доверяют.",
       viewMap: "Посмотреть карту",
+      clientsLabel: "клиенты",
     },
     mapModal: {
       subtitle: "Наши клиенты",
       title: "Клиенты по всей Латвии",
+      totalLabel: "клиенты по всей Латвии",
     },
     services: {
       introScript: "Каждое предприятие работает в своей отрасли. Кто-то только в начале пути, а у кого-то уже стабильный бизнес с большими целями. Мы адаптируемся к потребностям вашего предприятия, сохраняя профессиональный и в то же время понятный подход на каждом этапе сотрудничества, независимо от размера вашего предприятия.",
