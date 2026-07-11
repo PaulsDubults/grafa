@@ -1,30 +1,31 @@
-// Location data with approximate % positions on the Latvia SVG map
-// Positions calibrated to the LatviaSvgMap viewBox (800x440)
-// x/y are percentages relative to the full SVG container
+// Location data with % positions calibrated to LatviaSvgMap viewBox (500x280)
+// Country outline spans x: ~30-422, y: ~30-187
+// Real coordinates mapped: Liepāja ~21°E/56.5°N, Rīga ~24°E/57°N, 
+// Jelgava ~23.7°E/56.65°N, Ventspils ~21.6°E/57.4°N
 
 export const locations = [
-  // Major cities — western Latvia
-  { name: "Liepāja", clients: 6, x: 12, y: 68 },
-  { name: "Ventspils", clients: 1, x: 16, y: 32 },
-  
-  // Jūrmala / Rīga region — central-north
-  { name: "Jūrmala", clients: 1, x: 42, y: 38 },
-  { name: "Rīga", clients: 16, x: 48, y: 36 },
-  { name: "Mārupes novads", clients: 1, x: 45, y: 42 },
-  { name: "Olaine", clients: 1, x: 43, y: 48 },
-  { name: "Ropažu novads", clients: 1, x: 55, y: 34 },
-  
-  // Jelgava region — central
-  { name: "Jelgava", clients: 30, x: 40, y: 56, isOffice: true },
-  { name: "Jelgavas novads", clients: 9, x: 35, y: 62 },
-  { name: "Dobele", clients: 1, x: 32, y: 58 },
-  
-  // Southern Latvia
-  { name: "Baldone", clients: 1, x: 49, y: 50 },
-  { name: "Bauskas novads", clients: 1, x: 45, y: 72 },
-  
-  // Eastern region
-  { name: "Ogres novads", clients: 2, x: 56, y: 46 },
+  // Western coast
+  { name: "Liepāja", clients: 6, x: 9, y: 65 },
+  { name: "Ventspils", clients: 1, x: 14, y: 22 },
+
+  // Rīga region — east of Gulf of Riga
+  { name: "Jūrmala", clients: 1, x: 38, y: 27 },
+  { name: "Rīga", clients: 16, x: 43, y: 24 },
+  { name: "Mārupes novads", clients: 1, x: 40, y: 32 },
+  { name: "Olaine", clients: 1, x: 37, y: 38 },
+  { name: "Ropažu novads", clients: 1, x: 49, y: 22 },
+
+  // Jelgava region — south of Rīga
+  { name: "Jelgava", clients: 30, x: 36, y: 48, isOffice: true },
+  { name: "Jelgavas novads", clients: 9, x: 31, y: 54 },
+  { name: "Dobele", clients: 1, x: 27, y: 50 },
+
+  // Central-south
+  { name: "Baldone", clients: 1, x: 45, y: 40 },
+  { name: "Bauskas novads", clients: 1, x: 42, y: 62 },
+
+  // East of Rīga
+  { name: "Ogres novads", clients: 2, x: 52, y: 34 },
 ];
 
 export const totalClients = locations.reduce((sum, l) => sum + l.clients, 0);
