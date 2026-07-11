@@ -101,46 +101,59 @@ export default function HeroSection() {
         </svg>
       </div>
 
+      {/* Hero image — absolute background, from text start to right edge of screen */}
+      <motion.div
+        className="hidden lg:block absolute z-[5] top-[56px] left-[38%] right-0 bottom-0 pointer-events-none"
+        initial={{ opacity: 0, scale: 0.97 }}
+        animate={{
+          opacity: allRevealed ? 1 : 0,
+          scale: allRevealed ? 1 : 0.97
+        }}
+        transition={{ delay: logoDelay, duration: 1.2, ease: 'easeOut' }}>
+        
+        <img
+          src={HERO_IMG}
+          alt="SIA firma GRĀFA — piramīda, spalva, logotips"
+          className="w-full h-full object-contain object-right-top" />
+        
+      </motion.div>
+
+      {/* Mobile hero image */}
+      <motion.div
+        className="lg:hidden px-5 pt-4"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{
+          opacity: allRevealed ? 1 : 0,
+          scale: allRevealed ? 1 : 0.95
+        }}
+        transition={{ delay: logoDelay, duration: 1.2, ease: 'easeOut' }}>
+        
+        <img
+          src={HERO_IMG}
+          alt="SIA firma GRĀFA — piramīda, spalva, logotips"
+          className="w-full h-auto object-contain rounded-none" />
+        
+      </motion.div>
+
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 pt-6 md:pt-8">
-        <div className="relative items-start">
-          {/* Left side — numbered story lines */}
-          <div className="relative z-20 pt-2 md:pt-4 lg:pt-10 lg:w-[42%] lg:pr-6">
-            <div className="mb-4">
-              <LanguageSwitcher />
-            </div>
-            {storyLines.map((line, i) =>
-            <StoryLine key={`${i}-${line.slice(0, 10)}`} text={line} index={i} isVisible={i < visibleCount} boldWords={boldWords} />
-            )}
-
-            {/* Mini map — bottom left under story lines */}
-            <motion.div
-              className="mt-6 md:mt-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: allRevealed ? 1 : 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }}>
-              
-              {allRevealed && <HeroMiniMap />}
-            </motion.div>
+        {/* Left side — numbered story lines */}
+        <div className="relative z-20 pt-2 md:pt-4 lg:pt-10 lg:w-[42%] lg:pr-6">
+          <div className="mb-4">
+            <LanguageSwitcher />
           </div>
+          {storyLines.map((line, i) =>
+          <StoryLine key={`${i}-${line.slice(0, 10)}`} text={line} index={i} isVisible={i < visibleCount} boldWords={boldWords} />
+          )}
 
-          {/* Right side — hero image — spans from text left edge to screen right edge */}
-          <div className="lg:absolute lg:left-0 lg:right-[-10px] xl:right-[-40px] lg:top-0 lg:bottom-0 lg:pointer-events-none lg:overflow-visible order-first lg:order-last">
-            <motion.div
-              className="relative lg:absolute lg:top-[-16px] lg:left-[38%] lg:right-0 lg:bottom-0 flex justify-center lg:justify-end lg:items-start lg:pointer-events-auto"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{
-                opacity: allRevealed ? 1 : 0,
-                scale: allRevealed ? 1 : 0.95
-              }}
-              transition={{ delay: logoDelay, duration: 1.2, ease: 'easeOut' }}>
-              
-              <img
-                src={HERO_IMG}
-                alt="SIA firma GRĀFA — piramīda, spalva, logotips"
-                className="w-full lg:w-full lg:h-full object-contain object-right-top rounded-none" />
-              
-            </motion.div>
-          </div>
+          {/* Mini map — bottom left under story lines */}
+          <motion.div
+            className="mt-6 md:mt-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: allRevealed ? 1 : 0 }}
+            transition={{ delay: 1.2, duration: 0.8 }}>
+            
+            {allRevealed && <HeroMiniMap />}
+          </motion.div>
         </div>
       </div>
 
