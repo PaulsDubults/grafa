@@ -1,24 +1,24 @@
 // Fixed pixel coordinates for the stylized Latvia map image (450 × 297 px).
-// These are manually placed anchor points — do NOT recalculate from lat/lng.
-// To convert to percentages: x% = x/450*100, y% = y/297*100.
+// These are manually placed anchor points — do NOT recalculate.
+// Percentages: x% = px / 450 * 100, y% = py / 297 * 100.
 
 const IMAGE_W = 450;
 const IMAGE_H = 297;
 
 const locationsRaw = [
-  { name: "Ventspils",        clients: 1,  px: 85,  py: 72  },
-  { name: "Liepāja",          clients: 6,  px: 72,  py: 186 },
-  { name: "Rīga",             clients: 16, px: 264, py: 93  },
-  { name: "Jelgava",          clients: 30, px: 245, py: 122, isOffice: true },
-  { name: "Dobele",           clients: 1,  px: 205, py: 145 },
-  { name: "Olaine",           clients: 1,  px: 248, py: 112 },
-  { name: "Baldone",          clients: 1,  px: 279, py: 123 },
-  { name: "Bauskas novads",   clients: 1,  px: 290, py: 142 },
-  { name: "Jūrmala",          clients: 1,  px: 228, py: 96  },
-  { name: "Mārupes novads",   clients: 1,  px: 240, py: 98  },
-  { name: "Ropažu novads",    clients: 1,  px: 274, py: 74  },
-  { name: "Ogres novads",     clients: 2,  px: 302, py: 104 },
-  { name: "Jelgavas novads",  clients: 9,  px: 220, py: 140 },
+  { name: "Ventspils",        clients: 1,  px: 82,  py: 66  },
+  { name: "Liepāja",          clients: 6,  px: 70,  py: 208 },
+  { name: "Rīga",             clients: 16, px: 253, py: 93  },
+  { name: "Jelgava",          clients: 30, px: 236, py: 126, isOffice: true },
+  { name: "Jelgavas novads",  clients: 9,  px: 220, py: 148 },
+  { name: "Dobele",           clients: 1,  px: 198, py: 145 },
+  { name: "Jūrmala",          clients: 1,  px: 224, py: 97  },
+  { name: "Mārupes novads",   clients: 1,  px: 236, py: 101 },
+  { name: "Olaine",           clients: 1,  px: 242, py: 114 },
+  { name: "Baldone",          clients: 1,  px: 270, py: 123 },
+  { name: "Bauskas novads",   clients: 1,  px: 282, py: 147 },
+  { name: "Ogres novads",     clients: 2,  px: 296, py: 109 },
+  { name: "Ropažu novads",    clients: 1,  px: 266, py: 73  },
 ];
 
 export const locationsWithXY = locationsRaw.map(loc => ({
