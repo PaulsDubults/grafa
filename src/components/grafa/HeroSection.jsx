@@ -104,7 +104,7 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 pt-6 md:pt-8">
         <div className="grid lg:grid-cols-[42%_58%] gap-4 lg:gap-0 items-start">
           {/* Left side — numbered story lines */}
-          <div className="pt-2 md:pt-4 lg:pt-10 lg:pr-6">
+          <div className="relative z-20 pt-2 md:pt-4 lg:pt-10 lg:pr-6">
             <div className="mb-4">
               <LanguageSwitcher />
             </div>
