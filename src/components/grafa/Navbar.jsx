@@ -11,7 +11,6 @@ const navKeys = [
   { key: "nav.process", href: "#process" },
   { key: "nav.knowledge", href: "#zinasanu-telpa" },
   { key: "nav.about", href: "#par-mums" },
-  { key: "nav.clients", href: "#musu-klienti" },
   { key: "nav.join", href: "#pievienojies" },
   { key: "nav.careers", href: "#karjera" },
   { key: "nav.contacts", href: "#kontakti" },
