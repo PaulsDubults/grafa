@@ -40,7 +40,7 @@ export default function CareersSection() {
   const valueBlocks = t('careers.valueBlocks');
 
   return (
-    <section id="karjera" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#FBF7F0' }}>
+    <section id="karjera" className="relative py-28 md:py-44 overflow-hidden">
       <PaperTexture id="carP" />
 
       {/* Decorative feather — right side */}

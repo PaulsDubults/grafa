@@ -18,7 +18,7 @@ export default function WhyGrafaSection() {
   const values = t('whyGrafa.values');
 
   return (
-    <section id="kapec-grafu" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#F8F2EA' }}>
+    <section id="kapec-grafu" className="relative py-28 md:py-44 overflow-hidden">
       <PaperTexture id="whyP" />
 
       {/* COMPOSITION: crossed feathers right, diagonal quill left bottom, upright accent top */}

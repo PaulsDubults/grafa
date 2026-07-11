@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import GoldLine from './GoldLine';
 import Footer from './Footer';
 import { FullFeather, SmallFeather, PyramidOutline, WatercolorStain, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
+import WatercolorBg from './WatercolorBg';
 import { useI18n } from '@/lib/i18n';
 
 export default function ServicePageLayout({ breadcrumbs, title, subtitle, children }) {
@@ -17,10 +18,11 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
   }, [pathname]);
 
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ background: '#F8F2EA' }}>
+    <div className="relative min-h-screen overflow-x-hidden">
+      <WatercolorBg />
       <PaperTexture id="svcPageP" />
 
-      <div className="relative overflow-hidden" style={{ background: '#FBF7F0' }}>
+      <div className="relative overflow-hidden">
         <PaperTexture id="svcHdrP" />
         <WatercolorStain className="right-[-80px] top-[-30px]" color="#e8c89a" opacity={0.14} size={450} id="svcLW" />
         <WatercolorStain className="left-[-60px] bottom-[-20px]" color="#e0b5b0" opacity={0.08} size={300} id="svcLR" />

@@ -10,7 +10,7 @@ export default function KnowledgeSection() {
   const articles = t('knowledge.articles');
 
   return (
-    <section id="zinasanu-telpa" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#F8F2EA' }}>
+    <section id="zinasanu-telpa" className="relative py-28 md:py-44 overflow-hidden">
       <PaperTexture id="knowP" />
 
       {/* COMPOSITION: diagonal quill right, upright feather flipped left, fragment accent */}

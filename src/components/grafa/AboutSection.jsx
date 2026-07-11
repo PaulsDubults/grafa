@@ -10,7 +10,7 @@ export default function AboutSection() {
   const coreValues = t('about.values');
 
   return (
-    <section id="par-mums" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#FBF7F0' }}>
+    <section id="par-mums" className="relative py-28 md:py-44 overflow-hidden">
       <PaperTexture id="aboutP" />
 
       {/* COMPOSITION: crossed feathers center-left, upright right, horizontal bottom */}

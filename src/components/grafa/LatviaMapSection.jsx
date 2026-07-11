@@ -27,7 +27,7 @@ export default function LatviaMapSection() {
     <motion.section
       id="karte"
       className="relative py-20 md:py-32 px-6 md:px-10 overflow-hidden"
-      style={{ background: '#faf7f2' }}
+      style={{ background: 'transparent' }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-80px" }}

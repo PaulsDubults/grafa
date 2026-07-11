@@ -37,7 +37,7 @@ export default function ServicesSection() {
   const cards = t('services.cards');
 
   return (
-    <section id="pakalpojumi" className="relative py-28 md:py-40 overflow-hidden" style={{ background: '#FBF7F0' }}>
+    <section id="pakalpojumi" className="relative py-28 md:py-40 overflow-hidden">
       <PaperTexture id="svcP" />
 
       {/* COMPOSITION: diagonal quill right, upright feather left, small accent bottom */}

@@ -22,7 +22,7 @@ export default function ContactSection() {
   const handleSubmit = (e) => { e.preventDefault(); setSent(true); setTimeout(() => setSent(false), 3000); setForm({ name: '', email: '', message: '' }); };
 
   return (
-    <section id="kontakti" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#FBF7F0' }}>
+    <section id="kontakti" className="relative py-28 md:py-44 overflow-hidden">
       <PaperTexture id="contP" />
 
       {/* COMPOSITION: upright feather right, diagonal left bottom, horizontal accent */}

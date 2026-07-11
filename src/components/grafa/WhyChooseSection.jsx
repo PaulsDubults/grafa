@@ -19,7 +19,7 @@ export default function WhyChooseSection() {
   const steps = t('whyChoose.steps');
 
   return (
-    <section id="kapec-izvel" className="relative py-28 md:py-44 overflow-hidden" style={{ background: '#F8F2EA' }}>
+    <section id="kapec-izvel" className="relative py-28 md:py-44 overflow-hidden">
       <PaperTexture id="whyChP" />
 
       {/* Decorative feather — right side, leaning left, with gold line & ink drop */}

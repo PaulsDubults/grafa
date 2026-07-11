@@ -82,7 +82,7 @@ export default function HeroSection() {
   const logoDelay = 0.3;
 
   return (
-    <section id="sakumlapa" className="relative w-full min-h-screen overflow-hidden" style={{ background: '#F8F2EA' }}>
+    <section id="sakumlapa" className="relative w-full min-h-screen overflow-hidden">
       {/* Paper texture */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.12]">
         <svg width="100%" height="100%">

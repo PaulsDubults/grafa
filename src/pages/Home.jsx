@@ -13,30 +13,32 @@ import JoinSection from '@/components/grafa/JoinSection';
 import CareersSection from '@/components/grafa/CareersSection';
 import ContactSection from '@/components/grafa/ContactSection';
 import Footer from '@/components/grafa/Footer';
+import WatercolorBg from '@/components/grafa/WatercolorBg';
 
 export default function Home() {
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ background: '#F8F2EA' }}>
+    <div className="relative min-h-screen overflow-x-hidden">
+      <WatercolorBg />
       <Navbar />
       <HeroSection />
-      <SectionDivider color="#FBF7F0" />
+      <SectionDivider />
       <ServicesSection />
-      <SectionDivider color="#F8F2EA" flip />
+      <SectionDivider flip />
       <WhyChooseSection />
-      <SectionDivider color="#FBF7F0" />
+      <SectionDivider />
       <PricingSection />
-      <SectionDivider color="#F8F2EA" flip />
+      <SectionDivider flip />
       <WhyGrafaSection />
-      <SectionDivider color="#FBF7F0" />
+      <SectionDivider />
       <ProcessSection />
-      <SectionDivider color="#F8F2EA" flip />
+      <SectionDivider flip />
       <KnowledgeSection />
-      <SectionDivider color="#FBF7F0" />
+      <SectionDivider />
       <AboutSection />
       <JoinSection />
-      <SectionDivider color="#FBF7F0" />
+      <SectionDivider />
       <CareersSection />
-      <SectionDivider color="#F8F2EA" flip />
+      <SectionDivider flip />
       <ContactSection />
       <Footer />
     </div>

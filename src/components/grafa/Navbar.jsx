@@ -45,8 +45,8 @@ export default function Navbar() {
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrolled
-            ? 'bg-[#F8F2EA]/95 backdrop-blur-xl shadow-sm border-b border-[#C89B3C]/15'
-            : 'bg-[#F8F2EA]/80 backdrop-blur-md'
+            ? 'bg-[#FAF5EF]/95 backdrop-blur-xl shadow-sm border-b border-[#C89B3C]/15'
+            : 'bg-[#FAF5EF]/80 backdrop-blur-md'
         }`}
         initial={{ y: -80 }}
         animate={{ y: visible ? 0 : -80 }}
@@ -79,7 +79,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-[#F8F2EA]/98 backdrop-blur-xl pt-20"
+            className="fixed inset-0 z-40 bg-[#FAF5EF]/98 backdrop-blur-xl pt-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
