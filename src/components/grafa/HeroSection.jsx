@@ -101,8 +101,8 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-[1440px] mx-auto pl-5 md:pl-10 pr-5 md:pr-0 pt-6 md:pt-8">
-        <div className="grid lg:grid-cols-[42%_58%] gap-4 lg:gap-0 items-start">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 pt-6 md:pt-8">
+        <div className="relative grid lg:grid-cols-[45%_55%] gap-4 lg:gap-0 items-start">
           {/* Left side — numbered story lines */}
           <div className="relative z-20 pt-2 md:pt-4 lg:pt-10 lg:pr-6">
             <div className="mb-4">
@@ -124,9 +124,9 @@ export default function HeroSection() {
           </div>
 
           {/* Right side — hero image */}
-          <div className="flex flex-col order-first lg:order-last">
+          <div className="flex flex-col order-first lg:order-last lg:absolute lg:right-[-40px] lg:top-0 lg:w-[58%] lg:h-full">
             <motion.div
-              className="relative flex justify-center lg:justify-end"
+              className="relative flex justify-center lg:justify-end lg:items-start"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{
                 opacity: allRevealed ? 1 : 0,
@@ -137,7 +137,7 @@ export default function HeroSection() {
               <img
                 src={HERO_IMG}
                 alt="SIA firma GRĀFA — piramīda, spalva, logotips"
-                className="w-full lg:max-w-none lg:w-[130%] h-auto object-contain opacity-100 rounded-none" />
+                className="w-full lg:w-auto lg:max-h-[85vh] h-auto object-contain opacity-100 rounded-none" />
               
             </motion.div>
           </div>
