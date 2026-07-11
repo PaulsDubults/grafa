@@ -102,9 +102,9 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 pt-6 md:pt-8">
-        <div className="relative grid lg:grid-cols-[45%_55%] gap-4 lg:gap-0 items-start">
+        <div className="relative items-start">
           {/* Left side — numbered story lines */}
-          <div className="relative z-20 pt-2 md:pt-4 lg:pt-10 lg:pr-6">
+          <div className="relative z-20 pt-2 md:pt-4 lg:pt-10 lg:w-[42%] lg:pr-6">
             <div className="mb-4">
               <LanguageSwitcher />
             </div>
@@ -123,10 +123,10 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right side — hero image */}
-          <div className="flex flex-col order-first lg:order-last lg:absolute lg:right-[-40px] lg:top-0 lg:w-[58%] lg:h-full">
+          {/* Right side — hero image — spans from text left edge to screen right edge */}
+          <div className="lg:absolute lg:left-0 lg:right-[-10px] xl:right-[-40px] lg:top-0 lg:bottom-0 lg:pointer-events-none lg:overflow-visible order-first lg:order-last">
             <motion.div
-              className="relative flex justify-center lg:justify-end lg:items-start"
+              className="relative lg:absolute lg:top-[-16px] lg:left-[38%] lg:right-0 lg:bottom-0 flex justify-center lg:justify-end lg:items-start lg:pointer-events-auto"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{
                 opacity: allRevealed ? 1 : 0,
@@ -137,7 +137,7 @@ export default function HeroSection() {
               <img
                 src={HERO_IMG}
                 alt="SIA firma GRĀFA — piramīda, spalva, logotips"
-                className="w-full lg:w-auto lg:max-h-[85vh] h-auto object-contain opacity-100 rounded-none" />
+                className="w-full lg:w-full lg:h-full object-contain object-right-top rounded-none" />
               
             </motion.div>
           </div>
