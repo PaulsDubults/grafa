@@ -18,7 +18,7 @@ export default function WhyGrafaSection() {
   const values = t('whyGrafa.values');
 
   return (
-    <section id="kapec-grafu" className="relative py-28 md:py-44 overflow-hidden">
+    <section id="kapec-grafu" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="whyP" />
 
       {/* COMPOSITION: crossed feathers right, diagonal quill left bottom, upright accent top */}
@@ -40,11 +40,11 @@ export default function WhyGrafaSection() {
       <GoldFlourish className="w-[220px] md:w-[320px] h-[90px] md:h-[130px] left-[15%] top-[42%]" opacity={0.2} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
-        <div className="flex flex-col items-end text-right mb-20 md:mb-24 max-w-2xl ml-auto">
+        <div className="flex flex-col items-end text-right mb-14 md:mb-18 max-w-2xl ml-auto">
           <motion.p className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#C89B3C] mb-5 font-medium" initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>{t('whyGrafa.subtitle')}</motion.p>
-          <motion.h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#08233E] mb-6 leading-[1.1]" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>{t('whyGrafa.heading')}</motion.h2>
+          <motion.h2 className="font-heading text-[38px] md:text-[54px] lg:text-[64px] font-semibold text-[#08233E] mb-6 leading-[1.1]" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>{t('whyGrafa.heading')}</motion.h2>
           <GoldLine width="w-28" className="mb-8" />
-          <motion.p className="text-[#08233E]/50 font-body text-[15px] md:text-[17px] leading-[1.9]" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.6 }}>{t('whyGrafa.description')}</motion.p>
+          <motion.p className="text-[#08233E]/50 font-body text-[17px] md:text-[19px] leading-[1.9]" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.6 }}>{t('whyGrafa.description')}</motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
@@ -55,8 +55,8 @@ export default function WhyGrafaSection() {
               <div className="flex items-start gap-5">
                 <div className="text-[#C89B3C] group-hover:scale-110 transition-transform duration-500 flex-shrink-0 mt-1">{valueIcons[i]}</div>
                 <div>
-                  <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#08233E] mb-3 leading-snug">{item.title}</h3>
-                  <p className="text-[#08233E]/50 font-body text-[13px] md:text-[15px] leading-[1.85]">{item.desc}</p>
+                  <h3 className="font-heading text-[20px] md:text-[24px] font-semibold text-[#08233E] mb-3 leading-snug">{item.title}</h3>
+                  <p className="text-[#08233E]/50 font-body text-[15px] md:text-[17px] leading-[1.85]">{item.desc}</p>
                   <div className="w-0 group-hover:w-16 h-[2px] mt-5 transition-all duration-700" style={{ background: 'linear-gradient(90deg, #C89B3C, #E8D1A0, transparent)' }} />
                 </div>
               </div>

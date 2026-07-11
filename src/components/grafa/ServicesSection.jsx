@@ -20,8 +20,8 @@ function ServiceCard({ card, icon, path, index }) {
         <svg className="absolute top-3 right-3 w-8 h-8 opacity-[0.18] group-hover:opacity-[0.35] transition-opacity duration-500" viewBox="0 0 30 30" fill="none"><path d="M28,2 L28,12 M28,2 L18,2" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round"/><circle cx="28" cy="2" r="1.5" fill="#C89B3C" opacity="0.5"/></svg>
         <svg className="absolute bottom-3 left-3 w-8 h-8 opacity-[0.18] group-hover:opacity-[0.35] transition-opacity duration-500" viewBox="0 0 30 30" fill="none"><path d="M2,28 L2,18 M2,28 L12,28" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round"/></svg>
         <div className="mb-6 group-hover:scale-110 transition-transform duration-500 origin-left">{icon}</div>
-        <h3 className="font-heading text-[20px] md:text-[22px] font-semibold text-[#08233E] mb-3">{card.title}</h3>
-        <p className="text-[#08233E]/45 font-body text-[13px] md:text-[14px] leading-[1.85] mb-6">{card.desc}</p>
+        <h3 className="font-heading text-[22px] md:text-[26px] font-semibold text-[#08233E] mb-3">{card.title}</h3>
+        <p className="text-[#08233E]/45 font-body text-[15px] md:text-[17px] leading-[1.85] mb-6">{card.desc}</p>
         <div className="flex items-center gap-2">
           <div className="w-8 group-hover:w-20 h-[2px] transition-all duration-700" style={{ background: 'linear-gradient(90deg, #C89B3C, #E8D1A0)' }} />
           <svg className="w-4 h-4 text-[#C89B3C] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-500" viewBox="0 0 20 20" fill="none"><path d="M4,10 L16,10 M12,6 L16,10 L12,14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -37,7 +37,7 @@ export default function ServicesSection() {
   const cards = t('services.cards');
 
   return (
-    <section id="pakalpojumi" className="relative py-28 md:py-40 overflow-hidden">
+    <section id="pakalpojumi" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="svcP" />
 
       {/* COMPOSITION: diagonal quill right, upright feather left, small accent bottom */}
@@ -58,15 +58,15 @@ export default function ServicesSection() {
       <GoldDotGrid className="w-[150px] h-[90px] right-4 bottom-16" rows={5} cols={8} opacity={0.28} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
-        <div className="max-w-2xl mb-16 md:mb-20">
-          <motion.p className="font-script text-[18px] md:text-[22px] text-[#C89B3C]/70 leading-[1.9] italic mb-6" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>{t('services.introScript')}</motion.p>
+        <div className="max-w-2xl mb-12 md:mb-16">
+          <motion.p className="font-script text-[22px] md:text-[28px] text-[#C89B3C]/70 leading-[1.9] italic mb-6" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>{t('services.introScript')}</motion.p>
           <GoldLine width="w-24" className="mb-8" />
-          <motion.h2 className="font-heading text-[38px] md:text-[52px] lg:text-[60px] font-semibold text-[#08233E] mb-8 leading-[1.1]" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>{t('services.heading')}</motion.h2>
+          <motion.h2 className="font-heading text-[42px] md:text-[58px] lg:text-[68px] font-semibold text-[#08233E] mb-8 leading-[1.1]" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>{t('services.heading')}</motion.h2>
           <div className="space-y-3">
             {bullets.map((item, i) => (
               <motion.div key={i} className="flex items-start gap-3" initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 + i * 0.06, duration: 0.5 }}>
                 <svg className="w-3 h-3 mt-1.5 flex-shrink-0 text-[#C89B3C]" viewBox="0 0 12 12" fill="currentColor"><path d="M6,0 L7.5,4.5 L12,6 L7.5,7.5 L6,12 L4.5,7.5 L0,6 L4.5,4.5 Z"/></svg>
-                <p className="font-body text-[13px] md:text-[15px] text-[#08233E]/60 leading-[1.8]">{item.text}{' '}{item.bold && <strong className="text-[#08233E] font-semibold">{item.bold}</strong>}{item.after && <> {item.after}</>}</p>
+                <p className="font-body text-[15px] md:text-[17px] text-[#08233E]/60 leading-[1.8]">{item.text}{' '}{item.bold && <strong className="text-[#08233E] font-semibold">{item.bold}</strong>}{item.after && <> {item.after}</>}</p>
               </motion.div>
             ))}
           </div>
@@ -76,7 +76,7 @@ export default function ServicesSection() {
         </div>
         <motion.div className="flex items-start gap-4 max-w-3xl" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3, duration: 0.6 }}>
           <div className="w-[3px] bg-gradient-to-b from-[#C89B3C] to-transparent rounded-full flex-shrink-0 self-stretch" />
-          <p className="font-body text-[14px] md:text-[15px] text-[#08233E]/50 leading-[1.85]"><strong className="text-[#08233E]/75 font-semibold">{t('services.goalLabel')}</strong> — {t('services.goalText')}</p>
+          <p className="font-body text-[16px] md:text-[18px] text-[#08233E]/50 leading-[1.85]"><strong className="text-[#08233E]/75 font-semibold">{t('services.goalLabel')}</strong> — {t('services.goalText')}</p>
         </motion.div>
       </div>
     </section>

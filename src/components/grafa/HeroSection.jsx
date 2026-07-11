@@ -29,16 +29,16 @@ function StoryLine({ text, index, isVisible, boldWords }) {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="flex items-start gap-4 md:gap-5 mb-2.5 md:mb-3"
+          className="flex items-start gap-4 md:gap-6 mb-3 md:mb-4"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           {/* Line number */}
-          <span className="flex-shrink-0 w-5 text-right font-body text-[10px] md:text-[11px] text-[#C89B3C]/50 pt-[3px] select-none tabular-nums">
+          <span className="flex-shrink-0 w-6 text-right font-body text-[12px] md:text-[13px] text-[#C89B3C]/50 pt-[3px] select-none tabular-nums">
             {index + 1}
           </span>
-          <p className={`font-body text-[13px] md:text-[15px] leading-[1.85] ${
+          <p className={`font-body text-[16px] md:text-[19px] leading-[1.85] ${
             isEmphasis
               ? 'text-[#08233E] font-medium'
               : 'text-[#08233E]/60'
@@ -101,10 +101,10 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
-        <div className="grid lg:grid-cols-[48%_52%] gap-4 lg:gap-2 items-start">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 pt-6 md:pt-8">
+        <div className="grid lg:grid-cols-[50%_50%] gap-4 lg:gap-4 items-start">
           {/* Left side — numbered story lines */}
-          <div className="pt-2 md:pt-4 lg:pt-6 lg:pr-4">
+          <div className="pt-2 md:pt-4 lg:pt-6 lg:pr-6">
             <div className="mb-4">
               <LanguageSwitcher />
             </div>
@@ -137,7 +137,7 @@ export default function HeroSection() {
               <img
                 src={HERO_IMG}
                 alt="SIA firma GRĀFA — piramīda, spalva, logotips"
-                className="w-full max-w-[620px] lg:max-w-[780px] h-auto object-contain"
+                className="w-full max-w-[700px] lg:max-w-[900px] h-auto object-contain"
               />
             </motion.div>
           </div>
@@ -160,8 +160,8 @@ export default function HeroSection() {
           <path d="M0,20 C150,30 300,6 450,15 C600,5 700,20 800,12" stroke="#C89B3C" strokeWidth="0.6" opacity="0.25" fill="none"/>
         </svg>
 
-        <div className="bg-[#08233E] py-5 md:py-6 px-5 md:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-0 max-w-[1000px] mx-auto">
+        <div className="bg-[#08233E] py-6 md:py-8 px-5 md:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-0 max-w-[1100px] mx-auto">
             {values.map((item, i) => (
               <React.Fragment key={i}>
                 {i > 0 && (
@@ -178,11 +178,11 @@ export default function HeroSection() {
                   }}
                   transition={{ delay: logoDelay + 1 + i * 0.15, duration: 0.6 }}
                 >
-                  <div className="w-8 h-8 md:w-9 md:h-9 mb-2.5">{valueIcons[i]}</div>
-                  <h3 className="font-heading text-[11px] md:text-[13px] font-semibold text-white leading-snug mb-1">
+                  <div className="w-10 h-10 md:w-11 md:h-11 mb-3">{valueIcons[i]}</div>
+                  <h3 className="font-heading text-[13px] md:text-[15px] font-semibold text-white leading-snug mb-1.5">
                     {item.title}
                   </h3>
-                  <p className="font-body text-[9px] md:text-[10px] text-white/40 leading-relaxed max-w-[160px]">
+                  <p className="font-body text-[10px] md:text-[12px] text-white/40 leading-relaxed max-w-[180px]">
                     {item.desc}
                   </p>
                 </motion.div>
@@ -204,7 +204,7 @@ export default function HeroSection() {
         <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 animate-bounce">
           <path d="M12,5 L12,19 M7,14 L12,19 L17,14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-        <span className="text-[10px] font-body tracking-wider uppercase">{t('hero.scrollDown')}</span>
+        <span className="text-[12px] font-body tracking-wider uppercase">{t('hero.scrollDown')}</span>
       </motion.div>
     </section>
   );

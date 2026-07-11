@@ -19,7 +19,7 @@ export default function WhyChooseSection() {
   const steps = t('whyChoose.steps');
 
   return (
-    <section id="kapec-izvel" className="relative py-28 md:py-44 overflow-hidden">
+    <section id="kapec-izvel" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="whyChP" />
 
       {/* Decorative feather — right side, leaning left, with gold line & ink drop */}
@@ -65,19 +65,19 @@ export default function WhyChooseSection() {
         <div className="mb-8 md:mb-10 min-h-[60px] md:min-h-[70px]">
           <TypewriterText
             text={t('whyChoose.scriptLine')}
-            className="font-script text-[20px] md:text-[26px] text-[#C89B3C]/80 leading-[1.6] italic"
+            className="font-script text-[24px] md:text-[32px] text-[#C89B3C]/80 leading-[1.6] italic"
             onComplete={() => setTypewriterDone(true)}
           />
         </div>
 
         {/* Heading */}
         <motion.div
-          className="mb-16 md:mb-20"
+          className="mb-12 md:mb-16"
           initial={{ opacity: 0, y: 24 }}
           animate={typewriterDone ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#08233E] mb-6 leading-[1.1]">
+          <h2 className="font-heading text-[38px] md:text-[54px] lg:text-[64px] font-semibold text-[#08233E] mb-6 leading-[1.1]">
             {t('whyChoose.heading')}
           </h2>
           <GoldLine width="w-28" />
@@ -85,7 +85,7 @@ export default function WhyChooseSection() {
 
         {/* Section subtitle */}
         <motion.p
-          className="text-center font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#C89B3C] mb-12 font-medium"
+          className="text-center font-body text-[12px] md:text-[14px] tracking-[0.3em] uppercase text-[#C89B3C] mb-12 font-medium"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -115,8 +115,8 @@ export default function WhyChooseSection() {
                     <span className="text-[10px] font-body text-[#C89B3C]/50 tracking-[0.2em] font-medium">{String(i + 1).padStart(2, '0')}</span>
                     <div className="w-6 h-[1px] bg-[#C89B3C]/20" />
                   </div>
-                  <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#08233E] mb-2">{step.title}</h3>
-                  <p className="text-[#08233E]/50 font-body text-[13px] md:text-[15px] leading-[1.85]">{step.desc}</p>
+                  <h3 className="font-heading text-[20px] md:text-[24px] font-semibold text-[#08233E] mb-2">{step.title}</h3>
+                  <p className="text-[#08233E]/50 font-body text-[15px] md:text-[17px] leading-[1.85]">{step.desc}</p>
                 </div>
               </div>
             </motion.div>

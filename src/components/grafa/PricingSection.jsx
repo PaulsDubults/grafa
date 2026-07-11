@@ -19,7 +19,7 @@ export default function PricingSection() {
   const factors = t('pricing.factors');
 
   return (
-    <section id="cena" className="relative py-28 md:py-44 overflow-hidden">
+    <section id="cena" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="prcP" />
 
       {/* Decorative feather — right side, leaning left */}
@@ -65,19 +65,19 @@ export default function PricingSection() {
         <div className="mb-8 md:mb-10 min-h-[60px] md:min-h-[80px]">
           <TypewriterText
             text={t('pricing.scriptLine')}
-            className="font-script text-[20px] md:text-[26px] text-[#C89B3C]/80 leading-[1.6] italic"
+            className="font-script text-[24px] md:text-[32px] text-[#C89B3C]/80 leading-[1.6] italic"
             onComplete={() => setTypewriterDone(true)}
           />
         </div>
 
         {/* Heading */}
         <motion.div
-          className="mb-10 md:mb-14"
+          className="mb-8 md:mb-12"
           initial={{ opacity: 0, y: 24 }}
           animate={typewriterDone ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#08233E] mb-6 leading-[1.1]">
+          <h2 className="font-heading text-[38px] md:text-[54px] lg:text-[64px] font-semibold text-[#08233E] mb-6 leading-[1.1]">
             {t('pricing.heading')}
           </h2>
           <GoldLine width="w-28" />
@@ -85,7 +85,7 @@ export default function PricingSection() {
 
         {/* Intro text */}
         <motion.p
-          className="text-[#08233E]/55 font-body text-[15px] md:text-[17px] leading-[2] mb-14 md:mb-18 max-w-3xl"
+          className="text-[#08233E]/55 font-body text-[17px] md:text-[19px] leading-[2] mb-14 md:mb-18 max-w-3xl"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -96,7 +96,7 @@ export default function PricingSection() {
 
         {/* "Cena atkarīga no" subtitle */}
         <motion.p
-          className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#C89B3C] mb-10 font-medium"
+          className="font-body text-[12px] md:text-[14px] tracking-[0.3em] uppercase text-[#C89B3C] mb-10 font-medium"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -120,7 +120,7 @@ export default function PricingSection() {
               <div className="flex-shrink-0 w-11 h-11 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                 <div className="text-[#C89B3C]">{factorIcons[i]}</div>
               </div>
-              <p className="text-[#08233E]/65 font-body text-[14px] md:text-[16px] leading-[1.85] pt-2">{factor}</p>
+              <p className="text-[#08233E]/65 font-body text-[16px] md:text-[18px] leading-[1.85] pt-2">{factor}</p>
             </motion.div>
           ))}
         </div>
@@ -153,8 +153,8 @@ export default function PricingSection() {
               </svg>
             </div>
             <div>
-              <p className="font-body text-[11px] tracking-[0.25em] uppercase text-[#C89B3C] mb-3 font-medium">{t('pricing.longTermLabel')}</p>
-              <p className="text-white/70 font-body text-[15px] md:text-[17px] leading-[1.9]">{t('pricing.longTermText')}</p>
+              <p className="font-body text-[12px] tracking-[0.25em] uppercase text-[#C89B3C] mb-3 font-medium">{t('pricing.longTermLabel')}</p>
+              <p className="text-white/70 font-body text-[17px] md:text-[19px] leading-[1.9]">{t('pricing.longTermText')}</p>
             </div>
           </div>
         </motion.div>

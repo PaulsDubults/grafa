@@ -40,7 +40,7 @@ export default function CareersSection() {
   const valueBlocks = t('careers.valueBlocks');
 
   return (
-    <section id="karjera" className="relative py-28 md:py-44 overflow-hidden">
+    <section id="karjera" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="carP" />
 
       {/* Decorative feather — right side */}
@@ -83,7 +83,7 @@ export default function CareersSection() {
         <div className="mb-8 md:mb-10 min-h-[60px] md:min-h-[80px]">
           <TypewriterText
             text={t('careers.scriptLine')}
-            className="font-script text-[20px] md:text-[26px] text-[#C89B3C]/80 leading-[1.6] italic"
+            className="font-script text-[24px] md:text-[32px] text-[#C89B3C]/80 leading-[1.6] italic"
             onComplete={() => setTypewriterDone(true)}
           />
         </div>
@@ -95,7 +95,7 @@ export default function CareersSection() {
           animate={typewriterDone ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#08233E] mb-6 leading-[1.1]">
+          <h2 className="font-heading text-[38px] md:text-[54px] lg:text-[64px] font-semibold text-[#08233E] mb-6 leading-[1.1]">
             {t('careers.heading')}
           </h2>
           <GoldLine width="w-28" />
@@ -106,7 +106,7 @@ export default function CareersSection() {
           {introTexts.map((text, i) => (
             <motion.p
               key={i}
-              className="text-[#08233E]/55 font-body text-[15px] md:text-[17px] leading-[2]"
+              className="text-[#08233E]/55 font-body text-[17px] md:text-[19px] leading-[2]"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -135,7 +135,7 @@ export default function CareersSection() {
                   <circle cx="24" cy="24" r="18" stroke="#C89B3C" strokeWidth="1.2" fill="none" />
                 </svg>
               </div>
-              <p className="text-[#08233E]/65 font-body text-[14px] md:text-[16px] leading-[1.85] pt-1.5">{block}</p>
+              <p className="text-[#08233E]/65 font-body text-[16px] md:text-[18px] leading-[1.85] pt-1.5">{block}</p>
             </motion.div>
           ))}
         </div>
@@ -172,8 +172,8 @@ export default function CareersSection() {
                     <Briefcase className="w-5 h-5 text-[#C89B3C]" strokeWidth={1.5} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#08233E] mb-2">{vacancy.title}</h3>
-                    <p className="text-[#08233E]/50 font-body text-[13px] md:text-[15px] leading-[1.85] mb-5">{vacancy.short_description}</p>
+                    <h3 className="font-heading text-[20px] md:text-[24px] font-semibold text-[#08233E] mb-2">{vacancy.title}</h3>
+                    <p className="text-[#08233E]/50 font-body text-[15px] md:text-[17px] leading-[1.85] mb-5">{vacancy.short_description}</p>
                     <div className="flex items-center gap-4 flex-wrap">
                       <button
                         onClick={() => openDetail(vacancy)}
@@ -203,7 +203,7 @@ export default function CareersSection() {
             transition={{ duration: 0.7 }}
           >
             <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, #E8D1A0, #C89B3C, transparent)' }} />
-            <p className="text-[#08233E]/55 font-body text-[15px] md:text-[16px] leading-[2] mb-6">{t('careers.noVacanciesText')}</p>
+            <p className="text-[#08233E]/55 font-body text-[17px] md:text-[18px] leading-[2] mb-6">{t('careers.noVacanciesText')}</p>
             <button
               onClick={() => openApply('')}
               className="relative bg-[#C89B3C] text-white hover:bg-[#b8973f] text-[13px] font-body tracking-[0.2em] uppercase px-10 py-4 transition-all duration-500 rounded-sm overflow-hidden group"
@@ -235,7 +235,7 @@ export default function CareersSection() {
           <svg className="absolute bottom-4 left-4 w-8 h-8 opacity-[0.15]" viewBox="0 0 30 30" fill="none">
             <path d="M2,28 L2,18 M2,28 L12,28" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round" />
           </svg>
-          <p className="relative z-10 text-white/70 font-body text-[15px] md:text-[17px] leading-[2] italic">
+          <p className="relative z-10 text-white/70 font-body text-[17px] md:text-[19px] leading-[2] italic">
             {t('careers.closingText')}
           </p>
         </motion.div>

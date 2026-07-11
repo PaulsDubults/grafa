@@ -52,7 +52,7 @@ export default function Navbar() {
         animate={{ y: visible ? 0 : -80 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
-        <div className="max-w-[1200px] mx-auto px-6 md:px-10 flex items-center justify-end h-14 md:h-[60px]">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10 flex items-center justify-end h-16 md:h-[68px]">
 
           <div className="hidden lg:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
             {navKeys.map((link) => (
@@ -60,7 +60,7 @@ export default function Navbar() {
                 key={link.key}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className="text-[12px] font-body transition-all duration-300 relative pb-1 text-[#08233E]/50 hover:text-[#08233E]/80"
+                className="text-[13px] font-body transition-all duration-300 relative pb-1 text-[#08233E]/50 hover:text-[#08233E]/80"
               >
                 {t(link.key)}
               </a>

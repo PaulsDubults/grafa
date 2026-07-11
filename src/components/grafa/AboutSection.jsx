@@ -10,7 +10,7 @@ export default function AboutSection() {
   const coreValues = t('about.values');
 
   return (
-    <section id="par-mums" className="relative py-28 md:py-44 overflow-hidden">
+    <section id="par-mums" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="aboutP" />
 
       {/* COMPOSITION: crossed feathers center-left, upright right, horizontal bottom */}
@@ -34,16 +34,16 @@ export default function AboutSection() {
       <ScatteredDots className="w-[110px] h-[110px] left-[30%] top-[70%]" opacity={0.22} count={14} />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
-        <motion.div className="text-center mb-20 md:mb-24" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+        <motion.div className="text-center mb-14 md:mb-18" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
           <p className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#C89B3C] mb-5 font-medium">{t('about.subtitle')}</p>
-          <h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#08233E] mb-6 leading-[1.1]">{t('about.heading')}</h2>
+          <h2 className="font-heading text-[38px] md:text-[54px] lg:text-[64px] font-semibold text-[#08233E] mb-6 leading-[1.1]">{t('about.heading')}</h2>
           <GoldLine width="w-28" className="mx-auto" />
         </motion.div>
 
         <motion.div className="max-w-3xl mx-auto text-center mb-20" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>
-          <p className="font-heading text-[20px] md:text-[24px] font-semibold text-[#08233E] mb-5">{t('about.companyName')}</p>
-          <p className="text-[#08233E]/55 font-body text-[15px] md:text-[17px] leading-[2] mb-4">{t('about.description1_start')}<strong className="text-[#08233E] font-semibold">{t('about.description1_bold')}</strong>{t('about.description1_end')}</p>
-          <p className="text-[#08233E]/45 font-body text-[14px] md:text-[16px] leading-[2]">{t('about.description2')}</p>
+          <p className="font-heading text-[24px] md:text-[28px] font-semibold text-[#08233E] mb-5">{t('about.companyName')}</p>
+          <p className="text-[#08233E]/55 font-body text-[17px] md:text-[19px] leading-[2] mb-4">{t('about.description1_start')}<strong className="text-[#08233E] font-semibold">{t('about.description1_bold')}</strong>{t('about.description1_end')}</p>
+          <p className="text-[#08233E]/45 font-body text-[16px] md:text-[18px] leading-[2]">{t('about.description2')}</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-10 mb-20">
@@ -53,7 +53,7 @@ export default function AboutSection() {
               <svg className="absolute top-4 right-4 w-8 h-8 opacity-[0.15]" viewBox="0 0 30 30" fill="none"><path d="M28,2 L28,12 M28,2 L18,2" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round"/></svg>
               <svg className="absolute bottom-4 left-4 w-8 h-8 opacity-[0.15]" viewBox="0 0 30 30" fill="none"><path d="M2,28 L2,18 M2,28 L12,28" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round"/></svg>
               <p className="text-[11px] font-body text-[#C89B3C] tracking-[0.3em] uppercase mb-4 font-medium">{item.label}</p>
-              <p className="text-[#08233E]/60 font-body text-[15px] md:text-[16px] leading-[2]">{item.text}</p>
+              <p className="text-[#08233E]/60 font-body text-[17px] md:text-[18px] leading-[2]">{item.text}</p>
             </motion.div>
           ))}
         </div>
@@ -65,8 +65,8 @@ export default function AboutSection() {
               <div className="w-14 h-14 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center mx-auto mb-5">
                 <svg className="w-5 h-5 text-[#C89B3C]" viewBox="0 0 20 20" fill="currentColor"><path d="M10,0 L12,7 L20,8 L14,13 L16,20 L10,16 L4,20 L6,13 L0,8 L8,7 Z" opacity="0.6"/></svg>
               </div>
-              <h4 className="font-heading text-[15px] md:text-[17px] font-semibold text-[#08233E] mb-2">{val.title}</h4>
-              <p className="text-[#08233E]/40 font-body text-[12px] md:text-[14px] leading-[1.7]">{val.desc}</p>
+              <h4 className="font-heading text-[17px] md:text-[19px] font-semibold text-[#08233E] mb-2">{val.title}</h4>
+              <p className="text-[#08233E]/40 font-body text-[14px] md:text-[16px] leading-[1.7]">{val.desc}</p>
             </motion.div>
           ))}
         </div>

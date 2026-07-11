@@ -18,7 +18,7 @@ export default function ProcessSection() {
   const steps = t('process.steps');
 
   return (
-    <section id="process" className="relative py-28 md:py-44 overflow-hidden">
+    <section id="process" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="procP" />
 
       {/* COMPOSITION: upright feather left, diagonal right, horizontal bottom */}
@@ -40,9 +40,9 @@ export default function ProcessSection() {
       <ScatteredDots className="w-[100px] h-[100px] left-[12%] top-[40%]" opacity={0.22} count={12} />
 
       <div className="relative z-10 max-w-[1000px] mx-auto px-6 md:px-10">
-        <motion.div className="text-center mb-20 md:mb-24" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+        <motion.div className="text-center mb-14 md:mb-18" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
           <p className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#C89B3C] mb-5 font-medium">{t('process.subtitle')}</p>
-          <h2 className="font-heading text-[34px] md:text-[48px] lg:text-[56px] font-semibold text-[#08233E] mb-6 leading-[1.1]">{t('process.heading')}</h2>
+          <h2 className="font-heading text-[38px] md:text-[54px] lg:text-[64px] font-semibold text-[#08233E] mb-6 leading-[1.1]">{t('process.heading')}</h2>
           <GoldLine width="w-28" className="mx-auto" />
         </motion.div>
 
@@ -66,8 +66,8 @@ export default function ProcessSection() {
                       <div className={`flex items-center gap-4 mb-4 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
                         <div className="text-[#C89B3C] group-hover:scale-110 transition-transform duration-500">{stepIcons[i]}</div>
                       </div>
-                      <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#08233E] mb-3">{step.title}</h3>
-                      <p className="text-[#08233E]/50 font-body text-[13px] md:text-[15px] leading-[1.85]">{step.desc}</p>
+                      <h3 className="font-heading text-[20px] md:text-[24px] font-semibold text-[#08233E] mb-3">{step.title}</h3>
+                      <p className="text-[#08233E]/50 font-body text-[15px] md:text-[17px] leading-[1.85]">{step.desc}</p>
                     </div>
                   </div>
                   <div className="hidden md:block md:w-[calc(50%-40px)]" />
