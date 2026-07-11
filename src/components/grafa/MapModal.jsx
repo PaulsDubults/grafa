@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin } from 'lucide-react';
 import LatviaSvgMap from './LatviaSvgMap';
 import MapMarker from './MapMarker';
-import { locations, totalClients } from './mapData';
+import { locationsWithXY as locations, totalClients } from './mapData';
 import { useI18n } from '@/lib/i18n';
 
 function LocationDetail({ location, onClose }) {
