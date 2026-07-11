@@ -7,6 +7,7 @@ export const translations = {
       process: "Process",
       knowledge: "Zināšanu telpa",
       about: "Par mums",
+      clients: "Klienti",
       join: "Pievienojies",
       careers: "Karjera",
       contacts: "Kontakti",
@@ -40,6 +41,14 @@ export const translations = {
     mapModal: {
       subtitle: "Mūsu klienti",
       title: "Klienti visā Latvijā",
+    },
+    clientMap: {
+      subtitle: "Ģeogrāfija",
+      heading: "Mūsu klienti",
+      description: "Mūsu klientu ģeogrāfija aptver visu Latviju — no Liepājas līdz Daugavpilij. Jelgava ir mūsu mājas, bet mēs strādājam ar uzņēmumiem visā valstī.",
+      clientSuffix: "klienti",
+      legendLocation: "Atrašanās vieta",
+      totalLabel: "Kopā klientu",
     },
     services: {
       introScript: "Katrs uzņēmums strādā citā nozarē. Kāds ir pašā ceļa sākumā, bet citam jau ir stabils bizness ar lieliem mērķiem. Mēs pielāgojamies Jūsu uzņēmuma vajadzībām, saglabājot profesionālu un tajā pašā laikā saprotamu pieeju ikvienā sadarbības posmā, neskatoties uz to, vai Jūsu uzņēmums ir mazs, vidējs vai liels.",
@@ -229,6 +238,7 @@ export const translations = {
       process: "Процесс",
       knowledge: "База знаний",
       about: "О нас",
+      clients: "Клиенты",
       join: "Присоединяйтесь",
       careers: "Карьера",
       contacts: "Контакты",
@@ -262,6 +272,14 @@ export const translations = {
     mapModal: {
       subtitle: "Наши клиенты",
       title: "Клиенты по всей Латвии",
+    },
+    clientMap: {
+      subtitle: "География",
+      heading: "Наши клиенты",
+      description: "География наших клиентов охватывает всю Латвию — от Лиепаи до Даугавпилса. Елгава — наш дом, но мы работаем с предприятиями по всей стране.",
+      clientSuffix: "клиентов",
+      legendLocation: "Местоположение",
+      totalLabel: "Всего клиентов",
     },
     services: {
       introScript: "Каждое предприятие работает в своей отрасли. Кто-то только в начале пути, а у кого-то уже стабильный бизнес с большими целями. Мы адаптируемся к потребностям вашего предприятия, сохраняя профессиональный и в то же время понятный подход на каждом этапе сотрудничества, независимо от размера вашего предприятия.",

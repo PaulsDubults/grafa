@@ -11,6 +11,7 @@ import KnowledgeSection from '@/components/grafa/KnowledgeSection';
 import AboutSection from '@/components/grafa/AboutSection';
 import JoinSection from '@/components/grafa/JoinSection';
 import CareersSection from '@/components/grafa/CareersSection';
+import ClientMapSection from '@/components/grafa/ClientMapSection';
 import ContactSection from '@/components/grafa/ContactSection';
 import Footer from '@/components/grafa/Footer';
 
@@ -33,6 +34,8 @@ export default function Home() {
       <KnowledgeSection />
       <SectionDivider color="#FBF7F0" />
       <AboutSection />
+      <SectionDivider color="#FBF7F0" flip />
+      <ClientMapSection />
       <JoinSection />
       <SectionDivider color="#FBF7F0" />
       <CareersSection />
