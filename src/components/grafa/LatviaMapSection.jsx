@@ -6,18 +6,18 @@ import GoldLine from './GoldLine';
 const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/c3f1ec4a1_ChatGPTImageJul11202602_25_21PM.png";
 
 const locations = [
-  { name: "Ventspils", clients: 1 },
-  { name: "Liepāja", clients: 6 },
-  { name: "Rīga", clients: 16 },
-  { name: "Jelgava", clients: 39 },
-  { name: "Dobele", clients: 1 },
-  { name: "Jūrmala", clients: 1 },
-  { name: "Mārupes novads", clients: 1 },
-  { name: "Olaine", clients: 1 },
-  { name: "Baldone", clients: 1 },
-  { name: "Bauskas novads", clients: 1 },
-  { name: "Ogres novads", clients: 2 },
-  { name: "Ropažu novads", clients: 1 },
+  { name: "Ventspils",       clients: 1,  x: 13,   y: 27.5 },
+  { name: "Liepāja",         clients: 6,  x: 4.5,  y: 64 },
+  { name: "Dobele",          clients: 1,  x: 28,   y: 54 },
+  { name: "Jūrmala",         clients: 1,  x: 42,   y: 36 },
+  { name: "Rīga",            clients: 16, x: 46.5, y: 32 },
+  { name: "Mārupes novads",  clients: 1,  x: 44,   y: 42 },
+  { name: "Olaine",          clients: 1,  x: 41.5, y: 49 },
+  { name: "Jelgava",         clients: 39, x: 39,   y: 53 },
+  { name: "Baldone",         clients: 1,  x: 44.5, y: 58 },
+  { name: "Bauskas novads",  clients: 1,  x: 46.5, y: 64 },
+  { name: "Ogres novads",    clients: 2,  x: 56,   y: 44 },
+  { name: "Ropažu novads",   clients: 1,  x: 55,   y: 26 },
 ];
 
 const totalClients = locations.reduce((sum, l) => sum + l.clients, 0);
