@@ -104,13 +104,10 @@ export default function MapModal({ isOpen, onClose }) {
               </div>
             </div>
 
-            {/* Map area */}
-            <div className="relative px-4 md:px-8 pb-6">
-              <div className="relative bg-white/40 rounded-lg border border-[#e8e0d4]/30 p-4 md:p-8">
-                <LatviaSvgMap className="w-full h-auto" />
-
-                {/* Markers overlay */}
-                <div className="absolute inset-0 p-4 md:p-8">
+            {/* Map area — markers are children of LatviaSvgMap, positioned relative to the image */}
+            <div className="px-4 md:px-8 pb-6">
+              <div className="bg-white/40 rounded-lg border border-[#e8e0d4]/30 p-4 md:p-8">
+                <LatviaSvgMap className="w-full">
                   {locations.map((loc) => (
                     <MapMarker
                       key={loc.name}
@@ -128,7 +125,7 @@ export default function MapModal({ isOpen, onClose }) {
                       />
                     )}
                   </AnimatePresence>
-                </div>
+                </LatviaSvgMap>
               </div>
             </div>
 

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import MapModal from './MapModal';
 import LatviaSvgMap from './LatviaSvgMap';
-import MapMarker from './MapMarker';
 import { locationsWithXY as locations, totalClients } from './mapData';
 import { useI18n } from '@/lib/i18n';
 
@@ -23,24 +22,22 @@ export default function HeroMiniMap({ centered }) {
           }`}
           onClick={() => setShowModal(true)}
         >
-          <div className="relative">
-            <LatviaSvgMap className="w-full h-auto opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-
-            {/* Mini markers */}
-            <div className="absolute inset-0">
-              {locations.map((loc) => (
-                <div
-                  key={loc.name}
-                  className="absolute -translate-x-1/2 -translate-y-1/2"
-                  style={{ left: `${loc.x}%`, top: `${loc.y}%` }}
-                >
-                  <div className={`rounded-full bg-[#2E5D50] border border-white/70 ${
-                    loc.clients >= 10 ? 'w-3 h-3' : 'w-2 h-2'
-                  }`} />
-                </div>
-              ))}
-            </div>
-          </div>
+          <LatviaSvgMap
+            className="w-full"
+            opacity={0.6}
+          >
+            {locations.map((loc) => (
+              <div
+                key={loc.name}
+                className="absolute -translate-x-1/2 -translate-y-1/2"
+                style={{ left: `${loc.x}%`, top: `${loc.y}%` }}
+              >
+                <div className={`rounded-full bg-[#2E5D50] border border-white/70 ${
+                  loc.clients >= 10 ? 'w-3 h-3' : 'w-2 h-2'
+                }`} />
+              </div>
+            ))}
+          </LatviaSvgMap>
 
           {/* Bottom label */}
           <div className="flex items-center justify-between mt-3 px-1">
