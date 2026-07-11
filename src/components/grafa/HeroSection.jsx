@@ -137,7 +137,7 @@ export default function HeroSection() {
               <img
                 src={HERO_IMG}
                 alt="SIA firma GRĀFA — piramīda, spalva, logotips"
-                className="w-full lg:max-w-none lg:w-[110%] h-auto object-contain opacity-100" />
+                className="w-full lg:max-w-none lg:w-[110%] h-auto object-contain opacity-100 rounded-none" />
               
             </motion.div>
           </div>
