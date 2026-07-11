@@ -4,7 +4,7 @@ import { X, MapPin } from 'lucide-react';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
 
-const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/58c044609_ChatGPTImageJul5202612_47_42PM.png";
+const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/c3f1ec4a1_ChatGPTImageJul11202602_25_21PM.png";
 
 /* Hotspot positions matching the pins already baked into the image.
    Coordinates are % of the map image dimensions. */

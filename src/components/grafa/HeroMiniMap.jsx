@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import MapModal from './MapModal';
 import { useI18n } from '@/lib/i18n';
 
-const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/719cd8202_image.png";
+const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/c3f1ec4a1_ChatGPTImageJul11202602_25_21PM.png";
 
 export default function HeroMiniMap({ centered }) {
   const { t } = useI18n();
