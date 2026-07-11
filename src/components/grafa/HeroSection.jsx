@@ -82,15 +82,18 @@ export default function HeroSection() {
   const logoDelay = 0.3;
 
   const textRef = useRef(null);
+  const firstLineRef = useRef(null);
   const [imgStyle, setImgStyle] = useState({});
 
   const measureText = useCallback(() => {
-    if (!textRef.current) return;
-    const rect = textRef.current.getBoundingClientRect();
+    if (!textRef.current || !firstLineRef.current) return;
+    const textRect = textRef.current.getBoundingClientRect();
+    const firstLineRect = firstLineRef.current.getBoundingClientRect();
+    const bottom = textRect.bottom;
     setImgStyle({
-      top: rect.top + window.scrollY,
-      left: rect.right,
-      height: rect.height,
+      top: firstLineRect.top + window.scrollY,
+      left: textRect.right,
+      height: bottom - firstLineRect.top,
     });
   }, []);
 
@@ -169,7 +172,9 @@ export default function HeroSection() {
             <LanguageSwitcher />
           </div>
           {storyLines.map((line, i) =>
-          <StoryLine key={`${i}-${line.slice(0, 10)}`} text={line} index={i} isVisible={i < visibleCount} boldWords={boldWords} />
+          <div key={`${i}-${line.slice(0, 10)}`} ref={i === 0 ? firstLineRef : undefined}>
+            <StoryLine text={line} index={i} isVisible={i < visibleCount} boldWords={boldWords} />
+          </div>
           )}
 
           {/* Mini map — bottom left under story lines */}
