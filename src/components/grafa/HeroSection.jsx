@@ -102,9 +102,9 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 pt-6 md:pt-8">
-        <div className="grid lg:grid-cols-[50%_50%] gap-4 lg:gap-4 items-start">
+        <div className="grid lg:grid-cols-[42%_58%] gap-4 lg:gap-0 items-start">
           {/* Left side — numbered story lines */}
-          <div className="pt-2 md:pt-4 lg:pt-6 lg:pr-6">
+          <div className="pt-2 md:pt-4 lg:pt-10 lg:pr-6">
             <div className="mb-4">
               <LanguageSwitcher />
             </div>
@@ -124,7 +124,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right side — hero image */}
-          <div className="flex flex-col order-first lg:order-last">
+          <div className="flex flex-col order-first lg:order-last lg:mr-[-40px]">
             <motion.div
               className="relative flex justify-center lg:justify-end"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -137,7 +137,7 @@ export default function HeroSection() {
               <img
                 src={HERO_IMG}
                 alt="SIA firma GRĀFA — piramīda, spalva, logotips"
-                className="w-full max-w-[700px] lg:max-w-[900px] h-auto object-contain"
+                className="w-full lg:max-w-none lg:w-[110%] h-auto object-contain"
               />
             </motion.div>
           </div>
