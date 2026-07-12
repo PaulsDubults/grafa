@@ -22,7 +22,7 @@ export default function WhyChooseSection() {
   return (
     <section id="kapec-izvel" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="whyChP" />
-      <FullFeather className="w-[300px] md:w-[480px] h-[400px] md:h-[680px] left-[-70px] md:left-[-25px] top-[5%]" opacity={0.6} flip />
+      {/* No feather — kept clean */}
       <WatercolorStain className="left-[-120px] top-[15%]" color="#e8c89a" opacity={0.1} size={500} id="whyC1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">

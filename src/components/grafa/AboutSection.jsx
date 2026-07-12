@@ -11,7 +11,7 @@ export default function AboutSection() {
   return (
     <section id="par-mums" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="aboutP" />
-      <FullFeather className="w-[340px] md:w-[540px] h-[450px] md:h-[750px] right-[-90px] md:right-[-40px] top-[-3%]" opacity={0.65} />
+      <HalfFeather className="w-[260px] md:w-[420px] h-[360px] md:h-[600px] right-[-70px] md:right-[-25px] top-[8%]" opacity={0.5} flip />
       <WatercolorStain className="right-[-120px] top-[18%]" color="#e0b5b0" opacity={0.1} size={500} id="abt1" />
       <WatercolorStain className="left-[-100px] bottom-[-40px]" color="#e8c89a" opacity={0.08} size={400} id="abt2" />
 

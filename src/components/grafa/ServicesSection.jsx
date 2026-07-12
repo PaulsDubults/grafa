@@ -20,7 +20,7 @@ export default function ServicesSection() {
   return (
     <section id="pakalpojumi" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="svcP" />
-      <FullFeather className="w-[320px] md:w-[520px] h-[420px] md:h-[720px] right-[-80px] md:right-[-30px] top-[-8%]" opacity={0.7} />
+      <FullFeather className="w-[320px] md:w-[520px] h-[420px] md:h-[720px] right-[-80px] md:right-[-30px] top-[-8%]" opacity={0.65} />
       <WatercolorStain className="right-[-100px] top-[10%]" color="#e8c89a" opacity={0.1} size={550} id="svc1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">

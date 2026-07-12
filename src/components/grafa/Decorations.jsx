@@ -11,6 +11,7 @@ const ROSE = '#c4868a';
 
 const FEATHER_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/ec74f4654_ChatGPTImageJul12202601_47_54PM.png";
 const FEATHER_IMG_SINGLE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/cb1a8184c_ChatGPTImageJul12202601_54_57PM.png";
+const FEATHER_IMG_DIAGONAL = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/4c35e84ad_ChatGPTImageJul12202601_56_44PM.png";
 
 /* Base feather image component — renders the full feather image with object-contain, mix-blend-mode removes white bg */
 function FeatherImage({ className = '', opacity = 0.3, rotate = 0, flip = false, src = FEATHER_IMG }) {
@@ -41,9 +42,9 @@ export function HalfFeather({ className = '', flip = false, opacity = 0.28 }) {
   return <FeatherImage className={className} opacity={opacity} flip={flip} src={FEATHER_IMG_SINGLE} />;
 }
 
-/* FeatherOutline */
+/* FeatherOutline — diagonal quill */
 export function FeatherOutline({ className = '', flip = false, opacity = 0.22 }) {
-  return <FeatherImage className={className} opacity={opacity} flip={flip} />;
+  return <FeatherImage className={className} opacity={opacity} flip={flip} src={FEATHER_IMG_DIAGONAL} />;
 }
 
 /* SmallFeather */

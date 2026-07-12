@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { FullFeather, HalfFeather, WatercolorStain, PaperTexture } from './Decorations';
+import { FeatherOutline, WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const valueIcons = [
@@ -20,7 +20,7 @@ export default function WhyGrafaSection() {
   return (
     <section id="kapec-grafu" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="whyP" />
-      <HalfFeather className="w-[320px] md:w-[500px] h-[420px] md:h-[700px] left-[-80px] md:left-[-30px] top-[-5%]" opacity={0.6} />
+      <FeatherOutline className="w-[300px] md:w-[480px] h-[200px] md:h-[320px] left-[-70px] md:left-[-20px] bottom-[8%]" opacity={0.55} flip />
       <WatercolorStain className="right-[-80px] top-[15%]" color="#e0b5b0" opacity={0.1} size={500} id="why1" />
       <WatercolorStain className="left-[-120px] bottom-[-30px]" color="#e8c89a" opacity={0.08} size={380} id="why2" />
 
