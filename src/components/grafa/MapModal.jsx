@@ -1,33 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 
-const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/31e0ca8fd_image.png";
+const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/deb4b449d_ChatGPTImageJul12202612_58_56PM.png";
 
+// Positions as % of image dimensions, colors matching the user's spec
 const locations = [
-  { name: "Ventspils", clients: 1 },
-  { name: "Liepāja", clients: 6 },
-  { name: "Rīga", clients: 16 },
-  { name: "Jelgava", clients: 39 },
-  { name: "Dobele", clients: 1 },
-  { name: "Jūrmala", clients: 1 },
-  { name: "Mārupes novads", clients: 1 },
-  { name: "Olaine", clients: 1 },
-  { name: "Baldone", clients: 1 },
-  { name: "Bauskas novads", clients: 1 },
-  { name: "Ogres novads", clients: 2 },
-  { name: "Ropažu novads", clients: 1 },
-  { name: "Salaspils", clients: 1 },
+  { name: "Ventspils",      clients: 1,  color: "#DC2626", x: 10.5, y: 28 },
+  { name: "Liepāja",        clients: 6,  color: "#2563EB", x: 5,    y: 62 },
+  { name: "Rīga",           clients: 16, color: "#3B82F6", x: 46,   y: 30 },
+  { name: "Jūrmala",        clients: 1,  color: "#16A34A", x: 43,   y: 35 },
+  { name: "Salaspils",      clients: 1,  color: "#7C3AED", x: 44,   y: 40 },
+  { name: "Jelgava",        clients: 39, color: "#EAB308", x: 40,   y: 47 },
+  { name: "Dobele",         clients: 1,  color: "#06B6D4", x: 30,   y: 53 },
+  { name: "Bauskas novads", clients: 1,  color: "#92400E", x: 43,   y: 63 },
+  { name: "Ropažu novads",  clients: 1,  color: "#15803D", x: 57,   y: 22 },
+  { name: "Ogres novads",   clients: 2,  color: "#F97316", x: 73,   y: 25 },
+  { name: "Olaine",         clients: 1,  color: "#38BDF8", x: 62,   y: 50 },
+  { name: "Mārupes novads", clients: 1,  color: "#7C3AED", x: 82,   y: 60 },
+  { name: "Baldone",        clients: 1,  color: "#EC4899", x: 75,   y: 75 },
 ];
 
 const totalClients = locations.reduce((sum, l) => sum + l.clients, 0);
 
 export default function MapModal({ isOpen, onClose }) {
   const { t } = useI18n();
+  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) { setSelected(null); return; }
     const handleEsc = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', handleEsc);
     document.body.style.overflow = 'hidden';
@@ -75,26 +77,80 @@ export default function MapModal({ isOpen, onClose }) {
               </p>
             </div>
 
-            <div className="px-4">
+            {/* Map with interactive dots */}
+            <div className="relative px-4">
               <img
                 src={MAP_IMAGE}
                 alt="Latvijas karte ar klientu atrašanās vietām"
                 className="w-full h-auto"
               />
+
+              {/* Clickable location dots */}
+              {locations.map((loc) => (
+                <button
+                  key={loc.name}
+                  className="absolute group"
+                  style={{ left: `${loc.x}%`, top: `${loc.y}%`, transform: 'translate(-50%, -50%)' }}
+                  onClick={() => setSelected(selected?.name === loc.name ? null : loc)}
+                >
+                  {/* Pulse ring */}
+                  <span
+                    className="absolute inset-0 rounded-full animate-ping opacity-30"
+                    style={{ backgroundColor: loc.color, animationDuration: '2.5s' }}
+                  />
+                  {/* Dot */}
+                  <span
+                    className="relative block w-3.5 h-3.5 md:w-4 md:h-4 rounded-full border-2 border-white shadow-md transition-transform duration-200 group-hover:scale-125"
+                    style={{ backgroundColor: loc.color }}
+                  />
+                </button>
+              ))}
+
+              {/* Tooltip for selected location */}
+              <AnimatePresence>
+                {selected && (
+                  <motion.div
+                    key={selected.name}
+                    className="absolute z-30 bg-white rounded-lg shadow-xl border border-[#e8e0d4]/60 px-4 py-3 min-w-[160px] pointer-events-none"
+                    style={{
+                      left: `${selected.x}%`,
+                      top: `${selected.y}%`,
+                      transform: selected.x > 60 ? 'translate(-105%, -110%)' : 'translate(15%, -110%)',
+                    }}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="flex items-center gap-2.5 mb-1">
+                      <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: selected.color }} />
+                      <span className="font-heading text-[14px] md:text-[15px] font-bold text-[#08233E]">{selected.name}</span>
+                    </div>
+                    <p className="font-body text-[12px] text-[#08233E]/50">
+                      {selected.clients} {selected.clients === 1 ? 'klients' : 'klienti'}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Legend chips */}
             <div className="px-6 pt-4 pb-6">
               <div className="flex flex-wrap justify-center gap-2.5">
                 {locations.map((loc) => (
-                  <div
+                  <button
                     key={loc.name}
-                    className="flex items-center gap-2.5 bg-white rounded-full px-4 py-2 shadow-[0_1px_4px_rgba(0,0,0,0.06)] border border-[#e8e0d4]/40"
+                    onClick={() => setSelected(selected?.name === loc.name ? null : loc)}
+                    className={`flex items-center gap-2.5 rounded-full px-4 py-2 shadow-[0_1px_4px_rgba(0,0,0,0.06)] border transition-all duration-200
+                      ${selected?.name === loc.name
+                        ? 'bg-[#08233E] border-[#08233E]'
+                        : 'bg-white border-[#e8e0d4]/40 hover:border-[#C89B3C]/30'
+                      }`}
                   >
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#2E8B2E] flex-shrink-0" />
-                    <span className="font-body text-[12px] md:text-[13px] text-[#08233E]/70">{loc.name}</span>
-                    <span className="font-heading text-[13px] md:text-[14px] font-bold text-[#08233E]">{loc.clients}</span>
-                  </div>
+                    <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: loc.color }} />
+                    <span className={`font-body text-[12px] md:text-[13px] ${selected?.name === loc.name ? 'text-white/80' : 'text-[#08233E]/70'}`}>{loc.name}</span>
+                    <span className={`font-heading text-[13px] md:text-[14px] font-bold ${selected?.name === loc.name ? 'text-white' : 'text-[#08233E]'}`}>{loc.clients}</span>
+                  </button>
                 ))}
               </div>
             </div>
