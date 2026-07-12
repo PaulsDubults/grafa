@@ -1,11 +1,23 @@
 import React from 'react';
 
+const BG_TEXTURE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/47e9ea892_image.png";
+
 export default function WatercolorBg() {
   return (
     <div className="fixed inset-0 pointer-events-none z-0" style={{ background: '#FAF5EF' }}>
       {/* Base warm cream */}
       <div className="absolute inset-0" style={{
         background: 'linear-gradient(160deg, #FAF5EF 0%, #F8EDE4 25%, #FAF0EA 50%, #F6EDE6 75%, #F8F0E8 100%)'
+      }} />
+
+      {/* Watercolor texture image overlay — see-through on top of existing background */}
+      <div className="absolute inset-0" style={{
+        backgroundImage: `url(${BG_TEXTURE})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        opacity: 0.4,
+        mixBlendMode: 'multiply',
       }} />
 
       {/* Soft peach/salmon wash — top right corner */}

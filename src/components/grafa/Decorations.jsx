@@ -9,11 +9,11 @@ const ROSE = '#c4868a';
    3 source illustrations: diagonal quill, upright feather, crossed feathers
    ═══════════════════════════════════════════════════════════════ */
 
-const FEATHER_IMG_1 = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/7c18a0883_ChatGPTImageJul6202612_16_23PM.png";
-const FEATHER_IMG_2 = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/f83bc8fe0_ChatGPTImageJul6202612_24_17PM.png";
+const FEATHER_IMG_1 = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/27f20dca4_image.png";
+const FEATHER_IMG_2 = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/047b21e0d_image.png";
 
-/* Base feather image component — uses object-fit:cover + object-position to isolate individual feathers from the composite sheet */
-function FeatherImage({ className = '', opacity = 0.3, rotate = 0, flip = false, src = FEATHER_IMG_1, objectPosition = 'center' }) {
+/* Base feather image component — renders the full feather image with object-contain */
+function FeatherImage({ className = '', opacity = 0.3, rotate = 0, flip = false, src = FEATHER_IMG_1 }) {
   const transforms = [];
   if (flip) transforms.push('scaleX(-1)');
   if (rotate) transforms.push(`rotate(${rotate}deg)`);
@@ -26,54 +26,54 @@ function FeatherImage({ className = '', opacity = 0.3, rotate = 0, flip = false,
       viewport={{ once: true }}
       transition={{ duration: 1.5 }}
     >
-      <img src={src} alt="" className="w-full h-full object-cover" style={{ opacity, objectPosition }} draggable={false} />
+      <img src={src} alt="" className="w-full h-full object-contain" style={{ opacity }} draggable={false} />
     </motion.div>
   );
 }
 
-/* 1. FullFeather — diagonal quill (left third of image) */
+/* 1. FullFeather — diagonal quill */
 export function FullFeather({ className = '', flip = false, opacity = 0.3 }) {
-  return <FeatherImage className={className} opacity={opacity} flip={flip} src={FEATHER_IMG_1} objectPosition="10% 55%" />;
+  return <FeatherImage className={className} opacity={opacity} flip={flip} src={FEATHER_IMG_1} />;
 }
 
-/* 2. HalfFeather — upright feather (center of image) */
+/* 2. HalfFeather — upright thinner feather */
 export function HalfFeather({ className = '', flip = false, opacity = 0.28 }) {
-  return <FeatherImage className={className} opacity={opacity} flip={flip} src={FEATHER_IMG_1} objectPosition="48% 45%" />;
+  return <FeatherImage className={className} opacity={opacity} flip={flip} src={FEATHER_IMG_2} />;
 }
 
-/* 3. FeatherOutline — diagonal quill from second image */
+/* 3. FeatherOutline — thinner feather */
 export function FeatherOutline({ className = '', flip = false, opacity = 0.22 }) {
-  return <FeatherImage className={className} opacity={opacity} flip={flip} src={FEATHER_IMG_2} objectPosition="12% 55%" />;
+  return <FeatherImage className={className} opacity={opacity} flip={flip} src={FEATHER_IMG_2} />;
 }
 
-/* 4. SmallFeather — upright feather, compact */
+/* 4. SmallFeather — thinner feather, compact */
 export function SmallFeather({ className = '', opacity = 0.26, rotate = 0 }) {
-  return <FeatherImage className={className} opacity={opacity} rotate={rotate} src={FEATHER_IMG_2} objectPosition="48% 42%" />;
+  return <FeatherImage className={className} opacity={opacity} rotate={rotate} src={FEATHER_IMG_2} />;
 }
 
 /* 5. DiagonalFeather — diagonal quill with custom rotation */
 export function DiagonalFeather({ className = '', opacity = 0.25, angle = -30 }) {
-  return <FeatherImage className={className} opacity={opacity} rotate={angle} src={FEATHER_IMG_1} objectPosition="12% 58%" />;
+  return <FeatherImage className={className} opacity={opacity} rotate={angle} src={FEATHER_IMG_1} />;
 }
 
 /* 6. HorizontalFeather — diagonal quill rotated to landscape orientation */
 export function HorizontalFeather({ className = '', opacity = 0.22, flip = false }) {
-  return <FeatherImage className={className} opacity={opacity} rotate={-75} flip={flip} src={FEATHER_IMG_1} objectPosition="10% 55%" />;
+  return <FeatherImage className={className} opacity={opacity} rotate={-75} flip={flip} src={FEATHER_IMG_1} />;
 }
 
-/* 7. FeatherTip — upright feather, showing top half */
+/* 7. FeatherTip — thinner feather */
 export function FeatherTip({ className = '', opacity = 0.24, rotate = 0 }) {
-  return <FeatherImage className={className} opacity={opacity} rotate={rotate} src={FEATHER_IMG_1} objectPosition="48% 25%" />;
+  return <FeatherImage className={className} opacity={opacity} rotate={rotate} src={FEATHER_IMG_2} />;
 }
 
-/* 8. OverlappingFeathers — crossed feathers with triangle (right third) */
+/* 8. OverlappingFeathers — diagonal quill */
 export function OverlappingFeathers({ className = '', opacity = 0.2 }) {
-  return <FeatherImage className={className} opacity={opacity} src={FEATHER_IMG_1} objectPosition="88% 50%" />;
+  return <FeatherImage className={className} opacity={opacity} src={FEATHER_IMG_1} />;
 }
 
-/* 9. FeatherFragment — upright feather, mirrored */
+/* 9. FeatherFragment — thinner feather, mirrored */
 export function FeatherFragment({ className = '', opacity = 0.2, rotate = 0 }) {
-  return <FeatherImage className={className} opacity={opacity} rotate={rotate} flip src={FEATHER_IMG_2} objectPosition="48% 45%" />;
+  return <FeatherImage className={className} opacity={opacity} rotate={rotate} flip src={FEATHER_IMG_2} />;
 }
 
 /* ═══════════════════════════════════════════════════════════════
