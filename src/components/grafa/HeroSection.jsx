@@ -4,7 +4,7 @@ import HeroMiniMap from './HeroMiniMap';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useI18n } from '@/lib/i18n';
 
-const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/dc77513eb_ChatGPTImageJul12202602_11_27PM.png";
+const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/9c66be814_AdobeExpress-file.png";
 
 const emphasisIndices = [5, 6, 7, 8, 9, 10];
 const LINE_INTERVAL = 1400;
@@ -118,9 +118,10 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      {/* Hero image — full right half from top to bottom, never crossing the center line */}
+      {/* Hero image — full right half, above cream texture, never crossing the center line */}
       <motion.div
-        className="hidden lg:block absolute z-[5] pointer-events-none top-0 bottom-0 right-0 left-1/2"
+        className="hidden lg:block absolute z-[4] pointer-events-none top-0 bottom-0 right-0"
+        style={{ left: '44%' }}
         initial={{ opacity: 0, scale: 0.97 }}
         animate={{
           opacity: allRevealed ? 1 : 0,
