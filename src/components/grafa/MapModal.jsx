@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 
-const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/c3f1ec4a1_ChatGPTImageJul11202602_25_21PM.png";
+const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/31e0ca8fd_image.png";
 
 const locations = [
   { name: "Ventspils", clients: 1 },
@@ -18,6 +18,7 @@ const locations = [
   { name: "Bauskas novads", clients: 1 },
   { name: "Ogres novads", clients: 2 },
   { name: "Ropažu novads", clients: 1 },
+  { name: "Salaspils", clients: 1 },
 ];
 
 const totalClients = locations.reduce((sum, l) => sum + l.clients, 0);
