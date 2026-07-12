@@ -14,7 +14,6 @@ export default function ContactSection() {
   const [form, setForm] = useState({ company: '', name: '', phone: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
   const [typewriterDone, setTypewriterDone] = useState(false);
-  const [closingDone, setClosingDone] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -77,7 +76,6 @@ export default function ContactSection() {
                   <a href="tel:+37120383974" className="font-body text-[16px] text-[#C89B3C] hover:text-[#b8973f] transition-colors font-medium">+371 20 383 974</a>
                 </div>
               </div>
-
               <div className="flex items-start gap-5 group">
                 <div className="w-12 h-12 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center group-hover:bg-[#C89B3C]/[0.22] transition-all duration-500">
                   <Mail className="w-5 h-5 text-[#C89B3C]" strokeWidth={1.5} />
@@ -88,7 +86,6 @@ export default function ContactSection() {
                   <a href="mailto:firmagrafa@gmail.com" className="font-body text-[16px] text-[#C89B3C] hover:text-[#b8973f] transition-colors font-medium">firmagrafa@gmail.com</a>
                 </div>
               </div>
-
               <div className="flex items-start gap-5 group">
                 <div className="w-12 h-12 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center group-hover:bg-[#C89B3C]/[0.22] transition-all duration-500">
                   <Clock className="w-5 h-5 text-[#C89B3C]" strokeWidth={1.5} />
@@ -139,7 +136,7 @@ export default function ContactSection() {
           </motion.div>
         </div>
 
-        {/* Closing — typewriter "Paldies" without period, no logo */}
+        {/* Closing — per mockup: script text + "Uz tikšanos!" + logo */}
         <motion.div
           className="mt-16 md:mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -147,22 +144,13 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <div className="min-h-[50px] md:min-h-[60px] flex justify-center">
-            <TypewriterText
-              text={t('contact.closingLine1')}
-              className="font-script text-[32px] md:text-[42px] text-[#C89B3C] italic"
-              onComplete={() => setClosingDone(true)}
-            />
-          </div>
-          {closingDone && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <GoldLine width="w-20" className="mx-auto mt-4" />
-            </motion.div>
+          <p className="font-script text-[22px] md:text-[28px] text-[#C89B3C]/70 italic mb-4">{t('contact.closingLine1')}</p>
+          {t('contact.closingLine2') && (
+            <p className="font-script text-[32px] md:text-[42px] text-[#C89B3C] italic mb-6">{t('contact.closingLine2')}</p>
           )}
+          <GoldLine width="w-20" className="mx-auto mb-6" />
+          <p className="font-heading text-[14px] tracking-[0.15em] text-[#08233E]/30 uppercase">SIA firma GRĀFA</p>
+          <p className="font-body text-[12px] text-[#08233E]/20 mt-1">{t('footer.tagline')}</p>
         </motion.div>
       </div>
     </section>

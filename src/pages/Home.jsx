@@ -3,10 +3,8 @@ import Navbar from '@/components/grafa/Navbar';
 import HeroSection from '@/components/grafa/HeroSection';
 import SectionDivider from '@/components/grafa/SectionDivider';
 import ServicesSection from '@/components/grafa/ServicesSection';
-import WhyGrafaSection from '@/components/grafa/WhyGrafaSection';
 import WhyChooseSection from '@/components/grafa/WhyChooseSection';
 import PricingSection from '@/components/grafa/PricingSection';
-import ProcessSection from '@/components/grafa/ProcessSection';
 import KnowledgeSection from '@/components/grafa/KnowledgeSection';
 import AboutSection from '@/components/grafa/AboutSection';
 import JoinSection from '@/components/grafa/JoinSection';
@@ -24,13 +22,9 @@ export default function Home() {
       <SectionDivider />
       <ServicesSection />
       <SectionDivider flip />
-      <ProcessSection />
-      <SectionDivider />
-      <PricingSection />
-      <SectionDivider flip />
       <WhyChooseSection />
       <SectionDivider />
-      <WhyGrafaSection />
+      <PricingSection />
       <SectionDivider flip />
       <KnowledgeSection />
       <SectionDivider />

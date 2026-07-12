@@ -17,8 +17,9 @@ export default function KnowledgeSection() {
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
         <div className="max-w-2xl mb-14 md:mb-18">
-          <motion.p className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#C89B3C] mb-5 font-medium" initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>{t('knowledge.subtitle')}</motion.p>
-          <motion.h2 className="font-heading text-[38px] md:text-[54px] lg:text-[64px] font-semibold text-[#08233E] mb-6 leading-[1.1]" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>{t('knowledge.heading')}</motion.h2>
+          <motion.p className="font-script text-[22px] md:text-[28px] text-[#C89B3C]/80 leading-[1.6] italic mb-6" initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>{t('knowledge.scriptLine')}</motion.p>
+          <motion.h2 className="font-heading text-[38px] md:text-[54px] lg:text-[64px] font-semibold text-[#08233E] mb-4 leading-[1.1]" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>{t('knowledge.heading')}</motion.h2>
+          <motion.p className="font-body text-[14px] md:text-[16px] text-[#08233E]/50 mb-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.15, duration: 0.6 }}>{t('knowledge.subtitle')}</motion.p>
           <GoldLine width="w-28" className="mb-8" />
           <motion.p className="text-[#08233E]/60 font-body text-[17px] md:text-[19px] leading-[1.9]" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.6 }}>{t('knowledge.description')}</motion.p>
         </div>
