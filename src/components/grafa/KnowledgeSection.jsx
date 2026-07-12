@@ -9,16 +9,16 @@ const LV_MONTHS = ['Janvāris', 'Februāris', 'Marts', 'Aprīlis', 'Maijs', 'Jū
 const LV_DAYS = ['Pr', 'Ot', 'Tr', 'Ce', 'Pk', 'Se', 'Sv'];
 
 const accountantReminders = {
-  '2025-6-10': { title: 'Cieni savu grāmatvedi!', desc: 'Iesniedz dokumentus līdz 10. datumam.' },
-  '2025-6-15': { title: 'Pašnodarbinātajiem', desc: 'Atgādinām, ka tuvojas ceturkšņa VSAOI ziņojuma iesniegšanas termiņš.' },
-  '2025-6-23': { title: 'Nodokļu pārbaude', desc: 'Pārbaudī, vai nav neapmaksātu nodokļu maksājumu.' },
-  '2025-6-31': { title: 'Mēneša pārskats', desc: 'Pārbaudī mēneša grāmatvedības pārskatu un finanšu rādītājus.' },
+  '2026-6-10': { title: 'Cieni savu grāmatvedi!', desc: 'Iesniedz dokumentus līdz 10. datumam.' },
+  '2026-6-15': { title: 'Pašnodarbinātajiem', desc: 'Atgādinām, ka tuvojas ceturkšņa VSAOI ziņojuma iesniegšanas termiņš.' },
+  '2026-6-23': { title: 'Nodokļu pārbaude', desc: 'Pārbaudī, vai nav neapmaksātu nodokļu maksājumu.' },
+  '2026-6-30': { title: 'Mēneša pārskats', desc: 'Pārbaudī mēneša grāmatvedības pārskatu un finanšu rādītājus.' },
 };
 
 const trainingDates = {
-  '2025-6-20': { title: 'Apmācība pieejama', desc: 'Pieejams uzņēmuma darbinieku apmācībām.', status: 'free' },
-  '2025-6-25': { title: 'Apmācība pieejama', desc: 'Pieejams uzņēmuma darbinieku apmācībām.', status: 'free' },
-  '2025-6-27': { title: 'Rezervēts', desc: 'Šis datums jau ir rezervēts.', status: 'reserved' },
+  '2026-6-20': { title: 'Apmācība pieejama', desc: 'Pieejams uzņēmuma darbinieku apmācībām.', status: 'free' },
+  '2026-6-25': { title: 'Apmācība pieejama', desc: 'Pieejams uzņēmuma darbinieku apmācībām.', status: 'free' },
+  '2026-6-27': { title: 'Rezervēts', desc: 'Šis datums jau ir rezervēts.', status: 'reserved' },
 };
 
 function CalendarGrid({ year, month, highlights, onDateClick, selectedDate }) {
@@ -65,7 +65,7 @@ function CalendarGrid({ year, month, highlights, onDateClick, selectedDate }) {
 }
 
 function CalendarPanel({ title, icon: Icon, highlights, color }) {
-  const [year, setYear] = useState(2025);
+  const [year, setYear] = useState(2026);
   const [month, setMonth] = useState(6);
   const [selectedDate, setSelectedDate] = useState(null);
   const selectedInfo = selectedDate ? highlights[selectedDate] : null;
