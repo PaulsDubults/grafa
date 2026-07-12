@@ -1,318 +1,240 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import GoldLine from './GoldLine';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Calendar, BookOpen } from 'lucide-react';
+import { FullFeather } from './Decorations';
 import TypewriterText from './TypewriterText';
-import { FullFeather, WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
-/* Per mockup 4lapa: Open book layout with two interactive calendars — Grāmatveža kalendārs (left page) and Apmācību kalendārs (right page). Each calendar has month navigation, highlighted dates, and info panels. */
+const BG_URL = 'https://media.base44.com/images/public/6a5361fb4451fc131553e07e/cdca4fadf_generated_def1557f.png';
 
-const DAYS_LV = ['Pr', 'Ot', 'Tr', 'Ce', 'Pk', 'Se', 'Sv'];
-const MONTHS_LV = ['Janvāris', 'Februāris', 'Marts', 'Aprīlis', 'Maijs', 'Jūnijs', 'Jūlijs', 'Augusts', 'Septembris', 'Oktobris', 'Novembris', 'Decembris'];
+const LV_MONTHS = ['Janvāris', 'Februāris', 'Marts', 'Aprīlis', 'Maijs', 'Jūnijs', 'Jūlijs', 'Augusts', 'Septembris', 'Oktobris', 'Novembris', 'Decembris'];
+const LV_DAYS = ['Pr', 'Ot', 'Tr', 'Ce', 'Pk', 'Se', 'Sv'];
 
-/* Sample accounting reminders per month */
-const accountingDates = {
-  '2025-6': [ // July 2025 (0-indexed month=6)
-    { day: 10, title: 'Pašnodarbinātajiem', desc: 'Atgādinām, ka tuvojas ceturkšņa VSAOI ziņojuma iesniegšanas termiņš.\n\nSavlaicīga iesniegšana palīdz izvairīties no nokavējumiem un soda sankcijām.', icon: '📋' },
-    { day: 15, title: 'Cieni savu grāmatvedi!', desc: 'Iesniedz dokumentus līdz 10. datumam.', icon: '📅' },
-    { day: 23, title: 'Nodokļi', desc: 'Pārbaudi, vai nav neapmaksātu nodokļu maksājumu.', icon: '🏛️' },
-    { day: 31, title: 'Mēneša beigas', desc: 'Pārbaudi mēneša grāmatvedības pārskatu un finanšu rādītājus.', icon: '📊' },
-  ],
-  '2025-7': [ // August
-    { day: 10, title: 'Dokumentu iesniegšana', desc: 'Iesniedz dokumentus grāmatvedim.', icon: '📋' },
-    { day: 20, title: 'PVN deklarācija', desc: 'PVN deklarācijas iesniegšanas termiņš.', icon: '🏛️' },
-  ],
+const accountantReminders = {
+  '2025-6-10': { title: 'Cieni savu grāmatvedi!', desc: 'Iesniedz dokumentus līdz 10. datumam.' },
+  '2025-6-15': { title: 'Pašnodarbinātajiem', desc: 'Atgādinām, ka tuvojas ceturkšņa VSAOI ziņojuma iesniegšanas termiņš. Savlaicīga iesniegšana palīdz izvairīties no nokavējumiem un soda sankcijām.' },
+  '2025-6-23': { title: 'Nodokļu pārbaude', desc: 'Pārbaudī, vai nav neapmaksātu nodokļu maksājumu.' },
+  '2025-6-31': { title: 'Mēneša pārskats', desc: 'Pārbaudī mēneša grāmatvedības pārskatu un finanšu rādītājus.' },
 };
 
-/* Sample training dates */
 const trainingDates = {
-  '2025-6': [
-    { day: 20, title: 'Apmācība', desc: 'Pieejams uzņēmuma darbinieku apmācībām grāmatvedības un nodokļu jautājumos.', status: 'free' },
-    { day: 25, title: 'Apmācība', desc: 'Grāmatvedības pamati jauniem darbiniekiem.', status: 'reserved' },
-    { day: 27, title: 'Konsultācija', desc: 'Individuāla finanšu konsultācija.', status: 'free' },
-  ],
-  '2025-7': [
-    { day: 5, title: 'Nodokļu apmācība', desc: 'PVN un nodokļu optimizācijas seminārs.', status: 'free' },
-    { day: 15, title: 'Grāmatvedība', desc: 'Grāmatvedības kurss uzņēmējiem.', status: 'free' },
-  ],
+  '2025-6-20': { title: 'Apmācība pieejama', desc: 'Pieejams uzņēmuma darbinieku apmācībām grāmatvedības un nodokļu jautājumos.', status: 'free' },
+  '2025-6-25': { title: 'Apmācība pieejama', desc: 'Pieejams uzņēmuma darbinieku apmācībām.', status: 'free' },
+  '2025-6-27': { title: 'Rezervēts', desc: 'Šis datums jau ir rezervēts.', status: 'reserved' },
 };
 
-function getDaysInMonth(year, month) {
-  return new Date(year, month + 1, 0).getDate();
-}
+function CalendarGrid({ year, month, highlights, onDateClick, selectedDate }) {
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const offset = firstDay === 0 ? 6 : firstDay - 1;
 
-function getFirstDayOfWeek(year, month) {
-  const d = new Date(year, month, 1).getDay();
-  return d === 0 ? 6 : d - 1; // Monday = 0
-}
-
-function CalendarGrid({ year, month, highlightedDays, selectedDay, onSelectDay }) {
-  const daysInMonth = getDaysInMonth(year, month);
-  const firstDay = getFirstDayOfWeek(year, month);
   const cells = [];
-
-  for (let i = 0; i < firstDay; i++) cells.push(null);
+  for (let i = 0; i < offset; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
-
-  const today = new Date();
-  const isToday = (d) => today.getFullYear() === year && today.getMonth() === month && today.getDate() === d;
-  const isHighlighted = (d) => highlightedDays.includes(d);
 
   return (
     <div>
-      <div className="grid grid-cols-7 gap-0 mb-1">
-        {DAYS_LV.map((d) => (
-          <div key={d} className="text-center font-body text-[10px] md:text-[11px] text-[#08233E]/40 py-1 font-medium">{d}</div>
+      <div className="grid grid-cols-7 gap-1 mb-2">
+        {LV_DAYS.map((d) => (
+          <div key={d} className="text-center text-xs font-medium text-grafa-text-light py-1">{d}</div>
         ))}
       </div>
-      <div className="grid grid-cols-7 gap-0">
-        {cells.map((day, i) => (
-          <button
-            key={i}
-            className={`relative h-8 md:h-9 flex items-center justify-center text-[12px] md:text-[13px] font-body transition-all duration-200 rounded-sm
-              ${!day ? '' : isHighlighted(day)
-                ? 'text-[#C89B3C] font-bold cursor-pointer hover:bg-[#C89B3C]/10'
-                : isToday(day)
-                  ? 'text-[#08233E] font-semibold bg-[#08233E]/5 rounded-full'
-                  : 'text-[#08233E]/60 hover:bg-[#08233E]/5 cursor-default'
-              }
-              ${selectedDay === day ? 'bg-[#C89B3C]/15 ring-1 ring-[#C89B3C]/30 rounded-full' : ''}
-            `}
-            onClick={() => day && isHighlighted(day) && onSelectDay(day)}
-            disabled={!day || !isHighlighted(day)}
-          >
-            {day}
-            {day && isHighlighted(day) && (
-              <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#C89B3C]" />
-            )}
-          </button>
-        ))}
+      <div className="grid grid-cols-7 gap-1">
+        {cells.map((day, i) => {
+          if (!day) return <div key={i} />;
+          const key = `${year}-${month}-${day}`;
+          const hasHighlight = highlights[key];
+          const isSelected = selectedDate === key;
+          const status = hasHighlight?.status;
+
+          return (
+            <button
+              key={i}
+              onClick={() => hasHighlight && onDateClick(key)}
+              className={`w-8 h-8 lg:w-9 lg:h-9 rounded-lg text-sm flex items-center justify-center transition-all
+                ${hasHighlight ? 'cursor-pointer font-bold' : 'cursor-default'}
+                ${isSelected ? 'bg-grafa-gold text-white ring-2 ring-grafa-gold/50' :
+                  status === 'reserved' ? 'bg-grafa-navy/15 text-grafa-navy' :
+                  hasHighlight ? 'bg-grafa-gold/20 text-grafa-navy hover:bg-grafa-gold/40' :
+                  'text-grafa-text hover:bg-grafa-cream/60'}
+              `}
+            >
+              {day}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
 }
 
-function BookCalendar({ title, subtitle, year, month, onPrev, onNext, dates, icon, isTraining }) {
-  const [selectedDay, setSelectedDay] = useState(null);
-  const highlightedDays = dates.map(d => d.day);
-  const selectedDate = dates.find(d => d.day === selectedDay);
+function CalendarPanel({ title, icon: Icon, highlights, color }) {
+  const [year, setYear] = useState(2025);
+  const [month, setMonth] = useState(6);
+  const [selectedDate, setSelectedDate] = useState(null);
 
-  useEffect(() => { setSelectedDay(null); }, [month]);
+  const selectedInfo = selectedDate ? highlights[selectedDate] : null;
+
+  const prevMonth = () => {
+    if (month === 0) { setMonth(11); setYear(year - 1); }
+    else setMonth(month - 1);
+    setSelectedDate(null);
+  };
+  const nextMonth = () => {
+    if (month === 11) { setMonth(0); setYear(year + 1); }
+    else setMonth(month + 1);
+    setSelectedDate(null);
+  };
 
   return (
-    <div className="flex-1 min-w-0">
-      {/* Calendar header */}
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-lg bg-[#C89B3C]/[0.15] flex items-center justify-center">
-          <span className="text-lg">{icon}</span>
+    <div className="bg-white/70 backdrop-blur border border-grafa-gold/20 rounded-2xl overflow-hidden">
+      {/* Header */}
+      <div className={`p-4 ${color === 'navy' ? 'bg-grafa-navy/10' : 'bg-grafa-gold/10'}`}>
+        <div className="flex items-center gap-2 mb-1">
+          <Icon size={20} className={color === 'navy' ? 'text-grafa-navy' : 'text-grafa-gold'} />
+          <h3 className="font-heading text-grafa-navy font-bold text-lg uppercase tracking-wider">{title}</h3>
         </div>
-        <div>
-          <h3 className="font-heading text-[16px] md:text-[20px] font-bold text-[#08233E] uppercase tracking-wide leading-tight">{title}</h3>
-          <p className="font-body text-[11px] md:text-[12px] text-[#08233E]/40 leading-snug">{subtitle}</p>
-        </div>
+        <p className="text-grafa-text-light text-xs">
+          {color === 'navy' ? 'Svarīgākie termiņi un draudzīgi atgādinājumi uzņēmējiem.' : 'Piedāvājam datumus uzņēmumu darbinieku apmācībām.'}
+        </p>
       </div>
 
-      {/* Month navigation */}
-      <div className="flex items-center justify-between mb-3 bg-[#08233E] rounded-lg px-4 py-2">
-        <button onClick={onPrev} className="text-white/60 hover:text-white transition-colors"><ChevronLeft size={16} /></button>
-        <span className="font-heading text-[13px] md:text-[14px] text-white font-semibold tracking-wide uppercase">
-          {MONTHS_LV[month]} {year}
-        </span>
-        <button onClick={onNext} className="text-white/60 hover:text-white transition-colors"><ChevronRight size={16} /></button>
-      </div>
+      <div className="p-4">
+        {/* Month nav */}
+        <div className="flex items-center justify-between mb-4">
+          <button onClick={prevMonth} className="p-1 hover:bg-grafa-cream rounded-lg transition-colors">
+            <ChevronLeft size={18} className="text-grafa-text-light" />
+          </button>
+          <span className="font-heading text-grafa-navy font-semibold uppercase text-sm tracking-wider">
+            {LV_MONTHS[month]} {year}
+          </span>
+          <button onClick={nextMonth} className="p-1 hover:bg-grafa-cream rounded-lg transition-colors">
+            <ChevronRight size={18} className="text-grafa-text-light" />
+          </button>
+        </div>
 
-      {/* Calendar grid */}
-      <CalendarGrid
-        year={year}
-        month={month}
-        highlightedDays={highlightedDays}
-        selectedDay={selectedDay}
-        onSelectDay={setSelectedDay}
-      />
+        <CalendarGrid
+          year={year}
+          month={month}
+          highlights={highlights}
+          onDateClick={setSelectedDate}
+          selectedDate={selectedDate}
+        />
 
-      {/* Selected date info */}
-      <AnimatePresence mode="wait">
-        {selectedDate && (
+        {/* Selected date info */}
+        {selectedInfo && (
           <motion.div
-            key={selectedDay}
-            className="mt-4 bg-[#FBF7F0] rounded-lg p-4 border border-[#e8e0d4]/50"
+            className="mt-4 p-4 bg-grafa-cream/50 rounded-xl border border-grafa-gold/15"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="font-heading text-[13px] md:text-[14px] font-bold text-[#08233E] mb-1">
-              {selectedDay}. {MONTHS_LV[month]}
+            <p className="font-heading text-grafa-navy font-semibold text-sm mb-1">
+              {selectedDate.split('-')[2]}. {LV_MONTHS[parseInt(selectedDate.split('-')[1])]}
             </p>
-            <p className="font-body text-[12px] md:text-[13px] text-[#08233E]/50 mb-2 font-medium">{selectedDate.title}</p>
-            <p className="font-body text-[11px] md:text-[12px] text-[#08233E]/60 leading-[1.7] whitespace-pre-line">{selectedDate.desc}</p>
-            {isTraining && selectedDate.status === 'free' && (
-              <button className="mt-3 bg-[#C89B3C] text-white text-[11px] font-body tracking-[0.1em] uppercase px-5 py-2 rounded-sm hover:bg-[#b8973f] transition-colors">
+            <h4 className="text-grafa-navy font-medium mb-1">{selectedInfo.title}</h4>
+            <p className="text-grafa-text-light text-sm">{selectedInfo.desc}</p>
+            {selectedInfo.status === 'free' && (
+              <button className="mt-3 bg-grafa-gold text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-grafa-gold-light transition-colors">
                 Pieteikt rezervāciju
               </button>
             )}
           </motion.div>
         )}
-      </AnimatePresence>
-
-      {/* Bottom reminders for accounting calendar */}
-      {!isTraining && !selectedDate && dates.length > 0 && (
-        <div className="mt-4 space-y-2">
-          <p className="font-body text-[10px] text-[#C89B3C] tracking-[0.2em] uppercase font-medium mb-2">Citi svarīgi atgādinājumi šajā mēnesī</p>
-          {dates.slice(0, 3).map((d, i) => (
-            <button
-              key={i}
-              onClick={() => setSelectedDay(d.day)}
-              className="flex items-center gap-3 w-full text-left hover:bg-[#C89B3C]/5 rounded-lg p-2 transition-colors"
-            >
-              <span className="text-sm">{d.icon}</span>
-              <div className="flex-1 min-w-0">
-                <span className="font-heading text-[12px] font-bold text-[#08233E]">{d.day}. {MONTHS_LV[month]}</span>
-                <span className="font-body text-[11px] text-[#08233E]/50 ml-2">{d.title}</span>
-              </div>
-              <svg viewBox="0 0 16 16" className="w-3 h-3 text-[#C89B3C] flex-shrink-0"><path d="M6,3 L11,8 L6,13" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </button>
-          ))}
-        </div>
-      )}
-
-      {/* Training date legend */}
-      {isTraining && !selectedDate && (
-        <div className="mt-4 flex items-center gap-4 text-[11px] font-body text-[#08233E]/50">
-          <div className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#C89B3C]" /> Brīvs</div>
-          <div className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#08233E]/30" /> Rezervēts</div>
-          <div className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#08233E]/10" /> Nav plānotas</div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
 
 export default function KnowledgeSection() {
   const { t } = useI18n();
-  const [leftMonth, setLeftMonth] = useState({ year: 2025, month: 6 }); // July
-  const [rightMonth, setRightMonth] = useState({ year: 2025, month: 6 });
-
-  const getDateKey = (y, m) => `${y}-${m}`;
-
-  const leftDates = accountingDates[getDateKey(leftMonth.year, leftMonth.month)] || [];
-  const rightDates = trainingDates[getDateKey(rightMonth.year, rightMonth.month)] || [];
-
-  const prevMonth = (current, setter) => {
-    setter(prev => {
-      const m = prev.month - 1;
-      return m < 0 ? { year: prev.year - 1, month: 11 } : { ...prev, month: m };
-    });
-  };
-
-  const nextMonth = (current, setter) => {
-    setter(prev => {
-      const m = prev.month + 1;
-      return m > 11 ? { year: prev.year + 1, month: 0 } : { ...prev, month: m };
-    });
-  };
 
   return (
-    <section id="zinasanu-telpa" className="relative py-20 md:py-28 overflow-hidden">
-      <PaperTexture id="knowP" />
-      <FullFeather className="w-[260px] md:w-[400px] h-[320px] md:h-[500px] right-[-50px] md:right-[-20px] top-[0%]" opacity={0.16} />
-      <WatercolorStain className="left-[-100px] top-[20%]" color="#d4b878" opacity={0.1} size={550} id="know1" />
+    <section
+      id="zinasanu-telpa"
+      className="relative py-20 lg:py-32 overflow-hidden"
+      style={{ backgroundImage: `url(${BG_URL})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
+      <div className="absolute inset-0 bg-grafa-paper/[0.88]" />
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
-        {/* Header — script text + heading + subtitle */}
-        <div className="mb-12 md:mb-16">
-          <motion.p
-            className="font-script text-[24px] md:text-[32px] text-[#C89B3C]/80 leading-[1.6] italic mb-4"
-            initial={{ opacity: 0, x: -16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            {t('knowledge.scriptLine')}
-          </motion.p>
-          <motion.h2
-            className="font-heading text-[42px] md:text-[58px] lg:text-[72px] font-bold text-[#08233E] mb-3 leading-[1.05] uppercase tracking-tight"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.7 }}
-          >
-            {t('knowledge.heading')}
-          </motion.h2>
-          <motion.p
-            className="font-body text-[14px] md:text-[16px] text-[#08233E]/45"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            {t('knowledge.subtitle')}
-          </motion.p>
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        {/* Feather */}
+        <div className="absolute right-4 lg:right-12 top-4 opacity-40">
+          <FullFeather className="w-[200px] md:w-[300px] h-[250px] md:h-[380px] -rotate-12" opacity={0.4} />
         </div>
 
-        {/* Open book layout */}
+        {/* Script text */}
+        <div className="mb-4 min-h-[50px]">
+          <TypewriterText
+            text={t('knowledge.scriptLine')}
+            className="font-script text-[24px] lg:text-[30px] text-grafa-gold/80 leading-[1.6] italic"
+          />
+        </div>
+
         <motion.div
-          className="relative bg-white rounded-xl border border-[#e8e0d4]/50 overflow-hidden shadow-[0_8px_40px_rgba(30,58,95,0.06)]"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <h2 className="text-4xl lg:text-6xl font-heading font-bold text-grafa-navy mb-2 uppercase tracking-wider">
+            {t('knowledge.heading')}
+          </h2>
+          <p className="text-grafa-text-light text-base lg:text-lg mb-10">
+            {t('knowledge.subtitle')}
+          </p>
+        </motion.div>
+
+        {/* Book-style two calendars */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.8 }}
         >
-          {/* Gold binding spine */}
-          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[3px] hidden md:block" style={{ background: 'linear-gradient(180deg, #C89B3C, #E8D1A0, #C89B3C, #E8D1A0, #C89B3C)' }} />
-          {/* Binding dots */}
-          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center justify-evenly py-8 z-10">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="w-2.5 h-2.5 rounded-full bg-[#C89B3C] shadow-[0_0_4px_rgba(201,168,76,0.3)]" />
-            ))}
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+            <CalendarPanel
+              title="Grāmatveža kalendārs"
+              icon={Calendar}
+              highlights={accountantReminders}
+              color="navy"
+            />
+            <CalendarPanel
+              title="Apmācību kalendārs"
+              icon={BookOpen}
+              highlights={trainingDates}
+              color="gold"
+            />
           </div>
+        </motion.div>
 
-          <div className="flex flex-col md:flex-row">
-            {/* Left page — Grāmatveža kalendārs */}
-            <div className="flex-1 p-6 md:p-8 md:pr-10 border-b md:border-b-0 md:border-r border-[#e8e0d4]/30">
-              <BookCalendar
-                title="Grāmatveža"
-                subtitle="Svarīgākie termiņi un draudzīgi atgādinājumi uzņēmējiem."
-                year={leftMonth.year}
-                month={leftMonth.month}
-                onPrev={() => prevMonth(leftMonth, setLeftMonth)}
-                onNext={() => nextMonth(leftMonth, setLeftMonth)}
-                dates={leftDates}
-                icon="📅"
-                isTraining={false}
-              />
-            </div>
-
-            {/* Right page — Apmācību kalendārs */}
-            <div className="flex-1 p-6 md:p-8 md:pl-10">
-              <BookCalendar
-                title="Apmācību"
-                subtitle="Piedāvājam datumus uzņēmumu darbinieku apmācībām."
-                year={rightMonth.year}
-                month={rightMonth.month}
-                onPrev={() => prevMonth(rightMonth, setRightMonth)}
-                onNext={() => nextMonth(rightMonth, setRightMonth)}
-                dates={rightDates}
-                icon="📖"
-                isTraining={true}
-              />
-            </div>
+        {/* Legend */}
+        <motion.div
+          className="mt-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-grafa-text-light">
+            <span className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-grafa-gold" /> Brīvs</span>
+            <span className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-grafa-navy/30" /> Rezervēts</span>
+            <span className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-gray-300" /> Nav plānotas apmācības</span>
           </div>
+        </motion.div>
 
-          {/* Bottom info bar */}
-          <div className="bg-[#FBF7F0] border-t border-[#e8e0d4]/30 px-6 md:px-8 py-4 flex items-center justify-center gap-2 text-center">
-            <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 text-[#C89B3C] flex-shrink-0"><circle cx="10" cy="10" r="8" stroke="currentColor" strokeWidth="1.2" fill="none"/><path d="M10,6 L10,11 M10,13 L10,14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>
-            <p className="font-body text-[12px] md:text-[13px] text-[#08233E]/50">
+        <motion.div
+          className="mt-8"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
+          <div className="bg-white/50 border border-grafa-gold/20 rounded-xl p-4 text-center">
+            <p className="text-grafa-text text-sm">
+              <span className="text-grafa-gold mr-1">ℹ</span>
               Apmācības organizējam Jūsu uzņēmuma telpās ērtā laikā, kas piemērots Jūsu komandai.
             </p>
-          </div>
-
-          {/* Bottom heart decoration */}
-          <div className="flex justify-center py-3">
-            <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-[#C89B3C]/30">
-              <path d="M12,21 C12,21 3,14 3,8 C3,4 6,2 9,4 C10.5,5 12,7 12,7 C12,7 13.5,5 15,4 C18,2 21,4 21,8 C21,14 12,21 12,21Z" fill="currentColor"/>
-            </svg>
           </div>
         </motion.div>
       </div>

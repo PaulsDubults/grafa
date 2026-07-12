@@ -15,6 +15,13 @@ module.exports = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+  			'grafa-navy': '#08233E',
+  			'grafa-gold': '#C89B3C',
+  			'grafa-gold-light': '#E8D1A0',
+  			'grafa-paper': '#FAF5EF',
+  			'grafa-cream': '#F5EDE0',
+  			'grafa-text': '#08233E',
+  			'grafa-text-light': 'rgba(8, 35, 62, 0.5)',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
