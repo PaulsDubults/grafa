@@ -113,8 +113,8 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      {/* Right edge — cream paper texture, above filter but below hero image */}
-      <div className="absolute right-0 top-0 bottom-0 w-[55%] pointer-events-none z-[3]">
+      {/* Right edge — cream paper texture, above filter but below hero image, left edge aligned with hero image */}
+      <div className="absolute top-0 bottom-0 w-[58%] pointer-events-none z-[3]" style={{ left: '42%' }}>
         <img
           src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/2d48076a1_Screenshot2026-07-12at135951.png"
           alt=""
@@ -206,7 +206,7 @@ export default function HeroSection() {
 
       {/* Bottom bar — dark blue with values */}
       <motion.div
-        className="relative mt-4 w-full"
+        className="relative mt-4 w-full z-[10]"
         initial={{ opacity: 0, y: 20 }}
         animate={{
           opacity: allRevealed ? 1 : 0,
