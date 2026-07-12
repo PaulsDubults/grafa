@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BG_TEXTURE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/47e9ea892_image.png";
+const BG_TEXTURE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/b32dbe5d9_image.png";
 
 export default function WatercolorBg() {
   return (
@@ -16,7 +16,7 @@ export default function WatercolorBg() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        opacity: 0.4,
+        opacity: 0.7,
         mixBlendMode: 'multiply',
       }} />
 
