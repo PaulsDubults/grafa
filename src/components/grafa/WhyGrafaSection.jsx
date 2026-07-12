@@ -20,8 +20,7 @@ export default function WhyGrafaSection() {
   return (
     <section id="kapec-grafu" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="whyP" />
-      <FullFeather className="w-[300px] md:w-[480px] h-[400px] md:h-[680px] right-[-60px] md:right-[-15px] top-[0%]" opacity={0.65} flip />
-      <HalfFeather className="w-[250px] md:w-[400px] h-[340px] md:h-[580px] left-[-50px] md:left-[-15px] bottom-[3%]" opacity={0.5} />
+      <HalfFeather className="w-[320px] md:w-[500px] h-[420px] md:h-[700px] left-[-80px] md:left-[-30px] top-[-5%]" opacity={0.6} />
       <WatercolorStain className="right-[-80px] top-[15%]" color="#e0b5b0" opacity={0.1} size={500} id="why1" />
       <WatercolorStain className="left-[-120px] bottom-[-30px]" color="#e8c89a" opacity={0.08} size={380} id="why2" />
 

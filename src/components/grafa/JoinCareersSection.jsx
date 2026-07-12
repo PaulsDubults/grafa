@@ -38,8 +38,7 @@ export default function JoinCareersSection() {
         <svg width="100%" height="100%"><filter id="jcP"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#jcP)"/></svg>
       </div>
 
-      <FullFeather className="w-[260px] md:w-[420px] h-[360px] md:h-[600px] left-[-50px] md:left-[-15px] top-[0%]" opacity={0.35} />
-      <HalfFeather className="w-[240px] md:w-[380px] h-[320px] md:h-[550px] right-[-40px] md:right-[0px] bottom-[3%]" opacity={0.3} flip />
+      <HalfFeather className="w-[280px] md:w-[450px] h-[370px] md:h-[640px] left-[-60px] md:left-[-20px] bottom-[0%]" opacity={0.35} flip />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
         {/* Script text */}

@@ -21,8 +21,7 @@ export default function PricingSection() {
   return (
     <section id="cena" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="prcP" />
-      <HalfFeather className="w-[260px] md:w-[420px] h-[360px] md:h-[620px] right-[-40px] md:right-[0px] top-[2%]" opacity={0.6} />
-      <FullFeather className="w-[280px] md:w-[460px] h-[380px] md:h-[660px] left-[-70px] md:left-[-30px] bottom-[0%]" opacity={0.55} flip />
+      <HalfFeather className="w-[280px] md:w-[460px] h-[380px] md:h-[660px] right-[-60px] md:right-[-15px] bottom-[-5%]" opacity={0.6} />
       <WatercolorStain className="left-[-120px] top-[20%]" color="#e8c89a" opacity={0.1} size={480} id="prc1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
