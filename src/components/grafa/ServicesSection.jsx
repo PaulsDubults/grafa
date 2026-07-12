@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import GoldLine from './GoldLine';
-import { FullFeather, HalfFeather, SmallFeather, FeatherTip, PyramidOutline, SmallPyramid, WatercolorStain, GoldCurve, ScatteredDots, StarConstellation, GoldDotGrid, PaperTexture } from './Decorations';
+import { FullFeather, WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const cardPaths = ["/pakalpojumi/gramatvediba", "/pakalpojumi/finanses", "/pakalpojumi/apmacibas"];
@@ -17,8 +17,6 @@ function ServiceCard({ card, icon, path, index }) {
     <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 + index * 0.12, duration: 0.7 }}>
       <Link to={path} className="block relative bg-white rounded-xl p-8 md:p-10 cursor-pointer border border-[#e8e0d4]/60 group h-full overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,95,0.10),0_0_0_1px_rgba(201,168,76,0.15)]">
         <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, #E8D1A0, #C89B3C, transparent)' }} />
-        <svg className="absolute top-3 right-3 w-8 h-8 opacity-[0.18] group-hover:opacity-[0.35] transition-opacity duration-500" viewBox="0 0 30 30" fill="none"><path d="M28,2 L28,12 M28,2 L18,2" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round"/><circle cx="28" cy="2" r="1.5" fill="#C89B3C" opacity="0.5"/></svg>
-        <svg className="absolute bottom-3 left-3 w-8 h-8 opacity-[0.18] group-hover:opacity-[0.35] transition-opacity duration-500" viewBox="0 0 30 30" fill="none"><path d="M2,28 L2,18 M2,28 L12,28" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round"/></svg>
         <div className="mb-6 group-hover:scale-110 transition-transform duration-500 origin-left">{icon}</div>
         <h3 className="font-heading text-[22px] md:text-[26px] font-semibold text-[#08233E] mb-3">{card.title}</h3>
         <p className="text-[#08233E]/45 font-body text-[15px] md:text-[17px] leading-[1.85] mb-6">{card.desc}</p>
@@ -39,26 +37,12 @@ export default function ServicesSection() {
   return (
     <section id="pakalpojumi" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="svcP" />
-
-      {/* COMPOSITION: diagonal quill right, upright feather left, small accent bottom */}
-      <FullFeather className="w-[280px] md:w-[420px] h-[350px] md:h-[520px] right-[-60px] md:right-[-30px] top-[-20px]" opacity={0.22} />
-      <HalfFeather className="w-[160px] md:w-[240px] h-[200px] md:h-[300px] left-[-30px] md:left-0 top-[5%]" opacity={0.18} />
-      <SmallFeather className="w-[100px] md:w-[140px] h-[120px] md:h-[170px] right-[15%] bottom-[10%]" opacity={0.14} rotate={15} />
-      <FeatherTip className="w-[80px] md:w-[110px] h-[100px] md:h-[140px] left-[8%] bottom-[20%]" opacity={0.12} rotate={-10} />
-      
-      <PyramidOutline className="w-[350px] md:w-[500px] h-[340px] md:h-[480px] left-[15%] md:left-[20%] top-[-20px]" opacity={0.12} />
-      <SmallPyramid className="w-[60px] md:w-[80px] h-[60px] md:h-[80px] right-[25%] top-[60%]" opacity={0.15} />
-      
-      <WatercolorStain className="right-[-100px] top-[10%]" color="#e8c89a" opacity={0.16} size={600} id="svc1" />
-      <WatercolorStain className="left-[-150px] bottom-[-50px]" color="#e0b5b0" opacity={0.1} size={400} id="svc2" />
-      
-      <GoldCurve className="w-[280px] md:w-[400px] h-[60px] md:h-[80px] left-[5%] top-[48%]" opacity={0.22} />
-      <ScatteredDots className="w-[140px] h-[140px] right-[8%] top-[30%]" opacity={0.28} count={18} />
-      <StarConstellation className="w-[180px] h-[180px] left-4 top-16" opacity={0.3} />
-      <GoldDotGrid className="w-[150px] h-[90px] right-4 bottom-16" rows={5} cols={8} opacity={0.28} />
+      <FullFeather className="w-[280px] md:w-[420px] h-[350px] md:h-[520px] right-[-60px] md:right-[-30px] top-[-20px]" opacity={0.18} />
+      <WatercolorStain className="right-[-100px] top-[10%]" color="#e8c89a" opacity={0.12} size={600} id="svc1" />
+      <WatercolorStain className="left-[-150px] bottom-[-50px]" color="#e0b5b0" opacity={0.08} size={400} id="svc2" />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
-        <div className="max-w-2xl mb-12 md:mb-16">
+        <div className="max-w-3xl mb-12 md:mb-16">
           <motion.p className="font-script text-[22px] md:text-[28px] text-[#C89B3C]/70 leading-[1.9] italic mb-6" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>{t('services.introScript')}</motion.p>
           <GoldLine width="w-24" className="mb-8" />
           <motion.h2 className="font-heading text-[42px] md:text-[58px] lg:text-[68px] font-semibold text-[#08233E] mb-8 leading-[1.1]" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>{t('services.heading')}</motion.h2>
@@ -66,7 +50,7 @@ export default function ServicesSection() {
             {bullets.map((item, i) => (
               <motion.div key={i} className="flex items-start gap-3" initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 + i * 0.06, duration: 0.5 }}>
                 <svg className="w-3 h-3 mt-1.5 flex-shrink-0 text-[#C89B3C]" viewBox="0 0 12 12" fill="currentColor"><path d="M6,0 L7.5,4.5 L12,6 L7.5,7.5 L6,12 L4.5,7.5 L0,6 L4.5,4.5 Z"/></svg>
-                <p className="font-body text-[15px] md:text-[17px] text-[#08233E]/60 leading-[1.8]">{item.text}{' '}{item.bold && <strong className="text-[#08233E] font-semibold">{item.bold}</strong>}{item.after && <> {item.after}</>}</p>
+                <p className="font-body text-[15px] md:text-[17px] text-[#08233E] leading-[1.8]">{item.text}{' '}{item.bold && <strong className="text-[#08233E] font-semibold">{item.bold}</strong>}{item.after && <> {item.after}</>}</p>
               </motion.div>
             ))}
           </div>

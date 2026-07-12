@@ -6,7 +6,7 @@ import { useI18n } from '@/lib/i18n';
 
 const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/07f5642fe_ChatGPTImageMay13202603_52_09PM.png";
 
-const emphasisIndices = [5, 6, 8, 10];
+const emphasisIndices = [5, 6, 7];
 const LINE_INTERVAL = 1400;
 
 const GoldDiamond = () =>
@@ -113,13 +113,17 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      {/* Subtle background pyramids */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <svg className="absolute left-[15%] bottom-[8%] w-[500px] h-[400px] opacity-[0.06]" viewBox="0 0 500 400" fill="none">
-          <path d="M250,20 L480,380 L20,380 Z" fill="#C89B3C" />
-        </svg>
-        <svg className="absolute left-[35%] bottom-[8%] w-[400px] h-[350px] opacity-[0.04]" viewBox="0 0 400 350" fill="none">
-          <path d="M200,10 L390,340 L10,340 Z" fill="#C89B3C" />
+      {/* Watercolor accent */}
+      <div className="absolute right-[-120px] top-[15%] pointer-events-none" style={{ width: 500, height: 350 }}>
+        <svg viewBox="0 0 600 420" className="w-full h-full" style={{ opacity: 0.08 }}>
+          <defs>
+            <filter id="wc-hero" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed={42} result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="45" xChannelSelector="R" yChannelSelector="G" result="d"/>
+              <feGaussianBlur in="d" stdDeviation="12"/>
+            </filter>
+          </defs>
+          <ellipse cx="300" cy="210" rx="250" ry="160" fill="#e8c89a" filter="url(#wc-hero)"/>
         </svg>
       </div>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { FeatherOutline, OverlappingFeathers, SmallFeather, FeatherFragment, PyramidOutline, SmallPyramid, GoldDotGrid, StarConstellation, ScatteredDots, GoldCurve } from './Decorations';
+import { FullFeather } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function JoinSection() {
@@ -14,21 +14,7 @@ export default function JoinSection() {
         <svg width="100%" height="100%"><filter id="joinP"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#joinP)"/></svg>
       </div>
 
-      {/* COMPOSITION: diagonal quill left, crossed feathers right, small accent */}
-      <FeatherOutline className="w-[240px] md:w-[360px] h-[300px] md:h-[450px] left-[-40px] md:left-[-10px] top-[-20px]" opacity={0.12} />
-      <OverlappingFeathers className="w-[200px] md:w-[300px] h-[230px] md:h-[350px] right-[-30px] md:right-0 top-[5%]" opacity={0.1} />
-      <SmallFeather className="w-[80px] md:w-[120px] h-[95px] md:h-[145px] left-[25%] bottom-8" opacity={0.08} rotate={-15} />
-      <FeatherFragment className="w-[100px] md:w-[150px] h-[120px] md:h-[180px] right-[15%] bottom-[10%]" opacity={0.08} rotate={10} />
-      
-      <PyramidOutline className="w-[350px] md:w-[500px] h-[340px] md:h-[480px] right-[5%] top-[10%]" opacity={0.06} color="#C89B3C" />
-      <SmallPyramid className="w-[45px] md:w-[60px] h-[45px] md:h-[60px] left-[15%] top-[25%]" opacity={0.08} color="#C89B3C" />
-      
-      <GoldDotGrid className="w-[140px] h-[75px] left-[8%] top-[40%]" rows={4} cols={7} opacity={0.1} />
-      <GoldDotGrid className="w-[100px] h-[55px] right-[10%] bottom-[22%]" rows={3} cols={5} opacity={0.08} />
-      <StarConstellation className="w-[220px] h-[220px] right-[8%] top-4" opacity={0.15} />
-      <StarConstellation className="w-[160px] h-[160px] left-[18%] bottom-4" opacity={0.1} />
-      <ScatteredDots className="w-[120px] h-[120px] left-[40%] top-[20%]" opacity={0.08} count={14} />
-      <GoldCurve className="w-[220px] md:w-[320px] h-[50px] md:h-[70px] left-[25%] bottom-12" opacity={0.1} />
+      <FullFeather className="w-[240px] md:w-[360px] h-[300px] md:h-[450px] left-[-40px] md:left-[-10px] top-[-20px]" opacity={0.1} />
 
       <svg className="absolute top-0 left-0 right-0 w-full h-[40px] pointer-events-none" viewBox="0 0 1200 40" preserveAspectRatio="none" fill="none">
         <path d="M0,40 L0,20 C200,35 400,5 600,20 C800,35 1000,5 1200,20 L1200,40 Z" fill="#08233E" />

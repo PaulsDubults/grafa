@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import GoldLine from './GoldLine';
 import TypewriterText from './TypewriterText';
-import { FullFeather, SmallFeather, FeatherTip, WatercolorStain, GoldDotGrid, StarConstellation, ScatteredDots, PaperTexture } from './Decorations';
+import { FullFeather, WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function ContactSection() {
@@ -14,6 +14,7 @@ export default function ContactSection() {
   const [form, setForm] = useState({ company: '', name: '', phone: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
   const [typewriterDone, setTypewriterDone] = useState(false);
+  const [closingDone, setClosingDone] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,17 +26,11 @@ export default function ContactSection() {
   return (
     <section id="kontakti" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="contP" />
-      <FullFeather className="w-[220px] md:w-[330px] h-[270px] md:h-[410px] right-[-30px] md:right-0 top-[3%]" opacity={0.2} />
-      <SmallFeather className="w-[70px] md:w-[100px] h-[85px] md:h-[120px] left-[-10px] bottom-12" opacity={0.14} rotate={-8} />
-      <FeatherTip className="w-[80px] md:w-[110px] h-[95px] md:h-[140px] left-[5%] top-[8%]" opacity={0.14} rotate={10} />
-      <WatercolorStain className="right-[-80px] bottom-[-30px]" color="#e0b5b0" opacity={0.12} size={480} id="ct1" />
-      <WatercolorStain className="left-[-100px] top-[20%]" color="#e8c89a" opacity={0.1} size={350} id="ct2" />
-      <GoldDotGrid className="w-[150px] h-[90px] left-4 top-16" rows={5} cols={8} opacity={0.28} />
-      <StarConstellation className="w-[180px] h-[180px] right-4 bottom-12" opacity={0.3} />
-      <ScatteredDots className="w-[100px] h-[100px] left-[15%] bottom-[25%]" opacity={0.22} count={12} />
+      <FullFeather className="w-[220px] md:w-[330px] h-[270px] md:h-[410px] right-[-30px] md:right-0 top-[3%]" opacity={0.16} />
+      <WatercolorStain className="right-[-80px] bottom-[-30px]" color="#e0b5b0" opacity={0.1} size={480} id="ct1" />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10">
-        {/* Script line */}
+        {/* Script line — typewriter */}
         <div className="mb-6 md:mb-8 min-h-[50px] md:min-h-[60px]">
           <TypewriterText
             text={t('contact.scriptLine')}
@@ -59,7 +54,7 @@ export default function ContactSection() {
 
         {/* Description */}
         <motion.p
-          className="text-[#08233E]/50 font-body text-[16px] md:text-[18px] leading-[1.9] mb-14 max-w-2xl"
+          className="text-[#08233E] font-body text-[16px] md:text-[18px] leading-[1.9] mb-14 max-w-2xl"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -72,7 +67,6 @@ export default function ContactSection() {
           {/* Left — contact info */}
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <div className="flex flex-col gap-8">
-              {/* Phone */}
               <div className="flex items-start gap-5 group">
                 <div className="w-12 h-12 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center group-hover:bg-[#C89B3C]/[0.22] transition-all duration-500">
                   <Phone className="w-5 h-5 text-[#C89B3C]" strokeWidth={1.5} />
@@ -84,7 +78,6 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Email */}
               <div className="flex items-start gap-5 group">
                 <div className="w-12 h-12 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center group-hover:bg-[#C89B3C]/[0.22] transition-all duration-500">
                   <Mail className="w-5 h-5 text-[#C89B3C]" strokeWidth={1.5} />
@@ -96,14 +89,13 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Hours */}
               <div className="flex items-start gap-5 group">
                 <div className="w-12 h-12 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center group-hover:bg-[#C89B3C]/[0.22] transition-all duration-500">
                   <Clock className="w-5 h-5 text-[#C89B3C]" strokeWidth={1.5} />
                 </div>
                 <div>
                   <p className="font-heading text-[17px] font-semibold text-[#08233E] mb-1">{t('contact.hoursLabel')}</p>
-                  <p className="font-body text-[15px] text-[#08233E]/55">{t('contact.hoursValue')}</p>
+                  <p className="font-body text-[15px] text-[#08233E]/55 whitespace-pre-line">{t('contact.hoursValue')}</p>
                 </div>
               </div>
             </div>
@@ -147,7 +139,7 @@ export default function ContactSection() {
           </motion.div>
         </div>
 
-        {/* Closing text */}
+        {/* Closing — typewriter "Paldies" without period, no logo */}
         <motion.div
           className="mt-16 md:mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -155,11 +147,22 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <p className="font-script text-[22px] md:text-[28px] text-[#C89B3C]/70 italic mb-4">{t('contact.closingLine1')}</p>
-          <p className="font-script text-[32px] md:text-[42px] text-[#C89B3C] italic mb-6">{t('contact.closingLine2')}</p>
-          <GoldLine width="w-20" className="mx-auto mb-6" />
-          <p className="font-heading text-[14px] tracking-[0.15em] text-[#08233E]/30 uppercase">SIA firma GRĀFA</p>
-          <p className="font-body text-[12px] text-[#08233E]/20 mt-1">{t('footer.tagline')}</p>
+          <div className="min-h-[50px] md:min-h-[60px] flex justify-center">
+            <TypewriterText
+              text={t('contact.closingLine1')}
+              className="font-script text-[32px] md:text-[42px] text-[#C89B3C] italic"
+              onComplete={() => setClosingDone(true)}
+            />
+          </div>
+          {closingDone && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <GoldLine width="w-20" className="mx-auto mt-4" />
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>

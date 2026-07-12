@@ -5,7 +5,7 @@ import GoldLine from './GoldLine';
 import TypewriterText from './TypewriterText';
 import ApplicationForm from './ApplicationForm';
 import VacancyDetail from './VacancyDetail';
-import { FullFeather, FeatherTip, SmallFeather, WatercolorStain, GoldCurve, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
+import { FullFeather, WatercolorStain, PaperTexture } from './Decorations';
 import { base44 } from '@/api/base44Client';
 import { useI18n } from '@/lib/i18n';
 
@@ -42,44 +42,10 @@ export default function CareersSection() {
   return (
     <section id="karjera" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="carP" />
-
-      {/* Decorative feather — right side */}
-      <FullFeather className="w-[260px] md:w-[400px] h-[320px] md:h-[500px] right-[-40px] md:right-[-10px] top-[5%]" opacity={0.22} />
-      <FeatherTip className="w-[90px] md:w-[130px] h-[110px] md:h-[160px] left-[3%] top-[8%]" opacity={0.14} rotate={-12} />
-      <SmallFeather className="w-[80px] md:w-[110px] h-[95px] md:h-[140px] left-[8%] bottom-[10%]" opacity={0.12} rotate={8} />
-
-      <WatercolorStain className="left-[-120px] top-[15%]" color="#e8c89a" opacity={0.1} size={480} id="car1" />
-      <WatercolorStain className="right-[-100px] bottom-[-30px]" color="#e0b5b0" opacity={0.07} size={380} id="car2" />
-
-      <GoldCurve className="w-[240px] md:w-[360px] h-[55px] md:h-[75px] left-[5%] bottom-[20%]" opacity={0.16} />
-      <StarConstellation className="w-[180px] h-[180px] right-4 top-8" opacity={0.25} />
-      <GoldDotGrid className="w-[130px] h-[80px] left-8 bottom-16" rows={4} cols={7} opacity={0.2} />
-      <ScatteredDots className="w-[110px] h-[110px] right-[25%] bottom-[6%]" opacity={0.18} count={12} />
-
-      {/* Gold line accent beside feather */}
-      <motion.div
-        className="absolute right-[60px] md:right-[120px] top-[8%] w-[2px] h-[120px] md:h-[200px] pointer-events-none"
-        style={{ background: 'linear-gradient(180deg, transparent, #C89B3C, transparent)' }}
-        initial={{ scaleY: 0, opacity: 0 }}
-        whileInView={{ scaleY: 1, opacity: 0.35 }}
-        viewport={{ once: true }}
-        transition={{ delay: 1.2, duration: 1.5 }}
-      />
-      {/* Ink drop */}
-      <motion.div
-        className="absolute right-[56px] md:right-[116px] top-[28%] md:top-[32%] pointer-events-none"
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 0.25, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 2.2, duration: 0.6 }}
-      >
-        <svg width="18" height="22" viewBox="0 0 18 22" fill="none">
-          <path d="M9,1 C9,1 1,10 1,14 C1,18.5 5,21 9,21 C13,21 17,18.5 17,14 C17,10 9,1 9,1 Z" fill="#08233E" opacity="0.6" />
-        </svg>
-      </motion.div>
+      <FullFeather className="w-[260px] md:w-[400px] h-[320px] md:h-[500px] right-[-40px] md:right-[-10px] top-[5%]" opacity={0.18} />
+      <WatercolorStain className="left-[-120px] top-[15%]" color="#e8c89a" opacity={0.08} size={480} id="car1" />
 
       <div className="relative z-10 max-w-[1000px] mx-auto px-6 md:px-10">
-        {/* 1. Typewriter script text */}
         <div className="mb-8 md:mb-10 min-h-[60px] md:min-h-[80px]">
           <TypewriterText
             text={t('careers.scriptLine')}
@@ -88,7 +54,6 @@ export default function CareersSection() {
           />
         </div>
 
-        {/* 2. Heading with fade in */}
         <motion.div
           className="mb-10 md:mb-14"
           initial={{ opacity: 0, y: 24 }}
@@ -101,12 +66,11 @@ export default function CareersSection() {
           <GoldLine width="w-28" />
         </motion.div>
 
-        {/* 3. Intro texts — sequential fade in */}
         <div className="mb-14 md:mb-18 max-w-3xl space-y-4">
           {introTexts.map((text, i) => (
             <motion.p
               key={i}
-              className="text-[#08233E]/55 font-body text-[17px] md:text-[19px] leading-[2]"
+              className="text-[#08233E] font-body text-[17px] md:text-[19px] leading-[2]"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -117,12 +81,11 @@ export default function CareersSection() {
           ))}
         </div>
 
-        {/* 4. Value blocks */}
         <div className="space-y-5 mb-16 md:mb-20">
           {valueBlocks.map((block, i) => (
             <motion.div
               key={i}
-              className="flex items-start gap-5 bg-white rounded-xl p-6 md:p-8 border border-[#e8e0d4]/50 overflow-hidden"
+              className="flex items-start gap-5 bg-white rounded-xl p-6 md:p-8 border border-[#e8e0d4]/50 relative overflow-hidden"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -135,12 +98,11 @@ export default function CareersSection() {
                   <circle cx="24" cy="24" r="18" stroke="#C89B3C" strokeWidth="1.2" fill="none" />
                 </svg>
               </div>
-              <p className="text-[#08233E]/65 font-body text-[16px] md:text-[18px] leading-[1.85] pt-1.5">{block}</p>
+              <p className="text-[#08233E] font-body text-[16px] md:text-[18px] leading-[1.85] pt-1.5">{block}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* 5/6. Vacancies or empty state */}
         <motion.p
           className="font-body text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#C89B3C] mb-8 font-medium"
           initial={{ opacity: 0 }}
@@ -173,7 +135,7 @@ export default function CareersSection() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-heading text-[20px] md:text-[24px] font-semibold text-[#08233E] mb-2">{vacancy.title}</h3>
-                    <p className="text-[#08233E]/50 font-body text-[15px] md:text-[17px] leading-[1.85] mb-5">{vacancy.short_description}</p>
+                    <p className="text-[#08233E]/60 font-body text-[15px] md:text-[17px] leading-[1.85] mb-5">{vacancy.short_description}</p>
                     <div className="flex items-center gap-4 flex-wrap">
                       <button
                         onClick={() => openDetail(vacancy)}
@@ -203,7 +165,7 @@ export default function CareersSection() {
             transition={{ duration: 0.7 }}
           >
             <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, #E8D1A0, #C89B3C, transparent)' }} />
-            <p className="text-[#08233E]/55 font-body text-[17px] md:text-[18px] leading-[2] mb-6">{t('careers.noVacanciesText')}</p>
+            <p className="text-[#08233E] font-body text-[17px] md:text-[18px] leading-[2] mb-6">{t('careers.noVacanciesText')}</p>
             <button
               onClick={() => openApply('')}
               className="relative bg-[#C89B3C] text-white hover:bg-[#b8973f] text-[13px] font-body tracking-[0.2em] uppercase px-10 py-4 transition-all duration-500 rounded-sm overflow-hidden group"
@@ -214,7 +176,6 @@ export default function CareersSection() {
           </motion.div>
         )}
 
-        {/* 9. Closing text */}
         <motion.div
           className="relative bg-[#08233E] rounded-xl p-8 md:p-10 overflow-hidden"
           initial={{ opacity: 0, y: 24 }}
@@ -229,12 +190,6 @@ export default function CareersSection() {
               <rect width="100%" height="100%" filter="url(#carClP)" />
             </svg>
           </div>
-          <svg className="absolute top-4 right-4 w-8 h-8 opacity-[0.15]" viewBox="0 0 30 30" fill="none">
-            <path d="M28,2 L28,12 M28,2 L18,2" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round" />
-          </svg>
-          <svg className="absolute bottom-4 left-4 w-8 h-8 opacity-[0.15]" viewBox="0 0 30 30" fill="none">
-            <path d="M2,28 L2,18 M2,28 L12,28" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round" />
-          </svg>
           <p className="relative z-10 text-white/70 font-body text-[17px] md:text-[19px] leading-[2] italic">
             {t('careers.closingText')}
           </p>
