@@ -9,7 +9,8 @@ const factorIcons = [
   <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><rect x="6" y="10" width="36" height="28" rx="3" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><path d="M6,20 L42,20" stroke="#C89B3C" strokeWidth="0.8" opacity="0.4"/><circle cx="14" cy="15" r="2" fill="#C89B3C" opacity="0.3"/></svg>,
   <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><rect x="10" y="6" width="28" height="36" rx="2.5" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><path d="M17,16 L31,16 M17,22 L31,22 M17,28 L31,28 M17,34 L25,34" stroke="#C89B3C" strokeWidth="0.8" opacity="0.5"/></svg>,
   <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><circle cx="18" cy="20" r="8" stroke="#C89B3C" strokeWidth="1.2" fill="none"/><circle cx="30" cy="28" r="8" stroke="#C89B3C" strokeWidth="1.2" fill="none"/><circle cx="24" cy="16" r="6" stroke="#C89B3C" strokeWidth="0.8" fill="none" opacity="0.4"/></svg>,
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><polyline points="8,40 16,28 24,32 34,16 42,12" stroke="#C89B3C" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" fill="none"/><path d="M8,42 L42,42" stroke="#C89B3C" strokeWidth="0.8" opacity="0.3"/></svg>,
+  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><path d="M24,6 L28,18 L42,18 L31,26 L34,38 L24,30 L14,38 L17,26 L6,18 L20,18 Z" stroke="#C89B3C" strokeWidth="1.2" fill="none" strokeLinejoin="round"/></svg>,
+  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><rect x="8" y="12" width="32" height="24" rx="3" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><path d="M8,22 L40,22" stroke="#C89B3C" strokeWidth="0.8" opacity="0.4"/><circle cx="24" cy="30" r="4" stroke="#C89B3C" strokeWidth="1" fill="none" opacity="0.5"/></svg>,
   <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><circle cx="24" cy="24" r="16" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><path d="M16,24 L24,24 L24,14" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round" fill="none"/><path d="M12,36 L36,36" stroke="#C89B3C" strokeWidth="0.6" opacity="0.3"/></svg>,
 ];
 
@@ -22,7 +23,6 @@ export default function PricingSection() {
     <section id="cena" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="prcP" />
 
-      {/* Decorative feather — right side, leaning left */}
       <FullFeather className="w-[260px] md:w-[400px] h-[320px] md:h-[500px] right-[-40px] md:right-[-10px] top-[5%]" opacity={0.22} />
       <FeatherTip className="w-[90px] md:w-[130px] h-[110px] md:h-[160px] left-[3%] top-[10%]" opacity={0.14} rotate={-12} />
       <SmallFeather className="w-[80px] md:w-[110px] h-[95px] md:h-[140px] left-[8%] bottom-[10%]" opacity={0.12} rotate={8} />
@@ -38,7 +38,7 @@ export default function PricingSection() {
       <GoldDotGrid className="w-[130px] h-[80px] left-8 bottom-16" rows={4} cols={7} opacity={0.22} />
       <ScatteredDots className="w-[110px] h-[110px] right-[30%] bottom-[6%]" opacity={0.2} count={14} />
 
-      {/* Gold line accent beside feather */}
+      {/* Gold line accent */}
       <motion.div
         className="absolute right-[60px] md:right-[120px] top-[8%] w-[2px] h-[120px] md:h-[200px] pointer-events-none"
         style={{ background: 'linear-gradient(180deg, transparent, #C89B3C, transparent)' }}
@@ -47,7 +47,6 @@ export default function PricingSection() {
         viewport={{ once: true }}
         transition={{ delay: 1.2, duration: 1.5 }}
       />
-      {/* Ink drop */}
       <motion.div
         className="absolute right-[56px] md:right-[116px] top-[28%] md:top-[32%] pointer-events-none"
         initial={{ opacity: 0, scale: 0 }}
@@ -61,7 +60,7 @@ export default function PricingSection() {
       </motion.div>
 
       <div className="relative z-10 max-w-[1000px] mx-auto px-6 md:px-10">
-        {/* Typewriter script text */}
+        {/* Script text */}
         <div className="mb-8 md:mb-10 min-h-[60px] md:min-h-[80px]">
           <TypewriterText
             text={t('pricing.scriptLine')}
@@ -94,33 +93,24 @@ export default function PricingSection() {
           {t('pricing.intro')}
         </motion.p>
 
-        {/* "Cena atkarīga no" subtitle */}
-        <motion.p
-          className="font-body text-[12px] md:text-[14px] tracking-[0.3em] uppercase text-[#C89B3C] mb-10 font-medium"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {t('pricing.factorsSubtitle')}
-        </motion.p>
-
         {/* Factor points */}
         <div className="space-y-5 md:space-y-6 mb-16 md:mb-20">
           {factors.map((factor, i) => (
             <motion.div
               key={i}
-              className="group flex items-start gap-5 bg-white rounded-xl p-6 md:p-8 border border-[#e8e0d4]/50 overflow-hidden transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(30,58,95,0.06)]"
+              className="group flex items-start gap-5"
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.12 * i, duration: 0.6 }}
             >
-              <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, #E8D1A0, #C89B3C, transparent)' }} />
               <div className="flex-shrink-0 w-11 h-11 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                 <div className="text-[#C89B3C]">{factorIcons[i]}</div>
               </div>
-              <p className="text-[#08233E]/65 font-body text-[16px] md:text-[18px] leading-[1.85] pt-2">{factor}</p>
+              <div className="pt-1">
+                <p className="text-[#08233E] font-heading text-[17px] md:text-[19px] font-semibold mb-1">{factor.title}</p>
+                <p className="text-[#08233E]/50 font-body text-[15px] md:text-[16px] leading-[1.8]">{factor.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -135,26 +125,15 @@ export default function PricingSection() {
         >
           <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: 'linear-gradient(90deg, transparent 5%, #C89B3C 25%, #E8D1A0 50%, #C89B3C 75%, transparent 95%)' }} />
           <div className="absolute inset-0 pointer-events-none opacity-[0.06]">
-            <svg width="100%" height="100%">
-              <filter id="prcLtP"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
-              <rect width="100%" height="100%" filter="url(#prcLtP)" />
-            </svg>
+            <svg width="100%" height="100%"><filter id="prcLtP"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter><rect width="100%" height="100%" filter="url(#prcLtP)" /></svg>
           </div>
-          <svg className="absolute top-4 right-4 w-8 h-8 opacity-[0.15]" viewBox="0 0 30 30" fill="none">
-            <path d="M28,2 L28,12 M28,2 L18,2" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round" />
-          </svg>
-          <svg className="absolute bottom-4 left-4 w-8 h-8 opacity-[0.15]" viewBox="0 0 30 30" fill="none">
-            <path d="M2,28 L2,18 M2,28 L12,28" stroke="#C89B3C" strokeWidth="1.2" strokeLinecap="round" />
-          </svg>
           <div className="relative z-10 flex items-start gap-5">
             <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#C89B3C]/20 flex items-center justify-center">
-              <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9">
-                <path d="M24,6 L30,18 L44,20 L34,30 L36,44 L24,38 L12,44 L14,30 L4,20 L18,18 Z" stroke="#C89B3C" strokeWidth="1.2" fill="none" strokeLinejoin="round" />
-              </svg>
+              <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><path d="M24,6 C24,6 6,16 6,28 C6,36 14,44 24,44 C34,44 42,36 42,28 C42,16 24,6 24,6Z" stroke="#C89B3C" strokeWidth="1.2" fill="none"/><path d="M18,28 L22,32 L30,22" stroke="#C89B3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
             <div>
-              <p className="font-body text-[12px] tracking-[0.25em] uppercase text-[#C89B3C] mb-3 font-medium">{t('pricing.longTermLabel')}</p>
-              <p className="text-white/70 font-body text-[17px] md:text-[19px] leading-[1.9]">{t('pricing.longTermText')}</p>
+              <p className="font-heading text-[18px] md:text-[20px] font-semibold text-white mb-2">{t('pricing.longTermLabel')}</p>
+              <p className="text-white/60 font-body text-[16px] md:text-[18px] leading-[1.9]">{t('pricing.longTermText')}</p>
             </div>
           </div>
         </motion.div>

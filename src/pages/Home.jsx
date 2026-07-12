@@ -24,13 +24,13 @@ export default function Home() {
       <SectionDivider />
       <ServicesSection />
       <SectionDivider flip />
-      <WhyChooseSection />
+      <ProcessSection />
       <SectionDivider />
       <PricingSection />
       <SectionDivider flip />
-      <WhyGrafaSection />
+      <WhyChooseSection />
       <SectionDivider />
-      <ProcessSection />
+      <WhyGrafaSection />
       <SectionDivider flip />
       <KnowledgeSection />
       <SectionDivider />

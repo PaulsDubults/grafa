@@ -5,24 +5,16 @@ import TypewriterText from './TypewriterText';
 import { FullFeather, SmallFeather, FeatherTip, PyramidOutline, SmallPyramid, WatercolorStain, GoldCurve, StarConstellation, GoldDotGrid, ScatteredDots, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
-const stepIcons = [
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><path d="M8,34 C8,20 14,14 24,14 C34,14 40,20 40,34" stroke="#C89B3C" strokeWidth="1.3" strokeLinecap="round" fill="none"/><circle cx="17" cy="26" r="2" fill="#C89B3C" opacity="0.4"/><circle cx="24" cy="26" r="2" fill="#C89B3C" opacity="0.4"/><circle cx="31" cy="26" r="2" fill="#C89B3C" opacity="0.4"/></svg>,
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><rect x="10" y="6" width="28" height="36" rx="2.5" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><path d="M17,16 L31,16 M17,23 L31,23 M17,30 L25,30" stroke="#C89B3C" strokeWidth="0.8" opacity="0.5"/></svg>,
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><path d="M14,42 L24,6 L34,42" stroke="#C89B3C" strokeWidth="1.3" fill="none" strokeLinecap="round" strokeLinejoin="round"/><path d="M18,30 L30,30" stroke="#C89B3C" strokeWidth="0.8" opacity="0.5"/></svg>,
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><rect x="6" y="10" width="22" height="30" rx="2.5" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><rect x="20" y="14" width="22" height="26" rx="2.5" stroke="#C89B3C" strokeWidth="1.1" fill="none"/></svg>,
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><circle cx="24" cy="24" r="17" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><path d="M24,12 L24,24 L34,30" stroke="#C89B3C" strokeWidth="1.3" strokeLinecap="round" fill="none"/></svg>,
-];
-
 export default function WhyChooseSection() {
   const { t } = useI18n();
   const [typewriterDone, setTypewriterDone] = useState(false);
-  const steps = t('whyChoose.steps');
+  const points = t('whyChoose.points');
+  const checkmarks = t('whyChoose.checkmarks');
 
   return (
     <section id="kapec-izvel" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="whyChP" />
 
-      {/* Decorative feather — right side, leaning left, with gold line & ink drop */}
       <FullFeather className="w-[260px] md:w-[400px] h-[320px] md:h-[500px] right-[-40px] md:right-[-10px] top-[5%]" opacity={0.22} />
       <FeatherTip className="w-[90px] md:w-[130px] h-[110px] md:h-[160px] left-[5%] top-[12%]" opacity={0.14} rotate={-15} />
       <SmallFeather className="w-[80px] md:w-[110px] h-[95px] md:h-[140px] left-[10%] bottom-[12%]" opacity={0.12} rotate={10} />
@@ -38,7 +30,7 @@ export default function WhyChooseSection() {
       <GoldDotGrid className="w-[130px] h-[80px] right-8 bottom-16" rows={4} cols={7} opacity={0.22} />
       <ScatteredDots className="w-[110px] h-[110px] left-[35%] bottom-[8%]" opacity={0.2} count={14} />
 
-      {/* Gold line accent beside feather */}
+      {/* Gold line accent */}
       <motion.div
         className="absolute right-[60px] md:right-[120px] top-[8%] w-[2px] h-[120px] md:h-[200px] pointer-events-none"
         style={{ background: 'linear-gradient(180deg, transparent, #C89B3C, transparent)' }}
@@ -83,46 +75,82 @@ export default function WhyChooseSection() {
           <GoldLine width="w-28" />
         </motion.div>
 
-        {/* Section subtitle */}
-        <motion.p
-          className="text-center font-body text-[12px] md:text-[14px] tracking-[0.3em] uppercase text-[#C89B3C] mb-12 font-medium"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {t('whyChoose.processSubtitle')}
-        </motion.p>
-
-        {/* 5 process blocks */}
-        <div className="space-y-6 md:space-y-8 mb-16 md:mb-20">
-          {steps.map((step, i) => (
+        {/* 5 numbered points */}
+        <div className="space-y-5 md:space-y-6 mb-16 md:mb-20">
+          {points.map((point, i) => (
             <motion.div
               key={i}
-              className="group relative bg-white rounded-xl p-7 md:p-9 border border-[#e8e0d4]/50 overflow-hidden transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(30,58,95,0.08)]"
-              initial={{ opacity: 0, y: 30, x: i % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, y: 0, x: 0 }}
+              className="flex items-start gap-5"
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.15 * i, duration: 0.7 }}
+              transition={{ delay: 0.1 * i, duration: 0.6 }}
             >
-              <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, #E8D1A0, #C89B3C, transparent)' }} />
-              <div className="flex items-start gap-5">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  <div className="text-[#C89B3C]">{stepIcons[i]}</div>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-[10px] font-body text-[#C89B3C]/50 tracking-[0.2em] font-medium">{String(i + 1).padStart(2, '0')}</span>
-                    <div className="w-6 h-[1px] bg-[#C89B3C]/20" />
-                  </div>
-                  <h3 className="font-heading text-[20px] md:text-[24px] font-semibold text-[#08233E] mb-2">{step.title}</h3>
-                  <p className="text-[#08233E]/50 font-body text-[15px] md:text-[17px] leading-[1.85]">{step.desc}</p>
-                </div>
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#C89B3C] flex items-center justify-center shadow-[0_0_16px_rgba(201,168,76,0.25)]">
+                <span className="text-white font-heading text-[14px] font-bold">{i + 1}</span>
               </div>
+              <p className="text-[#08233E]/65 font-body text-[16px] md:text-[18px] leading-[1.85] pt-2">{point}</p>
             </motion.div>
           ))}
         </div>
 
+        {/* Experience stats */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          {t('whyChoose.stats').map((stat, i) => (
+            <div key={i} className="text-center">
+              <p className="font-heading text-[32px] md:text-[40px] font-bold text-[#08233E] mb-1">{stat.number}</p>
+              <p className="font-body text-[13px] text-[#08233E]/45">{stat.label}</p>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Why choose box with checkmarks */}
+        <motion.div
+          className="relative bg-white rounded-xl p-8 md:p-10 border border-[#e8e0d4]/50 overflow-hidden"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+        >
+          <div className="absolute top-0 left-6 right-6 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, #E8D1A0, #C89B3C, transparent)' }} />
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+            <div className="flex-1">
+              <div className="flex items-start gap-4 mb-4">
+                <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12 flex-shrink-0">
+                  <circle cx="24" cy="24" r="18" stroke="#C89B3C" strokeWidth="1.3" fill="none"/>
+                  <text x="24" y="29" textAnchor="middle" fill="#C89B3C" fontSize="18" fontWeight="bold">€</text>
+                </svg>
+                <div>
+                  <h3 className="font-heading text-[22px] md:text-[26px] font-semibold text-[#08233E] mb-2">{t('whyChoose.priceBoxTitle')}</h3>
+                  <p className="text-[#08233E]/50 font-body text-[15px] md:text-[16px] leading-[1.8]">{t('whyChoose.priceBoxDesc')}</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1">
+              <div className="space-y-3">
+                {checkmarks.map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 mt-0.5 flex-shrink-0">
+                      <circle cx="10" cy="10" r="9" stroke="#C89B3C" strokeWidth="1.2" fill="none"/>
+                      <path d="M6,10 L9,13 L14,7" stroke="#C89B3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <p className="font-body text-[14px] md:text-[15px] text-[#08233E]/60">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center justify-end mt-6 gap-2 text-[#C89B3C]/50">
+            <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4"><path d="M10,2 L10,18 M6,14 L10,18 L14,14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <span className="font-body text-[12px] tracking-[0.15em] uppercase">{t('whyChoose.trustNote')}</span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
