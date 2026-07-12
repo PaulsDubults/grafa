@@ -1,35 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
+import LatviaSvgMap from './LatviaSvgMap';
 
-const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/deb4b449d_ChatGPTImageJul12202612_58_56PM.png";
-
-// Positions as % of image dimensions, colors matching the user's spec
-const locations = [
-  { name: "Ventspils",      clients: 1,  color: "#DC2626", x: 10.5, y: 28 },
-  { name: "Liepāja",        clients: 6,  color: "#2563EB", x: 5,    y: 62 },
-  { name: "Rīga",           clients: 16, color: "#3B82F6", x: 46,   y: 30 },
-  { name: "Jūrmala",        clients: 1,  color: "#16A34A", x: 43,   y: 35 },
-  { name: "Salaspils",      clients: 1,  color: "#7C3AED", x: 44,   y: 40 },
-  { name: "Jelgava",        clients: 39, color: "#EAB308", x: 40,   y: 47 },
-  { name: "Dobele",         clients: 1,  color: "#06B6D4", x: 30,   y: 53 },
-  { name: "Bauskas novads", clients: 1,  color: "#92400E", x: 43,   y: 63 },
-  { name: "Ropažu novads",  clients: 1,  color: "#15803D", x: 57,   y: 22 },
-  { name: "Ogres novads",   clients: 2,  color: "#F97316", x: 73,   y: 25 },
-  { name: "Olaine",         clients: 1,  color: "#38BDF8", x: 62,   y: 50 },
-  { name: "Mārupes novads", clients: 1,  color: "#7C3AED", x: 82,   y: 60 },
-  { name: "Baldone",        clients: 1,  color: "#EC4899", x: 75,   y: 75 },
+const LOCATIONS = [
+  { id: 'ventspils',  name: 'Ventspils',      clients: 1,  color: '#DC2626' },
+  { id: 'liepaja',   name: 'Liepāja',        clients: 6,  color: '#2563EB' },
+  { id: 'riga',      name: 'Rīga',           clients: 16, color: '#3B82F6' },
+  { id: 'jurmala',   name: 'Jūrmala',        clients: 1,  color: '#16A34A' },
+  { id: 'salaspils', name: 'Salaspils',       clients: 1,  color: '#7C3AED' },
+  { id: 'jelgava',   name: 'Jelgava',        clients: 39, color: '#EAB308' },
+  { id: 'dobele',    name: 'Dobele',          clients: 1,  color: '#06B6D4' },
+  { id: 'bauskas',   name: 'Bauskas novads',  clients: 1,  color: '#92400E' },
+  { id: 'ropazi',    name: 'Ropažu novads',   clients: 1,  color: '#15803D' },
+  { id: 'ogre',      name: 'Ogres novads',    clients: 2,  color: '#F97316' },
+  { id: 'olaine',    name: 'Olaine',          clients: 1,  color: '#38BDF8' },
+  { id: 'marupe',    name: 'Mārupes novads',  clients: 1,  color: '#7C3AED' },
+  { id: 'baldone',   name: 'Baldone',         clients: 1,  color: '#EC4899' },
 ];
 
-const totalClients = locations.reduce((sum, l) => sum + l.clients, 0);
+const totalClients = LOCATIONS.reduce((sum, l) => sum + l.clients, 0);
 
 export default function MapModal({ isOpen, onClose }) {
   const { t } = useI18n();
-  const [selected, setSelected] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
+  const [hoveredId, setHoveredId] = useState(null);
 
   useEffect(() => {
-    if (!isOpen) { setSelected(null); return; }
+    if (!isOpen) { setSelectedId(null); setHoveredId(null); return; }
     const handleEsc = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', handleEsc);
     document.body.style.overflow = 'hidden';
@@ -38,6 +37,16 @@ export default function MapModal({ isOpen, onClose }) {
       document.body.style.overflow = '';
     };
   }, [isOpen, onClose]);
+
+  const handleLocationSelect = useCallback((loc) => {
+    setSelectedId((prev) => prev === loc.id ? null : loc.id);
+  }, []);
+
+  const handleHover = useCallback((id) => {
+    setHoveredId(id);
+  }, []);
+
+  const activeId = hoveredId || selectedId;
 
   return (
     <AnimatePresence>
@@ -77,33 +86,39 @@ export default function MapModal({ isOpen, onClose }) {
               </p>
             </div>
 
-            {/* Map image — dots are already in the image */}
-            <div className="px-4">
-              <img
-                src={MAP_IMAGE}
-                alt="Latvijas karte ar klientu atrašanās vietām"
-                className="w-full h-auto"
+            {/* SVG Map */}
+            <div className="px-4 md:px-6 py-2">
+              <LatviaSvgMap
+                onLocationSelect={handleLocationSelect}
+                selectedLocation={selectedId}
+                hoveredLocation={hoveredId}
+                onHoverLocation={handleHover}
               />
             </div>
 
-            {/* Legend chips */}
-            <div className="px-6 pt-4 pb-6">
+            {/* Interactive legend */}
+            <div className="px-6 pt-2 pb-6">
               <div className="flex flex-wrap justify-center gap-2.5">
-                {locations.map((loc) => (
-                  <button
-                    key={loc.name}
-                    onClick={() => setSelected(selected?.name === loc.name ? null : loc)}
-                    className={`flex items-center gap-2.5 rounded-full px-4 py-2 shadow-[0_1px_4px_rgba(0,0,0,0.06)] border transition-all duration-200
-                      ${selected?.name === loc.name
-                        ? 'bg-[#08233E] border-[#08233E]'
-                        : 'bg-white border-[#e8e0d4]/40 hover:border-[#C89B3C]/30'
-                      }`}
-                  >
-                    <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: loc.color }} />
-                    <span className={`font-body text-[12px] md:text-[13px] ${selected?.name === loc.name ? 'text-white/80' : 'text-[#08233E]/70'}`}>{loc.name}</span>
-                    <span className={`font-heading text-[13px] md:text-[14px] font-bold ${selected?.name === loc.name ? 'text-white' : 'text-[#08233E]'}`}>{loc.clients}</span>
-                  </button>
-                ))}
+                {LOCATIONS.map((loc) => {
+                  const isActive = activeId === loc.id;
+                  return (
+                    <button
+                      key={loc.id}
+                      onClick={() => handleLocationSelect(loc)}
+                      onMouseEnter={() => handleHover(loc.id)}
+                      onMouseLeave={() => handleHover(null)}
+                      className={`flex items-center gap-2.5 rounded-full px-4 py-2 shadow-[0_1px_4px_rgba(0,0,0,0.06)] border transition-all duration-200
+                        ${isActive
+                          ? 'bg-[#08233E] border-[#08233E] scale-105'
+                          : 'bg-white border-[#e8e0d4]/40 hover:border-[#C89B3C]/30'
+                        }`}
+                    >
+                      <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: loc.color }} />
+                      <span className={`font-body text-[12px] md:text-[13px] ${isActive ? 'text-white/80' : 'text-[#08233E]/70'}`}>{loc.name}</span>
+                      <span className={`font-heading text-[13px] md:text-[14px] font-bold ${isActive ? 'text-white' : 'text-[#08233E]'}`}>{loc.clients}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </motion.div>
