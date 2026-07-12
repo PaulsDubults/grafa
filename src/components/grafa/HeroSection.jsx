@@ -113,12 +113,12 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      {/* Left edge — cream paper strip from top to bottom */}
-      <div className="absolute left-0 top-0 bottom-0 w-[45%] pointer-events-none z-[1]">
+      {/* Right edge — cream paper texture, above filter but below hero image */}
+      <div className="absolute right-0 top-0 bottom-0 w-[55%] pointer-events-none z-[3]">
         <img
-          src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/0883b8d88_Screenshot2026-07-12at135951.png"
+          src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/2d48076a1_Screenshot2026-07-12at135951.png"
           alt=""
-          className="w-full h-full object-cover object-left"
+          className="w-full h-full object-cover object-right"
           style={{ opacity: 0.6, mixBlendMode: 'multiply' }}
           draggable={false}
         />
