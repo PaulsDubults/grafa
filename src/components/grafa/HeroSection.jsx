@@ -114,7 +114,7 @@ export default function HeroSection() {
       </div>
 
       {/* Right edge — cream paper texture, above filter but below hero image, left edge aligned with hero image */}
-      <div className="absolute top-0 bottom-0 w-[58%] pointer-events-none z-[3]" style={{ left: '42%' }}>
+      <div className="absolute top-0 bottom-0 w-[56%] pointer-events-none z-[3]" style={{ left: '44%' }}>
         <img
           src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/2d48076a1_Screenshot2026-07-12at135951.png"
           alt=""
