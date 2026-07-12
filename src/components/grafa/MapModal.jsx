@@ -77,61 +77,13 @@ export default function MapModal({ isOpen, onClose }) {
               </p>
             </div>
 
-            {/* Map with interactive dots */}
-            <div className="relative px-4">
+            {/* Map image — dots are already in the image */}
+            <div className="px-4">
               <img
                 src={MAP_IMAGE}
                 alt="Latvijas karte ar klientu atrašanās vietām"
                 className="w-full h-auto"
               />
-
-              {/* Clickable location dots */}
-              {locations.map((loc) => (
-                <button
-                  key={loc.name}
-                  className="absolute group"
-                  style={{ left: `${loc.x}%`, top: `${loc.y}%`, transform: 'translate(-50%, -50%)' }}
-                  onClick={() => setSelected(selected?.name === loc.name ? null : loc)}
-                >
-                  {/* Pulse ring */}
-                  <span
-                    className="absolute inset-0 rounded-full animate-ping opacity-30"
-                    style={{ backgroundColor: loc.color, animationDuration: '2.5s' }}
-                  />
-                  {/* Dot */}
-                  <span
-                    className="relative block w-3.5 h-3.5 md:w-4 md:h-4 rounded-full border-2 border-white shadow-md transition-transform duration-200 group-hover:scale-125"
-                    style={{ backgroundColor: loc.color }}
-                  />
-                </button>
-              ))}
-
-              {/* Tooltip for selected location */}
-              <AnimatePresence>
-                {selected && (
-                  <motion.div
-                    key={selected.name}
-                    className="absolute z-30 bg-white rounded-lg shadow-xl border border-[#e8e0d4]/60 px-4 py-3 min-w-[160px] pointer-events-none"
-                    style={{
-                      left: `${selected.x}%`,
-                      top: `${selected.y}%`,
-                      transform: selected.x > 60 ? 'translate(-105%, -110%)' : 'translate(15%, -110%)',
-                    }}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="flex items-center gap-2.5 mb-1">
-                      <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: selected.color }} />
-                      <span className="font-heading text-[14px] md:text-[15px] font-bold text-[#08233E]">{selected.name}</span>
-                    </div>
-                    <p className="font-body text-[12px] text-[#08233E]/50">
-                      {selected.clients} {selected.clients === 1 ? 'klients' : 'klienti'}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
             {/* Legend chips */}
