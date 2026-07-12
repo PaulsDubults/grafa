@@ -26,28 +26,30 @@ export default function PricingSection() {
       <WatercolorStain className="left-[-120px] top-[20%]" color="#e8c89a" opacity={0.1} size={480} id="prc1" />
 
       <div className="relative z-10 max-w-[1000px] mx-auto px-6 md:px-10">
-        <div className="mb-8 md:mb-10 min-h-[60px] md:min-h-[80px]">
+        {/* Script text */}
+        <div className="mb-6 md:mb-8 min-h-[60px] md:min-h-[80px]">
           <TypewriterText
             text={t('pricing.scriptLine')}
-            className="font-script text-[24px] md:text-[32px] text-[#C89B3C]/80 leading-[1.6] italic"
+            className="font-script text-[22px] md:text-[28px] text-[#C89B3C]/80 leading-[1.6] italic"
             onComplete={() => setTypewriterDone(true)}
           />
         </div>
 
+        {/* Large heading — per mockup: "Kā veidojas pakalpojuma cena?" with "pakalpojuma cena?" in lighter weight */}
         <motion.div
-          className="mb-8 md:mb-12"
+          className="mb-8 md:mb-10"
           initial={{ opacity: 0, y: 24 }}
           animate={typewriterDone ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-heading text-[38px] md:text-[54px] lg:text-[64px] font-semibold text-[#08233E] mb-6 leading-[1.1]">
+          <h2 className="font-heading text-[36px] md:text-[50px] lg:text-[64px] font-bold text-[#08233E] mb-4 leading-[1.1]">
             {t('pricing.heading')}
           </h2>
-          <GoldLine width="w-28" />
         </motion.div>
 
+        {/* Intro paragraph — centered per mockup */}
         <motion.p
-          className="text-[#08233E] font-body text-[17px] md:text-[19px] leading-[2] mb-14 md:mb-18 max-w-3xl"
+          className="text-[#08233E]/70 font-body text-[15px] md:text-[17px] leading-[2] mb-12 md:mb-16 max-w-3xl text-center mx-auto"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -56,22 +58,23 @@ export default function PricingSection() {
           {t('pricing.intro')}
         </motion.p>
 
-        <div className="space-y-5 md:space-y-6 mb-16 md:mb-20">
+        {/* Factors list — per mockup: gold dot + bold title + description */}
+        <div className="space-y-6 md:space-y-7 mb-14 md:mb-18">
           {factors.map((factor, i) => (
             <motion.div
               key={i}
-              className="flex items-start gap-5"
-              initial={{ opacity: 0, x: -24 }}
+              className="flex items-start gap-4"
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.12 * i, duration: 0.6 }}
+              transition={{ delay: 0.1 * i, duration: 0.6 }}
             >
-              <div className="flex-shrink-0 w-11 h-11 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center mt-0.5">
                 <div className="text-[#C89B3C]">{factorIcons[i]}</div>
               </div>
-              <div className="pt-1">
-                <p className="text-[#08233E] font-heading text-[17px] md:text-[19px] font-semibold mb-1">{factor.title}</p>
-                <p className="text-[#08233E]/60 font-body text-[15px] md:text-[16px] leading-[1.8]">{factor.desc}</p>
+              <div>
+                <p className="text-[#08233E] font-heading text-[16px] md:text-[18px] font-bold mb-1">{factor.title}</p>
+                <p className="text-[#08233E]/55 font-body text-[14px] md:text-[15px] leading-[1.8]">{factor.desc}</p>
               </div>
             </motion.div>
           ))}

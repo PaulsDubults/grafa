@@ -7,11 +7,12 @@ import WhyChooseSection from '@/components/grafa/WhyChooseSection';
 import PricingSection from '@/components/grafa/PricingSection';
 import KnowledgeSection from '@/components/grafa/KnowledgeSection';
 import AboutSection from '@/components/grafa/AboutSection';
-import JoinSection from '@/components/grafa/JoinSection';
-import CareersSection from '@/components/grafa/CareersSection';
+import JoinCareersSection from '@/components/grafa/JoinCareersSection';
 import ContactSection from '@/components/grafa/ContactSection';
 import Footer from '@/components/grafa/Footer';
 import WatercolorBg from '@/components/grafa/WatercolorBg';
+
+/* Page order per mockups: Hero → Pakalpojumi → Kāpēc izvēlas (with process + price box) → Cena → Zināšanu telpa → Par mums → Pievienojies+Karjera (combined dark) → Kontakti → Footer */
 
 export default function Home() {
   return (
@@ -29,10 +30,9 @@ export default function Home() {
       <KnowledgeSection />
       <SectionDivider />
       <AboutSection />
-      <JoinSection />
-      <SectionDivider />
-      <CareersSection />
       <SectionDivider flip />
+      <JoinCareersSection />
+      <SectionDivider />
       <ContactSection />
       <Footer />
     </div>
