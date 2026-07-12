@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Calendar, BookOpen } from 'lucide-react';
-import { FullFeather } from './Decorations';
+import { FullFeather, WatercolorStain, PaperTexture } from './Decorations';
 import TypewriterText from './TypewriterText';
 import { useI18n } from '@/lib/i18n';
-
-const BG_URL = 'https://media.base44.com/images/public/6a5361fb4451fc131553e07e/cdca4fadf_generated_def1557f.png';
 
 const LV_MONTHS = ['Janvāris', 'Februāris', 'Marts', 'Aprīlis', 'Maijs', 'Jūnijs', 'Jūlijs', 'Augusts', 'Septembris', 'Oktobris', 'Novembris', 'Decembris'];
 const LV_DAYS = ['Pr', 'Ot', 'Tr', 'Ce', 'Pk', 'Se', 'Sv'];
 
 const accountantReminders = {
   '2025-6-10': { title: 'Cieni savu grāmatvedi!', desc: 'Iesniedz dokumentus līdz 10. datumam.' },
-  '2025-6-15': { title: 'Pašnodarbinātajiem', desc: 'Atgādinām, ka tuvojas ceturkšņa VSAOI ziņojuma iesniegšanas termiņš. Savlaicīga iesniegšana palīdz izvairīties no nokavējumiem un soda sankcijām.' },
+  '2025-6-15': { title: 'Pašnodarbinātajiem', desc: 'Atgādinām, ka tuvojas ceturkšņa VSAOI ziņojuma iesniegšanas termiņš.' },
   '2025-6-23': { title: 'Nodokļu pārbaude', desc: 'Pārbaudī, vai nav neapmaksātu nodokļu maksājumu.' },
   '2025-6-31': { title: 'Mēneša pārskats', desc: 'Pārbaudī mēneša grāmatvedības pārskatu un finanšu rādītājus.' },
 };
 
 const trainingDates = {
-  '2025-6-20': { title: 'Apmācība pieejama', desc: 'Pieejams uzņēmuma darbinieku apmācībām grāmatvedības un nodokļu jautājumos.', status: 'free' },
+  '2025-6-20': { title: 'Apmācība pieejama', desc: 'Pieejams uzņēmuma darbinieku apmācībām.', status: 'free' },
   '2025-6-25': { title: 'Apmācība pieejama', desc: 'Pieejams uzņēmuma darbinieku apmācībām.', status: 'free' },
   '2025-6-27': { title: 'Rezervēts', desc: 'Šis datums jau ir rezervēts.', status: 'reserved' },
 };
@@ -27,7 +25,6 @@ function CalendarGrid({ year, month, highlights, onDateClick, selectedDate }) {
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const offset = firstDay === 0 ? 6 : firstDay - 1;
-
   const cells = [];
   for (let i = 0; i < offset; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
@@ -36,7 +33,7 @@ function CalendarGrid({ year, month, highlights, onDateClick, selectedDate }) {
     <div>
       <div className="grid grid-cols-7 gap-1 mb-2">
         {LV_DAYS.map((d) => (
-          <div key={d} className="text-center text-xs font-medium text-grafa-text-light py-1">{d}</div>
+          <div key={d} className="text-center text-[11px] font-medium text-[#08233E]/40 py-1 font-body">{d}</div>
         ))}
       </div>
       <div className="grid grid-cols-7 gap-1">
@@ -46,17 +43,16 @@ function CalendarGrid({ year, month, highlights, onDateClick, selectedDate }) {
           const hasHighlight = highlights[key];
           const isSelected = selectedDate === key;
           const status = hasHighlight?.status;
-
           return (
             <button
               key={i}
               onClick={() => hasHighlight && onDateClick(key)}
-              className={`w-8 h-8 lg:w-9 lg:h-9 rounded-lg text-sm flex items-center justify-center transition-all
+              className={`w-8 h-8 lg:w-9 lg:h-9 rounded-lg text-[13px] font-body flex items-center justify-center transition-all
                 ${hasHighlight ? 'cursor-pointer font-bold' : 'cursor-default'}
-                ${isSelected ? 'bg-grafa-gold text-white ring-2 ring-grafa-gold/50' :
-                  status === 'reserved' ? 'bg-grafa-navy/15 text-grafa-navy' :
-                  hasHighlight ? 'bg-grafa-gold/20 text-grafa-navy hover:bg-grafa-gold/40' :
-                  'text-grafa-text hover:bg-grafa-cream/60'}
+                ${isSelected ? 'bg-[#C89B3C] text-white ring-2 ring-[#C89B3C]/30' :
+                  status === 'reserved' ? 'bg-[#08233E]/10 text-[#08233E]' :
+                  hasHighlight ? 'bg-[#C89B3C]/15 text-[#08233E] hover:bg-[#C89B3C]/30' :
+                  'text-[#08233E]/70 hover:bg-[#F5EDE0]/60'}
               `}
             >
               {day}
@@ -72,72 +68,36 @@ function CalendarPanel({ title, icon: Icon, highlights, color }) {
   const [year, setYear] = useState(2025);
   const [month, setMonth] = useState(6);
   const [selectedDate, setSelectedDate] = useState(null);
-
   const selectedInfo = selectedDate ? highlights[selectedDate] : null;
 
-  const prevMonth = () => {
-    if (month === 0) { setMonth(11); setYear(year - 1); }
-    else setMonth(month - 1);
-    setSelectedDate(null);
-  };
-  const nextMonth = () => {
-    if (month === 11) { setMonth(0); setYear(year + 1); }
-    else setMonth(month + 1);
-    setSelectedDate(null);
-  };
+  const prevMonth = () => { if (month === 0) { setMonth(11); setYear(year - 1); } else setMonth(month - 1); setSelectedDate(null); };
+  const nextMonth = () => { if (month === 11) { setMonth(0); setYear(year + 1); } else setMonth(month + 1); setSelectedDate(null); };
 
   return (
-    <div className="bg-white/70 backdrop-blur border border-grafa-gold/20 rounded-2xl overflow-hidden">
-      {/* Header */}
-      <div className={`p-4 ${color === 'navy' ? 'bg-grafa-navy/10' : 'bg-grafa-gold/10'}`}>
+    <div className="bg-white/80 backdrop-blur border border-[#e8e0d4]/50 rounded-xl overflow-hidden">
+      <div className={`p-4 ${color === 'navy' ? 'bg-[#08233E]/[0.06]' : 'bg-[#C89B3C]/[0.08]'}`}>
         <div className="flex items-center gap-2 mb-1">
-          <Icon size={20} className={color === 'navy' ? 'text-grafa-navy' : 'text-grafa-gold'} />
-          <h3 className="font-heading text-grafa-navy font-bold text-lg uppercase tracking-wider">{title}</h3>
+          <Icon size={18} className={color === 'navy' ? 'text-[#08233E]' : 'text-[#C89B3C]'} strokeWidth={1.5} />
+          <h3 className="font-heading text-[#08233E] font-semibold text-[15px] uppercase tracking-wider">{title}</h3>
         </div>
-        <p className="text-grafa-text-light text-xs">
+        <p className="text-[#08233E]/40 text-[11px] font-body">
           {color === 'navy' ? 'Svarīgākie termiņi un draudzīgi atgādinājumi uzņēmējiem.' : 'Piedāvājam datumus uzņēmumu darbinieku apmācībām.'}
         </p>
       </div>
-
       <div className="p-4">
-        {/* Month nav */}
         <div className="flex items-center justify-between mb-4">
-          <button onClick={prevMonth} className="p-1 hover:bg-grafa-cream rounded-lg transition-colors">
-            <ChevronLeft size={18} className="text-grafa-text-light" />
-          </button>
-          <span className="font-heading text-grafa-navy font-semibold uppercase text-sm tracking-wider">
-            {LV_MONTHS[month]} {year}
-          </span>
-          <button onClick={nextMonth} className="p-1 hover:bg-grafa-cream rounded-lg transition-colors">
-            <ChevronRight size={18} className="text-grafa-text-light" />
-          </button>
+          <button onClick={prevMonth} className="p-1 hover:bg-[#F5EDE0] rounded-lg transition-colors"><ChevronLeft size={16} className="text-[#08233E]/40" /></button>
+          <span className="font-heading text-[#08233E] font-semibold uppercase text-[13px] tracking-wider">{LV_MONTHS[month]} {year}</span>
+          <button onClick={nextMonth} className="p-1 hover:bg-[#F5EDE0] rounded-lg transition-colors"><ChevronRight size={16} className="text-[#08233E]/40" /></button>
         </div>
-
-        <CalendarGrid
-          year={year}
-          month={month}
-          highlights={highlights}
-          onDateClick={setSelectedDate}
-          selectedDate={selectedDate}
-        />
-
-        {/* Selected date info */}
+        <CalendarGrid year={year} month={month} highlights={highlights} onDateClick={setSelectedDate} selectedDate={selectedDate} />
         {selectedInfo && (
-          <motion.div
-            className="mt-4 p-4 bg-grafa-cream/50 rounded-xl border border-grafa-gold/15"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <p className="font-heading text-grafa-navy font-semibold text-sm mb-1">
-              {selectedDate.split('-')[2]}. {LV_MONTHS[parseInt(selectedDate.split('-')[1])]}
-            </p>
-            <h4 className="text-grafa-navy font-medium mb-1">{selectedInfo.title}</h4>
-            <p className="text-grafa-text-light text-sm">{selectedInfo.desc}</p>
+          <motion.div className="mt-4 p-3.5 bg-[#F5EDE0]/50 rounded-lg border border-[#C89B3C]/10" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
+            <p className="font-heading text-[#08233E] font-semibold text-[13px] mb-1">{selectedDate.split('-')[2]}. {LV_MONTHS[parseInt(selectedDate.split('-')[1])]}</p>
+            <h4 className="text-[#08233E] font-medium text-[14px] mb-0.5">{selectedInfo.title}</h4>
+            <p className="text-[#08233E]/50 text-[12px] font-body">{selectedInfo.desc}</p>
             {selectedInfo.status === 'free' && (
-              <button className="mt-3 bg-grafa-gold text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-grafa-gold-light transition-colors">
-                Pieteikt rezervāciju
-              </button>
+              <button className="mt-3 bg-[#C89B3C] text-white px-4 py-2 rounded-lg text-[12px] font-body font-medium hover:bg-[#b8973f] transition-colors">Pieteikt rezervāciju</button>
             )}
           </motion.div>
         )}
@@ -148,94 +108,63 @@ function CalendarPanel({ title, icon: Icon, highlights, color }) {
 
 export default function KnowledgeSection() {
   const { t } = useI18n();
+  const [typewriterDone, setTypewriterDone] = useState(false);
 
   return (
-    <section
-      id="zinasanu-telpa"
-      className="relative py-20 lg:py-32 overflow-hidden"
-      style={{ backgroundImage: `url(${BG_URL})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-    >
-      <div className="absolute inset-0 bg-grafa-paper/[0.88]" />
+    <section id="zinasanu-telpa" className="relative py-16 md:py-24 overflow-hidden">
+      <PaperTexture id="knwP" />
+      <FullFeather className="w-[260px] md:w-[400px] h-[320px] md:h-[500px] right-[-40px] md:right-[-10px] top-[3%]" opacity={0.18} />
+      <WatercolorStain className="left-[-100px] top-[20%]" color="#b8cde8" opacity={0.1} size={480} id="knw1" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        {/* Feather */}
-        <div className="absolute right-4 lg:right-12 top-4 opacity-40">
-          <FullFeather className="w-[200px] md:w-[300px] h-[250px] md:h-[380px] -rotate-12" opacity={0.4} />
-        </div>
-
+      <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
         {/* Script text */}
-        <div className="mb-4 min-h-[50px]">
+        <div className="mb-6 md:mb-8 min-h-[50px] md:min-h-[60px]">
           <TypewriterText
             text={t('knowledge.scriptLine')}
-            className="font-script text-[24px] lg:text-[30px] text-grafa-gold/80 leading-[1.6] italic"
+            className="font-script text-[18px] md:text-[22px] text-[#C89B3C]/70 leading-[1.6] italic"
+            onComplete={() => setTypewriterDone(true)}
           />
         </div>
 
+        {/* Heading with gold divider */}
         <motion.div
+          className="mb-3"
+          initial={{ opacity: 0, y: 24 }}
+          animate={typewriterDone ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+        >
+          <h2 className="font-heading text-[38px] md:text-[52px] lg:text-[60px] font-semibold text-[#08233E] mb-2 leading-[1.1]">
+            {t('knowledge.heading')}
+          </h2>
+          <p className="text-[#08233E]/50 font-body text-[14px] md:text-[15px] mb-4">{t('knowledge.subtitle')}</p>
+          <div className="w-full h-[1.5px] bg-gradient-to-r from-[#C89B3C]/60 via-[#E8D1A0]/40 to-transparent" />
+        </motion.div>
+
+        {/* Two calendars */}
+        <motion.div
+          className="grid md:grid-cols-2 gap-5 lg:gap-6 mt-8 md:mt-10"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ delay: 0.15, duration: 0.7 }}
         >
-          <h2 className="text-4xl lg:text-6xl font-heading font-bold text-grafa-navy mb-2 uppercase tracking-wider">
-            {t('knowledge.heading')}
-          </h2>
-          <p className="text-grafa-text-light text-base lg:text-lg mb-10">
-            {t('knowledge.subtitle')}
-          </p>
-        </motion.div>
-
-        {/* Book-style two calendars */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-        >
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-            <CalendarPanel
-              title="Grāmatveža kalendārs"
-              icon={Calendar}
-              highlights={accountantReminders}
-              color="navy"
-            />
-            <CalendarPanel
-              title="Apmācību kalendārs"
-              icon={BookOpen}
-              highlights={trainingDates}
-              color="gold"
-            />
-          </div>
+          <CalendarPanel title="Grāmatveža kalendārs" icon={Calendar} highlights={accountantReminders} color="navy" />
+          <CalendarPanel title="Apmācību kalendārs" icon={BookOpen} highlights={trainingDates} color="gold" />
         </motion.div>
 
         {/* Legend */}
-        <motion.div
-          className="mt-6"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-grafa-text-light">
-            <span className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-grafa-gold" /> Brīvs</span>
-            <span className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-grafa-navy/30" /> Rezervēts</span>
-            <span className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-gray-300" /> Nav plānotas apmācības</span>
-          </div>
+        <motion.div className="mt-5 flex flex-wrap items-center justify-center gap-5 text-[12px] font-body text-[#08233E]/45" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3, duration: 0.5 }}>
+          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#C89B3C]" /> Brīvs</span>
+          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#08233E]/25" /> Rezervēts</span>
+          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-gray-300" /> Nav plānotas apmācības</span>
         </motion.div>
 
-        <motion.div
-          className="mt-8"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          <div className="bg-white/50 border border-grafa-gold/20 rounded-xl p-4 text-center">
-            <p className="text-grafa-text text-sm">
-              <span className="text-grafa-gold mr-1">ℹ</span>
-              Apmācības organizējam Jūsu uzņēmuma telpās ērtā laikā, kas piemērots Jūsu komandai.
-            </p>
-          </div>
+        {/* Info note */}
+        <motion.div className="mt-5 bg-white/60 border border-[#e8e0d4]/50 rounded-lg p-3.5 text-center" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4, duration: 0.5 }}>
+          <p className="text-[#08233E]/60 text-[13px] font-body">
+            <span className="text-[#C89B3C] mr-1">ℹ</span>
+            Apmācības organizējam Jūsu uzņēmuma telpās ērtā laikā, kas piemērots Jūsu komandai.
+          </p>
         </motion.div>
       </div>
     </section>
