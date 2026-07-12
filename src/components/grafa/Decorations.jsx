@@ -12,21 +12,21 @@ const ROSE = '#c4868a';
 const FEATHER_IMG_1 = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/27f20dca4_image.png";
 const FEATHER_IMG_2 = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/047b21e0d_image.png";
 
-/* Base feather image component — renders the full feather image with object-contain */
+/* Base feather image component — renders the full feather image with object-contain, mix-blend-mode removes white bg */
 function FeatherImage({ className = '', opacity = 0.3, rotate = 0, flip = false, src = FEATHER_IMG_1 }) {
   const transforms = [];
   if (flip) transforms.push('scaleX(-1)');
   if (rotate) transforms.push(`rotate(${rotate}deg)`);
   return (
     <motion.div
-      className={`absolute pointer-events-none overflow-hidden ${className}`}
+      className={`absolute pointer-events-none overflow-hidden z-20 ${className}`}
       style={{ transform: transforms.length ? transforms.join(' ') : undefined }}
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 1.5 }}
     >
-      <img src={src} alt="" className="w-full h-full object-contain" style={{ opacity }} draggable={false} />
+      <img src={src} alt="" className="w-full h-full object-contain" style={{ opacity, mixBlendMode: 'multiply' }} draggable={false} />
     </motion.div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import TypewriterText from './TypewriterText';
-import { FullFeather, WatercolorStain, PaperTexture } from './Decorations';
+import { FullFeather, HalfFeather, WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const factorIcons = [
@@ -21,7 +21,8 @@ export default function PricingSection() {
   return (
     <section id="cena" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="prcP" />
-      <FullFeather className="w-[260px] md:w-[400px] h-[320px] md:h-[500px] right-[-40px] md:right-[-10px] top-[5%]" opacity={0.18} />
+      <HalfFeather className="w-[120px] md:w-[200px] h-[200px] md:h-[350px] right-[-10px] md:right-[30px] top-[8%]" opacity={0.2} />
+      <FullFeather className="w-[200px] md:w-[320px] h-[280px] md:h-[450px] left-[-50px] md:left-[-20px] bottom-[3%]" opacity={0.15} flip />
       <WatercolorStain className="left-[-120px] top-[20%]" color="#e8c89a" opacity={0.1} size={480} id="prc1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">

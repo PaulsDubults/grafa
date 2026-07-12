@@ -4,7 +4,7 @@ import { Briefcase } from 'lucide-react';
 import TypewriterText from './TypewriterText';
 import ApplicationForm from './ApplicationForm';
 import VacancyDetail from './VacancyDetail';
-import { FullFeather } from './Decorations';
+import { FullFeather, HalfFeather } from './Decorations';
 import { base44 } from '@/api/base44Client';
 import { useI18n } from '@/lib/i18n';
 
@@ -38,7 +38,8 @@ export default function JoinCareersSection() {
         <svg width="100%" height="100%"><filter id="jcP"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#jcP)"/></svg>
       </div>
 
-      <FullFeather className="w-[200px] md:w-[320px] h-[250px] md:h-[400px] left-[-30px] md:left-[-10px] top-[-10px]" opacity={0.1} />
+      <FullFeather className="w-[160px] md:w-[260px] h-[220px] md:h-[370px] left-[-30px] md:left-[-10px] top-[2%]" opacity={0.12} />
+      <HalfFeather className="w-[130px] md:w-[200px] h-[190px] md:h-[320px] right-[-20px] md:right-[10px] bottom-[5%]" opacity={0.1} flip />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
         {/* Script text */}

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import TypewriterText from './TypewriterText';
-import { FullFeather, WatercolorStain, PaperTexture } from './Decorations';
+import { FullFeather, HalfFeather, WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function ContactSection() {
@@ -24,7 +24,8 @@ export default function ContactSection() {
   return (
     <section id="kontakti" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="contP" />
-      <FullFeather className="w-[180px] md:w-[280px] h-[220px] md:h-[350px] right-[-20px] md:right-[10px] top-[0%]" opacity={0.16} />
+      <HalfFeather className="w-[130px] md:w-[200px] h-[200px] md:h-[330px] right-[-10px] md:right-[20px] top-[3%]" opacity={0.2} />
+      <FullFeather className="w-[150px] md:w-[240px] h-[220px] md:h-[360px] left-[-40px] md:left-[-10px] bottom-[8%]" opacity={0.15} flip />
       <WatercolorStain className="left-[-60px] bottom-[-30px]" color="#b8cde8" opacity={0.1} size={500} id="ct1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">

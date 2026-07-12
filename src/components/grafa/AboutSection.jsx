@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FullFeather, WatercolorStain, PaperTexture } from './Decorations';
+import { FullFeather, HalfFeather, WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 export default function AboutSection() {
@@ -11,7 +11,8 @@ export default function AboutSection() {
   return (
     <section id="par-mums" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="aboutP" />
-      <FullFeather className="w-[260px] md:w-[400px] h-[320px] md:h-[500px] left-[-50px] md:left-[-20px] top-[8%]" opacity={0.16} />
+      <HalfFeather className="w-[130px] md:w-[210px] h-[200px] md:h-[340px] left-[-30px] md:left-[0px] top-[5%]" opacity={0.2} />
+      <FullFeather className="w-[170px] md:w-[280px] h-[250px] md:h-[400px] right-[-40px] md:right-[-10px] bottom-[5%]" opacity={0.16} flip />
       <WatercolorStain className="right-[-120px] top-[18%]" color="#e0b5b0" opacity={0.1} size={500} id="abt1" />
       <WatercolorStain className="left-[-100px] bottom-[-40px]" color="#e8c89a" opacity={0.08} size={400} id="abt2" />
 

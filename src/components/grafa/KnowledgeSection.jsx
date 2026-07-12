@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Calendar, BookOpen } from 'lucide-react';
-import { FullFeather, WatercolorStain, PaperTexture } from './Decorations';
+import { FullFeather, HalfFeather, WatercolorStain, PaperTexture } from './Decorations';
 import TypewriterText from './TypewriterText';
 import { useI18n } from '@/lib/i18n';
 
@@ -113,7 +113,8 @@ export default function KnowledgeSection() {
   return (
     <section id="zinasanu-telpa" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="knwP" />
-      <FullFeather className="w-[260px] md:w-[400px] h-[320px] md:h-[500px] right-[-40px] md:right-[-10px] top-[3%]" opacity={0.18} />
+      <FullFeather className="w-[150px] md:w-[250px] h-[220px] md:h-[380px] right-[-20px] md:right-[15px] top-[5%]" opacity={0.22} />
+      <HalfFeather className="w-[120px] md:w-[180px] h-[180px] md:h-[300px] left-[-30px] md:left-[0px] bottom-[8%]" opacity={0.16} flip />
       <WatercolorStain className="left-[-100px] top-[20%]" color="#b8cde8" opacity={0.1} size={480} id="knw1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
