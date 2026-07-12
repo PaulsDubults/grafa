@@ -128,7 +128,7 @@ export default function WhyChooseSection() {
               <div className="space-y-2.5">
                 {checkmarks.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <svg viewBox="0 0 20 20" fill="none" className="w-4.5 h-4.5 mt-0.5 flex-shrink-0">
+                    <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 mt-0.5 flex-shrink-0">
                       <circle cx="10" cy="10" r="9" fill="#C89B3C" opacity="0.12"/>
                       <path d="M6,10 L9,13 L14,7" stroke="#C89B3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>

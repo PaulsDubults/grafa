@@ -87,7 +87,7 @@ export default function AboutSection() {
               transition={{ delay: 0.08 + i * 0.06, duration: 0.5 }}
             >
               <div className="w-12 h-12 rounded-full bg-[#C89B3C]/[0.1] flex items-center justify-center mx-auto mb-4">
-                <svg className="w-4.5 h-4.5 text-[#C89B3C]" viewBox="0 0 20 20" fill="currentColor"><path d="M10,0 L12,7 L20,8 L14,13 L16,20 L10,16 L4,20 L6,13 L0,8 L8,7 Z" opacity="0.6"/></svg>
+                <svg className="w-5 h-5 text-[#C89B3C]" viewBox="0 0 20 20" fill="currentColor"><path d="M10,0 L12,7 L20,8 L14,13 L16,20 L10,16 L4,20 L6,13 L0,8 L8,7 Z" opacity="0.6"/></svg>
               </div>
               <h4 className="font-heading text-[16px] md:text-[17px] font-semibold text-[#08233E] mb-1.5">{val.title}</h4>
               <p className="text-[#08233E]/45 font-body text-[13px] md:text-[14px] leading-[1.7]">{val.desc}</p>

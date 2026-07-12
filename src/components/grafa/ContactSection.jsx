@@ -69,7 +69,7 @@ export default function ContactSection() {
               <ContactItem icon={Mail} label={t('contact.emailLabel')} desc={t('contact.emailDesc')} value="firmagrafa@gmail.com" href="mailto:firmagrafa@gmail.com" />
               <div className="flex items-start gap-3.5 group">
                 <div className="w-10 h-10 rounded-full bg-[#C89B3C]/[0.1] flex items-center justify-center group-hover:bg-[#C89B3C]/[0.18] transition-all duration-400">
-                  <Clock className="w-4.5 h-4.5 text-[#C89B3C]" strokeWidth={1.5} />
+                  <Clock className="w-5 h-5 text-[#C89B3C]" strokeWidth={1.5} />
                 </div>
                 <div>
                   <p className="font-heading text-[14px] font-semibold text-[#08233E] mb-0.5">{t('contact.hoursLabel')}</p>
@@ -134,7 +134,7 @@ function ContactItem({ icon: Icon, label, desc, value, href }) {
   return (
     <div className="flex items-start gap-3.5 group">
       <div className="w-10 h-10 rounded-full bg-[#C89B3C]/[0.1] flex items-center justify-center group-hover:bg-[#C89B3C]/[0.18] transition-all duration-400">
-        <Icon className="w-4.5 h-4.5 text-[#C89B3C]" strokeWidth={1.5} />
+        <Icon className="w-5 h-5 text-[#C89B3C]" strokeWidth={1.5} />
       </div>
       <div>
         <p className="font-heading text-[14px] font-semibold text-[#08233E] mb-0.5">{label}</p>

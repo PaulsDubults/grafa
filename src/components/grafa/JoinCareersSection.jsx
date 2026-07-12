@@ -118,7 +118,7 @@ export default function JoinCareersSection() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#C89B3C]/15 flex items-center justify-center">
-                      <Briefcase className="w-4.5 h-4.5 text-[#C89B3C]" strokeWidth={1.5} />
+                      <Briefcase className="w-5 h-5 text-[#C89B3C]" strokeWidth={1.5} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="font-heading text-[17px] md:text-[19px] font-semibold text-white mb-1.5">{vacancy.title}</h3>
