@@ -24,8 +24,8 @@ export default function ContactSection() {
   return (
     <section id="kontakti" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="contP" />
-      <HalfFeather className="w-[130px] md:w-[200px] h-[200px] md:h-[330px] right-[-10px] md:right-[20px] top-[3%]" opacity={0.2} />
-      <FullFeather className="w-[150px] md:w-[240px] h-[220px] md:h-[360px] left-[-40px] md:left-[-10px] bottom-[8%]" opacity={0.15} flip />
+      <HalfFeather className="w-[270px] md:w-[430px] h-[370px] md:h-[630px] right-[-50px] md:right-[-10px] top-[0%]" opacity={0.6} />
+      <FullFeather className="w-[260px] md:w-[420px] h-[360px] md:h-[600px] left-[-60px] md:left-[-20px] bottom-[3%]" opacity={0.5} flip />
       <WatercolorStain className="left-[-60px] bottom-[-30px]" color="#b8cde8" opacity={0.1} size={500} id="ct1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">

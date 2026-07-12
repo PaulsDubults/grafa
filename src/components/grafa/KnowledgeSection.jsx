@@ -113,8 +113,8 @@ export default function KnowledgeSection() {
   return (
     <section id="zinasanu-telpa" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="knwP" />
-      <FullFeather className="w-[150px] md:w-[250px] h-[220px] md:h-[380px] right-[-20px] md:right-[15px] top-[5%]" opacity={0.22} />
-      <HalfFeather className="w-[120px] md:w-[180px] h-[180px] md:h-[300px] left-[-30px] md:left-[0px] bottom-[8%]" opacity={0.16} flip />
+      <FullFeather className="w-[300px] md:w-[480px] h-[400px] md:h-[680px] right-[-50px] md:right-[-10px] top-[0%]" opacity={0.65} />
+      <HalfFeather className="w-[240px] md:w-[380px] h-[320px] md:h-[550px] left-[-50px] md:left-[-15px] bottom-[3%]" opacity={0.5} flip />
       <WatercolorStain className="left-[-100px] top-[20%]" color="#b8cde8" opacity={0.1} size={480} id="knw1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
