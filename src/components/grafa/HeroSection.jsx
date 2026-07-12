@@ -113,6 +113,17 @@ export default function HeroSection() {
         </svg>
       </div>
 
+      {/* Left edge — cream paper strip from top to bottom */}
+      <div className="absolute left-0 top-0 bottom-0 w-[45%] pointer-events-none z-[1]">
+        <img
+          src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/0883b8d88_Screenshot2026-07-12at135951.png"
+          alt=""
+          className="w-full h-full object-cover object-left"
+          style={{ opacity: 0.6, mixBlendMode: 'multiply' }}
+          draggable={false}
+        />
+      </div>
+
       {/* Watercolor accent */}
       <div className="absolute right-[-120px] top-[15%] pointer-events-none" style={{ width: 500, height: 350 }}>
         <svg viewBox="0 0 600 420" className="w-full h-full" style={{ opacity: 0.08 }}>
