@@ -119,7 +119,7 @@ export default function HeroSection() {
           src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/2d48076a1_Screenshot2026-07-12at135951.png"
           alt=""
           className="w-full h-full object-cover object-right"
-          style={{ opacity: 0.6, mixBlendMode: 'multiply' }}
+          style={{ opacity: 0.45, mixBlendMode: 'multiply' }}
           draggable={false}
         />
       </div>
