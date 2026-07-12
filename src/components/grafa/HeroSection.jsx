@@ -118,10 +118,9 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      {/* Hero image — full right side from top to bottom */}
+      {/* Hero image — full right half from top to bottom, never crossing the center line */}
       <motion.div
-        className="hidden lg:block absolute z-[5] pointer-events-none top-0 bottom-0 right-0"
-        style={{ left: '42%' }}
+        className="hidden lg:block absolute z-[5] pointer-events-none top-0 bottom-0 right-0 left-1/2"
         initial={{ opacity: 0, scale: 0.97 }}
         animate={{
           opacity: allRevealed ? 1 : 0,
