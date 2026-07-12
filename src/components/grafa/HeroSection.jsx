@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HeroMiniMap from './HeroMiniMap';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -81,27 +81,7 @@ export default function HeroSection() {
 
   const logoDelay = 0.3;
 
-  const textRef = useRef(null);
-  const firstLineRef = useRef(null);
-  const [imgStyle, setImgStyle] = useState({});
 
-  const measureText = useCallback(() => {
-    if (!textRef.current || !firstLineRef.current) return;
-    const textRect = textRef.current.getBoundingClientRect();
-    const firstLineRect = firstLineRef.current.getBoundingClientRect();
-    const bottom = textRect.bottom;
-    setImgStyle({
-      top: firstLineRect.top + window.scrollY,
-      left: textRect.right,
-      height: bottom - firstLineRect.top,
-    });
-  }, []);
-
-  useEffect(() => {
-    measureText();
-    window.addEventListener('resize', measureText);
-    return () => window.removeEventListener('resize', measureText);
-  }, [measureText, visibleCount]);
 
   return (
     <section id="sakumlapa" className="relative w-full min-h-screen overflow-hidden">
@@ -138,30 +118,23 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      {/* Hero image — positioned to match text block height, from text right edge to screen right */}
-      {imgStyle.height > 0 && (
-        <motion.div
-          className="hidden lg:block absolute z-[5] pointer-events-none"
-          style={{
-            top: imgStyle.top,
-            left: imgStyle.left,
-            right: 0,
-            height: imgStyle.height,
-          }}
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{
-            opacity: allRevealed ? 1 : 0,
-            scale: allRevealed ? 1 : 0.97
-          }}
-          transition={{ delay: logoDelay, duration: 1.2, ease: 'easeOut' }}>
-          
-          <img
-            src={HERO_IMG}
-            alt="SIA firma GRĀFA — piramīda, spalva, logotips"
-            className="w-full h-full object-contain object-right-top" />
-          
-        </motion.div>
-      )}
+      {/* Hero image — full right side from top to bottom */}
+      <motion.div
+        className="hidden lg:block absolute z-[5] pointer-events-none top-0 bottom-0 right-0"
+        style={{ left: '42%' }}
+        initial={{ opacity: 0, scale: 0.97 }}
+        animate={{
+          opacity: allRevealed ? 1 : 0,
+          scale: allRevealed ? 1 : 0.97
+        }}
+        transition={{ delay: logoDelay, duration: 1.2, ease: 'easeOut' }}>
+        
+        <img
+          src={HERO_IMG}
+          alt="SIA firma GRĀFA — piramīda, spalva, logotips"
+          className="w-full h-full object-contain object-center" />
+        
+      </motion.div>
 
       {/* Mobile hero image */}
       <motion.div
@@ -182,12 +155,12 @@ export default function HeroSection() {
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 pt-6 md:pt-8">
         {/* Left side — numbered story lines */}
-        <div ref={textRef} className="relative z-20 pt-2 md:pt-4 lg:pt-10 lg:w-[42%] lg:pr-6">
+        <div className="relative z-20 pt-2 md:pt-4 lg:pt-10 lg:w-[42%] lg:pr-6">
           <div className="mb-4">
             <LanguageSwitcher />
           </div>
           {storyLines.map((line, i) =>
-          <div key={`${i}-${line.slice(0, 10)}`} ref={i === 0 ? firstLineRef : undefined}>
+          <div key={`${i}-${line.slice(0, 10)}`}>
             <StoryLine text={line} index={i} isVisible={i < visibleCount} boldWords={boldWords} />
           </div>
           )}
