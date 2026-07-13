@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useI18n } from '@/lib/i18n';
-
 const sections = [
-  { id: 'sakumlapa', labelKey: 'nav.home' },
-  { id: 'pakalpojumi', labelKey: 'nav.services' },
-  { id: 'kapec-izvel', labelKey: 'whyChoose.heading' },
-  { id: 'zinasanu-telpa', labelKey: 'knowledge.heading' },
-  { id: 'pievienojies', labelKey: 'careers.heading' },
-  { id: 'kontakti', labelKey: 'contact.heading' },
+  { id: 'sakumlapa', label: 'Sākumlapa' },
+  { id: 'pakalpojumi', label: 'Pakalpojumi' },
+  { id: 'kapec-izvel', label: 'Kāpēc firma GRĀFA?' },
+  { id: 'zinasanu-telpa', label: 'Zināšanu telpa' },
+  { id: 'pievienojies', label: 'Pievienojies komandai' },
+  { id: 'kontakti', label: 'Tiekamies' },
 ];
 
 export default function SectionNav() {
-  const { t } = useI18n();
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState(null);
   const [visible, setVisible] = useState(false);
@@ -65,7 +62,7 @@ export default function SectionNav() {
           {sections.map((section, i) => {
             const isActive = activeIndex === i;
             const isHovered = hoverIndex === i;
-            const showLabel = isHovered || isActive;
+            const showLabel = isHovered;
 
             return (
               <div
@@ -101,7 +98,7 @@ export default function SectionNav() {
                           ? 'bg-[#08233E] text-white border-[#08233E]'
                           : 'bg-white text-[#08233E] border-[#e8e0d4]/60'
                         }`}>
-                        {t(section.labelKey)}
+                        {section.label}
                       </div>
                     </motion.div>
                   )}
