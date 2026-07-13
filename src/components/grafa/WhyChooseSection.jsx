@@ -74,6 +74,17 @@ export default function WhyChooseSection() {
           ))}
         </div>
 
+        {/* Experience heading */}
+        <motion.h3
+          className="font-heading text-[22px] md:text-[28px] font-semibold text-[#08233E] mb-6 md:mb-8 text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          {t('whyChoose.experienceHeading')}
+        </motion.h3>
+
         {/* Stats row */}
         <motion.div
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mb-12 md:mb-14"
@@ -200,30 +211,26 @@ export default function WhyChooseSection() {
                   </div>
                 ))}
               </div>
-              <p className="font-body text-[11px] text-[#08233E]/40 mt-4 leading-[1.6]">{t('whyChoose.trustNote')}</p>
             </div>
           </div>
-        </motion.div>
-
-        {/* CTA button — scroll to pricing section */}
-        <motion.button
-          onClick={scrollToPricing}
-          className="w-full relative bg-[#08233E] rounded-xl p-5 md:p-6 overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-[0_8px_32px_rgba(8,35,62,0.2)]"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent 5%, #C89B3C 25%, #E8D1A0 50%, #C89B3C 75%, transparent 95%)' }} />
-          <div className="flex items-center justify-center gap-3">
-            <span className="font-heading text-[15px] md:text-[17px] font-semibold text-white group-hover:text-[#E8D1A0] transition-colors">
-              {t('whyChoose.pricingCta')}
-            </span>
-            <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-[#C89B3C] group-hover:translate-x-1 transition-transform">
-              <path d="M5,12 L19,12 M14,7 L19,12 L14,17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+          {/* CTA card — bottom right, clickable to pricing */}
+          <div className="flex justify-end mt-6">
+            <button
+              onClick={scrollToPricing}
+              className="flex items-center gap-4 bg-[#F5EDE0]/60 border border-[#C89B3C]/30 rounded-xl p-4 md:p-5 cursor-pointer group transition-all duration-400 hover:border-[#C89B3C]/60 hover:shadow-[0_4px_20px_rgba(201,168,76,0.12)] max-w-[320px]"
+            >
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center group-hover:bg-[#C89B3C]/[0.2] transition-colors">
+                <svg viewBox="0 0 48 48" fill="none" className="w-7 h-7">
+                  <path d="M24,6 L42,16 L42,30 C42,38 34,46 24,50 C14,46 6,38 6,30 L6,16 Z" stroke="#C89B3C" strokeWidth="1.3" fill="none"/>
+                  <path d="M18,28 L22,32 L30,22" stroke="#C89B3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <p className="font-body text-[12px] md:text-[13px] text-[#08233E]/70 leading-[1.6] text-left group-hover:text-[#08233E] transition-colors">
+                {t('whyChoose.pricingCta')}
+              </p>
+            </button>
           </div>
-        </motion.button>
+        </motion.div>
       </div>
     </section>
   );
