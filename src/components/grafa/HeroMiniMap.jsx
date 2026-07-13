@@ -20,7 +20,7 @@ export default function HeroMiniMap() {
   return (
     <>
       <div>
-        <p className="text-[11px] font-body text-[#08233E]/40 mb-3 italic">
+        <p className="text-[11px] font-body text-[#08233E]/40 mb-3 italic font-semibold">
           {t('miniMap.subtitle')}
         </p>
         <button
