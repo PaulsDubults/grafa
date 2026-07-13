@@ -4,6 +4,7 @@ import TypewriterText from './TypewriterText';
 import { WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 import { Building2, Monitor, FileText, FolderUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const stepIcons = [
   <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10"><circle cx="20" cy="20" r="8" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><circle cx="36" cy="20" r="8" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><path d="M14,32 C14,28 18,26 28,26 C38,26 42,28 42,32" stroke="#C89B3C" strokeWidth="1.2" fill="none" strokeLinecap="round"/><path d="M20,38 L20,46 M28,36 L28,46 M36,38 L36,46" stroke="#C89B3C" strokeWidth="0.8" opacity="0.4"/></svg>,
@@ -24,10 +25,7 @@ export default function WhyChooseSection() {
   const stats = t('whyChoose.stats');
   const cooperationModes = t('whyChoose.cooperationModes');
 
-  const scrollToPricing = () => {
-    const el = document.getElementById('cena');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+
 
   return (
     <section id="kapec-izvel" className="relative py-16 md:py-24 overflow-hidden">
@@ -213,11 +211,11 @@ export default function WhyChooseSection() {
               </div>
             </div>
           </div>
-          {/* CTA card — bottom right, clickable to pricing */}
+          {/* CTA card — bottom right, links to pricing page */}
           <div className="flex justify-end mt-6">
-            <button
-              onClick={scrollToPricing}
-              className="flex items-center gap-4 bg-[#F5EDE0]/60 border border-[#C89B3C]/30 rounded-xl p-4 md:p-5 cursor-pointer group transition-all duration-400 hover:border-[#C89B3C]/60 hover:shadow-[0_4px_20px_rgba(201,168,76,0.12)] max-w-[320px]"
+            <Link
+              to="/cena"
+              className="flex items-center gap-4 bg-[#F5EDE0]/60 border border-[#C89B3C]/30 rounded-xl p-4 md:p-5 group transition-all duration-400 hover:border-[#C89B3C]/60 hover:shadow-[0_4px_20px_rgba(201,168,76,0.12)] max-w-[320px]"
             >
               <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#C89B3C]/[0.12] flex items-center justify-center group-hover:bg-[#C89B3C]/[0.2] transition-colors">
                 <svg viewBox="0 0 48 48" fill="none" className="w-7 h-7">
@@ -228,7 +226,7 @@ export default function WhyChooseSection() {
               <p className="font-body text-[12px] md:text-[13px] text-[#08233E]/70 leading-[1.6] text-left group-hover:text-[#08233E] transition-colors">
                 {t('whyChoose.pricingCta')}
               </p>
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>

@@ -15,6 +15,7 @@ import FinansesBusiness from './pages/services/FinansesBusiness';
 import FinansesSelf from './pages/services/FinansesSelf';
 import Apmacibas from './pages/services/Apmacibas';
 import KonsultacijasSelf from './pages/services/KonsultacijasSelf';
+import Pricing from './pages/Pricing';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -48,6 +49,7 @@ const AuthenticatedApp = () => {
       <Route path="/pakalpojumi/finanses/pasnodarbinatajiem" element={<FinansesSelf />} />
       <Route path="/pakalpojumi/apmacibas" element={<Apmacibas />} />
       <Route path="/pakalpojumi/konsultacijas-pasnodarbinatajiem" element={<KonsultacijasSelf />} />
+      <Route path="/cena" element={<Pricing />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
