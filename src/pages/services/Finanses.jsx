@@ -5,7 +5,7 @@ import ChoiceCards from '@/components/grafa/ChoiceCards';
 
 const choices = [
   { label: "Uzņēmumiem", desc: "Finanšu analīze, plānošana un metodiku izstrāde.", path: "/pakalpojumi/finanses/uznemumiem" },
-  { label: "Pašnodarbinātajiem", desc: "Ieņēmumu un izdevumu analīze, naudas plūsma.", path: "/pakalpojumi/finanses/pasnodarbinatajiem" },
+  { label: "Pašnodarbinātajiem", desc: "Individuālas konsultācijas grāmatvedības, nodokļu un finanšu jautājumos.", path: "/pakalpojumi/konsultacijas-pasnodarbinatajiem" },
 ];
 
 export default function Finanses() {
