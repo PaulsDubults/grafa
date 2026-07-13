@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import ClientStatsChart from './ClientStatsChart';
@@ -10,6 +10,13 @@ export default function HeroMiniMap() {
   const { t } = useI18n();
   const [showModal, setShowModal] = useState(false);
 
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [showModal]);
+
   return (
     <>
       <div>
@@ -17,7 +24,7 @@ export default function HeroMiniMap() {
           {t('miniMap.subtitle')}
         </p>
         <button
-          className="relative rounded-sm overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-[0_4px_24px_rgba(201,168,76,0.15)] p-3 w-full max-w-[280px] text-left"
+          className="relative rounded-lg overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-[0_4px_24px_rgba(201,168,76,0.25)] p-3 w-full max-w-[280px] text-left border-2 border-[#C89B3C]/60 hover:border-[#C89B3C]"
           onClick={() => setShowModal(true)}
         >
           <img
@@ -37,7 +44,7 @@ export default function HeroMiniMap() {
       <AnimatePresence>
         {showModal && (
           <motion.div
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[99999] flex items-center justify-center p-4 md:p-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -47,6 +54,7 @@ export default function HeroMiniMap() {
 
             <motion.div
               className="relative bg-[#FBF7F0] rounded-xl shadow-2xl border border-[#e8e0d4]/50 w-full max-w-[700px] max-h-[90vh] overflow-auto"
+              onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.92, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.92, opacity: 0, y: 20 }}
