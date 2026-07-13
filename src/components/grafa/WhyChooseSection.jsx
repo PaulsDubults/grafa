@@ -60,7 +60,7 @@ export default function WhyChooseSection() {
               transition={{ delay: 0.1 + i * 0.05, duration: 0.5 }}
             >
               <span className="flex-shrink-0 mt-[10px] w-4 h-[1.5px] bg-[#C89B3C]/60" />
-              <p className="font-body text-[14px] md:text-[15px] text-[#08233E]/75 leading-[1.85]">{text}</p>
+              <p className="font-body text-[14px] md:text-[15px] text-[#08233E] leading-[1.85] font-semibold">{text}</p>
             </motion.div>
           ))}
         </div>
@@ -93,7 +93,7 @@ export default function WhyChooseSection() {
               </div>
               <div className="text-[#C89B3C] flex justify-center mb-3">{stepIcons[i]}</div>
               <h4 className="font-heading text-[15px] md:text-[16px] font-semibold text-[#08233E] mb-1.5">{step.title}</h4>
-              <p className="text-[#08233E]/50 font-body text-[12px] md:text-[13px] leading-[1.7]">{step.desc}</p>
+              <p className="text-[#08233E] font-body text-[12px] md:text-[13px] leading-[1.7]">{step.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -119,7 +119,7 @@ export default function WhyChooseSection() {
                 </div>
                 <div>
                   <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#08233E] mb-2">{t('whyChoose.priceBoxTitle')}</h3>
-                  <p className="text-[#08233E]/55 font-body text-[13px] md:text-[14px] leading-[1.85]">{t('whyChoose.priceBoxDesc')}</p>
+                  <p className="text-[#08233E] font-body text-[13px] md:text-[14px] leading-[1.85] font-semibold">{t('whyChoose.priceBoxDesc')}</p>
                 </div>
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function WhyChooseSection() {
                       <circle cx="10" cy="10" r="9" fill="#C89B3C" opacity="0.12"/>
                       <path d="M6,10 L9,13 L14,7" stroke="#C89B3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <p className="font-body text-[13px] md:text-[14px] text-[#08233E]/65">{item}</p>
+                    <p className="font-body text-[13px] md:text-[14px] text-[#08233E]">{item}</p>
                   </div>
                 ))}
               </div>

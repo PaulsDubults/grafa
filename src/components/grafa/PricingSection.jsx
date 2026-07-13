@@ -49,7 +49,7 @@ export default function PricingSection() {
 
         {/* Intro paragraph */}
         <motion.p
-          className="text-[#08233E]/65 font-body text-[14px] md:text-[15px] leading-[1.85] mb-10 md:mb-12 max-w-3xl"
+          className="text-[#08233E] font-body text-[14px] md:text-[15px] leading-[1.85] mb-10 md:mb-12 max-w-3xl font-semibold"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -74,7 +74,7 @@ export default function PricingSection() {
               </div>
               <div>
                 <p className="text-[#08233E] font-heading text-[15px] md:text-[16px] font-bold mb-1">{factor.title}</p>
-                <p className="text-[#08233E]/50 font-body text-[13px] md:text-[14px] leading-[1.85]">{factor.desc}</p>
+                <p className="text-[#08233E] font-body text-[13px] md:text-[14px] leading-[1.85]">{factor.desc}</p>
               </div>
             </motion.div>
           ))}

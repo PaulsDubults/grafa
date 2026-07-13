@@ -3,7 +3,7 @@ export const translations = {
     nav: {
       home: "Sākumlapa",
       services: "Pakalpojumi",
-      whyGrafa: "Kāpēc izvēlas GRĀFU",
+      whyGrafa: "Kāpēc uzņēmēji izvēlas SIA firma GRĀFA",
       knowledge: "Zināšanu telpa",
       about: "Par mums",
       join: "Pievienojies",
@@ -154,7 +154,7 @@ export const translations = {
     },
     whyChoose: {
       scriptLine: "Katrs uzņēmums meklē ne tikai grāmatvedi. Tas meklē cilvēku, kuram var uzticēties.",
-      heading: "Kāpēc izvēlas SIA firma GRĀFA",
+      heading: "Kāpēc uzņēmēji izvēlas SIA firma GRĀFA",
       points: [
         "Mēs uzskatām, ka laba sadarbība sākas nevis ar līgumu, bet ar savstarpēju uzticēšanos.",
         "Tieši tāpēc mēs iepazīstam katru uzņēmumu, tā ikdienu, mērķus un izaicinājumus. Jo tikai tad grāmatvedība kļūst par atbalstu, nevis pienākumu.",
@@ -247,7 +247,7 @@ export const translations = {
     nav: {
       home: "Главная",
       services: "Услуги",
-      whyGrafa: "Почему выбирают GRĀFA",
+      whyGrafa: "Почему предприниматели выбирают SIA firma GRĀFA",
       knowledge: "База знаний",
       about: "О нас",
       join: "Присоединяйтесь",
@@ -398,7 +398,7 @@ export const translations = {
     },
     whyChoose: {
       scriptLine: "Каждое предприятие ищет не просто бухгалтера. Оно ищет человека, которому можно доверять.",
-      heading: "Почему выбирают SIA firma GRĀFA",
+      heading: "Почему предприниматели выбирают SIA firma GRĀFA",
       points: [
         "Мы считаем, что хорошее сотрудничество начинается не с договора, а с взаимного доверия.",
         "Именно поэтому мы знакомимся с каждым предприятием, его повседневной деятельностью, целями и задачами. Только тогда бухгалтерия становится поддержкой, а не обязанностью.",

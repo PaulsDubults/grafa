@@ -62,9 +62,9 @@ export default function ServicesSection() {
               transition={{ delay: 0.1 + i * 0.05, duration: 0.5 }}
             >
               <span className="flex-shrink-0 mt-[10px] w-4 h-[1.5px] bg-[#C89B3C]/60" />
-              <p className="font-body text-[14px] md:text-[15px] text-[#08233E]/75 leading-[1.85]">
+              <p className="font-body text-[14px] md:text-[15px] text-[#08233E] leading-[1.85]">
                 {item.text}{' '}
-                {item.bold && <strong className="text-[#08233E] font-semibold">{item.bold}</strong>}
+                {item.bold && <strong className="text-[#08233E] font-bold">{item.bold}</strong>}
                 {item.after && <> {item.after}</>}
               </p>
             </motion.div>
@@ -97,7 +97,7 @@ export default function ServicesSection() {
                 <h3 className="font-heading text-[18px] md:text-[20px] font-semibold text-[#08233E] mb-3">{card.title}</h3>
 
                 {/* Description */}
-                <p className="text-[#08233E]/50 font-body text-[13px] md:text-[14px] leading-[1.85]">{card.desc}</p>
+                <p className="text-[#08233E] font-body text-[13px] md:text-[14px] leading-[1.85]">{card.desc}</p>
               </Link>
             </motion.div>
           ))}
@@ -111,7 +111,7 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <p className="font-body text-[14px] md:text-[15px] text-[#08233E]/60 leading-[1.85]">
+          <p className="font-body text-[14px] md:text-[15px] text-[#08233E] leading-[1.85]">
             <strong className="text-[#08233E] font-bold">{t('services.goalLabel')}</strong>
             {' – '}
             {t('services.goalText')}
