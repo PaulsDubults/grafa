@@ -29,7 +29,7 @@ export default function PricingSection() {
         <div className="mb-6 md:mb-8 min-h-[50px] md:min-h-[60px]">
           <TypewriterText
             text={t('pricing.scriptLine')}
-            className="font-script text-[18px] md:text-[22px] text-[#C89B3C]/70 leading-[1.6] italic"
+            className="font-script text-[18px] md:text-[22px] text-[#08233E]/70 leading-[1.6] italic"
             onComplete={() => setTypewriterDone(true)}
           />
         </div>

@@ -26,7 +26,7 @@ export default function ServicesSection() {
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
         {/* Script intro text — italic, multi-line per mockup */}
         <motion.p
-          className="font-script text-[18px] md:text-[22px] text-[#C89B3C]/70 leading-[1.9] italic mb-8 md:mb-10 max-w-4xl"
+          className="font-script text-[18px] md:text-[22px] text-[#08233E]/70 leading-[1.9] italic mb-8 md:mb-10 max-w-4xl"
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}

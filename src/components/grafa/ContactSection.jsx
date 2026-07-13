@@ -32,7 +32,7 @@ export default function ContactSection() {
         <div className="mb-6 md:mb-8 min-h-[50px] md:min-h-[60px]">
           <TypewriterText
             text={t('contact.scriptLine')}
-            className="font-script text-[18px] md:text-[22px] text-[#C89B3C]/70 leading-[1.6] italic"
+            className="font-script text-[18px] md:text-[22px] text-[#08233E]/70 leading-[1.6] italic"
             onComplete={() => setTypewriterDone(true)}
           />
         </div>
@@ -113,11 +113,11 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.7 }}
         >
-          <p className="font-script text-[20px] md:text-[24px] text-[#C89B3C]/60 italic mb-2">{t('contact.closingLine1')}</p>
+          <p className="font-script text-[20px] md:text-[24px] text-[#08233E]/60 italic mb-2">{t('contact.closingLine1')}</p>
           <div className="flex justify-center my-3">
             <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 text-[#C89B3C]/30"><path d="M12,5 L12,19 M7,14 L12,19 L17,14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </div>
-          <p className="font-script text-[32px] md:text-[42px] text-[#C89B3C] italic mb-6">{t('contact.closingLine2')}</p>
+          <p className="font-script text-[32px] md:text-[42px] text-[#08233E] italic mb-6">{t('contact.closingLine2')}</p>
           <div className="w-14 h-[1.5px] mx-auto mb-6" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, transparent)' }} />
           <div className="inline-block">
             <p className="font-body text-[8px] tracking-[0.2em] text-[#08233E]/20 uppercase mb-0.5">SIA firma</p>
