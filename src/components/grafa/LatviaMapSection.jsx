@@ -3,26 +3,25 @@ import { motion } from 'framer-motion';
 import WatercolorBackground from './WatercolorBackground';
 import GoldLine from './GoldLine';
 
-const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/3fed02e2c_Screenshot2026-07-13at125249.png";
+const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/31e0ca8fd_image.png";
 
 const locations = [
-  { name: "Jelgava", clients: 30 },
-  { name: "Rīga", clients: 16 },
-  { name: "Jelgavas novads", clients: 9 },
-  { name: "Liepāja", clients: 5 },
-  { name: "Ogres novads", clients: 2 },
   { name: "Ventspils", clients: 1 },
-  { name: "Jūrmala", clients: 1 },
-  { name: "Salaspils", clients: 1 },
+  { name: "Liepāja", clients: 6 },
+  { name: "Rīga", clients: 16 },
+  { name: "Jelgava", clients: 39 },
   { name: "Dobele", clients: 1 },
-  { name: "Bauskas novads", clients: 1 },
-  { name: "Ropažu novads", clients: 1 },
-  { name: "Olaine", clients: 1 },
+  { name: "Jūrmala", clients: 1 },
   { name: "Mārupes novads", clients: 1 },
+  { name: "Olaine", clients: 1 },
   { name: "Baldone", clients: 1 },
+  { name: "Bauskas novads", clients: 1 },
+  { name: "Ogres novads", clients: 2 },
+  { name: "Ropažu novads", clients: 1 },
+  { name: "Salaspils", clients: 1 },
 ];
 
-const MAX_VALUE = 30;
+const totalClients = locations.reduce((sum, l) => sum + l.clients, 0);
 
 export default function LatviaMapSection() {
   return (
@@ -38,7 +37,6 @@ export default function LatviaMapSection() {
       <WatercolorBackground variant="map" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto">
-        {/* Section heading */}
         <motion.div
           className="mb-12 md:mb-16 text-center"
           initial={{ opacity: 0, y: 24 }}
@@ -53,9 +51,11 @@ export default function LatviaMapSection() {
             Klienti visā Latvijā
           </h2>
           <GoldLine width="w-24" className="mx-auto mb-4" />
+          <p className="text-[#08233E]/45 font-body text-[15px] md:text-[16px]">
+            {totalClients} klienti visā Latvijā
+          </p>
         </motion.div>
 
-        {/* Map image */}
         <motion.div
           className="relative max-w-[950px] mx-auto"
           initial={{ opacity: 0, y: 20 }}
@@ -70,63 +70,24 @@ export default function LatviaMapSection() {
           />
         </motion.div>
 
-        {/* Statistics chart */}
         <motion.div
-          className="mt-12 md:mt-16 max-w-[750px] mx-auto"
-          initial={{ opacity: 0, y: 24 }}
+          className="mt-10 md:mt-14"
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          transition={{ delay: 0.4, duration: 0.7 }}
         >
-          {/* Chart heading */}
-          <div className="text-center mb-8">
-            <h3 className="font-heading text-[22px] md:text-[28px] font-semibold text-[#08233E] mb-2">
-              Klientu sadalījums pa reģioniem
-            </h3>
-            <p className="font-body text-[13px] md:text-[14px] text-[#08233E]/45">
-              Kopā 72 klienti visā Latvijā
-            </p>
-          </div>
-
-          {/* Bars */}
-          <div className="bg-white/80 backdrop-blur rounded-2xl border border-[#e8e0d4]/50 shadow-[0_4px_24px_rgba(0,0,0,0.04)] p-5 md:p-7 space-y-3">
-            {locations.map((loc, i) => {
-              const pct = (loc.clients / MAX_VALUE) * 100;
-              return (
-                <motion.div
-                  key={loc.name}
-                  className="group"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.05 * i, duration: 0.5 }}
-                >
-                  <div className="flex items-center gap-3 md:gap-4">
-                    {/* Location name */}
-                    <span className="flex-shrink-0 w-[130px] md:w-[160px] font-body text-[13px] md:text-[14px] text-[#08233E]/75 text-right truncate">
-                      {loc.name}
-                    </span>
-
-                    {/* Bar track */}
-                    <div className="flex-1 h-[22px] md:h-[26px] bg-[#F5EDE0]/80 rounded-full overflow-hidden relative">
-                      <motion.div
-                        className="h-full rounded-full"
-                        style={{ background: 'linear-gradient(90deg, #D4AF37, #E6C766)' }}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${Math.max(pct, 3)}%` }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 + 0.05 * i, duration: 0.7, ease: 'easeOut' }}
-                      />
-                    </div>
-
-                    {/* Client count */}
-                    <span className="flex-shrink-0 w-[28px] font-heading text-[14px] md:text-[15px] font-bold text-[#08233E] text-right tabular-nums">
-                      {loc.clients}
-                    </span>
-                  </div>
-                </motion.div>
-              );
-            })}
+          <div className="flex flex-wrap justify-center gap-2.5 md:gap-3">
+            {locations.map((loc) => (
+              <div
+                key={loc.name}
+                className="flex items-center gap-2.5 bg-white rounded-full px-4 py-2 shadow-[0_1px_4px_rgba(0,0,0,0.06)] border border-[#e8e0d4]/40"
+              >
+                <span className="w-2.5 h-2.5 rounded-full bg-[#2E8B2E] flex-shrink-0" />
+                <span className="font-body text-[12px] md:text-[13px] text-[#08233E]/70">{loc.name}</span>
+                <span className="font-heading text-[13px] md:text-[14px] font-bold text-[#08233E]">{loc.clients}</span>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>
