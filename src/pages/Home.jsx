@@ -10,6 +10,7 @@ import JoinCareersSection from '@/components/grafa/JoinCareersSection';
 import ContactSection from '@/components/grafa/ContactSection';
 import Footer from '@/components/grafa/Footer';
 import WatercolorBg from '@/components/grafa/WatercolorBg';
+import SectionNav from '@/components/grafa/SectionNav';
 
 /* Page order: 1.Sākumlapa → 2.Pakalpojumi → 3.Kāpēc izvēlas (3.1 Process + 3.2 Cena) → 4.Zināšanu telpa → 5.Pievienojies → 6.Kontakti → Footer */
 
@@ -18,6 +19,7 @@ export default function Home() {
     <div className="relative min-h-screen overflow-x-hidden">
       <WatercolorBg />
       <Navbar />
+      <SectionNav />
       <HeroSection />
       <SectionDivider />
       <ServicesSection />
