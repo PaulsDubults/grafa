@@ -21,10 +21,6 @@ export default function ServicesSection() {
   return (
     <section id="pakalpojumi" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="svcP" />
-      {/* Feather image decoration */}
-      <div className="absolute right-[-40px] md:right-[20px] top-[-5%] w-[200px] md:w-[320px] pointer-events-none opacity-[0.18] feather-sway">
-        <img src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/292158418_image.png" alt="" className="w-full h-auto" draggable={false} />
-      </div>
       <WatercolorStain className="right-[-100px] top-[10%]" color="#e8c89a" opacity={0.1} size={550} id="svc1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
