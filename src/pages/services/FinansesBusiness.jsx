@@ -5,18 +5,12 @@ import ServiceList from '@/components/grafa/ServiceList';
 import InfoBlock from '@/components/grafa/InfoBlock';
 
 const services = [
-  "Ikmēneša finanšu atskaites",
-  "Naudas plūsmas analīze",
-  "Budžetu plānošana",
-  "Finanšu prognozes",
-  "Rentabilitātes analīze",
-  "Likviditātes analīze",
-  "Maksātspējas analīze",
-  "Banku dokumentācija",
-  "Investoru dokumentācija",
-  "Grāmatvedības metodiku izstrāde",
-  "Iekšējās kontroles sistēmas",
-  "Pakalpojumu kalkulācijas",
+  "Ikmēneša finanšu atskaišu sagatavošana klienta iekšējās vadības vajadzībām.",
+  "Naudas plūsmas plānošana un analīze.",
+  "Budžetu un finanšu prognožu sagatavošana.",
+  "Svarīgāko finanšu rādītāju analīze (rentabilitāte, likviditāte, maksātspēja u.c.) un to izvērtējums uzņēmuma attīstības vajadzībām.",
+  "Finanšu pārskatu sagatavošana bankām, investoriem un sadarbības partneriem.",
+  "Grāmatvedības organizācijas dokumentu, metodiku, nolikumu, iekšējās kontroles sistēmu, pakalpojumu kalkulāciju un citas individuālas dokumentācijas izstrāde.",
 ];
 
 export default function FinansesBusiness() {
@@ -32,7 +26,7 @@ export default function FinansesBusiness() {
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 md:py-24">
         <motion.p
-          className="font-body text-[15px] md:text-[16px] text-[#08233E]/50 leading-[1.8] mb-12 max-w-3xl"
+          className="font-body text-[15px] md:text-[16px] text-[#08233E] leading-[1.8] mb-12 max-w-3xl font-semibold"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -42,7 +36,7 @@ export default function FinansesBusiness() {
 
         <ServiceList items={services} />
 
-        <InfoBlock text="Individuālu metodiku, nolikumu, kontroles sistēmu un investoru dokumentācijas izstrāde nav iekļauta ikmēneša grāmatvedības pakalpojumā un tiek sniegta kā atsevišķs pakalpojums." />
+        <InfoBlock text="Individuālu metodiku, kārtību, nolikumu, kontroles sistēmu, kalkulāciju un investoru dokumentācijas izstrāde nav iekļauta ikmēneša grāmatvedības pakalpojuma maksā. Tas ir atsevišķs pakalpojums pēc iepriekšējas vienošanās." />
       </div>
     </ServicePageLayout>
   );

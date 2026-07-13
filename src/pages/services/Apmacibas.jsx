@@ -5,11 +5,11 @@ import ServiceList from '@/components/grafa/ServiceList';
 import InfoBlock from '@/components/grafa/InfoBlock';
 
 const services = [
-  "Nodokļu izmaiņas",
-  "Praktiski semināri",
-  "Grāmatvedības procesu pilnveidošana",
-  "Praktiska darbinieku apmācība",
-  "Individuālas apmācību programmas",
+  "Nodokļu un normatīvo aktu izmaiņu skaidrošana.",
+  "Praktiski semināri uzņēmuma darbiniekiem par grāmatvedības, nodokļu un dokumentu aprites jautājumiem.",
+  "Grāmatvedības procesu pilnveidošana atbilstoši konkrētā uzņēmuma specifikai.",
+  "Praktiska darbinieku apmācība uzņēmumā izmantotajos grāmatvedības un dokumentu aprites procesos.",
+  "Individuālas apmācību programmas konkrētam uzņēmumam.",
 ];
 
 export default function Apmacibas() {
@@ -24,7 +24,7 @@ export default function Apmacibas() {
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 md:py-24">
         <motion.p
-          className="font-body text-[15px] md:text-[17px] text-[#08233E]/55 leading-[1.9] mb-12 max-w-3xl"
+          className="font-body text-[15px] md:text-[17px] text-[#08233E] leading-[1.9] mb-12 max-w-3xl font-semibold"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -35,7 +35,7 @@ export default function Apmacibas() {
 
         <ServiceList items={services} />
 
-        <InfoBlock text="Apmācības ir atsevišķs pakalpojums un nav iekļautas ikmēneša grāmatvedības pakalpojumā, ja vien tas nav atrunāts līgumā." />
+        <InfoBlock text="Apmācības ir atsevišķs pakalpojums un nav iekļautas ikmēneša grāmatvedības apkalpošanas maksā, ja vien par to nav atsevišķi vienots līgumā." />
       </div>
     </ServicePageLayout>
   );

@@ -5,12 +5,12 @@ import ServiceList from '@/components/grafa/ServiceList';
 import InfoBlock from '@/components/grafa/InfoBlock';
 
 const services = [
-  "Saimnieciskās darbības uzsākšana",
-  "Nodokļu režīma izvēle",
-  "PVN jautājumi",
-  "VID konsultācijas",
-  "Pāreja uz SIA",
-  "Individuālas konsultācijas",
+  "Saimnieciskās darbības uzsākšana.",
+  "Piemērotākā nodokļu režīma izvēle.",
+  "PVN reģistrācijas un piemērošanas jautājumi.",
+  "Sadarbība ar VID un atbilžu sagatavošana.",
+  "Darbības formas maiņa, piemēram, pāreja uz SIA.",
+  "Individuālas konsultācijas grāmatvedības, nodokļu un finanšu jautājumos.",
 ];
 
 export default function KonsultacijasSelf() {
@@ -30,14 +30,14 @@ export default function KonsultacijasSelf() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-heading text-[16px] md:text-[18px] text-[#08233E]/70 leading-[1.8] italic">
+          <p className="font-heading text-[16px] md:text-[18px] text-[#08233E] leading-[1.8] italic">
             Dažkārt viena pareiza konsultācija ir vērtīgāka par desmit aizpildītām atskaitēm.
           </p>
         </motion.div>
 
         <ServiceList items={services} />
 
-        <InfoBlock text="Konsultācijas tiek sniegtas kā atsevišķs pakalpojums pēc iepriekšējas vienošanās, izņemot īsus ikdienas jautājumus, kas saistīti ar tekošo grāmatvedības uzskaiti." />
+        <InfoBlock text="Konsultācijas pašnodarbinātajiem nav automātiski iekļautas ikmēneša grāmatvedības apkalpošanas maksā. Tās tiek sniegtas kā atsevišķs pakalpojums pēc iepriekšējas vienošanās, izņemot īsus ikdienas jautājumus, kas tieši saistīti ar tekošo uzskaiti un ir atrunāti sadarbības nosacījumos." />
       </div>
     </ServicePageLayout>
   );

@@ -15,7 +15,7 @@ export default function ServiceList({ items }) {
           <div className="absolute top-0 left-0 right-0 h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, transparent)' }} />
           <div className="flex items-start gap-3">
             <div className="w-1.5 h-1.5 rounded-full bg-[#C89B3C] mt-2 flex-shrink-0" />
-            <p className="font-body text-[13px] md:text-[14px] text-[#08233E]/70 leading-[1.7]">{item}</p>
+            <p className="font-body text-[13px] md:text-[14px] text-[#08233E] leading-[1.7]">{item}</p>
           </div>
         </motion.div>
       ))}

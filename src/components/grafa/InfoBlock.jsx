@@ -9,7 +9,7 @@ export default function InfoBlock({ text }) {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.4, duration: 0.6 }}
     >
-      <p className="font-body text-[13px] md:text-[14px] text-[#08233E]/60 leading-[1.8] italic">
+      <p className="font-body text-[13px] md:text-[14px] text-[#08233E] leading-[1.8] italic font-semibold">
         {text}
       </p>
     </motion.div>

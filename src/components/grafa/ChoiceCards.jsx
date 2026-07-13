@@ -21,7 +21,7 @@ export default function ChoiceCards({ choices }) {
               {choice.label}
             </h3>
             {choice.desc && (
-              <p className="font-body text-[12px] md:text-[13px] text-[#08233E]/45 leading-[1.7]">
+              <p className="font-body text-[12px] md:text-[13px] text-[#08233E] leading-[1.7]">
                 {choice.desc}
               </p>
             )}
