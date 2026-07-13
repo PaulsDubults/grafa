@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import TypewriterText from './TypewriterText';
-import { FullFeather, HalfFeather, WatercolorStain, PaperTexture } from './Decorations';
+import { WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
+import { Building2, Monitor, FileText, FolderUp } from 'lucide-react';
 
 const stepIcons = [
   <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10"><circle cx="20" cy="20" r="8" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><circle cx="36" cy="20" r="8" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><path d="M14,32 C14,28 18,26 28,26 C38,26 42,28 42,32" stroke="#C89B3C" strokeWidth="1.2" fill="none" strokeLinecap="round"/><path d="M20,38 L20,46 M28,36 L28,46 M36,38 L36,46" stroke="#C89B3C" strokeWidth="0.8" opacity="0.4"/></svg>,
@@ -12,17 +13,25 @@ const stepIcons = [
   <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10"><path d="M28,6 L46,16 L46,30 C46,40 38,48 28,52 C18,48 10,40 10,30 L10,16 Z" stroke="#C89B3C" strokeWidth="1.3" fill="none"/><path d="M20,28 L26,34 L36,22" stroke="#C89B3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
 ];
 
+const cooperationIcons = [Building2, Monitor, FileText, FolderUp];
+
 export default function WhyChooseSection() {
   const { t } = useI18n();
   const [typewriterDone, setTypewriterDone] = useState(false);
   const checkmarks = t('whyChoose.checkmarks');
   const steps = t('process.steps');
   const points = t('whyChoose.points');
+  const stats = t('whyChoose.stats');
+  const cooperationModes = t('whyChoose.cooperationModes');
+
+  const scrollToPricing = () => {
+    const el = document.getElementById('cena');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section id="kapec-izvel" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="whyChP" />
-      {/* No feather — kept clean */}
       <WatercolorStain className="left-[-120px] top-[15%]" color="#e8c89a" opacity={0.1} size={500} id="whyC1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
@@ -65,6 +74,61 @@ export default function WhyChooseSection() {
           ))}
         </div>
 
+        {/* Stats row */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mb-12 md:mb-14"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              className="relative bg-white rounded-xl p-5 md:p-6 border border-[#e8e0d4]/50 text-center overflow-hidden"
+            >
+              <div className="absolute top-0 left-4 right-4 h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent, #C89B3C, transparent)' }} />
+              <p className="font-heading text-[28px] md:text-[34px] font-bold text-[#C89B3C] leading-tight mb-1">{stat.number}</p>
+              <p className="font-body text-[12px] md:text-[13px] text-[#08233E]/60 leading-snug">{stat.label}</p>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Cooperation modes */}
+        <motion.div
+          className="mb-12 md:mb-14"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <p className="font-body text-[14px] md:text-[15px] text-[#08233E] leading-[1.85] mb-1 font-semibold">
+            {t('whyChoose.cooperationIntro1')}
+          </p>
+          <p className="font-body text-[14px] md:text-[15px] text-[#08233E] leading-[1.85] mb-5 font-semibold">
+            {t('whyChoose.cooperationIntro2')}
+          </p>
+          <h3 className="font-heading text-[18px] md:text-[22px] font-semibold text-[#08233E] mb-4">
+            {t('whyChoose.cooperationTitle')}
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {cooperationModes.map((mode, i) => {
+              const Icon = cooperationIcons[i];
+              return (
+                <div
+                  key={i}
+                  className="bg-white rounded-xl p-4 md:p-5 border border-[#e8e0d4]/50 flex flex-col items-center gap-2.5 text-center"
+                >
+                  <div className="w-10 h-10 rounded-full bg-[#C89B3C]/[0.1] flex items-center justify-center">
+                    <Icon size={20} className="text-[#C89B3C]" strokeWidth={1.5} />
+                  </div>
+                  <p className="font-body text-[13px] md:text-[14px] text-[#08233E] font-medium">{mode}</p>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+
         {/* "Mūsu sadarbības process" sub-heading */}
         <motion.h3
           className="font-heading text-[26px] md:text-[34px] lg:text-[40px] font-semibold text-[#08233E] mb-8 md:mb-10 text-center"
@@ -100,7 +164,7 @@ export default function WhyChooseSection() {
 
         {/* Price box with checkmarks */}
         <motion.div
-          className="relative bg-white rounded-xl p-7 md:p-9 border border-[#e8e0d4]/50 overflow-hidden"
+          className="relative bg-white rounded-xl p-7 md:p-9 border border-[#e8e0d4]/50 overflow-hidden mb-5"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -140,6 +204,26 @@ export default function WhyChooseSection() {
             </div>
           </div>
         </motion.div>
+
+        {/* CTA button — scroll to pricing section */}
+        <motion.button
+          onClick={scrollToPricing}
+          className="w-full relative bg-[#08233E] rounded-xl p-5 md:p-6 overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-[0_8px_32px_rgba(8,35,62,0.2)]"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent 5%, #C89B3C 25%, #E8D1A0 50%, #C89B3C 75%, transparent 95%)' }} />
+          <div className="flex items-center justify-center gap-3">
+            <span className="font-heading text-[15px] md:text-[17px] font-semibold text-white group-hover:text-[#E8D1A0] transition-colors">
+              {t('whyChoose.pricingCta')}
+            </span>
+            <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-[#C89B3C] group-hover:translate-x-1 transition-transform">
+              <path d="M5,12 L19,12 M14,7 L19,12 L14,17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </motion.button>
       </div>
     </section>
   );

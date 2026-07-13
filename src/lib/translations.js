@@ -175,6 +175,11 @@ export const translations = {
         "Sadarbības forma un biežums",
       ],
       trustNote: "Uzticieties, lai uzzinātu vairāk par cenas veidošanas principiem",
+      cooperationIntro1: "Mēs pielāgojamies ne tikai Jūsu uzņēmuma vajadzībām.",
+      cooperationIntro2: "Mēs pielāgojamies arī Jūsu darba ritmam.",
+      cooperationTitle: "Sadarbības veidi",
+      cooperationModes: ["Klātienē", "Tiešsaistē", "Rakstiski", "Dokumentu iesniegšana"],
+      pricingCta: "Nāc šeit, lai uzzinātu vairāk par cenas veidošanās principiem",
     },
     pricing: {
       scriptLine: "Katra uzņēmuma vajadzības ir unikālas. Mēs piedāvājam individuālu pieeju un taisnīgu cenu.",
@@ -416,6 +421,11 @@ export const translations = {
         "Форма и частота сотрудничества",
       ],
       trustNote: "Доверьтесь, чтобы узнать больше о принципах ценообразования",
+      cooperationIntro1: "Мы адаптируемся не только к потребностям вашего предприятия.",
+      cooperationIntro2: "Мы адаптируемся и к вашему рабочему ритму.",
+      cooperationTitle: "Формы сотрудничества",
+      cooperationModes: ["Очно", "Онлайн", "Письменно", "Подача документов"],
+      pricingCta: "Узнайте больше о принципах формирования цены",
     },
     pricing: {
       scriptLine: "Потребности каждого предприятия уникальны. Мы предлагаем индивидуальный подход и справедливую цену.",
