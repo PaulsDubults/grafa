@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FullFeather, WatercolorStain, PaperTexture } from './Decorations';
+import { WatercolorStain, PaperTexture } from './Decorations';
+import TypewriterText from './TypewriterText';
 import { useI18n } from '@/lib/i18n';
 
 const cardPaths = ["/pakalpojumi/gramatvediba", "/pakalpojumi/finanses", "/pakalpojumi/apmacibas"];
@@ -20,20 +21,16 @@ export default function ServicesSection() {
   return (
     <section id="pakalpojumi" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="svcP" />
-      <FullFeather className="w-[320px] md:w-[520px] h-[420px] md:h-[720px] right-[-80px] md:right-[-30px] top-[-8%]" opacity={0.65} />
       <WatercolorStain className="right-[-100px] top-[10%]" color="#e8c89a" opacity={0.1} size={550} id="svc1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
-        {/* Script intro text — italic, multi-line per mockup */}
-        <motion.p
-          className="font-script text-[18px] md:text-[22px] text-[#08233E]/70 leading-[1.9] italic mb-8 md:mb-10 max-w-4xl"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          {t('services.introScript')}
-        </motion.p>
+        {/* Script intro text — typewriter effect */}
+        <div className="mb-8 md:mb-10 min-h-[80px] md:min-h-[100px] max-w-4xl">
+          <TypewriterText
+            text={t('services.introScript')}
+            className="font-script text-[18px] md:text-[22px] text-[#08233E]/70 leading-[1.9] italic"
+          />
+        </div>
 
         {/* "Pakalpojumi" heading with gold underline */}
         <motion.div
