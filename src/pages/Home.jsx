@@ -7,6 +7,7 @@ import WhyChooseSection from '@/components/grafa/WhyChooseSection';
 import PricingSection from '@/components/grafa/PricingSection';
 import KnowledgeSection from '@/components/grafa/KnowledgeSection';
 import AboutSection from '@/components/grafa/AboutSection';
+import LatviaMapSection from '@/components/grafa/LatviaMapSection';
 import JoinCareersSection from '@/components/grafa/JoinCareersSection';
 import ContactSection from '@/components/grafa/ContactSection';
 import Footer from '@/components/grafa/Footer';
@@ -31,6 +32,8 @@ export default function Home() {
       <SectionDivider />
       <AboutSection />
       <SectionDivider flip />
+      <LatviaMapSection />
+      <SectionDivider />
       <JoinCareersSection />
       <SectionDivider />
       <ContactSection />
