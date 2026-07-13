@@ -17,7 +17,7 @@ export default function HeroMiniMap() {
           {t('miniMap.subtitle')}
         </p>
         <button
-          className="relative rounded-sm overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-[0_4px_24px_rgba(201,168,76,0.15)] p-3 w-full max-w-[280px] text-left"
+          className="relative rounded-lg overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-[0_4px_24px_rgba(201,168,76,0.25)] p-2 w-full max-w-[280px] text-left border-2 border-[#C89B3C]/60 hover:border-[#C89B3C]"
           onClick={() => setShowModal(true)}
         >
           <img
@@ -37,7 +37,7 @@ export default function HeroMiniMap() {
       <AnimatePresence>
         {showModal && (
           <motion.div
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[99999] flex items-center justify-center p-4 md:p-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
