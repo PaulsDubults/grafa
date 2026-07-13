@@ -132,7 +132,8 @@ export default function HeroSection() {
         <img
           src={HERO_IMG}
           alt="SIA firma GRĀFA — piramīda, spalva, logotips"
-          className="w-full h-full object-contain object-center" />
+          className="w-full h-full object-contain object-center"
+        style={{ marginTop: '-2cm' }} />
         
       </motion.div>
 
