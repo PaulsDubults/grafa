@@ -24,7 +24,7 @@ export default function ServicesSection() {
       <img
         src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/4ed940b7b_Screenshot_2026-07-13_at_200426-removebg-preview1.png"
         alt=""
-        className="absolute w-[280px] md:w-[420px] lg:w-[520px] right-[-60px] md:right-[-20px] top-[-5%] pointer-events-none select-none opacity-[0.18]"
+        className="absolute w-[240px] md:w-[360px] lg:w-[440px] right-[-60px] md:right-[-20px] top-[8%] pointer-events-none select-none opacity-[0.55]"
         style={{ mixBlendMode: 'multiply' }}
         draggable={false}
       />
