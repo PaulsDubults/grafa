@@ -9,7 +9,6 @@ const navKeys = [
   { key: "nav.services", href: "#pakalpojumi" },
   { key: "nav.whyGrafa", href: "#kapec-izvel" },
   { key: "nav.knowledge", href: "#zinasanu-telpa" },
-  { key: "nav.about", href: "#par-mums" },
   { key: "nav.join", href: "#pievienojies" },
   { key: "nav.contacts", href: "#kontakti" },
 ];
