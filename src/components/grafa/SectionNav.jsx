@@ -19,7 +19,7 @@ export default function SectionNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 300);
+      setVisible(true);
 
       const offsets = sections.map((s) => {
         const el = document.getElementById(s.id);
@@ -37,6 +37,8 @@ export default function SectionNav() {
       setActiveIndex(current);
     };
 
+    // Show immediately
+    setVisible(true);
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
