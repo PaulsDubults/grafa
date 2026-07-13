@@ -81,89 +81,56 @@ export function FeatherFragment({ className = '', opacity = 0.2, rotate = 0 }) {
    PYRAMID ILLUSTRATIONS — 4 variants
    ═══════════════════════════════════════════════════════════════ */
 
-export function PyramidOutline({ className = '', opacity = 0.2, color = '#d4b896' }) {
+export function PyramidOutline({ className = '', opacity = 0.2, color = GOLD }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 2 }}>
       <svg viewBox="0 0 400 380" fill="none" className="w-full h-full" style={{ opacity }}>
-        <defs>
-          <clipPath id="pyrClipLg"><path d="M200,15 L375,355 L25,355 Z" /></clipPath>
-        </defs>
         <path d="M200,15 L375,355 L25,355 Z" stroke={color} strokeWidth="1.8" fill="none" />
-        <g clipPath="url(#pyrClipLg)" opacity="0.18">
-          {Array.from({ length: 22 }, (_, i) => {
-            const y = 30 + i * 16;
-            return <line key={i} x1="20" y1={y} x2="380" y2={y} stroke={color} strokeWidth="0.6" />;
-          })}
-        </g>
-        <path d="M200,15 L200,355" stroke={color} strokeWidth="0.5" opacity="0.3" />
-        <path d="M200,75 L325,305 L75,305 Z" stroke={color} strokeWidth="0.6" fill="none" opacity="0.3" />
-        <path d="M200,135 L275,265 L125,265 Z" stroke={color} strokeWidth="0.4" fill="none" opacity="0.2" />
-        <circle cx="200" cy="150" r="12" stroke={color} strokeWidth="0.5" fill="none" opacity="0.2" />
-        <circle cx="200" cy="150" r="3" fill={color} opacity="0.2" />
-        <circle cx="25" cy="355" r="2.5" fill={color} opacity="0.15" />
-        <circle cx="375" cy="355" r="2.5" fill={color} opacity="0.15" />
-        <circle cx="200" cy="15" r="2.5" fill={color} opacity="0.15" />
+        <path d="M200,15 L200,355" stroke={color} strokeWidth="0.7" opacity="0.5" />
+        <path d="M200,75 L325,305 L75,305 Z" stroke={color} strokeWidth="0.8" fill="none" opacity="0.5" />
+        <path d="M200,135 L275,265 L125,265 Z" stroke={color} strokeWidth="0.5" fill="none" opacity="0.35" />
+        <circle cx="200" cy="150" r="12" stroke={color} strokeWidth="0.7" fill="none" opacity="0.3" />
+        <circle cx="200" cy="150" r="4" fill={color} opacity="0.3" />
+        <line x1="188" y1="150" x2="168" y2="150" stroke={color} strokeWidth="0.4" opacity="0.2" />
+        <line x1="212" y1="150" x2="232" y2="150" stroke={color} strokeWidth="0.4" opacity="0.2" />
+        <line x1="200" y1="138" x2="200" y2="118" stroke={color} strokeWidth="0.4" opacity="0.2" />
+        <circle cx="25" cy="355" r="3" fill={color} opacity="0.25" />
+        <circle cx="375" cy="355" r="3" fill={color} opacity="0.25" />
+        <circle cx="200" cy="15" r="3" fill={color} opacity="0.25" />
       </svg>
     </motion.div>
   );
 }
 
-export function MediumPyramid({ className = '', opacity = 0.18, color = '#d4b896' }) {
+export function MediumPyramid({ className = '', opacity = 0.18, color = GOLD }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
       <svg viewBox="0 0 200 200" fill="none" className="w-full h-full" style={{ opacity }}>
-        <defs>
-          <clipPath id="pyrClipMd"><path d="M100,10 L185,185 L15,185 Z" /></clipPath>
-        </defs>
-        <path d="M100,10 L185,185 L15,185 Z" stroke={color} strokeWidth="1" fill="none" />
-        <g clipPath="url(#pyrClipMd)" opacity="0.16">
-          {Array.from({ length: 12 }, (_, i) => {
-            const y = 20 + i * 15;
-            return <line key={i} x1="10" y1={y} x2="190" y2={y} stroke={color} strokeWidth="0.5" />;
-          })}
-        </g>
-        <path d="M100,10 L100,185" stroke={color} strokeWidth="0.4" opacity="0.25" />
-        <path d="M100,55 L155,155 L45,155 Z" stroke={color} strokeWidth="0.5" fill="none" opacity="0.25" />
-        <circle cx="100" cy="80" r="2.5" fill={color} opacity="0.2" />
+        <path d="M100,10 L185,185 L15,185 Z" stroke={color} strokeWidth="1.2" fill="none" />
+        <path d="M100,10 L100,185" stroke={color} strokeWidth="0.5" opacity="0.4" />
+        <path d="M100,55 L155,155 L45,155 Z" stroke={color} strokeWidth="0.6" fill="none" opacity="0.4" />
+        <circle cx="100" cy="80" r="3" fill={color} opacity="0.3" />
       </svg>
     </motion.div>
   );
 }
 
-export function SmallPyramid({ className = '', opacity = 0.15, color = '#d4b896' }) {
+export function SmallPyramid({ className = '', opacity = 0.15, color = GOLD }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }}>
       <svg viewBox="0 0 80 80" fill="none" className="w-full h-full" style={{ opacity }}>
-        <defs>
-          <clipPath id="pyrClipSm"><path d="M40,5 L75,72 L5,72 Z" /></clipPath>
-        </defs>
-        <path d="M40,5 L75,72 L5,72 Z" stroke={color} strokeWidth="0.8" fill="none" />
-        <g clipPath="url(#pyrClipSm)" opacity="0.14">
-          {Array.from({ length: 5 }, (_, i) => {
-            const y = 12 + i * 13;
-            return <line key={i} x1="3" y1={y} x2="77" y2={y} stroke={color} strokeWidth="0.5" />;
-          })}
-        </g>
-        <circle cx="40" cy="35" r="1.5" fill={color} opacity="0.2" />
+        <path d="M40,5 L75,72 L5,72 Z" stroke={color} strokeWidth="1" fill="none" />
+        <circle cx="40" cy="35" r="2" fill={color} opacity="0.35" />
       </svg>
     </motion.div>
   );
 }
 
-export function PyramidSilhouette({ className = '', opacity = 0.05, color = '#d4b896' }) {
+export function PyramidSilhouette({ className = '', opacity = 0.06, color = GOLD }) {
   return (
     <motion.div className={`absolute pointer-events-none ${className}`} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 2 }}>
       <svg viewBox="0 0 400 350" fill="none" className="w-full h-full" style={{ opacity }}>
-        <defs>
-          <clipPath id="pyrClipSil"><path d="M200,10 L380,340 L20,340 Z" /></clipPath>
-        </defs>
         <path d="M200,10 L380,340 L20,340 Z" fill={color} />
-        <g clipPath="url(#pyrClipSil)" opacity="0.25">
-          {Array.from({ length: 20 }, (_, i) => {
-            const y = 25 + i * 17;
-            return <line key={i} x1="15" y1={y} x2="385" y2={y} stroke="#ffffff" strokeWidth="0.8" />;
-          })}
-        </g>
       </svg>
     </motion.div>
   );
