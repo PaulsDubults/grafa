@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GoldLine from './GoldLine';
-import { FeatherOutline, WatercolorStain, PaperTexture } from './Decorations';
+import { WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const valueIcons = [
@@ -20,7 +20,13 @@ export default function WhyGrafaSection() {
   return (
     <section id="kapec-grafu" className="relative py-20 md:py-28 overflow-hidden">
       <PaperTexture id="whyP" />
-      <FeatherOutline className="w-[300px] md:w-[480px] h-[200px] md:h-[320px] left-[-70px] md:left-[-20px] bottom-[8%]" opacity={0.55} flip />
+      <img
+        src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/4ed940b7b_Screenshot_2026-07-13_at_200426-removebg-preview1.png"
+        alt=""
+        className="absolute w-[240px] md:w-[360px] lg:w-[440px] right-[-60px] md:right-[-20px] top-[8%] pointer-events-none select-none opacity-[0.55]"
+        style={{ mixBlendMode: 'multiply' }}
+        draggable={false}
+      />
       <WatercolorStain className="right-[-80px] top-[15%]" color="#e0b5b0" opacity={0.1} size={500} id="why1" />
       <WatercolorStain className="left-[-120px] bottom-[-30px]" color="#e8c89a" opacity={0.08} size={380} id="why2" />
 

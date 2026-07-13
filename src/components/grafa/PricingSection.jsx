@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import TypewriterText from './TypewriterText';
-import { FullFeather, HalfFeather, FeatherOutline, WatercolorStain, PaperTexture } from './Decorations';
+import { WatercolorStain, PaperTexture } from './Decorations';
 import { useI18n } from '@/lib/i18n';
 
 const factorIcons = [
@@ -21,7 +21,13 @@ export default function PricingSection() {
   return (
     <section id="cena" className="relative py-16 md:py-24 overflow-hidden">
       <PaperTexture id="prcP" />
-      <FeatherOutline className="w-[300px] md:w-[480px] h-[200px] md:h-[320px] right-[-60px] md:right-[-15px] bottom-[5%]" opacity={0.6} />
+      <img
+        src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/4ed940b7b_Screenshot_2026-07-13_at_200426-removebg-preview1.png"
+        alt=""
+        className="absolute w-[240px] md:w-[360px] lg:w-[440px] right-[-60px] md:right-[-20px] top-[8%] pointer-events-none select-none opacity-[0.55]"
+        style={{ mixBlendMode: 'multiply' }}
+        draggable={false}
+      />
       <WatercolorStain className="left-[-120px] top-[20%]" color="#e8c89a" opacity={0.1} size={480} id="prc1" />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-10">
