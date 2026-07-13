@@ -4,7 +4,7 @@ import HeroMiniMap from './HeroMiniMap';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useI18n } from '@/lib/i18n';
 
-const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/17a3a8078_ChatGPTImageJul13202606_29_43AM1.png";
+const HERO_IMG = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/9c66be814_AdobeExpress-file.png";
 
 const emphasisIndices = [5, 6, 7, 8, 9, 10];
 const LINE_INTERVAL = 1400;
