@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 import ClientStatsChart from './ClientStatsChart';
 import { useI18n } from '@/lib/i18n';
 
@@ -7,37 +8,74 @@ const MAP_IMAGE = "https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed
 
 export default function HeroMiniMap() {
   const { t } = useI18n();
+  const [showModal, setShowModal] = useState(false);
 
   return (
-    <div>
-      <p className="text-[11px] font-body text-[#08233E]/40 mb-3 italic">
-        {t('miniMap.subtitle')}
-      </p>
+    <>
+      <div>
+        <p className="text-[11px] font-body text-[#08233E]/40 mb-3 italic">
+          {t('miniMap.subtitle')}
+        </p>
+        <button
+          className="relative rounded-sm overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-[0_4px_24px_rgba(201,168,76,0.15)] p-3 w-full max-w-[280px] text-left"
+          onClick={() => setShowModal(true)}
+        >
+          <img
+            src={MAP_IMAGE}
+            alt="Latvijas karte"
+            className="w-full h-auto opacity-35 group-hover:opacity-60 transition-all duration-700 group-hover:scale-[1.02]"
+            draggable={false}
+          />
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-2">
+            <span className="bg-white/90 text-[10px] font-body text-[#08233E]/70 tracking-wider uppercase px-3 py-1.5 rounded-sm shadow-sm">
+              {t('miniMap.viewMap')}
+            </span>
+          </div>
+        </button>
+      </div>
 
-      <motion.div
-        className="mb-5"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-      >
-        <img
-          src={MAP_IMAGE}
-          alt="Latvijas karte ar klientu atrašanās vietām"
-          className="w-full max-w-[480px] h-auto"
-          draggable={false}
-        />
-      </motion.div>
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="absolute inset-0 bg-[#08233E]/60 backdrop-blur-md" onClick={() => setShowModal(false)} />
 
-      <motion.div
-        className="max-w-[480px]"
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.15, duration: 0.7 }}
-      >
-        <ClientStatsChart />
-      </motion.div>
-    </div>
+            <motion.div
+              className="relative bg-[#FBF7F0] rounded-xl shadow-2xl border border-[#e8e0d4]/50 w-full max-w-[700px] max-h-[90vh] overflow-auto"
+              initial={{ scale: 0.92, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.92, opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+            >
+              <button
+                className="absolute top-4 right-4 z-40 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-md transition-colors"
+                onClick={() => setShowModal(false)}
+              >
+                <X size={16} className="text-[#08233E]/60" />
+              </button>
+
+              {/* Map image */}
+              <div className="px-6 pt-6">
+                <img
+                  src={MAP_IMAGE}
+                  alt="Latvijas karte ar klientu atrašanās vietām"
+                  className="w-full h-auto"
+                />
+              </div>
+
+              {/* Stats chart */}
+              <div className="px-6 pb-6 pt-4">
+                <ClientStatsChart />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
