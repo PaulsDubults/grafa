@@ -162,7 +162,7 @@ export const translations = {
       stats: [
         { number: "25+", label: "gadi" },
         { number: "Profesionāla", label: "komanda" },
-        { number: "5+ gadus", label: "attiestām savu uzņēmumu — SIA firma GRĀFA" },
+        { number: "5+ gadus", label: "attīstām savu uzņēmumu — SIA firma GRĀFA" },
         { number: "60+", label: "klienti" },
       ],
       priceBoxTitle: "Kāpēc uzņēmēji izvēlas SIA firma GRĀFA?",
