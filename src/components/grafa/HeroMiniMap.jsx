@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import ClientStatsChart from './ClientStatsChart';
@@ -41,8 +42,8 @@ export default function HeroMiniMap() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {showModal && (
+      {showModal && createPortal(
+        <AnimatePresence>
           <motion.div
             className="fixed inset-0 z-[99999] flex items-center justify-center p-4 md:p-8 overflow-hidden"
             initial={{ opacity: 0 }}
@@ -67,7 +68,6 @@ export default function HeroMiniMap() {
                 <X size={16} className="text-[#08233E]/60" />
               </button>
 
-              {/* Map image */}
               <div className="px-6 pt-6">
                 <img
                   src={MAP_IMAGE}
@@ -76,14 +76,14 @@ export default function HeroMiniMap() {
                 />
               </div>
 
-              {/* Stats chart */}
               <div className="px-6 pb-6 pt-4">
                 <ClientStatsChart />
               </div>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }

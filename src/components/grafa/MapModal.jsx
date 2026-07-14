@@ -49,7 +49,7 @@ export default function MapModal({ isOpen, onClose }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="absolute inset-0 bg-[#08233E]/60 backdrop-blur-md" onClick={onClose} />
+          <div className="absolute inset-0 bg-[#08233E]/80 backdrop-blur-xl" onClick={onClose} />
 
           <motion.div
             className="relative bg-[#FBF7F0] rounded-sm shadow-2xl border border-[#e8e0d4]/50 w-full max-w-[900px] max-h-[90vh] overflow-auto"
