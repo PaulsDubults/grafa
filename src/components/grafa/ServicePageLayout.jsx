@@ -26,13 +26,7 @@ export default function ServicePageLayout({ breadcrumbs, title, subtitle, childr
         <PaperTexture id="svcHdrP" />
         <WatercolorStain className="right-[-80px] top-[-30px]" color="#e8c89a" opacity={0.14} size={450} id="svcLW" />
         <WatercolorStain className="left-[-60px] bottom-[-20px]" color="#e0b5b0" opacity={0.08} size={300} id="svcLR" />
-        <img
-          src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/4ed940b7b_Screenshot_2026-07-13_at_200426-removebg-preview1.png"
-          alt=""
-          className="absolute w-[240px] md:w-[360px] lg:w-[440px] right-[-60px] md:right-[-20px] top-[8%] pointer-events-none select-none opacity-[0.55]"
-          style={{ mixBlendMode: 'multiply' }}
-          draggable={false}
-        />
+
         <PyramidOutline className="w-[250px] md:w-[350px] h-[240px] md:h-[340px] left-[10%] top-[-15px]" opacity={0.08} />
         <StarConstellation className="w-[160px] h-[160px] left-6 top-4" opacity={0.28} />
         <GoldDotGrid className="w-[120px] h-[70px] right-[15%] bottom-4" rows={4} cols={6} opacity={0.25} />
