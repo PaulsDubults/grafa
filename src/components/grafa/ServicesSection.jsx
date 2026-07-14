@@ -19,12 +19,12 @@ export default function ServicesSection() {
   const cards = t('services.cards');
 
   return (
-    <section id="pakalpojumi" className="relative py-16 md:py-24 overflow-hidden">
+    <section id="pakalpojumi" className="relative py-16 md:py-24 overflow-x-clip">
       <PaperTexture id="svcP" />
       <img
         src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/4ed940b7b_Screenshot_2026-07-13_at_200426-removebg-preview1.png"
         alt=""
-        className="absolute w-[200px] md:w-[300px] lg:w-[380px] right-[0px] md:right-[10px] top-[8%] pointer-events-none select-none opacity-[0.55]"
+        className="absolute w-[200px] md:w-[300px] lg:w-[380px] right-[0px] md:right-[10px] top-[8%] pointer-events-none select-none opacity-[0.55] z-20"
         style={{ mixBlendMode: 'multiply' }}
         draggable={false}
       />

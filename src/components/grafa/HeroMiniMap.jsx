@@ -44,13 +44,13 @@ export default function HeroMiniMap() {
       <AnimatePresence>
         {showModal && (
           <motion.div
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[99999] flex items-center justify-center p-4 md:p-8 overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="absolute inset-0 bg-[#08233E]/60 backdrop-blur-md" onClick={() => setShowModal(false)} />
+            <div className="absolute inset-0 bg-[#08233E]/80 backdrop-blur-xl" onClick={() => setShowModal(false)} />
 
             <motion.div
               className="relative bg-[#FBF7F0] rounded-xl shadow-2xl border border-[#e8e0d4]/50 w-full max-w-[700px] max-h-[90vh] overflow-auto"

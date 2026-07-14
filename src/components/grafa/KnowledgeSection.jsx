@@ -111,12 +111,12 @@ export default function KnowledgeSection() {
   const [typewriterDone, setTypewriterDone] = useState(false);
 
   return (
-    <section id="zinasanu-telpa" className="relative py-16 md:py-24 overflow-hidden">
+    <section id="zinasanu-telpa" className="relative py-16 md:py-24 overflow-x-clip">
       <PaperTexture id="knwP" />
       <img
         src="https://media.base44.com/images/public/6a02e63e7c5f99b008a3ed38/4ed940b7b_Screenshot_2026-07-13_at_200426-removebg-preview1.png"
         alt=""
-        className="absolute w-[200px] md:w-[300px] lg:w-[380px] right-[0px] md:right-[10px] top-[8%] pointer-events-none select-none opacity-[0.55]"
+        className="absolute w-[200px] md:w-[300px] lg:w-[380px] right-[0px] md:right-[10px] top-[8%] pointer-events-none select-none opacity-[0.55] z-20"
         style={{ mixBlendMode: 'multiply' }}
         draggable={false}
       />
